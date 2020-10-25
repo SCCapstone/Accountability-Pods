@@ -19,5 +19,3 @@ https://firebase.google.com
 ##Setup
 
 One time things
-## This is my readme
-

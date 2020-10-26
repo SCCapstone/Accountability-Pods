@@ -28,12 +28,13 @@ No installation necessary just go to:
 https://firebase.google.com
  
 ## Setup
+Firebase account token will be provided. Also embedded in file.
 
 ## Running
 
-## Deployment 
+# Deployment 
 
-## Testing 
+# Testing 
 
 ## Testing Technology 
 
@@ -46,10 +47,4 @@ Vasco Madrid, vmadrid0426@gmail.com
 We are using the google swift style guide
 https://google.github.io/swift/
 
-
-##Can you see this
-
-
-
-#hello
 

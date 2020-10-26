@@ -17,12 +17,13 @@ No installation necessary just go to:
 https://firebase.google.com
  
 ## Setup
+Firebase account token will be provided. Also embedded in file.
 
 ## Running
 
-## Deployment 
+# Deployment 
 
-## Testing 
+# Testing 
 
 ## Testing Technology 
 
@@ -33,8 +34,3 @@ https://firebase.google.com
 
 
 
-##Can you see this
-
-
-
-#hello

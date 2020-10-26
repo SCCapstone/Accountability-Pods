@@ -40,8 +40,9 @@ To run the binary emulator on your physical phone. Simply plug the desired phone
 # Testing 
 Testing will be available later. As an iOS app TestFlight - App Developer is required in order for release and for other to test.
 ## Testing Technology 
-
+Coming soon.
 ## Running Tests
+Comming soon.
 
 ## Authors
 Vasco Madrid, vmadrid0426@gmail.com

@@ -1,5 +1,6 @@
-## Accountability Pods
-# Short Description
+# Accountability Pods
+
+## Short Description
 Accountability pods is an app implementation of a transformative justice community building tool to serve as an alternative to policing. The main function of the app is for users to digitally organize their support system as a tool to use during violent, harmful, and abusive situations whether they are a survivor, bystander, or the person causing harm.
 
 In terms of features, the app has the following:

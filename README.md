@@ -40,7 +40,7 @@ https://firebase.google.com
 ## Running Tests
 
 ## Authors
-Vasco Madrid, 
+Vasco Madrid, vmadrid0426@gmail.com
 
 # Style Guide
 We are using the google swift style guide

@@ -18,5 +18,9 @@ https://firebase.google.com
  
 ##Setup
 
+<<<<<<< HEAD
 
 
+=======
+One time things
+>>>>>>> 4d930d5a4efea45e954ea3f4e72931c91b0d0d9f

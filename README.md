@@ -48,6 +48,8 @@ Comming soon.
 ## Authors
 Vasco Madrid, vmadrid0426@gmail.com
 Jhada Kahan-Thomas, jhada@email.sc.edu
+Duncan Evans, dsevans@email.sc.edu
+Jenny Scholz, jtscholz@email.sc.edu
 
 # Style Guide
 We are using the google swift style guide

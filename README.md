@@ -16,9 +16,21 @@ Or to download older versions compatible with you computer head here:
 No installation necessary just go to:
 https://firebase.google.com
  
-##Setup
+## Setup
 
-One time things
+## Running
+
+## Deployment 
+
+## Testing 
+
+## Testing Technology 
+
+## Running Tests
+
+## Authors
+
+
 
 
 ##Can you see this

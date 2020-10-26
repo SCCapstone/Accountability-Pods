@@ -40,13 +40,5 @@ https://firebase.google.com
 ## Running Tests
 
 ## Authors
-
-
-
-
-##Can you see this
-
-
-
-#hello
+Vasco Madrid, Jhada Kahan, Jenny Scholz, Duncan Evans
 

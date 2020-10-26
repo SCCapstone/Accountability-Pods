@@ -31,6 +31,7 @@ https://firebase.google.com
 Firebase account token will be provided. Also embedded in file.
 
 ## Running
+A developer must clone the repo by adding the link to Xcode, and enter their personal access token from GitHub to access all the files in the repo.
 
 # Deployment 
 Xcode is every helpful for deployment of iOS app. To upload to the Apple App Store you must have a developer account associated with Apple. To deploy the app open the project in Xcode. Select the project and open the targets tab and under General, increment the version and build. In the header tabs under Product change your view to Generic iOS Device by selecting from the destination drop down. Then build an image of the app by selecting Product from the main tabs then Archive. From here the Archive window will appear and the developer can user to upload the App to the App Store. From here one will use their developer account.

@@ -49,10 +49,7 @@ Comming soon.
 Vasco Madrid, vmadrid0426@gmail.com
 Jhada Kahan-Thomas, jhada@email.sc.edu
 Duncan Evans, dsevans@email.sc.edu
-<<<<<<< HEAD
 Jenny Scholz, jtscholz@email.sc.edu
-=======
->>>>>>> c1b1d5904831e7ba6575615a267bfa6f43d5dc85
 
 # Style Guide
 We are using the google swift style guide

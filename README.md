@@ -41,4 +41,10 @@ Firebase account token will be provided. Also embedded in file.
 ## Running Tests
 
 ## Authors
+Vasco Madrid, vmadrid0426@gmail.com
+
+# Style Guide
+We are using the google swift style guide
+https://google.github.io/swift/
+
 

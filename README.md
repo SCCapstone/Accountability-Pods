@@ -40,5 +40,16 @@ https://firebase.google.com
 ## Running Tests
 
 ## Authors
-Vasco Madrid, Jhada Kahan, Jenny Scholz, Duncan Evans
+Vasco Madrid, 
+
+# Style Guide
+We are using the google swift style guide
+https://google.github.io/swift/
+
+
+##Can you see this
+
+
+
+#hello
 

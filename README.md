@@ -30,7 +30,7 @@ No installation necessary just go to:
 https://firebase.google.com
  
 ## Setup
-Firebase account token will be provided. Also embedded in file.
+After cloning repo, user will need to open the project file AccountablityPods/AccountabilityPods.xcworkspace (this project file is linked to the firebase account, opening the .xcodeproj file will not work with firebase!!). To access the firebase console, developer will need to go to https://firebase.google.com and sign in using the group gmail info. 
 
 ## Running
 A developer must clone the repo by adding the link to Xcode, and enter their personal access token from GitHub to access all the files in the repo.

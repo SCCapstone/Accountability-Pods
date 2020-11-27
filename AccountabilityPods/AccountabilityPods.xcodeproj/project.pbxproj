@@ -3,13 +3,19 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		0473EA11E77DDFF5473805A5 /* Pods_AccountabilityPodsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEA0A851443E34330BA3775D /* Pods_AccountabilityPodsTests.framework */; };
 		38FF0D9A37D5687DAEDBB7B7 /* Pods_AccountabilityPods_AccountabilityPodsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35D451B40E566A45C96FB311 /* Pods_AccountabilityPods_AccountabilityPodsUITests.framework */; };
 		5B155AB425E3A9EBFE4D1292 /* Pods_AccountabilityPods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BC1EAE7E29B671B16CA125D /* Pods_AccountabilityPods.framework */; };
+		C3299BF825700BBD00D2C3D7 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3299BF725700BBD00D2C3D7 /* SignUpViewController.swift */; };
+		C3299BFD25700BCE00D2C3D7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3299BFC25700BCE00D2C3D7 /* LoginViewController.swift */; };
+		C3299C0225700BE100D2C3D7 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3299C0125700BE100D2C3D7 /* HomeViewController.swift */; };
+		C3299C0B257016C800D2C3D7 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3299C0A257016C800D2C3D7 /* ForgotPasswordViewController.swift */; };
+		C3299C3D2570660E00D2C3D7 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3299C3C2570660E00D2C3D7 /* Utilities.swift */; };
+		C3299C5F2571324800D2C3D7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3299C5E2571324800D2C3D7 /* Constants.swift */; };
 		D484062B2545CB7F0020830A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D484062A2545CB7F0020830A /* AppDelegate.swift */; };
 		D484062D2545CB7F0020830A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D484062C2545CB7F0020830A /* SceneDelegate.swift */; };
 		D484062F2545CB7F0020830A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D484062E2545CB7F0020830A /* ViewController.swift */; };
@@ -45,6 +51,12 @@
 		9AB0E47EFE1CDF22C704BFB5 /* Pods-AccountabilityPods-AccountabilityPodsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AccountabilityPods-AccountabilityPodsUITests.release.xcconfig"; path = "Target Support Files/Pods-AccountabilityPods-AccountabilityPodsUITests/Pods-AccountabilityPods-AccountabilityPodsUITests.release.xcconfig"; sourceTree = "<group>"; };
 		A4E6E5BEE34DFFC4C5B704C7 /* Pods-AccountabilityPods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AccountabilityPods.debug.xcconfig"; path = "Target Support Files/Pods-AccountabilityPods/Pods-AccountabilityPods.debug.xcconfig"; sourceTree = "<group>"; };
 		AEA0A851443E34330BA3775D /* Pods_AccountabilityPodsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AccountabilityPodsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C3299BF725700BBD00D2C3D7 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		C3299BFC25700BCE00D2C3D7 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		C3299C0125700BE100D2C3D7 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		C3299C0A257016C800D2C3D7 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
+		C3299C3C2570660E00D2C3D7 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		C3299C5E2571324800D2C3D7 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		CD902288C9DC2F03E1378EBC /* Pods-AccountabilityPods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AccountabilityPods.release.xcconfig"; path = "Target Support Files/Pods-AccountabilityPods/Pods-AccountabilityPods.release.xcconfig"; sourceTree = "<group>"; };
 		CDD99BAE17C822C0E6F3CA65 /* Pods-AccountabilityPodsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AccountabilityPodsTests.debug.xcconfig"; path = "Target Support Files/Pods-AccountabilityPodsTests/Pods-AccountabilityPodsTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D48406272545CB7F0020830A /* AccountabilityPods.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AccountabilityPods.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -93,6 +105,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C3299C0625700BEA00D2C3D7 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				C3299BFC25700BCE00D2C3D7 /* LoginViewController.swift */,
+				D484062E2545CB7F0020830A /* ViewController.swift */,
+				C3299C0125700BE100D2C3D7 /* HomeViewController.swift */,
+				C3299BF725700BBD00D2C3D7 /* SignUpViewController.swift */,
+				C3299C0A257016C800D2C3D7 /* ForgotPasswordViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		C3299C3B257065C500D2C3D7 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				C3299C3C2570660E00D2C3D7 /* Utilities.swift */,
+				C3299C5E2571324800D2C3D7 /* Constants.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		CEF8876C0EFAD0EBBA6547DC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -128,9 +161,10 @@
 		D48406292545CB7F0020830A /* AccountabilityPods */ = {
 			isa = PBXGroup;
 			children = (
+				C3299C3B257065C500D2C3D7 /* Helpers */,
+				C3299C0625700BEA00D2C3D7 /* ViewControllers */,
 				D484062A2545CB7F0020830A /* AppDelegate.swift */,
 				D484062C2545CB7F0020830A /* SceneDelegate.swift */,
-				D484062E2545CB7F0020830A /* ViewController.swift */,
 				D48406302545CB7F0020830A /* Main.storyboard */,
 				D48406332545CB800020830A /* Assets.xcassets */,
 				D48406352545CB800020830A /* LaunchScreen.storyboard */,
@@ -168,7 +202,6 @@
 				CDD99BAE17C822C0E6F3CA65 /* Pods-AccountabilityPodsTests.debug.xcconfig */,
 				898B70832D30F70B4FEECB40 /* Pods-AccountabilityPodsTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -413,8 +446,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				D484062F2545CB7F0020830A /* ViewController.swift in Sources */,
+				C3299C0B257016C800D2C3D7 /* ForgotPasswordViewController.swift in Sources */,
 				D484062B2545CB7F0020830A /* AppDelegate.swift in Sources */,
+				C3299BF825700BBD00D2C3D7 /* SignUpViewController.swift in Sources */,
+				C3299BFD25700BCE00D2C3D7 /* LoginViewController.swift in Sources */,
 				D484062D2545CB7F0020830A /* SceneDelegate.swift in Sources */,
+				C3299C3D2570660E00D2C3D7 /* Utilities.swift in Sources */,
+				C3299C0225700BE100D2C3D7 /* HomeViewController.swift in Sources */,
+				C3299C5F2571324800D2C3D7 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

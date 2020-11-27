@@ -55,7 +55,7 @@ class LoginViewController: UIViewController {
         
     }
     func transitionToHome() {
-        let homeViewController = storyboard?.instantiateViewController(identifier: Constants.Storyboard.homeViewController) as? HomeViewController
+        let homeViewController = storyboard?.instantiateViewController(identifier: Constants.Storyboard.homeViewController) as? UITabBarController
         
            
            view.window?.rootViewController = homeViewController
@@ -78,6 +78,7 @@ class LoginViewController: UIViewController {
                     self.editErrorMessage(error!.localizedDescription)
                 }
                 else {
+                    Constants.User.sharedInstance.userID = result!.user.uid;
                     self.transitionToHome()
                 }
             }    }

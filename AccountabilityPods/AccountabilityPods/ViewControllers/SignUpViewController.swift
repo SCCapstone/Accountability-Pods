@@ -75,12 +75,13 @@ class SignUpViewController: UIViewController {
         
     }
     func transitionToHome() {
-        let homeViewController = storyboard?.instantiateViewController(identifier: Constants.Storyboard.homeViewController) as? HomeViewController
+        let homeViewController = storyboard?.instantiateViewController(identifier: Constants.Storyboard.homeViewController) as? UITabBarController
         
         view.window?.rootViewController = homeViewController
         view.window?.makeKeyAndVisible()
         
     }
+    
     @IBAction func createAccountTapped(_ sender: Any) {
         // Determine if fiels are valid
         let errorValue = checkFields()
@@ -102,12 +103,15 @@ class SignUpViewController: UIViewController {
                 }
                 else {
                     let db = Firestore.firestore()
-                    var ref: DocumentReference? = nil
-                    ref = db.collection("users").addDocument(data: ["firstname":firstname, "lastname":lastname, "age":age,"affiliation":affiliation, "uid":result!.user.uid]) { err in
+                    //Modified this slightly to name the user document the same thing as the auth so that we can search by doc name directly instead of properties
+                     db.collection("users").document(result!.user.uid).setData(["firstname":firstname, "lastname":lastname, "age":age,"affiliation":affiliation, "uid":result!.user.uid, "email":email]) { err in
                         if let err = err {
                             print("Error adding document: \(err)")
                         } else {
-                            print("Document added with ID: \(ref!.documentID)")
+                            print("Document added with ID: \(result!.user.uid)")
+                            //Grab the userID here for use everywhere else in the app
+                            Constants.User.sharedInstance.userID = result!.user.uid;
+                            //We don't explicitly need to create subcollections, firestore will do it for us. Actually there isn't even really a way to create the subcollections without putting a document in there first.
                         }
                     }
                     

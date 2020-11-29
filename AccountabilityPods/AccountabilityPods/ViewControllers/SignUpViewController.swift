@@ -111,6 +111,16 @@ class SignUpViewController: UIViewController {
                             print("Document added with ID: \(result!.user.uid)")
                             //Grab the userID here for use everywhere else in the app
                             Constants.User.sharedInstance.userID = result!.user.uid;
+                            db.collection("users").document(Constants.User.sharedInstance.userID).collection("CONTACTS").document("adminuser").setData(["userRef":"adminuser"]) {
+                                err in
+                                if err != nil{
+                                    print("Error adding administrator contact: \(String(describing: err))")
+                                }
+                                else
+                                {
+                                    print("Successfully added administrator contact.")
+                                }
+                            }
                             //We don't explicitly need to create subcollections, firestore will do it for us. Actually there isn't even really a way to create the subcollections without putting a document in there first.
                         }
                     }

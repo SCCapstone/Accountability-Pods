@@ -12,6 +12,10 @@ import FirebaseAuth
 
 class LoginViewController: UIViewController {
 
+   /* @IBAction func prevViewButtonPressed(_ sender: Any) {
+        print("Button pressed")
+        self.performSegue(withIdentifier: "backToHomeFromLogin", sender: self)
+    }*/
     
     @IBOutlet weak var emailTextField: UITextField!
     
@@ -23,7 +27,10 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+    
+       let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(swipeAction(swipe:)))
+        rightSwipe.direction=UISwipeGestureRecognizer.Direction.right
+        self.view.addGestureRecognizer(rightSwipe)
         // Do any additional setup after loading the view.
         setUpElements()
 
@@ -83,5 +90,7 @@ class LoginViewController: UIViewController {
                 }
             }    }
     }
+   
     
 }
+

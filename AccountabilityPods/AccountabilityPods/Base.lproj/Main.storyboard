@@ -181,7 +181,7 @@
                                         <rect key="frame" x="0.0" y="198.5" width="334" height="30"/>
                                         <state key="normal" title="Forgot Password"/>
                                         <connections>
-                                            <segue destination="vft-Q3-xOW" kind="show" id="6nE-vK-rrT"/>
+                                            <segue destination="vft-Q3-xOW" kind="presentation" id="6nE-vK-rrT"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -483,7 +483,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="S9D-eA-qW5"/>
+        <segue reference="g9z-kc-Y9I"/>
         <segue reference="4kW-um-cGD"/>
     </inferredMetricsTieBreakers>
     <resources>

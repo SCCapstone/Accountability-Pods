@@ -10,6 +10,9 @@ target 'AccountabilityPods' do
   pod 'Firebase/Auth'
   pod 'Firebase/Analytics'
   pod 'Firebase/Firestore'
+  # IN APP MESSAGING ADD
+  pod 'Firebase/Messaging'
+  # END IN APP MESSAGING ADD?
 
   target 'AccountabilityPodsTests' do
     inherit! :search_paths

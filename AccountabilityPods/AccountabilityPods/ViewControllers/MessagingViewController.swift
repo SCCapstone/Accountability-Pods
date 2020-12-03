@@ -7,17 +7,12 @@
 //
 
 import UIKit
-<<<<<<< HEAD
 import Foundation
-=======
->>>>>>> 3ce6f8de8a54151f2f67c4fc1d5f369889c44201
 import Firebase
 import FirebaseAuth
 
 class MessagingViewController: UIViewController {
-    
-<<<<<<< HEAD
-=======
+
     @IBOutlet weak var errorLabel: UILabel!
 
     override func viewDidLoad() {
@@ -30,6 +25,4 @@ class MessagingViewController: UIViewController {
         errorLabel.alpha = 0 // hide error label
     }
 
-    
->>>>>>> 3ce6f8de8a54151f2f67c4fc1d5f369889c44201
 }

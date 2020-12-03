@@ -649,8 +649,34 @@
                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="25"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dXA-8j-iwu">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="47"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Power Pods" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J1C-ee-84L">
+                                        <rect key="frame" x="153" y="19" width="108" height="28"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="20"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.1843137255" green="0.25490196079999999" blue="0.17254901959999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="J1C-ee-84L" firstAttribute="top" secondItem="dXA-8j-iwu" secondAttribute="top" constant="19" id="99j-es-cc4"/>
+                                    <constraint firstAttribute="trailing" secondItem="J1C-ee-84L" secondAttribute="trailing" constant="153" id="BmU-Co-wG3"/>
+                                    <constraint firstAttribute="bottom" secondItem="J1C-ee-84L" secondAttribute="bottom" id="YBe-L6-exA"/>
+                                    <constraint firstAttribute="width" constant="414" id="cfZ-xP-are"/>
+                                    <constraint firstItem="J1C-ee-84L" firstAttribute="leading" secondItem="dXA-8j-iwu" secondAttribute="leading" constant="153" id="foK-3f-MId"/>
+                                    <constraint firstAttribute="height" constant="47" id="u0Z-Vu-UAV"/>
+                                </constraints>
+                                <viewLayoutGuide key="safeArea" id="bQo-s8-rBS"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.80784313730000001" green="0.90196078430000004" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="dXA-8j-iwu" firstAttribute="trailing" secondItem="yYa-4M-yLa" secondAttribute="trailing" id="8fn-P8-fiS"/>
+                            <constraint firstItem="dXA-8j-iwu" firstAttribute="top" secondItem="yYa-4M-yLa" secondAttribute="top" id="Dhx-8L-5Fq"/>
+                            <constraint firstItem="dXA-8j-iwu" firstAttribute="leading" secondItem="yYa-4M-yLa" secondAttribute="leading" id="tgh-kp-yhH"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="yYa-4M-yLa"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Messaging" id="TeE-L2-KJF"/>

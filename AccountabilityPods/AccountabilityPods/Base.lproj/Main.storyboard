@@ -14,40 +14,35 @@
             <objects>
                 <viewController storyboardIdentifier="ViewController" id="BYZ-38-t0r" customClass="ViewController" customModule="AccountabilityPods" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" customClass="GradientView" customModule="AccountabilityPods" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.14999999999999999" contentMode="scaleAspectFit" image="people" translatesAutoresizingMaskIntoConstraints="NO" id="Lph-gw-A7Z">
-                                <rect key="frame" x="24" y="133" width="367" height="612"/>
+                                <rect key="frame" x="24" y="89" width="367" height="602"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="5Qc-4v-XOC">
-                                <rect key="frame" x="58" y="280.5" width="298" height="314"/>
+                                <rect key="frame" x="58" y="236.5" width="298" height="304"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="thin"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ee3-8H-MKc" userLabel="powerC">
-                                <rect key="frame" x="158" y="210.5" width="227" height="238"/>
+                                <rect key="frame" x="158" y="166.5" width="227" height="228"/>
                                 <color key="tintColor" red="0.63137254901960782" green="0.77647058823529413" blue="0.77647058823529413" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="r1f-Fw-vyP" userLabel="createC">
-                                <rect key="frame" x="107" y="474.5" width="150" height="160"/>
+                                <rect key="frame" x="107" y="430.5" width="150" height="150"/>
                                 <color key="tintColor" red="0.41176470590000003" green="0.4941176471" blue="0.4941176471" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="8Yr-6E-hxz" userLabel="logC">
-                                <rect key="frame" x="251" y="422.5" width="150" height="160"/>
+                                <rect key="frame" x="251" y="378.5" width="150" height="150"/>
                                 <color key="tintColor" red="0.3411764705882353" green="0.40392156862745099" blue="0.40392156862745099" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Xfi-4g-7G4" userLabel="browseC">
-                                <rect key="frame" x="9" y="356.5" width="150" height="160"/>
+                                <rect key="frame" x="9" y="312.5" width="150" height="150"/>
                                 <color key="tintColor" red="0.51764705882352935" green="0.6470588235294118" blue="0.6470588235294118" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </imageView>
-<<<<<<< HEAD
-                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="JE9-v1-CR3">
-                                <rect key="frame" x="27" y="396" width="115" height="73"/>
-=======
                             <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="JE9-v1-CR3">
                                 <rect key="frame" x="27" y="352" width="115" height="73"/>
->>>>>>> 4ef493b2c890b439880f64e91a6aa2f909cf6501
                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="21"/>
                                 <state key="normal" title="   Browse  Resources">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -56,13 +51,8 @@
                                     <segue destination="Yv8-Od-K3k" kind="presentation" id="tJ4-iS-3l3"/>
                                 </connections>
                             </button>
-<<<<<<< HEAD
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="lM1-zF-kOh">
-                                <rect key="frame" x="129" y="517" width="107" height="85"/>
-=======
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="lM1-zF-kOh">
                                 <rect key="frame" x="129" y="463" width="107" height="85"/>
->>>>>>> 4ef493b2c890b439880f64e91a6aa2f909cf6501
                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="21"/>
                                 <state key="normal" title=" Create  Account">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -71,16 +61,11 @@
                                     <segue destination="Rwu-MT-yi4" kind="presentation" id="yd2-54-Mn2"/>
                                 </connections>
                             </button>
-<<<<<<< HEAD
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WWU-c9-ZLR">
-                                <rect key="frame" x="296" y="477" width="60" height="51"/>
-=======
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WWU-c9-ZLR">
                                 <rect key="frame" x="252" y="401" width="148" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="WWU-c9-ZLR" secondAttribute="height" multiplier="37:25" id="ey6-yX-L2T"/>
                                 </constraints>
->>>>>>> 4ef493b2c890b439880f64e91a6aa2f909cf6501
                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="21"/>
                                 <state key="normal" title="Log In">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -90,7 +75,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" text="Power  Pods" textAlignment="center" clearsOnBeginEditing="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c5T-JF-5QN" userLabel="Power  Pods">
-                                <rect key="frame" x="175" y="260" width="192" height="139"/>
+                                <rect key="frame" x="175" y="216" width="192" height="129"/>
                                 <color key="tintColor" red="0.86850760693824691" green="0.98861620187221344" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" notEnabled="YES"/>
@@ -405,11 +390,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0yV-pk-s5i">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0yV-pk-s5i">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="47"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Power Pods" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1bI-35-fqc">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Power Pods" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1bI-35-fqc">
                                         <rect key="frame" x="153" y="19" width="108" height="28"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="20"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -418,12 +404,8 @@
                                 <viewLayoutGuide key="safeArea" id="qKo-Yh-ATi"/>
                                 <color key="backgroundColor" red="0.1843137255" green="0.25490196079999999" blue="0.17254901959999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="414" id="1gC-ta-evE"/>
-                                    <constraint firstAttribute="bottom" secondItem="1bI-35-fqc" secondAttribute="bottom" id="Clt-5e-QeY"/>
-                                    <constraint firstItem="1bI-35-fqc" firstAttribute="leading" secondItem="0yV-pk-s5i" secondAttribute="leading" constant="153" id="CzH-QH-N5B"/>
-                                    <constraint firstAttribute="trailing" secondItem="1bI-35-fqc" secondAttribute="trailing" constant="153" id="MG4-iY-8ff"/>
-                                    <constraint firstItem="1bI-35-fqc" firstAttribute="top" secondItem="0yV-pk-s5i" secondAttribute="top" constant="19" id="dhT-ob-Yen"/>
-                                    <constraint firstAttribute="height" constant="47" id="lKT-Qd-NaF"/>
+                                    <constraint firstAttribute="width" constant="414" id="RR3-HE-0JB"/>
+                                    <constraint firstAttribute="height" constant="47" id="i0d-vk-r4V"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forgot Your Password?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tzk-NN-VOF">
@@ -460,11 +442,15 @@
                         <color key="backgroundColor" red="0.80784313730000001" green="0.90196078430000004" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="Rbn-fP-0az" firstAttribute="trailing" secondItem="ngb-nd-9oE" secondAttribute="trailing" constant="40" id="37c-X0-Uv7"/>
+                            <constraint firstItem="0yV-pk-s5i" firstAttribute="trailing" secondItem="Rbn-fP-0az" secondAttribute="trailing" id="7WE-r2-1rN"/>
                             <constraint firstItem="tzk-NN-VOF" firstAttribute="leading" secondItem="Rbn-fP-0az" secondAttribute="leading" constant="71" id="BxH-ht-rr1"/>
                             <constraint firstItem="ngb-nd-9oE" firstAttribute="top" secondItem="tzk-NN-VOF" secondAttribute="bottom" constant="242.5" id="FD6-kF-Pqy"/>
+                            <constraint firstItem="0yV-pk-s5i" firstAttribute="top" secondItem="Rbn-fP-0az" secondAttribute="top" id="TS6-9N-A0h"/>
                             <constraint firstItem="tzk-NN-VOF" firstAttribute="top" secondItem="Rbn-fP-0az" secondAttribute="top" constant="68" id="VBn-qM-aik"/>
                             <constraint firstItem="Rbn-fP-0az" firstAttribute="trailing" secondItem="tzk-NN-VOF" secondAttribute="trailing" constant="79.5" id="mKp-2k-ZSR"/>
                             <constraint firstItem="ngb-nd-9oE" firstAttribute="leading" secondItem="Rbn-fP-0az" secondAttribute="leading" constant="40" id="rww-gd-bL1"/>
+                            <constraint firstItem="tzk-NN-VOF" firstAttribute="top" secondItem="0yV-pk-s5i" secondAttribute="bottom" constant="21" id="syT-hX-V16"/>
+                            <constraint firstItem="0yV-pk-s5i" firstAttribute="leading" secondItem="Rbn-fP-0az" secondAttribute="leading" id="ubI-eE-nE0"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="3ex-1S-vay"/>
@@ -861,12 +847,8 @@
                                 </connections>
                             </button>
                         </subviews>
-<<<<<<< HEAD
-                        <color key="backgroundColor" red="0.80784313730000001" green="0.90196078430000004" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
-=======
                         <viewLayoutGuide key="safeArea" id="FnK-YK-Cip"/>
                         <color key="backgroundColor" systemColor="systemGreenColor"/>
->>>>>>> 4ef493b2c890b439880f64e91a6aa2f909cf6501
                         <constraints>
                             <constraint firstItem="yBk-ej-cFr" firstAttribute="centerX" secondItem="FnK-YK-Cip" secondAttribute="centerX" id="7dd-Xl-mN7"/>
                             <constraint firstItem="FnK-YK-Cip" firstAttribute="trailing" secondItem="8bi-88-eke" secondAttribute="trailing" constant="159" id="ALh-co-qsd"/>
@@ -967,7 +949,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="S9D-eA-qW5"/>
-        <segue reference="Jcs-tv-78Z"/>
+        <segue reference="4kW-um-cGD"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="circle" catalog="system" width="128" height="121"/>

@@ -117,6 +117,7 @@
 				D484062E2545CB7F0020830A /* ViewController.swift */,
 				C3299C0125700BE100D2C3D7 /* HomeViewController.swift */,
 				C3299BF725700BBD00D2C3D7 /* SignUpViewController.swift */,
+				442DC922257873DA00036D18 /* MessagingViewController.swift */,
 				C3299C0A257016C800D2C3D7 /* ForgotPasswordViewController.swift */,
 				AE145E2025716A2D00AF0F0C /* ResourceCreationViewController.swift */,
 			);

@@ -12,7 +12,7 @@
             <objects>
                 <viewController storyboardIdentifier="ViewController" id="BYZ-38-t0r" customClass="ViewController" customModule="AccountabilityPods" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" customClass="GradientView" customModule="AccountabilityPods">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="5Qc-4v-XOC">
@@ -171,7 +171,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" red="0.80784313730000001" green="0.90196078430000004" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="JzQ-6h-mAX" firstAttribute="trailing" secondItem="fqH-FU-Vdr" secondAttribute="trailing" constant="40" id="12M-7h-H6h"/>
                             <constraint firstItem="nud-Bs-X7z" firstAttribute="leading" secondItem="JzQ-6h-mAX" secondAttribute="leading" constant="147.19" id="6A0-Qf-OYG"/>
@@ -251,7 +251,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             </navigationBar>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" red="0.80784313730000001" green="0.90196078430000004" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="B2c-oT-tQp" firstAttribute="trailing" secondItem="9ri-W4-H5e" secondAttribute="trailing" constant="40" id="139-Su-ldf"/>
                             <constraint firstItem="9ri-W4-H5e" firstAttribute="top" secondItem="B2c-oT-tQp" secondAttribute="top" constant="200" id="Mn4-Ot-AxZ"/>
@@ -316,7 +316,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" red="0.80784313730000001" green="0.90196078430000004" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="Rbn-fP-0az" firstAttribute="trailing" secondItem="ngb-nd-9oE" secondAttribute="trailing" constant="40" id="37c-X0-Uv7"/>
                             <constraint firstItem="tzk-NN-VOF" firstAttribute="top" secondItem="Rbn-fP-0az" secondAttribute="top" constant="119.5" id="Tkl-nN-TTk"/>
@@ -360,7 +360,7 @@
                     <view key="view" contentMode="scaleToFill" id="xoX-DW-Iub">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" red="0.80784313730000001" green="0.90196078430000004" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
                         <viewLayoutGuide key="safeArea" id="Ai6-bU-d5Y"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Pods" id="L2T-p5-ckz"/>
@@ -376,7 +376,7 @@
                     <view key="view" contentMode="scaleToFill" id="nGU-on-pUy">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" red="0.80784313730000001" green="0.90196078430000004" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
                         <viewLayoutGuide key="safeArea" id="jhl-AF-WdW"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Search" id="uao-dA-ijM"/>
@@ -413,7 +413,7 @@
                     <view key="view" contentMode="scaleToFill" id="evF-5x-nRB">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" red="0.80784313730000001" green="0.90196078430000004" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
                         <viewLayoutGuide key="safeArea" id="yYa-4M-yLa"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Messaging" id="TeE-L2-KJF"/>
@@ -538,7 +538,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="S9D-eA-qW5"/>
-        <segue reference="Jcs-tv-78Z"/>
+        <segue reference="4kW-um-cGD"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="circle" catalog="system" width="128" height="121"/>

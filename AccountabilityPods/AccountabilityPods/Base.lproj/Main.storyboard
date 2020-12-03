@@ -11,49 +11,56 @@
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController storyboardIdentifier="ViewController" id="BYZ-38-t0r" customClass="ViewController" customModule="AccountabilityPods" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" customClass="GradientView" customModule="AccountabilityPods">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" customClass="GradientView" customModule="AccountabilityPods" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="5Qc-4v-XOC">
-                                <rect key="frame" x="32" y="251" width="350" height="350"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.14999999999999999" contentMode="scaleAspectFit" image="people" translatesAutoresizingMaskIntoConstraints="NO" id="Lph-gw-A7Z">
+                                <rect key="frame" x="24" y="89" width="367" height="602"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ee3-8H-MKc">
-                                <rect key="frame" x="167" y="193.5" width="227" height="228"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="5Qc-4v-XOC">
+                                <rect key="frame" x="58" y="236.5" width="298" height="304"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="thin"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ee3-8H-MKc" userLabel="powerC">
+                                <rect key="frame" x="158" y="166.5" width="227" height="228"/>
                                 <color key="tintColor" red="0.63137254901960782" green="0.77647058823529413" blue="0.77647058823529413" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
-                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Power  Pods" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="50" translatesAutoresizingMaskIntoConstraints="NO" id="c5T-JF-5QN">
-                                <rect key="frame" x="184" y="203" width="192" height="164"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="tintColor" red="0.86850760693824691" green="0.98861620187221344" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <accessibility key="accessibilityConfiguration">
-                                    <accessibilityTraits key="traits" notEnabled="YES"/>
-                                </accessibility>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="50"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="r1f-Fw-vyP">
-                                <rect key="frame" x="107" y="463.5" width="150" height="150"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="r1f-Fw-vyP" userLabel="createC">
+                                <rect key="frame" x="107" y="430.5" width="150" height="150"/>
                                 <color key="tintColor" red="0.41176470590000003" green="0.4941176471" blue="0.4941176471" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="8Yr-6E-hxz">
-                                <rect key="frame" x="257" y="427.5" width="150" height="150"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="8Yr-6E-hxz" userLabel="logC">
+                                <rect key="frame" x="251" y="378.5" width="150" height="150"/>
                                 <color key="tintColor" red="0.3411764705882353" green="0.40392156862745099" blue="0.40392156862745099" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Xfi-4g-7G4">
-                                <rect key="frame" x="20" y="330.5" width="150" height="150"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Xfi-4g-7G4" userLabel="browseC">
+                                <rect key="frame" x="9" y="312.5" width="150" height="150"/>
                                 <color key="tintColor" red="0.51764705882352935" green="0.6470588235294118" blue="0.6470588235294118" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WWU-c9-ZLR">
-                                <rect key="frame" x="302" y="482" width="60" height="41"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="JE9-v1-CR3">
+                                <rect key="frame" x="27" y="352" width="115" height="73"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="21"/>
+                                <state key="normal" title="   Browse  Resources">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <segue destination="Yv8-Od-K3k" kind="presentation" id="tJ4-iS-3l3"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="lM1-zF-kOh">
+                                <rect key="frame" x="129" y="463" width="107" height="85"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="21"/>
+                                <state key="normal" title=" Create  Account">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <segue destination="Rwu-MT-yi4" kind="presentation" id="yd2-54-Mn2"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WWU-c9-ZLR">
+                                <rect key="frame" x="296" y="433" width="60" height="41"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="21"/>
                                 <state key="normal" title="Log In">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -62,33 +69,64 @@
                                     <segue destination="OOr-gG-DF7" kind="presentation" identifier="" id="S9D-eA-qW5"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="center" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="JE9-v1-CR3">
-                                <rect key="frame" x="32" y="369" width="127" height="73"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="21"/>
-                                <state key="normal" title="Browse  Resources">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <segue destination="Yv8-Od-K3k" kind="presentation" id="tJ4-iS-3l3"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="lM1-zF-kOh">
-                                <rect key="frame" x="129" y="496" width="107" height="85.000000000000028"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="21"/>
-                                <state key="normal" title="Create  Account">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <segue destination="Rwu-MT-yi4" kind="presentation" id="yd2-54-Mn2"/>
-                                </connections>
-                            </button>
+                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" text="Power  Pods" textAlignment="center" clearsOnBeginEditing="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c5T-JF-5QN" userLabel="Power  Pods">
+                                <rect key="frame" x="175" y="216" width="192" height="129"/>
+                                <color key="tintColor" red="0.86850760693824691" green="0.98861620187221344" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" notEnabled="YES"/>
+                                </accessibility>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="50"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="0.80784313730000001" green="0.90196078430000004" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
                         <accessibility key="accessibilityConfiguration">
                             <bool key="isElement" value="YES"/>
                         </accessibility>
+                        <constraints>
+                            <constraint firstItem="JE9-v1-CR3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="27" id="0Gl-A0-s6o"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="WWU-c9-ZLR" secondAttribute="trailing" constant="58" id="1R6-SJ-pYG"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="5Qc-4v-XOC" secondAttribute="trailing" constant="58" id="41h-b0-VwO"/>
+                            <constraint firstItem="8Yr-6E-hxz" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="251" id="4gt-gh-S1f"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="WWU-c9-ZLR" secondAttribute="bottom" constant="334" id="7ed-8c-TzP"/>
+                            <constraint firstItem="WWU-c9-ZLR" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="296" id="9yy-N3-1Ts"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="JE9-v1-CR3" secondAttribute="trailing" constant="272" id="A8c-F8-0eh"/>
+                            <constraint firstItem="JE9-v1-CR3" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="352" id="AE7-D0-eup"/>
+                            <constraint firstItem="Xfi-4g-7G4" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="312" id="DB1-bw-k6q"/>
+                            <constraint firstItem="r1f-Fw-vyP" firstAttribute="top" secondItem="JE9-v1-CR3" secondAttribute="bottom" constant="5" id="Dxy-X7-Jar"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Xfi-4g-7G4" secondAttribute="trailing" constant="255" id="FPs-u9-4mJ"/>
+                            <constraint firstItem="c5T-JF-5QN" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="216" id="GJe-qP-oLf"/>
+                            <constraint firstItem="ee3-8H-MKc" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="166" id="Gah-DF-3IX"/>
+                            <constraint firstItem="r1f-Fw-vyP" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="430" id="HKD-yR-j2J"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Lph-gw-A7Z" secondAttribute="trailing" constant="23" id="JJ9-Vp-ehq"/>
+                            <constraint firstItem="5Qc-4v-XOC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="58" id="JjK-Yo-bj6"/>
+                            <constraint firstItem="c5T-JF-5QN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="175" id="JwP-6A-JKD"/>
+                            <constraint firstItem="8Yr-6E-hxz" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="378" id="L4H-vQ-LE4"/>
+                            <constraint firstItem="Lph-gw-A7Z" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="24" id="LWG-1l-pU6"/>
+                            <constraint firstItem="Xfi-4g-7G4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="9" id="R8G-BS-Nfo"/>
+                            <constraint firstItem="ee3-8H-MKc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="158" id="REo-c1-Jdy"/>
+                            <constraint firstItem="Lph-gw-A7Z" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="89" id="SFX-nP-xD3"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="c5T-JF-5QN" secondAttribute="bottom" constant="463" id="TmY-Vg-vR5"/>
+                            <constraint firstItem="5Qc-4v-XOC" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="236" id="Trc-Uk-2UI"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="5Qc-4v-XOC" secondAttribute="bottom" constant="266.5" id="YGP-lG-w6S"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ee3-8H-MKc" secondAttribute="bottom" constant="413" id="aK2-y8-4j2"/>
+                            <constraint firstItem="r1f-Fw-vyP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="107" id="cJQ-MI-XTZ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="r1f-Fw-vyP" secondAttribute="trailing" constant="157" id="cnY-8c-ZPR"/>
+                            <constraint firstItem="lM1-zF-kOh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="129" id="czA-8A-5bM"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="c5T-JF-5QN" secondAttribute="trailing" constant="47" id="dKR-9q-gnn"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="lM1-zF-kOh" secondAttribute="bottom" constant="260" id="fbN-eU-ISh"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Xfi-4g-7G4" secondAttribute="bottom" constant="345" id="gzl-Oe-6qY"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="8Yr-6E-hxz" secondAttribute="bottom" constant="279" id="icl-S2-MeP"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="lM1-zF-kOh" secondAttribute="trailing" constant="178" id="iph-Yx-JKh"/>
+                            <constraint firstItem="lM1-zF-kOh" firstAttribute="top" secondItem="Xfi-4g-7G4" secondAttribute="bottom" id="lFu-0t-S6f"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="8Yr-6E-hxz" secondAttribute="trailing" constant="13" id="nK8-2B-MXy"/>
+                            <constraint firstItem="WWU-c9-ZLR" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="433" id="r7q-Px-xoB"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Lph-gw-A7Z" secondAttribute="bottom" constant="117" id="sdw-wW-X4O"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="r1f-Fw-vyP" secondAttribute="bottom" constant="227" id="t8Z-LY-Y52"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ee3-8H-MKc" secondAttribute="trailing" constant="29" id="tG1-Pp-F5N"/>
+                            <constraint firstItem="Xfi-4g-7G4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="9" id="yvu-Kl-UHK"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="startColor">
@@ -96,6 +134,12 @@
                             </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="color" keyPath="endColor">
                                 <color key="value" red="0.80784313730000001" green="0.90196078430000004" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="point" keyPath="startPoint">
+                                <point key="value" x="0.25" y="0.0"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="point" keyPath="endPoint">
+                                <point key="value" x="0.25" y="0.5"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
@@ -807,6 +851,7 @@
         <image name="circle" catalog="system" width="128" height="121"/>
         <image name="circle.fill" catalog="system" width="128" height="121"/>
         <image name="pencil.circle" catalog="system" width="128" height="121"/>
+        <image name="people" width="614" height="608"/>
         <image name="plus.app.fill" catalog="system" width="128" height="114"/>
     </resources>
 </document>

@@ -7,3 +7,9 @@
 //
 import UIKit
 import Foundation
+import Firebase
+import FirebaseAuth
+
+class MessagingViewController: UIViewController {
+    
+}

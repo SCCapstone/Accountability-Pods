@@ -48,7 +48,7 @@
 
 /* Begin PBXFileReference section */
 		35D451B40E566A45C96FB311 /* Pods_AccountabilityPods_AccountabilityPodsUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AccountabilityPods_AccountabilityPodsUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		442DC922257873DA00036D18 /* MessagingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MessagingViewController.swift; path = AccountabilityPods/ViewControllers/MessagingViewController.swift; sourceTree = "<group>"; };
+		442DC922257873DA00036D18 /* MessagingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagingViewController.swift; sourceTree = "<group>"; };
 		4BC1EAE7E29B671B16CA125D /* Pods_AccountabilityPods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AccountabilityPods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		898B70832D30F70B4FEECB40 /* Pods-AccountabilityPodsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AccountabilityPodsTests.release.xcconfig"; path = "Target Support Files/Pods-AccountabilityPodsTests/Pods-AccountabilityPodsTests.release.xcconfig"; sourceTree = "<group>"; };
 		9AB0E47EFE1CDF22C704BFB5 /* Pods-AccountabilityPods-AccountabilityPodsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AccountabilityPods-AccountabilityPodsUITests.release.xcconfig"; path = "Target Support Files/Pods-AccountabilityPods-AccountabilityPodsUITests/Pods-AccountabilityPods-AccountabilityPodsUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -116,6 +116,7 @@
 				D484062E2545CB7F0020830A /* ViewController.swift */,
 				C3299C0125700BE100D2C3D7 /* HomeViewController.swift */,
 				C3299BF725700BBD00D2C3D7 /* SignUpViewController.swift */,
+				442DC922257873DA00036D18 /* MessagingViewController.swift */,
 				C3299C0A257016C800D2C3D7 /* ForgotPasswordViewController.swift */,
 				AE145E2025716A2D00AF0F0C /* ResourceCreationViewController.swift */,
 			);
@@ -144,7 +145,6 @@
 		D484061E2545CB7F0020830A = {
 			isa = PBXGroup;
 			children = (
-				442DC922257873DA00036D18 /* MessagingViewController.swift */,
 				D48406292545CB7F0020830A /* AccountabilityPods */,
 				D48406402545CB800020830A /* AccountabilityPodsTests */,
 				D484064B2545CB800020830A /* AccountabilityPodsUITests */,

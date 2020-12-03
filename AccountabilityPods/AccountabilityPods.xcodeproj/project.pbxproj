@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0473EA11E77DDFF5473805A5 /* Pods_AccountabilityPodsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEA0A851443E34330BA3775D /* Pods_AccountabilityPodsTests.framework */; };
 		38FF0D9A37D5687DAEDBB7B7 /* Pods_AccountabilityPods_AccountabilityPodsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35D451B40E566A45C96FB311 /* Pods_AccountabilityPods_AccountabilityPodsUITests.framework */; };
+		442DC923257873DA00036D18 /* MessagingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442DC922257873DA00036D18 /* MessagingViewController.swift */; };
 		5B155AB425E3A9EBFE4D1292 /* Pods_AccountabilityPods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BC1EAE7E29B671B16CA125D /* Pods_AccountabilityPods.framework */; };
 		AE145E2125716A2E00AF0F0C /* ResourceCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE145E2025716A2D00AF0F0C /* ResourceCreationViewController.swift */; };
 		C3299BF825700BBD00D2C3D7 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3299BF725700BBD00D2C3D7 /* SignUpViewController.swift */; };
@@ -47,6 +48,7 @@
 
 /* Begin PBXFileReference section */
 		35D451B40E566A45C96FB311 /* Pods_AccountabilityPods_AccountabilityPodsUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AccountabilityPods_AccountabilityPodsUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		442DC922257873DA00036D18 /* MessagingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MessagingViewController.swift; path = AccountabilityPods/ViewControllers/MessagingViewController.swift; sourceTree = "<group>"; };
 		4BC1EAE7E29B671B16CA125D /* Pods_AccountabilityPods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AccountabilityPods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		898B70832D30F70B4FEECB40 /* Pods-AccountabilityPodsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AccountabilityPodsTests.release.xcconfig"; path = "Target Support Files/Pods-AccountabilityPodsTests/Pods-AccountabilityPodsTests.release.xcconfig"; sourceTree = "<group>"; };
 		9AB0E47EFE1CDF22C704BFB5 /* Pods-AccountabilityPods-AccountabilityPodsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AccountabilityPods-AccountabilityPodsUITests.release.xcconfig"; path = "Target Support Files/Pods-AccountabilityPods-AccountabilityPodsUITests/Pods-AccountabilityPods-AccountabilityPodsUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 		D484061E2545CB7F0020830A = {
 			isa = PBXGroup;
 			children = (
+				442DC922257873DA00036D18 /* MessagingViewController.swift */,
 				D48406292545CB7F0020830A /* AccountabilityPods */,
 				D48406402545CB800020830A /* AccountabilityPodsTests */,
 				D484064B2545CB800020830A /* AccountabilityPodsUITests */,
@@ -452,6 +455,7 @@
 				C3299C0B257016C800D2C3D7 /* ForgotPasswordViewController.swift in Sources */,
 				D484062B2545CB7F0020830A /* AppDelegate.swift in Sources */,
 				C3299BF825700BBD00D2C3D7 /* SignUpViewController.swift in Sources */,
+				442DC923257873DA00036D18 /* MessagingViewController.swift in Sources */,
 				C3299BFD25700BCE00D2C3D7 /* LoginViewController.swift in Sources */,
 				D484062D2545CB7F0020830A /* SceneDelegate.swift in Sources */,
 				C3299C3D2570660E00D2C3D7 /* Utilities.swift in Sources */,

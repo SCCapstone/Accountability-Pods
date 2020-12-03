@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>178293290483-octc89prtcjtgv95ip2q8m7jqkcaekn2.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.178293290483-octc89prtcjtgv95ip2q8m7jqkcaekn2</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCZckcBMDnXNfEZNfAN6M0vT_SKJJIKTbI</string>
+	<key>GCM_SENDER_ID</key>
+	<string>178293290483</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>cg.AccountabilityPods</string>
+	<key>PROJECT_ID</key>
+	<string>accountability-pods</string>
+	<key>STORAGE_BUCKET</key>
+	<string>accountability-pods.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:178293290483:ios:6a138a705867b967950e86</string>
+	<key>DATABASE_URL</key>
+	<string>https://accountability-pods.firebaseio.com</string>
+</dict>
+</plist>

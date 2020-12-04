@@ -1,0 +1,76 @@
+./AccountabilityPods.xcodeproj/xcshareddata/xcschemes/AccountabilityPods 2.xcscheme
+./Pods/Target Support Files/FirebaseCore/FirebaseCore.release 2.xcconfig
+./Pods/Target Support Files/FirebaseCore/FirebaseCore.debug 2.xcconfig
+./Pods/Target Support Files/PromisesObjC/PromisesObjC.debug 2.xcconfig
+./Pods/Target Support Files/PromisesObjC/PromisesObjC.release 2.xcconfig
+./Pods/Target Support Files/GoogleDataTransport/GoogleDataTransport.release 2.xcconfig
+./Pods/Target Support Files/GoogleDataTransport/GoogleDataTransport.debug 2.xcconfig
+./Pods/Target Support Files/Pods-AccountabilityPods-AccountabilityPodsUITests/Pods-AccountabilityPods-AccountabilityPodsUITests-frameworks-Release-input-files 2.xcfilelist
+./Pods/Target Support Files/Pods-AccountabilityPods-AccountabilityPodsUITests/Pods-AccountabilityPods-AccountabilityPodsUITests-frameworks-Debug-output-files 2.xcfilelist
+./Pods/Target Support Files/Pods-AccountabilityPods-AccountabilityPodsUITests/Pods-AccountabilityPods-AccountabilityPodsUITests-frameworks-Debug-input-files 2.xcfilelist
+./Pods/Target Support Files/Pods-AccountabilityPods-AccountabilityPodsUITests/Pods-AccountabilityPods-AccountabilityPodsUITests-frameworks-Release-output-files 2.xcfilelist
+./Pods/Target Support Files/FirebaseAuth/FirebaseAuth.debug 2.xcconfig
+./Pods/Target Support Files/FirebaseAuth/FirebaseAuth.release 2.xcconfig
+./Pods/Target Support Files/gRPC-Core/gRPC-Core.debug 2.xcconfig
+./Pods/Target Support Files/gRPC-Core/gRPC-Core.release 2.xcconfig
+./Pods/Target Support Files/FirebaseFirestore/FirebaseFirestore.debug 2.xcconfig
+./Pods/Target Support Files/FirebaseFirestore/FirebaseFirestore.release 2.xcconfig
+./Pods/Target Support Files/FirebaseCoreDiagnostics/FirebaseCoreDiagnostics.debug 2.xcconfig
+./Pods/Target Support Files/FirebaseCoreDiagnostics/FirebaseCoreDiagnostics.release 2.xcconfig
+./Pods/Target Support Files/FirebaseInstallations/FirebaseInstallations.debug 2.xcconfig
+./Pods/Target Support Files/FirebaseInstallations/FirebaseInstallations.release 2.xcconfig
+./Pods/Target Support Files/GTMSessionFetcher/GTMSessionFetcher.release 2.xcconfig
+./Pods/Target Support Files/GTMSessionFetcher/GTMSessionFetcher.debug 2.xcconfig
+./Pods/Target Support Files/Pods-AccountabilityPods/Pods-AccountabilityPods-frameworks-Release-input-files 2.xcfilelist
+./Pods/Target Support Files/Pods-AccountabilityPods/Pods-AccountabilityPods-frameworks-Debug-output-files 2.xcfilelist
+./Pods/Target Support Files/Pods-AccountabilityPods/Pods-AccountabilityPods-frameworks-Debug-input-files 2.xcfilelist
+./Pods/Target Support Files/Pods-AccountabilityPods/Pods-AccountabilityPods-frameworks-Release-output-files 2.xcfilelist
+./Pods/Target Support Files/Firebase/Firebase.release 2.xcconfig
+./Pods/Target Support Files/Firebase/Firebase.debug 2.xcconfig
+./Pods/Target Support Files/FirebaseAnalytics/FirebaseAnalytics.debug 2.xcconfig
+./Pods/Target Support Files/FirebaseAnalytics/FirebaseAnalytics.release 2.xcconfig
+./Pods/Target Support Files/BoringSSL-GRPC/BoringSSL-GRPC.debug 2.xcconfig
+./Pods/Target Support Files/BoringSSL-GRPC/BoringSSL-GRPC.release 2.xcconfig
+./Pods/Target Support Files/gRPC-C++/gRPC-C++.release 2.xcconfig
+./Pods/Target Support Files/gRPC-C++/gRPC-C++.debug 2.xcconfig
+./Pods/Target Support Files/GoogleUtilities/GoogleUtilities.debug 2.xcconfig
+./Pods/Target Support Files/GoogleUtilities/GoogleUtilities.release 2.xcconfig
+./Pods/Target Support Files/leveldb-library/leveldb-library.release 2.xcconfig
+./Pods/Target Support Files/leveldb-library/leveldb-library.debug 2.xcconfig
+./Pods/Target Support Files/nanopb/nanopb.debug 2.xcconfig
+./Pods/Target Support Files/nanopb/nanopb.release 2.xcconfig
+./Pods/Target Support Files/GoogleAppMeasurement/GoogleAppMeasurement.debug 2.xcconfig
+./Pods/Target Support Files/GoogleAppMeasurement/GoogleAppMeasurement.release 2.xcconfig
+./Pods/Target Support Files/abseil/abseil.release 2.xcconfig
+./Pods/Target Support Files/abseil/abseil.debug 2.xcconfig
+./Pods/gRPC-Core/include/grpc/impl/codegen/grpc_types 2.h
+./Pods/gRPC-Core/src/core/ext/transport/chttp2/server/insecure/server_chttp2.cc
+./Pods/gRPC-Core/src/core/ext/transport/chttp2/server/secure/server_secure_chttp2.cc
+./Pods/GTMSessionFetcher/Source/GTMSessionFetcher 2.h
+./Pods/GTMSessionFetcher/Source/GTMSessionFetcherService 2.m
+./Pods/BoringSSL-GRPC/src/crypto/asn1/tasn_dec.c 2.grpc_back
+./Pods/BoringSSL-GRPC/src/crypto/asn1/tasn_dec 2.c
+./Pods/BoringSSL-GRPC/src/crypto/err/err 2.c
+./Pods/BoringSSL-GRPC/src/crypto/dsa/dsa.c 2.grpc_back
+./Pods/BoringSSL-GRPC/src/crypto/fipsmodule/sha/sha512.c
+./Pods/BoringSSL-GRPC/src/crypto/fipsmodule/sha/sha512.c.grpc_back
+./Pods/BoringSSL-GRPC/src/crypto/x509/x509_d2.c
+./Pods/BoringSSL-GRPC/src/crypto/x509/x509_d2.c.grpc_back
+./Pods/BoringSSL-GRPC/src/crypto/cipher_extra/e_rc2.c.grpc_back
+./Pods/BoringSSL-GRPC/src/crypto/cipher_extra/e_rc2.c
+./Pods/BoringSSL-GRPC/src/crypto/pkcs8/p5_pbev2.c.grpc_back
+./Pods/BoringSSL-GRPC/src/crypto/pkcs8/p5_pbev2.c
+./Pods/BoringSSL-GRPC/src/include/openssl/e_os2.h.grpc_back
+./Pods/BoringSSL-GRPC/src/include/openssl/pkcs12.h.grpc_back
+./Pods/BoringSSL-GRPC/src/include/openssl/pkcs12.h
+./Pods/BoringSSL-GRPC/src/include/openssl/pkcs12.h.back
+./Pods/BoringSSL-GRPC/src/include/openssl/e_os2.h
+./Pods/BoringSSL-GRPC/src/include/openssl/e_os2.h.back
+./Pods/BoringSSL-GRPC/src/third_party/fiat/curve25519_32.h.grpc_back
+./Pods/BoringSSL-GRPC/src/third_party/fiat/p256_32.h
+./Pods/BoringSSL-GRPC/src/third_party/fiat/p256_32.h.grpc_back
+./Pods/BoringSSL-GRPC/src/third_party/fiat/curve25519_32.h
+./Pods/leveldb-library/db/db_impl 2.cc
+./Pods/leveldb-library/db/version_set 2.cc
+./Pods/nanopb/pb_decode 2.c
+./Pods/abseil/absl/base/internal/spinlock_win32.inc

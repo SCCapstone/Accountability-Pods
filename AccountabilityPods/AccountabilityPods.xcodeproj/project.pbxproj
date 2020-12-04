@@ -11,6 +11,7 @@
 		38FF0D9A37D5687DAEDBB7B7 /* Pods_AccountabilityPods_AccountabilityPodsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35D451B40E566A45C96FB311 /* Pods_AccountabilityPods_AccountabilityPodsUITests.framework */; };
 		442DC923257873DA00036D18 /* MessagingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442DC922257873DA00036D18 /* MessagingViewController.swift */; };
 		5B155AB425E3A9EBFE4D1292 /* Pods_AccountabilityPods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BC1EAE7E29B671B16CA125D /* Pods_AccountabilityPods.framework */; };
+		684A66E7257AB7DE0054A9E3 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684A66E6257AB7DE0054A9E3 /* ChatViewController.swift */; };
 		AE145E2125716A2E00AF0F0C /* ResourceCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE145E2025716A2D00AF0F0C /* ResourceCreationViewController.swift */; };
 		AE4970F82579F994008CCEEB /* SavedResourceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4970F72579F994008CCEEB /* SavedResourceViewController.swift */; };
 		AE497100257A1968008CCEEB /* PostedResourcesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4970FF257A1968008CCEEB /* PostedResourcesViewController.swift */; };
@@ -62,6 +63,7 @@
 		35D451B40E566A45C96FB311 /* Pods_AccountabilityPods_AccountabilityPodsUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AccountabilityPods_AccountabilityPodsUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		442DC922257873DA00036D18 /* MessagingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagingViewController.swift; sourceTree = "<group>"; };
 		4BC1EAE7E29B671B16CA125D /* Pods_AccountabilityPods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AccountabilityPods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		684A66E6257AB7DE0054A9E3 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		898B70832D30F70B4FEECB40 /* Pods-AccountabilityPodsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AccountabilityPodsTests.release.xcconfig"; path = "Target Support Files/Pods-AccountabilityPodsTests/Pods-AccountabilityPodsTests.release.xcconfig"; sourceTree = "<group>"; };
 		9AB0E47EFE1CDF22C704BFB5 /* Pods-AccountabilityPods-AccountabilityPodsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AccountabilityPods-AccountabilityPodsUITests.release.xcconfig"; path = "Target Support Files/Pods-AccountabilityPods-AccountabilityPodsUITests/Pods-AccountabilityPods-AccountabilityPodsUITests.release.xcconfig"; sourceTree = "<group>"; };
 		A4E6E5BEE34DFFC4C5B704C7 /* Pods-AccountabilityPods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AccountabilityPods.debug.xcconfig"; path = "Target Support Files/Pods-AccountabilityPods/Pods-AccountabilityPods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 		C3299C0625700BEA00D2C3D7 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				684A66E6257AB7DE0054A9E3 /* ChatViewController.swift */,
 				AE49711C257A48ED008CCEEB /* OwnSkillViewController.swift */,
 				AE497104257A1AC1008CCEEB /* OwnResourceVC.swift */,
 				AE4970FF257A1968008CCEEB /* PostedResourcesViewController.swift */,
@@ -497,6 +500,7 @@
 				C3299BF825700BBD00D2C3D7 /* SignUpViewController.swift in Sources */,
 				442DC923257873DA00036D18 /* MessagingViewController.swift in Sources */,
 				AE57ADCC2579EAFD0079B717 /* ResourceDisplayVC.swift in Sources */,
+				684A66E7257AB7DE0054A9E3 /* ChatViewController.swift in Sources */,
 				C3299BFD25700BCE00D2C3D7 /* LoginViewController.swift in Sources */,
 				D484062D2545CB7F0020830A /* SceneDelegate.swift in Sources */,
 				AE497100257A1968008CCEEB /* PostedResourcesViewController.swift in Sources */,

@@ -11,12 +11,10 @@ import Firebase
 
 class SkillsViewController: UIViewController {
 
-    @IBOutlet weak var addSkillButton: UIButton!
-    @IBOutlet weak var skillStackView: UIStackView!
-    @IBOutlet weak var skillNameTextField: UITextField!
-    @IBOutlet weak var skillDescriptionTextField: UITextField!
-    @IBOutlet weak var doneAddingSkillButton: UIButton!
-    @IBOutlet weak var cancelAddButton: UIButton!
+    @IBOutlet weak var segmentedController: UISegmentedControl!
+    @IBOutlet weak var addSkillContainer: UIView!
+    @IBOutlet weak var viewSkillContainer: UIView!
+    
     
     let db = Firestore.firestore()
     
@@ -27,11 +25,15 @@ class SkillsViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        setUpElements()
+        
     }
     
-    func setUpElements() {
-        skillStackView.alpha = 0
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        UIView.animate(withDuration: 0.1, animations: {
+            self.viewSkillContainer.alpha = 1;
+            self.addSkillContainer.alpha = 0;
+        })
     }
 
     /*
@@ -43,33 +45,19 @@ class SkillsViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-    @IBAction func addSkillPressed(_ sender: Any) {
-        skillStackView.alpha = 1;
-    }
-    @IBAction func donePressed(_ sender: Any) {
-        var docRef = db.collection("users").document(userID).collection("SKILLS").addDocument(data: [
-                        "creatorRef" : userID,
-                        "skillName" : skillNameTextField.text ?? "N/A",
-                        "skillDescription" : skillDescriptionTextField.text ?? "N/A"
-                    ]) {err in
-                        if let err = err {
-                            print("The document was invalid for some reason? \(err)")
-                        }
-                        else{
-                            print("Document added successfully.")
-                            self.dismiss(animated:true, completion:nil)
-                        }
-
+    
+    @IBAction func segmentedControllerPressed(_ sender: UISegmentedControl) {
+        if sender.selectedSegmentIndex == 0 {
+            UIView.animate(withDuration: 0.5, animations: {
+                self.viewSkillContainer.alpha = 1;
+                self.addSkillContainer.alpha = 0;
+            })
+        } else {
+            UIView.animate(withDuration: 0.5, animations: {
+                self.viewSkillContainer.alpha = 0;
+                self.addSkillContainer.alpha = 1;
+            })
         }
-        // clear fields and hide add skill
-        skillNameTextField.text = "Skill name ..."
-        skillDescriptionTextField.text = "Skill description ..."
-        skillStackView.alpha = 0;
-    }
-    @IBAction func cancelPressed(_ sender: Any) {
-        skillNameTextField.text = "Skill name ..."
-        skillDescriptionTextField.text = "Skill description ..."
-        skillStackView.alpha = 0;
     }
     
 }

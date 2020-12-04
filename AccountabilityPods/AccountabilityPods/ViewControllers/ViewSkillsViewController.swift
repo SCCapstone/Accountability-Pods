@@ -32,6 +32,7 @@ class ViewSkillsViewController: UIViewController {
     
     func generateArray()
     {
+        
         skills = []
         db.collection("users").document(Constants.User.sharedInstance.userID).collection("SKILLS").getDocuments() {
             skillRefs,err in

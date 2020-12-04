@@ -1946,7 +1946,7 @@
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="regular"/>
                                 </state>
                                 <connections>
-                                    <action selector="editResource:" destination="s9U-gN-ujM" eventType="touchUpInside" id="4hj-Ps-BgT"/>
+                                    <action selector="editResource:" destination="s9U-gN-ujM" eventType="touchUpInside" id="jqC-5b-IHF"/>
                                 </connections>
                             </button>
                             <textField hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pUw-DH-9aV">
@@ -1966,7 +1966,7 @@
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="regular"/>
                                 </state>
                                 <connections>
-                                    <action selector="onDelete:" destination="s9U-gN-ujM" eventType="touchUpInside" id="oSh-2M-sLU"/>
+                                    <action selector="onDelete:" destination="s9U-gN-ujM" eventType="touchUpInside" id="VWt-3v-0Fy"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1992,10 +1992,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="dtU-QC-oqf"/>
                     <connections>
-                        <outlet property="desc" destination="Qs0-4i-KBG" id="R05-2C-e3y"/>
-                        <outlet property="editButton" destination="3eZ-aQ-nsg" id="g0m-wF-Kqg"/>
-                        <outlet property="nameEdit" destination="pUw-DH-9aV" id="o5o-0L-4ie"/>
-                        <outlet property="nameLabel" destination="wBt-rK-d4E" id="jEi-oB-17V"/>
+                        <outlet property="desc" destination="Qs0-4i-KBG" id="NBW-MW-PkZ"/>
+                        <outlet property="editButton" destination="3eZ-aQ-nsg" id="sgR-H9-y2V"/>
+                        <outlet property="nameEdit" destination="pUw-DH-9aV" id="FTh-N7-7Th"/>
+                        <outlet property="nameLabel" destination="wBt-rK-d4E" id="Ks4-e7-coN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bhu-g9-aB6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -100,17 +100,22 @@ class SignUpViewController: UIViewController {
                 // check if error creating user
                 if err != nil {
                     self.editErrorMessage("Error creating account")
+                    print("Error creating account. \(err)")
                 }
                 else {
+                    print("Test test test")
                     let db = Firestore.firestore()
                     //Modified this slightly to name the user document the same thing as the auth so that we can search by doc name directly instead of properties
-                     db.collection("users").document(result!.user.uid).setData(["firstname":firstname, "lastname":lastname, "age":age,"affiliation":affiliation, "uid":result!.user.uid, "email":email]) { err in
+                     db.collection("users").document(result!.user.uid).setData(["firstname":firstname, "lastname":lastname, "age":age,"affiliation":affiliation, "uid":result!.user.uid, "email":email])
+                     
+                     { err in
                         if let err = err {
                             print("Error adding document: \(err)")
                         } else {
                             print("Document added with ID: \(result!.user.uid)")
                             //Grab the userID here for use everywhere else in the app
                             Constants.User.sharedInstance.userID = result!.user.uid;
+                            print("reached Here")
                             db.collection("users").document(Constants.User.sharedInstance.userID).collection("CONTACTS").document("adminuser").setData(["userRef":"adminuser"]) {
                                 err in
                                 if err != nil{
@@ -119,6 +124,7 @@ class SignUpViewController: UIViewController {
                                 else
                                 {
                                     print("Successfully added administrator contact.")
+                                    self.transitionToHome()
                                 }
                             }
                             //We don't explicitly need to create subcollections, firestore will do it for us. Actually there isn't even really a way to create the subcollections without putting a document in there first.
@@ -126,7 +132,7 @@ class SignUpViewController: UIViewController {
                     }
                     
                     // transition to home when successful
-                    self.transitionToHome()
+                    
                 }
             }
         }    }

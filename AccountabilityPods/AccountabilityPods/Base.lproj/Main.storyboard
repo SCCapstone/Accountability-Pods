@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3nk-Sv-Rqm">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3nk-Sv-Rqm">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -233,7 +233,7 @@
                                     <constraint firstAttribute="trailing" secondItem="HcN-4f-IOW" secondAttribute="trailing" constant="153" id="wf3-JI-ncw"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nud-Bs-X7z">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Create Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nud-Bs-X7z">
                                 <rect key="frame" x="118.5" y="68" width="177.5" height="34.5"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="25"/>
                                 <nil key="textColor"/>
@@ -244,12 +244,10 @@
                         <color key="backgroundColor" red="0.80784313730000001" green="0.90196078430000004" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="JzQ-6h-mAX" firstAttribute="trailing" secondItem="fqH-FU-Vdr" secondAttribute="trailing" constant="40" id="12M-7h-H6h"/>
-                            <constraint firstItem="fqH-FU-Vdr" firstAttribute="centerX" secondItem="NnH-pB-JCL" secondAttribute="centerX" id="5Dc-HZ-wcM"/>
                             <constraint firstItem="uG2-Eu-0ei" firstAttribute="top" secondItem="JzQ-6h-mAX" secondAttribute="top" id="76y-ta-OV8"/>
                             <constraint firstItem="fqH-FU-Vdr" firstAttribute="top" secondItem="nud-Bs-X7z" secondAttribute="bottom" constant="125.5" id="Koe-Bh-9v5"/>
                             <constraint firstItem="uG2-Eu-0ei" firstAttribute="leading" secondItem="JzQ-6h-mAX" secondAttribute="leading" id="ZND-Ac-lyf"/>
                             <constraint firstItem="nud-Bs-X7z" firstAttribute="top" secondItem="uG2-Eu-0ei" secondAttribute="bottom" constant="21" id="baL-rW-RSn"/>
-                            <constraint firstItem="nud-Bs-X7z" firstAttribute="centerX" secondItem="NnH-pB-JCL" secondAttribute="centerX" id="cSn-se-8nx"/>
                             <constraint firstItem="uG2-Eu-0ei" firstAttribute="trailing" secondItem="JzQ-6h-mAX" secondAttribute="trailing" id="fHp-Kq-pmA"/>
                             <constraint firstItem="nud-Bs-X7z" firstAttribute="top" secondItem="JzQ-6h-mAX" secondAttribute="top" constant="68" id="nx1-0v-fXH"/>
                             <constraint firstItem="fqH-FU-Vdr" firstAttribute="leading" secondItem="JzQ-6h-mAX" secondAttribute="leading" constant="40" id="yEg-ba-lsN"/>
@@ -257,14 +255,14 @@
                     </view>
                     <navigationItem key="navigationItem" id="EwC-Ak-1Cg"/>
                     <connections>
-                        <outlet property="affiliationTextField" destination="fEK-bY-bnX" id="VkJ-Ze-1TM"/>
-                        <outlet property="ageTextField" destination="WwQ-yP-X25" id="vyc-da-Xg0"/>
+                        <outlet property="affiliationTextField" destination="fEK-bY-bnX" id="bgB-EC-zkm"/>
+                        <outlet property="ageTextField" destination="WwQ-yP-X25" id="QAx-AW-gSr"/>
                         <outlet property="createAccountButton" destination="X9l-pQ-U7e" id="Kq6-ms-EQj"/>
-                        <outlet property="emailTextField" destination="rkJ-4f-r5d" id="vHO-df-q0J"/>
+                        <outlet property="emailTextField" destination="rkJ-4f-r5d" id="Xwv-1e-KmA"/>
                         <outlet property="errorLabel" destination="qno-z7-GVf" id="oUo-UN-p9t"/>
-                        <outlet property="firstnameTextField" destination="XOk-Dw-N0R" id="89S-qe-nvx"/>
-                        <outlet property="lastnameTextField" destination="foR-hV-CqF" id="K0I-Ji-mqN"/>
-                        <outlet property="passwordTextField" destination="lgO-6b-mcq" id="OBP-Yq-JGT"/>
+                        <outlet property="firstnameTextField" destination="XOk-Dw-N0R" id="Mu9-6B-LOv"/>
+                        <outlet property="lastnameTextField" destination="foR-hV-CqF" id="jMD-5f-djM"/>
+                        <outlet property="passwordTextField" destination="lgO-6b-mcq" id="HxD-MZ-YuD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OIB-Oq-Zdy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

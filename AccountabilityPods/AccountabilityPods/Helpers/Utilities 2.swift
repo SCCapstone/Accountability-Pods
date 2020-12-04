@@ -44,17 +44,11 @@ class Resource {
     public var path: String
     //var doc: DocumentSnapshot
     
-    init()
-    {
-        self.path = ""
-        self.name = "No name"
-        self.desc = "No desc"
-    }
     init(base: Firestore, path_: String)
     {
-        self.path = ""
-        self.name = "No name"
-        self.desc = "No desc"
+        self.path = path_
+        self.name = "This is blank"
+        self.desc = ""
         readData(database: base,path: path_)
         
         
@@ -73,12 +67,6 @@ class Resource {
         database.document(path).addSnapshotListener {
             (querySnapshot, error) in
             let data = querySnapshot!.data()
-            
-            if(data?["resourceName"] == nil || data?["resourceDesc"] == nil )
-            {
-                return
-            }
-            
             let name_ = data!["resourceName"] as! String
             let desc_ = data!["resourceDesc"] as! String
             self.name = name_
@@ -93,18 +81,12 @@ class Resource {
     func readData(database: Firestore, path: String, tableview: UITableView)
     {
         
-        
         self.path = path
         database.document(path).addSnapshotListener {
             (querySnapshot, error) in
             let data = querySnapshot!.data()
-            if(data?["resourceName"] == nil || data?["resourceDesc"] == nil || path == nil )
-            {
-                return
-            }
             let name_ = data!["resourceName"] as! String
             let desc_ = data!["resourceDesc"] as! String
-            
             self.name = name_
             self.desc = desc_
             tableview.reloadData()
@@ -112,83 +94,5 @@ class Resource {
             
         }
     }
-    
-  
+}
 
-}
-class Skill {
-    public var name: String
-    public var desc: String
-    
-    public var path: String
-    //var doc: DocumentSnapshot
-    
-    init()
-    {
-        self.path = ""
-        self.name = "No name"
-        self.desc = "No desc"
-    }
-    init(base: Firestore, path_: String)
-    {
-        self.path = ""
-        self.name = "No name"
-        self.desc = "No desc"
-        readData(database: base,path: path_)
-        
-        
-    }
-    init(name: String, desc: String, path: String)
-    {
-        self.path = path
-        self.name = name
-        self.desc = desc
-    }
-    
-    func readData(database: Firestore, path: String)
-    {
-        
-        self.path = path
-        database.document(path).addSnapshotListener {
-            (querySnapshot, error) in
-            let data = querySnapshot!.data()
-            
-            if(data?["skillName"] == nil || data?["skillDescription"] == nil )
-            {
-                return
-            }
-            
-            let name_ = data!["skillName"] as! String
-            let desc_ = data!["skillDescription"] as! String
-            self.name = name_
-            self.desc = desc_
-            
-            
-        }
-        
-       
-    
-    }
-    func readData(database: Firestore, path: String, tableview: UITableView)
-    {
-        
-        
-        self.path = path
-        database.document(path).addSnapshotListener {
-            (querySnapshot, error) in
-            let data = querySnapshot!.data()
-            if(data?["skillName"] == nil || data?["skillDescription"] == nil || path == nil )
-            {
-                return
-            }
-            let name_ = data!["skillName"] as! String
-            let desc_ = data!["skillDescription"] as! String
-            
-            self.name = name_
-            self.desc = desc_
-            tableview.reloadData()
-            
-            
-        }
-}
-}

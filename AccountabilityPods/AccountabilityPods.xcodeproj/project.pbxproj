@@ -12,6 +12,11 @@
 		442DC923257873DA00036D18 /* MessagingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442DC922257873DA00036D18 /* MessagingViewController.swift */; };
 		5B155AB425E3A9EBFE4D1292 /* Pods_AccountabilityPods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BC1EAE7E29B671B16CA125D /* Pods_AccountabilityPods.framework */; };
 		AE145E2125716A2E00AF0F0C /* ResourceCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE145E2025716A2D00AF0F0C /* ResourceCreationViewController.swift */; };
+		AE4970F82579F994008CCEEB /* SavedResourceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4970F72579F994008CCEEB /* SavedResourceViewController.swift */; };
+		AE497100257A1968008CCEEB /* PostedResourcesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4970FF257A1968008CCEEB /* PostedResourcesViewController.swift */; };
+		AE497105257A1AC1008CCEEB /* OwnResourceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE497104257A1AC1008CCEEB /* OwnResourceVC.swift */; };
+		AE497110257A467F008CCEEB /* SkillCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE49710F257A467F008CCEEB /* SkillCell.swift */; };
+		AE49711D257A48ED008CCEEB /* OwnSkillViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE49711C257A48ED008CCEEB /* OwnSkillViewController.swift */; };
 		AE57ADCC2579EAFD0079B717 /* ResourceDisplayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE57ADCB2579EAFC0079B717 /* ResourceDisplayVC.swift */; };
 		AE77454225797C1B000CB90C /* ResourceBrowseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE77454125797C1B000CB90C /* ResourceBrowseViewController.swift */; };
 		AE77454725797C46000CB90C /* ResourceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE77454625797C46000CB90C /* ResourceCell.swift */; };
@@ -61,6 +66,11 @@
 		9AB0E47EFE1CDF22C704BFB5 /* Pods-AccountabilityPods-AccountabilityPodsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AccountabilityPods-AccountabilityPodsUITests.release.xcconfig"; path = "Target Support Files/Pods-AccountabilityPods-AccountabilityPodsUITests/Pods-AccountabilityPods-AccountabilityPodsUITests.release.xcconfig"; sourceTree = "<group>"; };
 		A4E6E5BEE34DFFC4C5B704C7 /* Pods-AccountabilityPods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AccountabilityPods.debug.xcconfig"; path = "Target Support Files/Pods-AccountabilityPods/Pods-AccountabilityPods.debug.xcconfig"; sourceTree = "<group>"; };
 		AE145E2025716A2D00AF0F0C /* ResourceCreationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceCreationViewController.swift; sourceTree = "<group>"; };
+		AE4970F72579F994008CCEEB /* SavedResourceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedResourceViewController.swift; sourceTree = "<group>"; };
+		AE4970FF257A1968008CCEEB /* PostedResourcesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostedResourcesViewController.swift; sourceTree = "<group>"; };
+		AE497104257A1AC1008CCEEB /* OwnResourceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnResourceVC.swift; sourceTree = "<group>"; };
+		AE49710F257A467F008CCEEB /* SkillCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillCell.swift; sourceTree = "<group>"; };
+		AE49711C257A48ED008CCEEB /* OwnSkillViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnSkillViewController.swift; sourceTree = "<group>"; };
 		AE57ADCB2579EAFC0079B717 /* ResourceDisplayVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourceDisplayVC.swift; sourceTree = "<group>"; };
 		AE77454125797C1B000CB90C /* ResourceBrowseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourceBrowseViewController.swift; sourceTree = "<group>"; };
 		AE77454625797C46000CB90C /* ResourceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourceCell.swift; sourceTree = "<group>"; };
@@ -126,6 +136,10 @@
 		C3299C0625700BEA00D2C3D7 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				AE49711C257A48ED008CCEEB /* OwnSkillViewController.swift */,
+				AE497104257A1AC1008CCEEB /* OwnResourceVC.swift */,
+				AE4970FF257A1968008CCEEB /* PostedResourcesViewController.swift */,
+				AE4970F72579F994008CCEEB /* SavedResourceViewController.swift */,
 				AE57ADCB2579EAFC0079B717 /* ResourceDisplayVC.swift */,
 				AE77454125797C1B000CB90C /* ResourceBrowseViewController.swift */,
 				C3299BFC25700BCE00D2C3D7 /* LoginViewController.swift */,
@@ -149,6 +163,7 @@
 				AE77454625797C46000CB90C /* ResourceCell.swift */,
 				C3299C3C2570660E00D2C3D7 /* Utilities.swift */,
 				C3299C5E2571324800D2C3D7 /* Constants.swift */,
+				AE49710F257A467F008CCEEB /* SkillCell.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -472,20 +487,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE497105257A1AC1008CCEEB /* OwnResourceVC.swift in Sources */,
 				D43570D1257975E500FCE20C /* MyPodViewController.swift in Sources */,
 				AE77454725797C46000CB90C /* ResourceCell.swift in Sources */,
 				D484062F2545CB7F0020830A /* ViewController.swift in Sources */,
 				C3299C0B257016C800D2C3D7 /* ForgotPasswordViewController.swift in Sources */,
 				D484062B2545CB7F0020830A /* AppDelegate.swift in Sources */,
+				AE4970F82579F994008CCEEB /* SavedResourceViewController.swift in Sources */,
 				C3299BF825700BBD00D2C3D7 /* SignUpViewController.swift in Sources */,
 				442DC923257873DA00036D18 /* MessagingViewController.swift in Sources */,
 				AE57ADCC2579EAFD0079B717 /* ResourceDisplayVC.swift in Sources */,
 				C3299BFD25700BCE00D2C3D7 /* LoginViewController.swift in Sources */,
 				D484062D2545CB7F0020830A /* SceneDelegate.swift in Sources */,
+				AE497100257A1968008CCEEB /* PostedResourcesViewController.swift in Sources */,
 				D43570D52579967900FCE20C /* SkillsViewController.swift in Sources */,
 				C3299C3D2570660E00D2C3D7 /* Utilities.swift in Sources */,
 				AE145E2125716A2E00AF0F0C /* ResourceCreationViewController.swift in Sources */,
+				AE49711D257A48ED008CCEEB /* OwnSkillViewController.swift in Sources */,
 				D43570D92579CA4200FCE20C /* ViewSkillsViewController.swift in Sources */,
+				AE497110257A467F008CCEEB /* SkillCell.swift in Sources */,
 				C3299C0225700BE100D2C3D7 /* HomeViewController.swift in Sources */,
 				AE77454225797C1B000CB90C /* ResourceBrowseViewController.swift in Sources */,
 				D43570D72579C14A00FCE20C /* AddSkillViewController.swift in Sources */,

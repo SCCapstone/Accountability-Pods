@@ -63,6 +63,7 @@ class ResourceDisplayVC: UIViewController {
     }
 
     @IBAction func onLike(_ sender: Any) {
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "OnResourceDismissal"), object: nil)
         
         if(!hasLiked) {
             let docRef = db.collection("users").document(Constants.User.sharedInstance.userID).collection("SAVEDRESOURCES").addDocument(data: ["docRef" : self.resource.path]) {err in
@@ -81,6 +82,7 @@ class ResourceDisplayVC: UIViewController {
         {
             db.collection("users").document(Constants.User.sharedInstance.userID).collection("SAVEDRESOURCES").document((self.docID)!).delete()
             self.hasLiked = false
+            
             self.likeButton.tintColor = .lightGray
         }
         

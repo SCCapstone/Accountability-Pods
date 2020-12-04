@@ -28,6 +28,7 @@ class AddSkillViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     @IBAction func donePressed(_ sender: Any) {
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "OnEditSkill"), object: nil)
         var docRef = db.collection("users").document(userID).collection("SKILLS").addDocument(data: [
                         "creatorRef" : userID,
                         "skillName" : skillNameTextField.text ?? "N/A",

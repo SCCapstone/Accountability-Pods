@@ -44,11 +44,17 @@ class Resource {
     public var path: String
     //var doc: DocumentSnapshot
     
+    init()
+    {
+        self.path = ""
+        self.name = "No name"
+        self.desc = "No desc"
+    }
     init(base: Firestore, path_: String)
     {
-        self.path = path_
-        self.name = "This is blank"
-        self.desc = ""
+        self.path = ""
+        self.name = "No name"
+        self.desc = "No desc"
         readData(database: base,path: path_)
         
         

@@ -103,5 +103,24 @@ extension ResourceBrowseViewController: UITableViewDataSource, UITableViewDelega
         return cell
         
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "showResourceSegue", sender: Any?.self)
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showResourceSegue"
+        {
+            let indexPath = self.tableView.indexPathForSelectedRow
+            let resource = self.resources[(indexPath?.row)!]
+            if let dView = segue.destination as? ResourceDisplayVC {
+                dView.resource = resource
+            }
+           
+            
+        }
+        else
+        {
+            return
+        }
+    }
     
 }

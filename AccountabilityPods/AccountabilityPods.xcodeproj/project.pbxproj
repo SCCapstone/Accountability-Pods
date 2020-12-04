@@ -12,6 +12,7 @@
 		442DC923257873DA00036D18 /* MessagingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442DC922257873DA00036D18 /* MessagingViewController.swift */; };
 		5B155AB425E3A9EBFE4D1292 /* Pods_AccountabilityPods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BC1EAE7E29B671B16CA125D /* Pods_AccountabilityPods.framework */; };
 		AE145E2125716A2E00AF0F0C /* ResourceCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE145E2025716A2D00AF0F0C /* ResourceCreationViewController.swift */; };
+		AE57ADCC2579EAFD0079B717 /* ResourceDisplayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE57ADCB2579EAFC0079B717 /* ResourceDisplayVC.swift */; };
 		AE77454225797C1B000CB90C /* ResourceBrowseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE77454125797C1B000CB90C /* ResourceBrowseViewController.swift */; };
 		AE77454725797C46000CB90C /* ResourceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE77454625797C46000CB90C /* ResourceCell.swift */; };
 		C3299BF825700BBD00D2C3D7 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3299BF725700BBD00D2C3D7 /* SignUpViewController.swift */; };
@@ -60,6 +61,7 @@
 		9AB0E47EFE1CDF22C704BFB5 /* Pods-AccountabilityPods-AccountabilityPodsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AccountabilityPods-AccountabilityPodsUITests.release.xcconfig"; path = "Target Support Files/Pods-AccountabilityPods-AccountabilityPodsUITests/Pods-AccountabilityPods-AccountabilityPodsUITests.release.xcconfig"; sourceTree = "<group>"; };
 		A4E6E5BEE34DFFC4C5B704C7 /* Pods-AccountabilityPods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AccountabilityPods.debug.xcconfig"; path = "Target Support Files/Pods-AccountabilityPods/Pods-AccountabilityPods.debug.xcconfig"; sourceTree = "<group>"; };
 		AE145E2025716A2D00AF0F0C /* ResourceCreationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceCreationViewController.swift; sourceTree = "<group>"; };
+		AE57ADCB2579EAFC0079B717 /* ResourceDisplayVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourceDisplayVC.swift; sourceTree = "<group>"; };
 		AE77454125797C1B000CB90C /* ResourceBrowseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourceBrowseViewController.swift; sourceTree = "<group>"; };
 		AE77454625797C46000CB90C /* ResourceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourceCell.swift; sourceTree = "<group>"; };
 		AEA0A851443E34330BA3775D /* Pods_AccountabilityPodsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AccountabilityPodsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -124,6 +126,7 @@
 		C3299C0625700BEA00D2C3D7 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				AE57ADCB2579EAFC0079B717 /* ResourceDisplayVC.swift */,
 				AE77454125797C1B000CB90C /* ResourceBrowseViewController.swift */,
 				C3299BFC25700BCE00D2C3D7 /* LoginViewController.swift */,
 				D484062E2545CB7F0020830A /* ViewController.swift */,
@@ -476,6 +479,7 @@
 				D484062B2545CB7F0020830A /* AppDelegate.swift in Sources */,
 				C3299BF825700BBD00D2C3D7 /* SignUpViewController.swift in Sources */,
 				442DC923257873DA00036D18 /* MessagingViewController.swift in Sources */,
+				AE57ADCC2579EAFD0079B717 /* ResourceDisplayVC.swift in Sources */,
 				C3299BFD25700BCE00D2C3D7 /* LoginViewController.swift in Sources */,
 				D484062D2545CB7F0020830A /* SceneDelegate.swift in Sources */,
 				D43570D52579967900FCE20C /* SkillsViewController.swift in Sources */,

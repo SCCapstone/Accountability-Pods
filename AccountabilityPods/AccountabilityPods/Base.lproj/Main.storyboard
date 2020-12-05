@@ -968,6 +968,7 @@
                         <constraints>
                             <constraint firstItem="dXA-8j-iwu" firstAttribute="trailing" secondItem="yYa-4M-yLa" secondAttribute="trailing" id="6vb-az-wxe"/>
                             <constraint firstItem="dXA-8j-iwu" firstAttribute="leading" secondItem="yYa-4M-yLa" secondAttribute="leading" id="Vrv-gu-OZc"/>
+                            <constraint firstItem="GA8-pu-9S8" firstAttribute="top" secondItem="dXA-8j-iwu" secondAttribute="bottom" constant="25" id="lyp-Ct-Omk"/>
                             <constraint firstItem="dXA-8j-iwu" firstAttribute="top" secondItem="yYa-4M-yLa" secondAttribute="top" id="vHo-UW-cej"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="yYa-4M-yLa"/>

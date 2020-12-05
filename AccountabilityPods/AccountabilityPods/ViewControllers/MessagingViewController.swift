@@ -41,8 +41,8 @@ class MessagingViewController: UIViewController, UITableViewDelegate, UITableVie
         //cell.contactName.text = contact
         return cell
     }
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.performSegue(withIdentifier: "Chat", sender: Any?.self)    }
+    func tableView(tableView: UITableView, didSelectRowAt indexPath: NSIndexPath) {
+        self.performSegue(withIdentifier: "ToChat", sender: Any?.self)    }
     
     //for retrieving names for contacts from firestore
     /*func loadData() {

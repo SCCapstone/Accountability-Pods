@@ -7,16 +7,37 @@
 //
 
 import UIKit
+import Firebase
 
-class ChatViewController: UITableViewController {
+class ChatViewController: UIViewController {
 
+    @IBOutlet weak var userMsg: UITextField!
+    let db = Firestore.firestore()
+    
+    var userID  = Constants.User.sharedInstance.userID;
+    
+    @IBOutlet weak var msgContain: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
     
-
+    @IBAction func txtDone(_ sender: Any) {
+        //NotificationCenter.default.post(name: NSNotification.Name(rawValue: "NewMsg"), object: nil)
+        var ref = db.collection("users").document(userID).collection("MSG").addDocument(data: ["senderId" : userID, "message" : userMsg.text ?? "" ])
+        {err in
+        if let err = err {
+            print("The document was invalid for some reason? \(err)")
+        }
+            else{
+                print("Document added successfully.")
+                self.dismiss(animated:true, completion:nil)
+            }
+        }
+        userMsg.text = "Type Here..."
+    }
+    
     /*
     // MARK: - Navigation
 
@@ -28,3 +49,4 @@ class ChatViewController: UITableViewController {
     */
 
 }
+

@@ -22,7 +22,9 @@ class ResourceBrowseViewController: UIViewController {
         print("Test")
         
     }
-    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
     func genArray(){
         let usersRef = db.collection("users")
         let currUserRef = usersRef.document(Constants.User.sharedInstance.userID)

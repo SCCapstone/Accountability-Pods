@@ -81,6 +81,9 @@ class SignUpViewController: UIViewController {
         view.window?.makeKeyAndVisible()
         
     }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
     
     @IBAction func createAccountTapped(_ sender: Any) {
         // Determine if fiels are valid

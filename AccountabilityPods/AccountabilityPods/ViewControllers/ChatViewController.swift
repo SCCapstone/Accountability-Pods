@@ -22,7 +22,9 @@ class ChatViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
-    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
     @IBAction func txtDone(_ sender: Any) {
         //NotificationCenter.default.post(name: NSNotification.Name(rawValue: "NewMsg"), object: nil)
         var ref = db.collection("users").document(userID).collection("MSG").addDocument(data: ["senderId" : userID, "message" : userMsg.text ?? "" ])

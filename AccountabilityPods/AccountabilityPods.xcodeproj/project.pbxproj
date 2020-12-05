@@ -41,6 +41,7 @@
 		D48406422545CB800020830A /* AccountabilityPodsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48406412545CB800020830A /* AccountabilityPodsTests.swift */; };
 		D484064D2545CB800020830A /* AccountabilityPodsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D484064C2545CB800020830A /* AccountabilityPodsUITests.swift */; };
 		D4AF46642562D9EF002CFE4C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D4AF46632562D9EF002CFE4C /* GoogleService-Info.plist */; };
+		D4E625B4257AE3C000963DD6 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E625B3257AE3C000963DD6 /* ProfileViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +107,7 @@
 		D484064C2545CB800020830A /* AccountabilityPodsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountabilityPodsUITests.swift; sourceTree = "<group>"; };
 		D484064E2545CB800020830A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D4AF46632562D9EF002CFE4C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D4E625B3257AE3C000963DD6 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		D686709664E6E050DC1B9348 /* Pods-AccountabilityPods-AccountabilityPodsUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AccountabilityPods-AccountabilityPodsUITests.debug.xcconfig"; path = "Target Support Files/Pods-AccountabilityPods-AccountabilityPodsUITests/Pods-AccountabilityPods-AccountabilityPodsUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -159,6 +161,7 @@
 				D43570D42579967900FCE20C /* SkillsViewController.swift */,
 				D43570D62579C14A00FCE20C /* AddSkillViewController.swift */,
 				D43570D82579CA4200FCE20C /* ViewSkillsViewController.swift */,
+				D4E625B3257AE3C000963DD6 /* ProfileViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -515,6 +518,7 @@
 				AE497110257A467F008CCEEB /* SkillCell.swift in Sources */,
 				C3299C0225700BE100D2C3D7 /* HomeViewController.swift in Sources */,
 				AE77454225797C1B000CB90C /* ResourceBrowseViewController.swift in Sources */,
+				D4E625B4257AE3C000963DD6 /* ProfileViewController.swift in Sources */,
 				D43570D72579C14A00FCE20C /* AddSkillViewController.swift in Sources */,
 				C3299C5F2571324800D2C3D7 /* Constants.swift in Sources */,
 				6840CD1C257B066C00640DF4 /* ViewMsgViewController.swift in Sources */,

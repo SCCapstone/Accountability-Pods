@@ -1977,11 +1977,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="continue"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3eZ-aQ-nsg">
-<<<<<<< HEAD
                                 <rect key="frame" x="374" y="406.5" width="30" height="20.5"/>
-=======
-                                <rect key="frame" x="382" y="406.5" width="22" height="20.5"/>
->>>>>>> 156a80293c0d29e4f0fa30c5e975c885fff25154
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <size key="titleShadowOffset" width="7" height="6"/>
@@ -2000,11 +1996,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LnD-iW-mpA">
-<<<<<<< HEAD
                                 <rect key="frame" x="8" y="409.5" width="34.5" height="20.5"/>
-=======
-                                <rect key="frame" x="8" y="409.5" width="42.5" height="20.5"/>
->>>>>>> 156a80293c0d29e4f0fa30c5e975c885fff25154
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <size key="titleShadowOffset" width="7" height="6"/>
@@ -2047,7 +2039,6 @@
             </objects>
             <point key="canvasLocation" x="6328.985507246377" y="1940.625"/>
         </scene>
-<<<<<<< HEAD
         <!--View Msg View-->
         <scene sceneID="IIM-bl-eHB">
             <objects>
@@ -2066,7 +2057,16 @@
                                 <rect key="frame" x="82" y="23" width="227" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="18"/>
-=======
+                                                        <color key="backgroundColor" name="accountablegreen"/>
+                    </view>
+                    <connections>
+                        <outlet property="msgTable" destination="dsB-Oe-5JK" id="my5-UL-ecB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Acn-Ym-kyE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4560.8695652173919" y="1454.7991071428571"/>
+        </scene>
         <!--Profile Posts View-->
         <scene sceneID="nFw-fU-cEy">
             <objects>
@@ -2093,22 +2093,10 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Skills" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ifr-aJ-Mg6">
                                 <rect key="frame" x="39" y="35" width="40" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
->>>>>>> 156a80293c0d29e4f0fa30c5e975c885fff25154
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-<<<<<<< HEAD
-                        <color key="backgroundColor" name="accountablegreen"/>
-                    </view>
-                    <connections>
-                        <outlet property="msgTable" destination="dsB-Oe-5JK" id="my5-UL-ecB"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Acn-Ym-kyE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4560.8695652173919" y="1454.7991071428571"/>
-=======
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="ifr-aJ-Mg6" firstAttribute="leading" secondItem="8Xz-h6-zxc" secondAttribute="leading" constant="39" id="49S-cd-qcB"/>
@@ -2120,7 +2108,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IJ7-pl-5lv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4957" y="-1925"/>
->>>>>>> 156a80293c0d29e4f0fa30c5e975c885fff25154
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

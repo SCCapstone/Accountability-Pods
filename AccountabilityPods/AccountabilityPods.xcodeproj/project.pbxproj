@@ -86,6 +86,7 @@
 		C3299C0A257016C800D2C3D7 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		C3299C3C2570660E00D2C3D7 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		C3299C5E2571324800D2C3D7 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		C33F5237257DBF710045AE68 /* AccountabilityPods.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AccountabilityPods.entitlements; sourceTree = "<group>"; };
 		CD902288C9DC2F03E1378EBC /* Pods-AccountabilityPods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AccountabilityPods.release.xcconfig"; path = "Target Support Files/Pods-AccountabilityPods/Pods-AccountabilityPods.release.xcconfig"; sourceTree = "<group>"; };
 		CDD99BAE17C822C0E6F3CA65 /* Pods-AccountabilityPodsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AccountabilityPodsTests.debug.xcconfig"; path = "Target Support Files/Pods-AccountabilityPodsTests/Pods-AccountabilityPodsTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D43570D0257975E500FCE20C /* MyPodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPodViewController.swift; sourceTree = "<group>"; };
@@ -212,6 +213,7 @@
 		D48406292545CB7F0020830A /* AccountabilityPods */ = {
 			isa = PBXGroup;
 			children = (
+				C33F5237257DBF710045AE68 /* AccountabilityPods.entitlements */,
 				C3299C3B257065C500D2C3D7 /* Helpers */,
 				C3299C0625700BEA00D2C3D7 /* ViewControllers */,
 				D484062A2545CB7F0020830A /* AppDelegate.swift */,
@@ -695,7 +697,9 @@
 			baseConfigurationReference = A4E6E5BEE34DFFC4C5B704C7 /* Pods-AccountabilityPods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = AccountabilityPods/AccountabilityPods.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 9G4LYUM2QK;
 				INFOPLIST_FILE = AccountabilityPods/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -714,7 +718,9 @@
 			baseConfigurationReference = CD902288C9DC2F03E1378EBC /* Pods-AccountabilityPods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = AccountabilityPods/AccountabilityPods.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 9G4LYUM2QK;
 				INFOPLIST_FILE = AccountabilityPods/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

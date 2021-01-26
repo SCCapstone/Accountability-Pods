@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
@@ -26,6 +27,14 @@ class HomeViewController: UIViewController {
     */
 
 }
+    @IBAction func onSignOutTapped(_ sender: Any) {
+        do {
+            try Auth.auth().signOut()
+            performSegue(withIdentifier: "signOutSegue", sender: nil)
+        } catch {
+            print(error)
+        }
+    }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }

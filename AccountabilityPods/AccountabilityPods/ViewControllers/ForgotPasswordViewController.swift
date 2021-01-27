@@ -15,9 +15,10 @@ class ForgotPasswordViewController: UIViewController {
     
     @IBOutlet weak var sendButton: UIButton!
     
+    @IBOutlet weak var errorLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+          self.errorLabel.text = ""
         // Do any additional setup after loading the view.
     }
     
@@ -51,6 +52,7 @@ class ForgotPasswordViewController: UIViewController {
                        self.present(alertController,animated: true, completion: nil)
             } else {
                 print("FAILED -\(String(describing: error?.localizedDescription))")
+                self.errorLabel.text = "Enter valid email"
             }
         }
     }

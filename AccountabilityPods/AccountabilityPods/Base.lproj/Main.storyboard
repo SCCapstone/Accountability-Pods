@@ -440,6 +440,13 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Error" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="meb-L9-3fe">
+                                <rect key="frame" x="42" y="520" width="334" height="20.5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="highlightedColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.80784313730000001" green="0.90196078430000004" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -459,6 +466,7 @@
                     <navigationItem key="navigationItem" id="3ex-1S-vay"/>
                     <connections>
                         <outlet property="emailTextField" destination="oDm-dq-uYO" id="f33-CP-Zc5"/>
+                        <outlet property="errorLabel" destination="meb-L9-3fe" id="iDU-Jh-5kj"/>
                         <outlet property="sendButton" destination="FGD-K0-WAz" id="gqx-6b-mHi"/>
                     </connections>
                 </viewController>

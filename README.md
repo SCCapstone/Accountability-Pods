@@ -40,6 +40,7 @@ Xcode is every helpful for deployment of iOS app. To upload to the Apple App Sto
 
 # Testing 
 *Unit Testing
+
 Open Swift Workspace. To access the Unit testing code find the AccountabilityPodsTests folder from the left panel files. Drop the dropdown select AccountabilityPodsTests.swift file. Here you will find all current unit testing being implemented.
 To run the test select the "AccountabilityPodsTests" schema from the dropdown with target iPhone 11. Navigate to the tests icon in the left panel, it is shaped like a diamond. In the left panel directly to the right of the file name, such as "AccountabilityPodsTests", click the arrow contained in a circle. To run a subset of the tests or an individual test simply click the arrrow adjacent to the desired target. Xcode will automatically build and the test the methods. Success of the tests will be indicated by a diamond next to the name in the left panel or to the left of the function in the Xcode swift file.
 

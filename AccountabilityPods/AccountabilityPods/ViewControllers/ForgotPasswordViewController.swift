@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class ForgotPasswordViewController: UIViewController {
 
@@ -35,6 +36,22 @@ class ForgotPasswordViewController: UIViewController {
     }
     @IBAction func sendTapped(_ sender: Any) {
     }
-    
-
+   /*
+    @IBAction func showAlert(_ sender: Any) {
+        let alertController = UIAlertController(title: "Password Reset", message: "Check your email!", preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: .default))
+        self.present(alertController,animated: true, completion: nil)
+    }*/
+    @IBAction func forgotPasswordButton_Tapped(_ sender: UIButton) {
+        Auth.auth().sendPasswordReset(withEmail: emailTextField.text!) { (error) in
+            if error == nil {
+                print("SENT...!")
+                let alertController = UIAlertController(title: "Password Reset", message: "Check your email!", preferredStyle: .alert)
+                       alertController.addAction(UIAlertAction(title: "Dismiss", style: .default))
+                       self.present(alertController,animated: true, completion: nil)
+            } else {
+                print("FAILED -\(String(describing: error?.localizedDescription))")
+            }
+        }
+    }
 }

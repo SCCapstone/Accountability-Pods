@@ -30,5 +30,59 @@ class AccountabilityPodsTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
-
+}
+//unit testing sign up view controller
+class SignUpViewTests: XCTestCase {
+    //system under test sign up view controller
+    var sut: SignUpViewController!
+    
+    //to access UI elements instantiate and load View controller
+    override func setUpWithError() throws {
+        //set up screen testing
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        sut = storyboard.instantiateViewController(identifier: "SignUpViewController") as? SignUpViewController
+        //loads the correct view control since not intial
+        sut.loadViewIfNeeded()
+    }
+    
+    //release resources
+    override func tearDownWithError() throws {
+        sut = nil
+    }
+    
+    //test space holder indicate the correct information user is required to input in all textfields
+    func testSignUpFillersLoad(){
+        XCTAssertEqual("First Name", sut.firstnameTextField!.placeholder!)
+        XCTAssertEqual("Last Name", sut.lastnameTextField!.placeholder!)
+        XCTAssertEqual("Age", sut.ageTextField!.placeholder!)
+        XCTAssertEqual("Affiliation", sut.affiliationTextField!.placeholder!)
+        XCTAssertEqual("Email", sut.emailTextField!.placeholder!)
+        XCTAssertEqual("Password", sut.passwordTextField!.placeholder!)
+    }
+    
+    //test required email content type is set for email text field
+    func testEmailTextFieldContent() throws{
+        //if content type of textfiled is changed in main storyboard this test will fail
+        let emailText = try XCTUnwrap(sut.emailTextField, "Email address not connected")
+        
+        XCTAssertEqual(emailText.textContentType, UITextContentType.emailAddress, "Email Address Textfiled does not have an Email address content type")
+        
+    }
+    
+    //test if create account UIButton is Connected and has Action
+    func testCreateAccountButtonHasaction() {
+        let accountButton: UIButton = sut.createAccountButton
+        //check button exists
+        XCTAssertNotNil(accountButton, "View Controller does not have UIBotton create account")
+        
+        //read all actions associated with the button
+        guard let accountButtonActions = accountButton.actions(forTarget: sut, forControlEvent: .touchUpInside) else {
+            XCTFail("UIButton does not have actions assigned for Control Event")
+            return
+        }
+        
+        //check specific createAccountTapped method is an action from button
+        XCTAssertTrue(accountButtonActions.contains("createAccountTapped:"))
+        
+    }
 }

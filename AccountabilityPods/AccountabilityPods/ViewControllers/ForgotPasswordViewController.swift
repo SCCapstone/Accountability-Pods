@@ -48,8 +48,13 @@ class ForgotPasswordViewController: UIViewController {
             if error == nil {
                 print("SENT...!")
                 let alertController = UIAlertController(title: "Password Reset", message: "Check your email!", preferredStyle: .alert)
-                       alertController.addAction(UIAlertAction(title: "Dismiss", style: .default))
-                       self.present(alertController,animated: true, completion: nil)
+                let action = UIAlertAction(title: "OK", style: .default) {
+                    (action) -> Void in
+                    let LogInviewController = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController")
+                    self.present(LogInviewController!, animated: true, completion: nil)
+                  }
+                  alertController.addAction(action)
+                self.present(alertController, animated: true, completion: nil)
             } else {
                 print("FAILED -\(String(describing: error?.localizedDescription))")
                 self.errorLabel.text = "Enter valid email"

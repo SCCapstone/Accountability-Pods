@@ -49,14 +49,15 @@ Xcode is every helpful for deployment of iOS app. To upload to the Apple App Sto
 6) In the left panel, directly to the right of the file name, such as "AccountabilityPodsTests", click the arrow contained in a circle. To run a subset of the tests or an individual test simply click the arrrow adjacent to the desired target. 
 7) Xcode will automatically build and the test the methods. Success of the tests will be indicated by the diamond next to the name in the left panel or to the left of the function in the Xcode swift file turning green. A red diamond indicates failure.
 
+
 *UI Testing
 
-1) Open Swift Workspace. 
-2) To access the Unit testing code locate the files tab(image of a folder) from the left panel. Select the "AccountabilityPodsUITests" folder within the project.
-3) From the dropdown within the folder, select "AccountabilityPodsUITests.swift" file. Here you will find the code for all current unit tests that can be implemented.
+1) Open Swift Workspace. current directory -> AccountabilityPods -> AccountabilityPods.xcworkspace 
+2) To access the UI testing code locate the files tab(image of a folder) from the left panel. Select the "AccountabilityPodsUITests" folder within the project.
+3) From the dropdown within the folder, select "AccountabilityPodsUITests.swift" file. Here you will find the code for all current UI tests that can be implemented.
 4) To run the test locate the schema option towards the top left of the screen. Click on the schema and be sure to select the "AccountabilityPodsUITests" schema from the dropdown with associated target iPhone 11. 
 5) Navigate to the tests icon in the left panel, it is shaped like a diamond. Available testing files will appear in the panel.
-6) In the left panel, directly to the right of the file name, such as "AccountabilityPodsTests", click the arrow contained in a circle. To run a subset of the tests or an individual test simply click the arrrow adjacent to the desired target. 
+6) In the left panel, directly to the right of the file name, such as "AccountabilityPodsUITests", click the arrow contained in a circle. To run a subset of the tests or an individual test simply click the arrrow adjacent to the desired target. 
 7) Xcode will automatically build and the test the methods. Success of the tests will be indicated by the diamond next to the name in the left panel or to the left of the function in the Xcode swift file turning green. A red diamond indicates failure.
 
 ## Testing Technology

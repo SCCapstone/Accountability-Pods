@@ -40,11 +40,11 @@ Xcode is every helpful for deployment of iOS app. To upload to the Apple App Sto
 
 # Testing 
 
-# Testing Technology
+## Testing Technology
 
 To perform unit and UI testing in xcode we are using the XCTests library
 
-# Testing
+## Testing
 *Unit Testing
 
 1) Open Swift Workspace. 

@@ -39,6 +39,12 @@ A developer must clone the repo by adding the link to Xcode, and enter their per
 Xcode is every helpful for deployment of iOS app. To upload to the Apple App Store you must have a developer account associated with Apple. To deploy the app open the project in Xcode. Select the project and open the targets tab and under General, increment the version and build. In the header tabs under Product change your view to Generic iOS Device by selecting from the destination drop down. Then build an image of the app by selecting Product from the main tabs then Archive. From here the Archive window will appear and the developer can user to upload the App to the App Store. From here one will use their developer account.
 
 # Testing 
+
+# Testing Technology
+
+To perform unit and UI testing in xcode we are using the XCTests library
+
+# Testing
 *Unit Testing
 
 1) Open Swift Workspace. 
@@ -59,11 +65,6 @@ Xcode is every helpful for deployment of iOS app. To upload to the Apple App Sto
 5) Navigate to the tests icon in the left panel, it is shaped like a diamond. Available testing files will appear in the panel.
 6) In the left panel, directly to the right of the file name, such as "AccountabilityPodsUITests", click the arrow contained in a circle. To run a subset of the tests or an individual test simply click the arrrow adjacent to the desired target. 
 7) Xcode will automatically build and the test the methods. Success of the tests will be indicated by the diamond next to the name in the left panel or to the left of the function in the Xcode swift file turning green. A red diamond indicates failure.
-
-## Testing Technology
-Coming soon.
-## Running Tests
-Comming soon.
 
 ## Authors
 Vasco Madrid, vmadrid0426@gmail.com

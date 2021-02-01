@@ -65,6 +65,8 @@ To perform unit and UI testing in xcode we are using the XCTests library
 5) Navigate to the tests icon in the left panel, it is shaped like a diamond. Available testing files will appear in the panel.
 6) In the left panel, directly to the right of the file name, such as "AccountabilityPodsUITests", click the arrow contained in a circle. To run a subset of the tests or an individual test simply click the arrrow adjacent to the desired target. 
 7) Xcode will automatically build and the test the methods. Success of the tests will be indicated by the diamond next to the name in the left panel or to the left of the function in the Xcode swift file turning green. A red diamond indicates failure.
+                                                           
+*NOTE: In case of keyboard error caused by simulator, reset simulator (Top Tab Bar -> Device -> Erase All Content and Settings) and disable hardware keyboard (Top Tab Bar -> I/O -> Keyboard -> Connect Hardware Keyboard unchecked)
 
 ## Authors
 Vasco Madrid, vmadrid0426@gmail.com

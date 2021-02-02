@@ -13,6 +13,8 @@
 		5B155AB425E3A9EBFE4D1292 /* Pods_AccountabilityPods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BC1EAE7E29B671B16CA125D /* Pods_AccountabilityPods.framework */; };
 		6840CD1A257B062700640DF4 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6840CD19257B062700640DF4 /* ChatViewController.swift */; };
 		6840CD1C257B066C00640DF4 /* ViewMsgViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6840CD1B257B066C00640DF4 /* ViewMsgViewController.swift */; };
+		68BF202B25C9F05400B6C79B /* Messages.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68BF202A25C9F05400B6C79B /* Messages.storyboard */; };
+		68BF202D25C9F90500B6C79B /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68BF202C25C9F90500B6C79B /* Search.storyboard */; };
 		AE145E2125716A2E00AF0F0C /* ResourceCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE145E2025716A2D00AF0F0C /* ResourceCreationViewController.swift */; };
 		AE4970F82579F994008CCEEB /* SavedResourceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4970F72579F994008CCEEB /* SavedResourceViewController.swift */; };
 		AE497100257A1968008CCEEB /* PostedResourcesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4970FF257A1968008CCEEB /* PostedResourcesViewController.swift */; };
@@ -67,6 +69,8 @@
 		4BC1EAE7E29B671B16CA125D /* Pods_AccountabilityPods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AccountabilityPods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6840CD19257B062700640DF4 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		6840CD1B257B066C00640DF4 /* ViewMsgViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewMsgViewController.swift; sourceTree = "<group>"; };
+		68BF202A25C9F05400B6C79B /* Messages.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Messages.storyboard; sourceTree = "<group>"; };
+		68BF202C25C9F90500B6C79B /* Search.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
 		898B70832D30F70B4FEECB40 /* Pods-AccountabilityPodsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AccountabilityPodsTests.release.xcconfig"; path = "Target Support Files/Pods-AccountabilityPodsTests/Pods-AccountabilityPodsTests.release.xcconfig"; sourceTree = "<group>"; };
 		9AB0E47EFE1CDF22C704BFB5 /* Pods-AccountabilityPods-AccountabilityPodsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AccountabilityPods-AccountabilityPodsUITests.release.xcconfig"; path = "Target Support Files/Pods-AccountabilityPods-AccountabilityPodsUITests/Pods-AccountabilityPods-AccountabilityPodsUITests.release.xcconfig"; sourceTree = "<group>"; };
 		A4E6E5BEE34DFFC4C5B704C7 /* Pods-AccountabilityPods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AccountabilityPods.debug.xcconfig"; path = "Target Support Files/Pods-AccountabilityPods/Pods-AccountabilityPods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -219,6 +223,8 @@
 				D484062A2545CB7F0020830A /* AppDelegate.swift */,
 				D484062C2545CB7F0020830A /* SceneDelegate.swift */,
 				D48406302545CB7F0020830A /* Main.storyboard */,
+				68BF202C25C9F90500B6C79B /* Search.storyboard */,
+				68BF202A25C9F05400B6C79B /* Messages.storyboard */,
 				D48406332545CB800020830A /* Assets.xcassets */,
 				D48406352545CB800020830A /* LaunchScreen.storyboard */,
 				D48406382545CB800020830A /* Info.plist */,
@@ -370,6 +376,8 @@
 				D48406372545CB800020830A /* LaunchScreen.storyboard in Resources */,
 				D4AF46642562D9EF002CFE4C /* GoogleService-Info.plist in Resources */,
 				D48406342545CB800020830A /* Assets.xcassets in Resources */,
+				68BF202B25C9F05400B6C79B /* Messages.storyboard in Resources */,
+				68BF202D25C9F90500B6C79B /* Search.storyboard in Resources */,
 				D48406322545CB7F0020830A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

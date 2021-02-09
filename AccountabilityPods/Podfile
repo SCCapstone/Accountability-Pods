@@ -10,7 +10,6 @@ target 'AccountabilityPods' do
   pod 'Firebase/Auth'
   pod 'Firebase/Analytics'
   pod 'Firebase/Firestore'
-  pod 'JSQMessagesViewController'
   # IN APP MESSAGING ADD
   pod 'Firebase/Messaging'
   # END IN APP MESSAGING ADD?

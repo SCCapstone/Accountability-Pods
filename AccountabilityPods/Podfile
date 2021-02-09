@@ -13,6 +13,8 @@ target 'AccountabilityPods' do
   # IN APP MESSAGING ADD
   pod 'Firebase/Messaging'
   # END IN APP MESSAGING ADD?
+  #JSQ CONTROLLER
+  pod 'JSQMessagesViewController'
 
   target 'AccountabilityPodsTests' do
     inherit! :search_paths

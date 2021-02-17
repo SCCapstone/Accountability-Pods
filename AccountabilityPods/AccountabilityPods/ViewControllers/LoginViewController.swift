@@ -86,6 +86,7 @@ class LoginViewController: UIViewController {
                 }
                 else {
                     Constants.User.sharedInstance.userID = result!.user.uid;
+                    print(Constants.User.sharedInstance.userID)
                     self.transitionToHome()
                 }
             }    }

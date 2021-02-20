@@ -32,7 +32,9 @@ class ResourceCreationViewController: UIViewController {
     
         // Do any additional setup after loading the view.
     }
-    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
     @IBAction func onAddPressed(_ sender: Any) {
         var docRef = db.collection("users").document(userID).collection("POSTEDRESOURCES").addDocument(data: [
                     "creatorRef" : userID,

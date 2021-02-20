@@ -39,11 +39,34 @@ A developer must clone the repo by adding the link to Xcode, and enter their per
 Xcode is every helpful for deployment of iOS app. To upload to the Apple App Store you must have a developer account associated with Apple. To deploy the app open the project in Xcode. Select the project and open the targets tab and under General, increment the version and build. In the header tabs under Product change your view to Generic iOS Device by selecting from the destination drop down. Then build an image of the app by selecting Product from the main tabs then Archive. From here the Archive window will appear and the developer can user to upload the App to the App Store. From here one will use their developer account.
 
 # Testing 
-Testing will be available later. As an iOS app TestFlight - App Developer is required in order for release and for other to test.
-## Testing Technology 
-Coming soon.
-## Running Tests
-Comming soon.
+
+## Testing Technology
+
+To perform unit and UI testing in xcode we are using the XCTests library
+
+## Testing
+*Unit Testing
+
+1) Open Swift Workspace. 
+2) To access the Unit testing code locate the files tab(image of a folder) from the left panel. Select the "AccountabilityPodsTests" folder within the project.
+3) From the dropdown within the folder, select "AccountabilityPodsTests.swift" file. Here you will find the code for all current unit tests that can be implemented.
+4) To run the test locate the schema option towards the top left of the screen. Click on the schema and be sure to select the "AccountabilityPodsTests" schema from the dropdown with associated target iPhone 11. 
+5) Navigate to the tests icon in the left panel, it is shaped like a diamond. Available testing files will appear in the panel.
+6) In the left panel, directly to the right of the file name, such as "AccountabilityPodsTests", click the arrow contained in a circle. To run a subset of the tests or an individual test simply click the arrrow adjacent to the desired target. 
+7) Xcode will automatically build and the test the methods. Success of the tests will be indicated by the diamond next to the name in the left panel or to the left of the function in the Xcode swift file turning green. A red diamond indicates failure.
+
+
+*UI Testing
+
+1) Open Swift Workspace. current directory -> AccountabilityPods -> AccountabilityPods.xcworkspace 
+2) To access the UI testing code locate the files tab(image of a folder) from the left panel. Select the "AccountabilityPodsUITests" folder within the project.
+3) From the dropdown within the folder, select "AccountabilityPodsUITests.swift" file. Here you will find the code for all current UI tests that can be implemented.
+4) To run the test locate the schema option towards the top left of the screen. Click on the schema and be sure to select the "AccountabilityPodsUITests" schema from the dropdown with associated target iPhone 11. 
+5) Navigate to the tests icon in the left panel, it is shaped like a diamond. Available testing files will appear in the panel.
+6) In the left panel, directly to the right of the file name, such as "AccountabilityPodsUITests", click the arrow contained in a circle. To run a subset of the tests or an individual test simply click the arrrow adjacent to the desired target. 
+7) Xcode will automatically build and the test the methods. Success of the tests will be indicated by the diamond next to the name in the left panel or to the left of the function in the Xcode swift file turning green. A red diamond indicates failure.
+                                                           
+*NOTE: In case of keyboard error caused by simulator, reset simulator (Top Tab Bar -> Device -> Erase All Content and Settings) and disable hardware keyboard (Top Tab Bar -> I/O -> Keyboard -> Connect Hardware Keyboard unchecked)
 
 ## Authors
 Vasco Madrid, vmadrid0426@gmail.com

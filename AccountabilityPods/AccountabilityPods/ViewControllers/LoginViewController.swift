@@ -86,9 +86,13 @@ class LoginViewController: UIViewController {
                 }
                 else {
                     Constants.User.sharedInstance.userID = result!.user.uid;
+                    print(Constants.User.sharedInstance.userID)
                     self.transitionToHome()
                 }
             }    }
+    }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
    
     

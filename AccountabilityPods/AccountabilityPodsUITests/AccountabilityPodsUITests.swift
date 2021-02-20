@@ -40,4 +40,41 @@ class AccountabilityPodsUITests: XCTestCase {
             }
         }
     }
+    /*
+     UI test for logging in
+     - tests if log in button takes user to login screen
+     - tests if user can enter values in text fields
+     - tests if known account information takes user to home screen
+     */
+    func testLoggingIn() throws {
+        let app = XCUIApplication()
+        app.launch()
+        // tap login button
+        let loginButton = app.buttons["loginButton"]
+        loginButton.tap() // takes user to log in view
+        
+        // test if user can enter email
+        let emailTextField = app.textFields["emailTextField"]
+        let passwordTextField = app.textFields["passwordTextField"]
+        let email = "testaccount@test.com" // known email account
+        let password = "Password!123" // known password
+        
+        // test email input
+        emailTextField.tap()
+        emailTextField.typeText(email)
+        XCTAssertEqual(emailTextField.value as! String , email)
+        
+        // test password input
+        passwordTextField.tap()
+        passwordTextField.typeText(password)
+        XCTAssertEqual(passwordTextField.value as! String, password)
+        
+        // test enter button
+        let enterButton = app.buttons["enterButton"]
+        enterButton.tap() // takes user to screen
+        
+        // tests if homescreen is shown
+        let addPostButton = app.buttons["addPostButton"]
+        XCTAssertTrue(addPostButton.exists)
+    }
 }

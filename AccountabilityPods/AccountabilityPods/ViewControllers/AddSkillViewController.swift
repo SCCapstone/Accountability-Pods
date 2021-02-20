@@ -27,6 +27,9 @@ class AddSkillViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
     @IBAction func donePressed(_ sender: Any) {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "OnEditSkill"), object: nil)
         var docRef = db.collection("users").document(userID).collection("SKILLS").addDocument(data: [

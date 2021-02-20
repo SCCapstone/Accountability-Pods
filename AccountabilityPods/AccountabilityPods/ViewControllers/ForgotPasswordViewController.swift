@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class ForgotPasswordViewController: UIViewController {
 
@@ -14,9 +15,10 @@ class ForgotPasswordViewController: UIViewController {
     
     @IBOutlet weak var sendButton: UIButton!
     
+    @IBOutlet weak var errorLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+          self.errorLabel.text = ""
         // Do any additional setup after loading the view.
     }
     
@@ -30,9 +32,33 @@ class ForgotPasswordViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
     @IBAction func sendTapped(_ sender: Any) {
     }
-    
-
+   /*
+    @IBAction func showAlert(_ sender: Any) {
+        let alertController = UIAlertController(title: "Password Reset", message: "Check your email!", preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: .default))
+        self.present(alertController,animated: true, completion: nil)
+    }*/
+    @IBAction func forgotPasswordButton_Tapped(_ sender: UIButton) {
+        Auth.auth().sendPasswordReset(withEmail: emailTextField.text!) { (error) in
+            if error == nil {
+                print("SENT...!")
+                let alertController = UIAlertController(title: "Password Reset", message: "Check your email!", preferredStyle: .alert)
+                let action = UIAlertAction(title: "OK", style: .default) {
+                    (action) -> Void in
+                    let LogInviewController = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController")
+                    self.present(LogInviewController!, animated: true, completion: nil)
+                  }
+                  alertController.addAction(action)
+                self.present(alertController, animated: true, completion: nil)
+            } else {
+                print("FAILED -\(String(describing: error?.localizedDescription))")
+                self.errorLabel.text = "Enter valid email"
+            }
+        }
+    }
 }

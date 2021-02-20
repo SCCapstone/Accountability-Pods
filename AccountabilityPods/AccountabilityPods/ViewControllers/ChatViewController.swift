@@ -8,9 +8,10 @@
 
 import UIKit
 import Firebase
+import JSQMessagesViewController
 
-class ChatViewController: UIViewController {
-
+class ChatViewController: JSQMessagesViewController
+{
     @IBOutlet weak var userMsg: UITextField!
     let db = Firestore.firestore()
     
@@ -18,11 +19,17 @@ class ChatViewController: UIViewController {
     
     @IBOutlet weak var msgContain: UIView!
     override func viewDidLoad() {
+    
         super.viewDidLoad()
-
+        
+        senderId = "1234"
+        senderDisplayName = "Jhada"
         // Do any additional setup after loading the view.
     }
-    
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
     @IBAction func txtDone(_ sender: Any) {
         //NotificationCenter.default.post(name: NSNotification.Name(rawValue: "NewMsg"), object: nil)
         var ref = db.collection("users").document(userID).collection("MSG").addDocument(data: ["senderId" : userID, "message" : userMsg.text ?? "" ])

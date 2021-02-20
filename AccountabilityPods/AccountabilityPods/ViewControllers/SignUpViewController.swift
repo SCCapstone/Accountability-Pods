@@ -13,6 +13,8 @@ import FirebaseAuth
 
 class SignUpViewController: UIViewController {
     
+    @IBOutlet weak var usernameTextField: UITextField!
+    
     @IBOutlet weak var firstnameTextField: UITextField!
     
     @IBOutlet weak var lastnameTextField: UITextField!
@@ -50,14 +52,20 @@ class SignUpViewController: UIViewController {
     */
     func checkFields() -> String? {
         // check if all text fields have text
-        if firstnameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" || lastnameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
+        if usernameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
+            firstnameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" || lastnameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
             ageTextField.text?.trimmingCharacters(in:.whitespacesAndNewlines) == "" ||
             affiliationTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||         passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" || emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
             return "please enter values for all boxes"
         }
         // remove whitespace from email and password
+        let cleanUsername = usernameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         let cleanEmail = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         let cleanPassword = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        // check length of username
+        if cleanUsername.count ?? 0 > 30 {
+            return "username is too long"
+        }
         // check if email and password are valid
         if Utilities.isValidEmail(email: cleanEmail) == false {
             return "email is not formatted correctly"
@@ -81,6 +89,9 @@ class SignUpViewController: UIViewController {
         view.window?.makeKeyAndVisible()
         
     }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
     
     @IBAction func createAccountTapped(_ sender: Any) {
         // Determine if fiels are valid
@@ -90,50 +101,73 @@ class SignUpViewController: UIViewController {
         }
         // add user to firestore database
         else {
-            let firstname = firstnameTextField.text!.trimmingCharacters(in: .newlines)
+            let username = usernameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            let firstname = firstnameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let lastname = lastnameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let age = ageTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let affiliation = affiliationTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-            Auth.auth().createUser(withEmail: email, password:password) { (result, err) in
-                // check if error creating user
-                if err != nil {
-                    self.editErrorMessage("Error creating account")
-                    print("Error creating account. \(err)")
-                }
-                else {
-                    print("Test test test")
-                    let db = Firestore.firestore()
-                    //Modified this slightly to name the user document the same thing as the auth so that we can search by doc name directly instead of properties
-                     db.collection("users").document(result!.user.uid).setData(["firstname":firstname, "lastname":lastname, "age":age,"affiliation":affiliation, "uid":result!.user.uid, "email":email])
-                     
-                     { err in
-                        if let err = err {
-                            print("Error adding document: \(err)")
-                        } else {
-                            print("Document added with ID: \(result!.user.uid)")
-                            //Grab the userID here for use everywhere else in the app
-                            Constants.User.sharedInstance.userID = result!.user.uid;
-                            print("reached Here")
-                            db.collection("users").document(Constants.User.sharedInstance.userID).collection("CONTACTS").document("adminuser").setData(["userRef":"adminuser"]) {
-                                err in
-                                if err != nil{
-                                    print("Error adding administrator contact: \(String(describing: err))")
-                                }
-                                else
-                                {
-                                    print("Successfully added administrator contact.")
-                                    self.transitionToHome()
+            // check if username aleady exists before creating account
+            let db = Firestore.firestore()
+            let docRef = db.collection("usernames").document(username)
+            docRef.getDocument { (document, error) in
+                if let document = document, document.exists {
+                    // username already exists
+                    self.editErrorMessage("username is already taken")
+                } else {
+                    // create user!
+                    Auth.auth().createUser(withEmail: email, password:password) { (result, err) in
+                        // check if error creating user
+                        if err != nil {
+                            self.editErrorMessage("Error creating account")
+                            print("Error creating account. \(err)")
+                        }
+                        else {
+                            print("Test test test")
+                            //Modified this slightly to name the user document the same thing as the auth so that we can search by doc name directly instead of properties
+                            // add user to users collection
+                            db.collection("users").document(result!.user.uid).setData(["firstname":firstname, "lastname":lastname, "age":age,"affiliation":affiliation, "uid":result!.user.uid, "email":email, "username":username])
+                             
+                             { err in
+                                if let err = err {
+                                    print("Error adding document: \(err)")
+                                } else {
+                                    print("Document added with ID: \(result!.user.uid)")
+                                    //Grab the userID here for use everywhere else in the app
+                                    Constants.User.sharedInstance.userID = result!.user.uid;
+                                    print("reached Here")
+                                    // add username to usernames collection
+                                    db.collection("usernames").document(username).setData(["uid": result!.user.uid]) {
+                                        err in
+                                        if err != nil {
+                                            print("Error adding to usernames")
+                                        }
+                                        else {
+                                            // add adminuser to contacts
+                                            db.collection("users").document(result!.user.uid).collection("CONTACTS").document("adminuser").setData(["userRef":"adminuser"]) {
+                                                err in
+                                                if err != nil{
+                                                    print("Error adding administrator contact: \(String(describing: err))")
+                                                }
+                                                else
+                                                {
+                                                    print("Successfully added administrator contact.")
+                                                    self.transitionToHome()
+                                                }
+                                            }                                        }
+                                    }
+                                    
+                                    //We don't explicitly need to create subcollections, firestore will do it for us. Actually there isn't even really a way to create the subcollections without putting a document in there first.
                                 }
                             }
-                            //We don't explicitly need to create subcollections, firestore will do it for us. Actually there isn't even really a way to create the subcollections without putting a document in there first.
+                            
+                            // transition to home when successful
+                            
                         }
                     }
-                    
-                    // transition to home when successful
-                    
                 }
             }
+            
         }    }
 }

@@ -541,31 +541,60 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="RvN-Z1-VEc">
-                                <rect key="frame" x="120" y="144" width="128" height="69"/>
+                                <rect key="frame" x="120" y="144" width="103.5" height="51.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First and Last" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ydi-Hh-oD5" userLabel="Name">
-                                        <rect key="frame" x="0.0" y="0.0" width="128" height="28"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="103.5" height="28"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="28" id="K8g-ec-LFm"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xQF-pP-j1b">
-                                        <rect key="frame" x="0.0" y="28" width="128" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NvH-9p-KNB">
-                                        <rect key="frame" x="0.0" y="48.5" width="128" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <rect key="frame" x="0.0" y="28" width="103.5" height="23.5"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NvH-9p-KNB">
+                                <rect key="frame" x="120" y="200" width="128" height="20.5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xg9-iv-uMG">
+                                <rect key="frame" x="120" y="193" width="199" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dht-in-lSJ">
+                                <rect key="frame" x="284" y="194" width="31" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                <state key="normal" title="add">
+                                    <color key="titleColor" red="0.6115614426" green="0.67094361619999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                                <connections>
+                                    <action selector="onAddDescription:" destination="Y2e-Af-v60" eventType="touchUpInside" id="gbZ-4Z-D8A"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QOQ-ak-9cj">
+                                <rect key="frame" x="271" y="190" width="56" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                <state key="normal" title="edit" backgroundImage="bubble_tailless.png">
+                                    <color key="titleColor" red="0.6115614426" green="0.67094361619999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                                <connections>
+                                    <action selector="onEditDescription:" destination="Y2e-Af-v60" eventType="touchUpInside" id="68s-C4-Jgf"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Ai6-bU-d5Y"/>
                         <color key="backgroundColor" red="0.80784313730000001" green="0.90196078430000004" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
@@ -603,7 +632,10 @@
                         <outlet property="PodGroupsContainer" destination="7sM-gN-QRx" id="UGY-Tn-I7H"/>
                         <outlet property="SavedPostsContainer" destination="wbR-Sf-iZW" id="M70-oG-QS3"/>
                         <outlet property="SkillsContainer" destination="gxa-10-QuU" id="U2G-YW-da0"/>
+                        <outlet property="addDescButton" destination="Dht-in-lSJ" id="ye2-kW-6ts"/>
                         <outlet property="descriptionLabel" destination="NvH-9p-KNB" id="gjL-tb-4B0"/>
+                        <outlet property="editDescButton" destination="QOQ-ak-9cj" id="tp8-bW-xfw"/>
+                        <outlet property="editDescriptionText" destination="xg9-iv-uMG" id="suA-El-fQV"/>
                         <outlet property="segmentedControl" destination="cXR-SR-htA" id="9Uk-K5-SAc"/>
                         <outlet property="usernameLabel" destination="xQF-pP-j1b" id="z6w-Il-Dq6"/>
                     </connections>
@@ -1387,7 +1419,7 @@
             <objects>
                 <viewController storyboardIdentifier="resourceVC" id="RVU-aC-KZr" customClass="ResourceDisplayVC" customModule="AccountabilityPods" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gEf-5K-uaR">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="459"/>
+                        <rect key="frame" x="0.0" y="0.0" width="407" height="484"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Default" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="yyN-3T-mkS">
@@ -1687,13 +1719,18 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="RAx-er-4JT"/>
+        <segue reference="Gho-tH-KhP"/>
         <segue reference="hYr-EM-cTZ"/>
         <segue reference="S9D-eA-qW5"/>
         <segue reference="4kW-um-cGD"/>
     </inferredMetricsTieBreakers>
     <resources>
+<<<<<<< HEAD
         <image name="background" width="610" height="1184"/>
+=======
+        <image name="bubble_tailless.png" width="56" height="35"/>
+        <image name="circle" catalog="system" width="128" height="121"/>
+>>>>>>> c417e8e536af3b0d6b00839cc11988007faac4c6
         <image name="circle.fill" catalog="system" width="128" height="121"/>
         <image name="escape" catalog="system" width="128" height="121"/>
         <image name="heart.fill" catalog="system" width="128" height="109"/>

@@ -19,7 +19,7 @@ class ResourceBrowseViewController: UIViewController {
         // Do any additional setup after loading the view.
         tableView.delegate = self
         tableView.dataSource = self
-        print("Test")
+        print("Test: Loading Resources")
         
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

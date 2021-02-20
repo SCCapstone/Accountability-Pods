@@ -192,3 +192,65 @@ class Skill {
         }
 }
 }
+
+class Profile {
+    public var firstName: String
+    public var lastName: String
+    public var userName: String
+    public var path: String
+    
+    init() {
+        self.path = ""
+        self.firstName = "No name"
+        self.lastName = "No name"
+        self.userName = "UnknownUsernameForUserHere12345"
+    }
+    
+    init(base: Firestore, path_:String) {
+        self.path = ""
+        self.firstName = "No name"
+        self.lastName = "No name"
+        self.userName = "UnknownUsernameForUserHere12345"
+        readData(database: base, path: path_)
+    }
+    
+    func readData(database: Firestore, path: String) {
+        self.path = path
+        
+        database.document(path).addSnapshotListener {
+            (querySnapshot, error) in
+            let data = querySnapshot!.data()
+            let first_ = data!["firstName"] as! String
+            let last_ = data!["lastName"] as! String
+            let user_ = data!["username"] as! String
+            
+            self.firstName = first_
+            self.lastName = last_
+            self.userName = user_
+        }
+    }
+    
+    func readData(database: Firestore, path: String, tableview: UITableView) {
+        self.path = path
+        
+        database.document(path).addSnapshotListener {
+            (querySnapshot, error) in
+            let data = querySnapshot!.data()
+            //print("\(data)")
+            
+            if (data?["username"] == nil || data?["firstname"] == nil || data?["lastname"] == nil) {
+                return
+            }
+            let first_ = data!["firstname"] as! String
+            let last_ = data!["lastname"] as! String
+            let user_ = data!["username"] as! String
+            
+            self.firstName = first_
+            self.lastName = last_
+            self.userName = user_
+            //print(self.userName)
+            tableview.reloadData()
+        }
+    }
+    
+}

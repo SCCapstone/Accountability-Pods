@@ -45,6 +45,7 @@ class ViewSkillsViewController: UIViewController {
                     let tempSkill = Skill()
                     self.skills.append(tempSkill)
                     tempSkill.readData(database: self.db, path: skillDoc.reference.path, tableview: self.tableView)
+                    print(tempSkill.name)
                     
                 }
             }

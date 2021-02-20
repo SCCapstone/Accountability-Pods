@@ -1418,7 +1418,7 @@
             <objects>
                 <viewController storyboardIdentifier="resourceVC" id="RVU-aC-KZr" customClass="ResourceDisplayVC" customModule="AccountabilityPods" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gEf-5K-uaR">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="459"/>
+                        <rect key="frame" x="0.0" y="0.0" width="407" height="484"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Default" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="yyN-3T-mkS">
@@ -1718,7 +1718,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="RAx-er-4JT"/>
+        <segue reference="Gho-tH-KhP"/>
         <segue reference="hYr-EM-cTZ"/>
         <segue reference="f0j-81-6x0"/>
         <segue reference="4kW-um-cGD"/>

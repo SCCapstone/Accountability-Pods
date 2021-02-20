@@ -11,7 +11,10 @@ import Firebase
 import FirebaseAuth
 
 class MyPodViewController: UIViewController {
-
+     //ADDED
+    let db = Firestore.firestore()
+    var userID = Constants.User.sharedInstance.userID;
+    //HERE
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var MyPostsContainer: UIView!
     @IBOutlet weak var SavedPostsContainer: UIView!
@@ -21,10 +24,20 @@ class MyPodViewController: UIViewController {
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     
+    @IBOutlet weak var editDescButton: UIButton!
+    @IBOutlet weak var addDescButton: UIButton!
+    @IBOutlet weak var editDescriptionText: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setName()
+        
+        //added
+        let users = db.collection("USERS");
+        let userDoc = users.document(userID);
+        let userDescription = userDoc.collection("DESCRIPTION");
+        // unti here
+        
         // Do any additional setup after loading the view.
     }
     
@@ -38,7 +51,22 @@ class MyPodViewController: UIViewController {
             self.SkillsContainer.alpha = 0;
         })
     }
-
+    @IBAction func onEditDescription(_ sender: Any) {
+       self.editDescriptionText.alpha = 1;
+        self.descriptionLabel.alpha = 0;
+        self.editDescButton.alpha = 0;
+        self.addDescButton.alpha = 1;
+       self.descriptionLabel.text = self.editDescriptionText.text
+    }
+    
+    @IBAction func onAddDescription(_ sender: Any) {
+        self.editDescButton.alpha = 1;
+        self.addDescButton.alpha = 0;
+        self.editDescriptionText.alpha = 0;
+        self.descriptionLabel.alpha = 1;
+        db.collection("users").document(userID).updateData(["description": editDescriptionText.text])
+        setName()
+    }
     /*
     // MARK: - Navigation
 
@@ -48,9 +76,9 @@ class MyPodViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
     func setName() {
         // setting description as invisibile (edit later!)
-        self.descriptionLabel.alpha = 0
         // get current userID
         let uid = Constants.User.sharedInstance.userID
         let db = Firestore.firestore()
@@ -63,15 +91,20 @@ class MyPodViewController: UIViewController {
                 let firstname: String? = document.get("firstname") as? String
                 let lastname: String? = document.get("lastname") as? String
                 let username: String? = document.get("username") as? String
+                let description: String? = document.get("description") as? String
                 let firstnameUnwrapped = firstname ?? "Unknown"
                 let lastnameUnwrapped = lastname ?? "Unknown"
                 let usernameUnwrapped = username ?? "Unknown"
+                let descriptionUnwrapped = description ?? "Unknown"
                 let name = firstnameUnwrapped + " " + lastnameUnwrapped
                 self.NameLabel.alpha = 1
+                self.editDescriptionText.alpha = 0;
+                self.descriptionLabel.alpha = 1
+                self.editDescButton.alpha = 1;
+                self.addDescButton.alpha = 0;
                 self.NameLabel.text = name
+                self.descriptionLabel.text = descriptionUnwrapped
                 self.usernameLabel.text = "@" + usernameUnwrapped
-                
-                    
             }
         }
             
@@ -114,3 +147,4 @@ class MyPodViewController: UIViewController {
     }
     
 }
+

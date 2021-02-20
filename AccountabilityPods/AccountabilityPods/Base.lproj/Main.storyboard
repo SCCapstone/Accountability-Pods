@@ -1725,12 +1725,8 @@
         <segue reference="4kW-um-cGD"/>
     </inferredMetricsTieBreakers>
     <resources>
-<<<<<<< HEAD
-        <image name="background" width="610" height="1184"/>
-=======
         <image name="bubble_tailless.png" width="56" height="35"/>
         <image name="circle" catalog="system" width="128" height="121"/>
->>>>>>> c417e8e536af3b0d6b00839cc11988007faac4c6
         <image name="circle.fill" catalog="system" width="128" height="121"/>
         <image name="escape" catalog="system" width="128" height="121"/>
         <image name="heart.fill" catalog="system" width="128" height="109"/>

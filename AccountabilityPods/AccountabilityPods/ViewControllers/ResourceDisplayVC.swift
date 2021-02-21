@@ -104,6 +104,9 @@ class ResourceDisplayVC: UIViewController {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "SavedResourceChange"), object: nil)
         
         if(!hasLiked) {
+            self.groupButton.isHidden = false;
+            self.groupButton.isUserInteractionEnabled = true;
+            self.groupName.isHidden = false;
             let docRef = db.collection("users").document(Constants.User.sharedInstance.userID).collection("SAVEDRESOURCES").addDocument(data: ["docRef" : self.resource.path, "groupName": ""]) {err in
             
                 if let err = err {
@@ -118,7 +121,9 @@ class ResourceDisplayVC: UIViewController {
         }
         else
         {
-            
+            self.groupButton.isHidden = true;
+            self.groupButton.isUserInteractionEnabled = false;
+            self.groupName.isHidden = true;
             db.collection("users").document(Constants.User.sharedInstance.userID).collection("SAVEDRESOURCES").document((self.docID)!).delete()
             self.hasLiked = false
             

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Firebase
 
 struct Constants {
     struct Storyboard {
@@ -17,4 +18,13 @@ struct Constants {
             static let sharedInstance = User()
             var userID = "";
         }
+    
+    //reference for chat data
+    struct chatRefs
+    {
+        static let databaseRoot = Firestore.firestore()
+        //is t stored in storage? Storage.storage().reference()
+        //firebase.storage().ref()
+        static let databaseChats = databaseRoot.collection("Chat")
+    }
 }

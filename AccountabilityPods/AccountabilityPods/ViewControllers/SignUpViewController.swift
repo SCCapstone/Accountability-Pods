@@ -127,7 +127,7 @@ class SignUpViewController: UIViewController {
                             print("Test test test")
                             //Modified this slightly to name the user document the same thing as the auth so that we can search by doc name directly instead of properties
                             // add user to users collection
-                            db.collection("users").document(result!.user.uid).setData(["firstname":firstname, "lastname":lastname, "age":age,"affiliation":affiliation, "uid":result!.user.uid, "email":email, "username":username])
+                            db.collection("users").document(result!.user.uid).setData(["firstname":firstname, "lastname":lastname, "age":age,"affiliation":affiliation, "uid":result!.user.uid, "email":email, "username":username, "description":"no description"])
                              
                              { err in
                                 if let err = err {

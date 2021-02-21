@@ -76,7 +76,7 @@ class PostedResourcesViewController: UIViewController {
 
 extension PostedResourcesViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("AEIOU - - - \(resources.count)")
+        //print("AEIOU - - - \(resources.count)")
         return resources.count
         
     }

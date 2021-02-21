@@ -19,7 +19,7 @@ class ResourceBrowseViewController: UIViewController {
         // Do any additional setup after loading the view.
         tableView.delegate = self
         tableView.dataSource = self
-        print("Test")
+        print("Test: Loading Resources")
         
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -61,7 +61,7 @@ class ResourceBrowseViewController: UIViewController {
                             //print(resourceSnaps?.documents)
                             for doc in resourceSnaps!.documents {
                                 let path = doc.reference.path
-                                print("AEIOU")
+                               // print("AEIOU")
                                 var newResource = Resource(base: self.db, path_:path)
                                 newResource.readData(database: self.db, path: path, tableview: self.tableView)
                                 
@@ -114,7 +114,7 @@ extension ResourceBrowseViewController: UITableViewDataSource, UITableViewDelega
             let indexPath = self.tableView.indexPathForSelectedRow
             let resource = self.resources[(indexPath?.row)!]
             if let dView = segue.destination as? ResourceDisplayVC {
-                dView.resource = resource
+                dView.resource = resource.makeHashableStruct()
             }
            
             

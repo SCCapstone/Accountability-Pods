@@ -95,7 +95,7 @@ extension SavedResourceViewController: UITableViewDataSource, UITableViewDelegat
             let indexPath = self.tableView.indexPathForSelectedRow
             let resource = self.resources[(indexPath?.row)!]
             if let dView = segue.destination as? ResourceDisplayVC {
-                dView.resource = resource
+                dView.resource = resource.makeHashableStruct()
             }
            
             

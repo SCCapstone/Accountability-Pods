@@ -42,6 +42,8 @@ class Resource {
     public var desc: String
     
     public var path: String
+    
+    public var hashableResource: ResourceHashable
     //var doc: DocumentSnapshot
     
     init()
@@ -49,12 +51,14 @@ class Resource {
         self.path = ""
         self.name = "No name"
         self.desc = "No desc"
+        self.hashableResource = ResourceHashable(name:self.name,desc:self.desc,path:self.path)
     }
     init(base: Firestore, path_: String)
     {
         self.path = ""
         self.name = "No name"
         self.desc = "No desc"
+        self.hashableResource = ResourceHashable(name:self.name,desc:self.desc,path:self.path)
         readData(database: base,path: path_)
         
         
@@ -64,6 +68,7 @@ class Resource {
         self.path = path
         self.name = name
         self.desc = desc
+        self.hashableResource = ResourceHashable(name:self.name,desc:self.desc,path:self.path)
     }
     
     func readData(database: Firestore, path: String)
@@ -112,9 +117,49 @@ class Resource {
             
         }
     }
+    func readData(database: Firestore, path: String, collectionview: UICollectionView)
+    {
+        
+        
+        self.path = path
+        database.document(path).addSnapshotListener {
+            (querySnapshot, error) in
+            let data = querySnapshot!.data()
+            if(data?["resourceName"] == nil || data?["resourceDesc"] == nil || path == nil )
+            {
+                return
+            }
+            let name_ = data!["resourceName"] as! String
+            let desc_ = data!["resourceDesc"] as! String
+            
+            self.name = name_
+            self.desc = desc_
+            self.hashableResource = ResourceHashable(name:name_,desc:desc_,path:path)
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ResourceAsyncFinished"), object: nil)
+            
+            print(self.hashableResource.name + "actual name here")
+            
+            
+        }
+    }
+    func makeHashableStruct() -> ResourceHashable!
+    {
+        
+        let resourceHashable = ResourceHashable(name: self.name,desc: self.desc,path: self.path);
+        return resourceHashable;
+    }
     
   
 
+}
+
+// Hashable struct of a resource, primarily used for collections. Same will exist for contacts
+//Important note: If you have to use this, I recommend reconstructing a hash rather than making a copy unless you are careful. Having two+ of the same instance will more likely than not cause a crash due to not being able to resolve the hash to a unique object.
+struct ResourceHashable: Hashable {
+    let uuid = UUID()
+    let name: String
+    let desc: String
+    let path: String
 }
 class Skill {
     public var name: String
@@ -191,4 +236,66 @@ class Skill {
             
         }
 }
+}
+
+class Profile {
+    public var firstName: String
+    public var lastName: String
+    public var userName: String
+    public var path: String
+    
+    init() {
+        self.path = ""
+        self.firstName = "No name"
+        self.lastName = "No name"
+        self.userName = "UnknownUsernameForUserHere12345"
+    }
+    
+    init(base: Firestore, path_:String) {
+        self.path = ""
+        self.firstName = "No name"
+        self.lastName = "No name"
+        self.userName = "UnknownUsernameForUserHere12345"
+        readData(database: base, path: path_)
+    }
+    
+    func readData(database: Firestore, path: String) {
+        self.path = path
+        
+        database.document(path).addSnapshotListener {
+            (querySnapshot, error) in
+            let data = querySnapshot!.data()
+            let first_ = data!["firstName"] as! String
+            let last_ = data!["lastName"] as! String
+            let user_ = data!["username"] as! String
+            
+            self.firstName = first_
+            self.lastName = last_
+            self.userName = user_
+        }
+    }
+    
+    func readData(database: Firestore, path: String, tableview: UITableView) {
+        self.path = path
+        
+        database.document(path).addSnapshotListener {
+            (querySnapshot, error) in
+            let data = querySnapshot!.data()
+            //print("\(data)")
+            
+            if (data?["username"] == nil || data?["firstname"] == nil || data?["lastname"] == nil) {
+                return
+            }
+            let first_ = data!["firstname"] as! String
+            let last_ = data!["lastname"] as! String
+            let user_ = data!["username"] as! String
+            
+            self.firstName = first_
+            self.lastName = last_
+            self.userName = user_
+            //print(self.userName)
+            tableview.reloadData()
+        }
+    }
+    
 }

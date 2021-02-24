@@ -11,10 +11,11 @@ import UIKit
 class ProfileSkillCell: UITableViewCell {
 
     @IBOutlet weak var skillNameLabel: UILabel!
+    @IBOutlet weak var skillDescLabel: UILabel!
     
     func setSkill(skill: Skill)
     {
         self.skillNameLabel.text = skill.name
-        
+        self.skillDescLabel.text = skill.desc
     }
 }

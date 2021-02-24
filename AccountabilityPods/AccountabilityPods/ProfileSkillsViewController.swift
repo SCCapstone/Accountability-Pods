@@ -28,21 +28,22 @@ class ProfileSkillsViewController: UIViewController {
     
     func generateArray() {
         skills = []
-        // uncomment when object is successfully passed
-        /*
-        db.collection("users").document(profile.uid).collection("SKILLS").getDocuments() { (querySnapshot, err) in
-            if let err = err {
-                // probably no skills associated with profile
-                print("Error getting skills \(err)")
-            } else {
-                for skill in querySnapshot!.documents {
-                    let tempSkill = Skill()
-                    self.skills.append(tempSkill)
-                    tempSkill.readData(database: self.db, path: skill.reference.path, tableview: self.tableView)
-                    print(tempSkill.name)
+        if profile.uid != "" {
+            db.collection("users").document(profile.uid).collection("SKILLS").getDocuments() { (querySnapshot, err) in
+                if let err = err {
+                    // probably no skills associated with profile
+                    print("Error getting skills \(err)")
+                } else {
+                    for skill in querySnapshot!.documents {
+                        let tempSkill = Skill()
+                        self.skills.append(tempSkill)
+                        tempSkill.readData(database: self.db, path: skill.reference.path, tableview: self.tableView)
+                        print(tempSkill.name)
+                    }
                 }
             }
-        }*/
+        }
+        
 
     }
     
@@ -65,11 +66,12 @@ extension ProfileSkillsViewController: UITableViewDataSource, UITableViewDelegat
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             let skill = skills[indexPath.row]
             
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileSkillCell") as! ProfileSkillCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileSkillCell") as! SkillCell
             
             cell.setSkill(skill: skill)
             return cell
     }
+    // TODO: create view in main.storyboard to segue to when skill tapped
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
     }

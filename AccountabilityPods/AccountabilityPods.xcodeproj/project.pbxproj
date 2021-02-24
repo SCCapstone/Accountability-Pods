@@ -44,7 +44,7 @@
 		D484064D2545CB800020830A /* AccountabilityPodsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D484064C2545CB800020830A /* AccountabilityPodsUITests.swift */; };
 		D4AF46642562D9EF002CFE4C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D4AF46632562D9EF002CFE4C /* GoogleService-Info.plist */; };
 		D4B716D025E6CB3300EE2D4B /* ProfileSkillsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B716CF25E6CB3300EE2D4B /* ProfileSkillsViewController.swift */; };
-		D4B716D525E6DC8D00EE2D4B /* ProfileSkillCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B716D425E6DC8D00EE2D4B /* ProfileSkillCell.swift */; };
+		D4B716DD25E6E47100EE2D4B /* ProfileResourceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B716DC25E6E47100EE2D4B /* ProfileResourceViewController.swift */; };
 		D4D078D225E15DC700B6A05A /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D078D125E15DC700B6A05A /* SearchViewController.swift */; };
 		D4E625B4257AE3C000963DD6 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E625B3257AE3C000963DD6 /* ProfileViewController.swift */; };
 		D4E7E26325E1895C00E3E386 /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E7E26225E1895C00E3E386 /* ProfileCell.swift */; };
@@ -118,7 +118,7 @@
 		D484064E2545CB800020830A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D4AF46632562D9EF002CFE4C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D4B716CF25E6CB3300EE2D4B /* ProfileSkillsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProfileSkillsViewController.swift; path = AccountabilityPods/ProfileSkillsViewController.swift; sourceTree = SOURCE_ROOT; };
-		D4B716D425E6DC8D00EE2D4B /* ProfileSkillCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSkillCell.swift; sourceTree = "<group>"; };
+		D4B716DC25E6E47100EE2D4B /* ProfileResourceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProfileResourceViewController.swift; path = AccountabilityPods/ProfileResourceViewController.swift; sourceTree = SOURCE_ROOT; };
 		D4D078D125E15DC700B6A05A /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		D4E625B3257AE3C000963DD6 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		D4E7E26225E1895C00E3E386 /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProfileCell.swift; path = AccountabilityPods/ProfileCell.swift; sourceTree = SOURCE_ROOT; };
@@ -188,7 +188,6 @@
 				C3299C3C2570660E00D2C3D7 /* Utilities.swift */,
 				C3299C5E2571324800D2C3D7 /* Constants.swift */,
 				AE49710F257A467F008CCEEB /* SkillCell.swift */,
-				D4B716D425E6DC8D00EE2D4B /* ProfileSkillCell.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -255,6 +254,7 @@
 		D4B716C825E6C94C00EE2D4B /* OtherProfile */ = {
 			isa = PBXGroup;
 			children = (
+				D4B716DC25E6E47100EE2D4B /* ProfileResourceViewController.swift */,
 				D4B716CF25E6CB3300EE2D4B /* ProfileSkillsViewController.swift */,
 				D4E625B3257AE3C000963DD6 /* ProfileViewController.swift */,
 			);
@@ -564,13 +564,13 @@
 				C3299BF825700BBD00D2C3D7 /* SignUpViewController.swift in Sources */,
 				442DC923257873DA00036D18 /* MessagingViewController.swift in Sources */,
 				AE57ADCC2579EAFD0079B717 /* ResourceDisplayVC.swift in Sources */,
-				D4B716D525E6DC8D00EE2D4B /* ProfileSkillCell.swift in Sources */,
 				C3299BFD25700BCE00D2C3D7 /* LoginViewController.swift in Sources */,
 				D484062D2545CB7F0020830A /* SceneDelegate.swift in Sources */,
 				D4E7E26325E1895C00E3E386 /* ProfileCell.swift in Sources */,
 				AE497100257A1968008CCEEB /* PostedResourcesViewController.swift in Sources */,
 				D43570D52579967900FCE20C /* SkillsViewController.swift in Sources */,
 				C3299C3D2570660E00D2C3D7 /* Utilities.swift in Sources */,
+				D4B716DD25E6E47100EE2D4B /* ProfileResourceViewController.swift in Sources */,
 				AE145E2125716A2E00AF0F0C /* ResourceCreationViewController.swift in Sources */,
 				AE90A7EE25E1C19D00E6DBC4 /* ResourceViewCollectionVC.swift in Sources */,
 				AE49711D257A48ED008CCEEB /* OwnSkillViewController.swift in Sources */,

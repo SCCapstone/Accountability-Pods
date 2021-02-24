@@ -23,20 +23,37 @@ class ChatViewController: JSQMessagesViewController
         return JSQMessagesBubbleImageFactory()!.incomingMessagesBubbleImage(with: UIColor.jsq_messageBubbleLightGray())
     }()
     
-    @IBOutlet weak var userMsg: UITextField!
     let db = Firestore.firestore()
     
     var userID  = Constants.User.sharedInstance.userID;
-    
-    @IBOutlet weak var msgContain: UIView!
-    
     
     override func viewDidLoad() {
     
         super.viewDidLoad()
         
-        senderId = "1234"
-        senderDisplayName = "Jhada"
+        //senderId = "1234"
+        //senderDisplayName = "Jhada"
+        //set up chat name
+        let defaults = UserDefaults.standard
+
+        if  let id = defaults.string(forKey: "jsq_id"),
+            let name = defaults.string(forKey: "jsq_name")
+        {
+            senderId = id
+            senderDisplayName = name
+        }
+        else
+        {
+            senderId = String(arc4random_uniform(999999))
+            senderDisplayName = ""
+
+            defaults.set(senderId, forKey: "jsq_id")
+            defaults.synchronize()
+
+            setSenderName()
+        }
+
+        self.title = "Chat: \(senderDisplayName!)"
         
         //hide attachment and avatars
         inputToolbar.contentView.leftBarButtonItem = nil
@@ -44,8 +61,29 @@ class ChatViewController: JSQMessagesViewController
         collectionView.collectionViewLayout.outgoingAvatarViewSize = CGSize.zero
         
         //observing the chat displaying on screen
-        let query = Constants.chatRefs.databaseChats.whereField("sender_id", isEqualTo: senderId)
-        query.getDocuments() { (querySnapshot, err) in
+        let query = Constants.chatRefs.databaseChats.whereField("sender_id", isEqualTo: senderId!)
+        query .addSnapshotListener { querySnapshot, error in guard let documents = querySnapshot?.documents else{
+            print("Error getting documents: \(error!)")
+            return
+        }
+        self.messages.removeAll()
+        for document in querySnapshot!.documents {
+            if let data = document.data()  as? [String: String],
+            let id = data["sender_id"],
+               let name = data["name"],
+               let text = data["text"],
+               !text.isEmpty {
+                if let message = JSQMessage(senderId: id, displayName: name, text: text)
+                {
+                    self.messages.append(message)
+                    self.finishReceivingMessage()
+                }
+            }
+            //do i need line below?
+            //print("\\document.documentID) => \\(document.data())")
+        }
+            }
+        /*query.getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             }
@@ -66,8 +104,70 @@ class ChatViewController: JSQMessagesViewController
                     print("\\document.documentID) => \\(document.data())")
                 }
             }
-        }
+        }*/
     }
+    
+    //user's display name
+    func setSenderName()
+    {
+        let defaults = UserDefaults.standard
+        // get current userID
+        let uid = Constants.User.sharedInstance.userID
+        let db = Firestore.firestore()
+        let userRef = db.collection("users").whereField("uid", isEqualTo: uid)
+        userRef.getDocuments() { (querySnapshot, err) in
+        if let err = err {
+            print("Error getting documents: \(err)")
+        } else {
+            for document in querySnapshot!.documents {
+                let firstname: String? = document.get("firstname") as? String
+                let lastname: String? = document.get("lastname") as? String
+                let firstnameUnwrapped = firstname ?? "Unknown"
+                let lastnameUnwrapped = lastname ?? "Unknown"
+                let name = firstnameUnwrapped + " " + lastnameUnwrapped
+                self.senderDisplayName = name
+                self.title = "Chat: \(self.senderDisplayName!)"
+                defaults.set(name, forKey: "jsq_name")
+                defaults.synchronize()
+            }
+        }
+        }
+        
+    }
+    /*@objc func showDisplayNameDialog()
+    {
+        let defaults = UserDefaults.standard
+
+        let alert = UIAlertController(title: "Your Display Name", message: "Before you can chat, please choose a display name. Others will see this name when you send chat messages. You can change your display name again by tapping the navigation bar.", preferredStyle: .alert)
+
+        alert.addTextField { textField in
+
+            if let name = defaults.string(forKey: "jsq_name")
+            {
+                textField.text = name
+            }
+            else
+            {
+                let names = ["Ford", "Arthur", "Zaphod", "Trillian", "Slartibartfast", "Humma Kavula", "Deep Thought"]
+                textField.text = names[Int(arc4random_uniform(UInt32(names.count)))]
+            }
+        }
+
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak self, weak alert] _ in
+
+            if let textField = alert?.textFields?[0], !textField.text!.isEmpty {
+
+                self?.senderDisplayName = textField.text
+
+                self?.title = "Chat: \(self!.senderDisplayName!)"
+
+                defaults.set(textField.text, forKey: "jsq_name")
+                defaults.synchronize()
+            }
+        }))
+
+        present(alert, animated: true, completion: nil)
+    }*/
     //returns data for message by index
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageDataForItemAt indexPath: IndexPath!) -> JSQMessageData!
     {
@@ -109,31 +209,12 @@ class ChatViewController: JSQMessagesViewController
         
         let message = ["sender_id": senderId, "name": senderDisplayName, "text": text]
         
-        ref.setData(message)
+        ref.setData(message as [String : Any])
         
         finishSendingMessage()
     }
     
-    
-    
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
-    }
-    @IBAction func txtDone(_ sender: Any) {
-        //NotificationCenter.default.post(name: NSNotification.Name(rawValue: "NewMsg"), object: nil)
-        var ref = db.collection("users").document(userID).collection("MSG").addDocument(data: ["senderId" : userID, "message" : userMsg.text ?? "" ])
-        {err in
-        if let err = err {
-            print("The document was invalid for some reason? \(err)")
-        }
-            else{
-                print("Document added successfully.")
-                self.dismiss(animated:true, completion:nil)
-            }
-        }
-        userMsg.text = "Type Here..."
-    }
+
     
     /*
     // MARK: - Navigation

@@ -13,6 +13,7 @@ class ResourceDisplayVC: UIViewController {
     
     @IBOutlet weak var groupName: UITextField!
     @IBOutlet weak var likeButton: UIButton!
+    @IBOutlet weak var usernameButton: UIButton!
     @IBOutlet weak var nameField: UILabel!
     @IBOutlet weak var groupButton: UIButton!
     @IBOutlet weak var descField: UITextView!

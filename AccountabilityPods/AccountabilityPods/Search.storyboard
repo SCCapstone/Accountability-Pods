@@ -87,6 +87,7 @@
                                         <connections>
                                             <outlet property="nameLabel" destination="S4v-LZ-JFl" id="9zE-jn-PGv"/>
                                             <outlet property="usernameLabel" destination="Opc-7e-dYZ" id="c3e-5B-mhK"/>
+                                            <segue destination="Hez-cU-mGh" kind="presentation" identifier="showProfileSegue" id="PJl-2c-Moq"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -116,6 +117,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LSY-Hi-yT7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3024.6376811594205" y="1284.375"/>
+        </scene>
+        <!--Profile Page-->
+        <scene sceneID="mwN-Mn-Vaf">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="ProfileView" id="Hez-cU-mGh" userLabel="Profile Page" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qnD-qw-WB4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3612" y="1288"/>
         </scene>
     </scenes>
     <resources>

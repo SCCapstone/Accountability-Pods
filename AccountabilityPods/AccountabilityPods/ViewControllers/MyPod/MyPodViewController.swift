@@ -35,7 +35,7 @@ class MyPodViewController: UIViewController {
         //added
         let users = db.collection("USERS");
         let userDoc = users.document(userID);
-        let userDescription = userDoc.collection("DESCRIPTION");
+        
         // unti here
         
         // Do any additional setup after loading the view.
@@ -56,7 +56,7 @@ class MyPodViewController: UIViewController {
         self.descriptionLabel.alpha = 0;
         self.editDescButton.alpha = 0;
         self.addDescButton.alpha = 1;
-       self.descriptionLabel.text = self.editDescriptionText.text
+        self.editDescriptionText.text = descriptionLabel.text
     }
     
     @IBAction func onAddDescription(_ sender: Any) {
@@ -64,7 +64,7 @@ class MyPodViewController: UIViewController {
         self.addDescButton.alpha = 0;
         self.editDescriptionText.alpha = 0;
         self.descriptionLabel.alpha = 1;
-        db.collection("users").document(userID).updateData(["description": editDescriptionText.text])
+        db.collection("users").document(userID).updateData(["description": editDescriptionText.text!])
         setName()
     }
     /*
@@ -95,7 +95,7 @@ class MyPodViewController: UIViewController {
                 let firstnameUnwrapped = firstname ?? "Unknown"
                 let lastnameUnwrapped = lastname ?? "Unknown"
                 let usernameUnwrapped = username ?? "Unknown"
-                let descriptionUnwrapped = description ?? "Unknown"
+                let descriptionUnwrapped = description ?? ""
                 let name = firstnameUnwrapped + " " + lastnameUnwrapped
                 self.NameLabel.alpha = 1
                 self.editDescriptionText.alpha = 0;

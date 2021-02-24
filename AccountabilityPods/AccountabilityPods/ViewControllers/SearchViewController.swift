@@ -104,7 +104,23 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        self.performSegue(withIdentifier: "showProfileSegue", sender: Any?.self)
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showProfileSegue" {
+            let indexPath = self.table.indexPathForSelectedRow
+            if filtered {
+                let profile = self.filteredProfiles[(indexPath?.row)!]
+                if let dView = segue.destination as? ProfileViewController {
+                    dView.profile = profile
+                }
+            } else {
+                let profile = self.profiles[(indexPath?.row)!]
+                if let dView = segue.destination as? ProfileViewController {
+                    dView.profile = profile
+                }
+            }
+        }
     }
 
     /*

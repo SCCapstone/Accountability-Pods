@@ -119,7 +119,7 @@ class SignUpViewController: UIViewController {
                     // create user!
                     Auth.auth().createUser(withEmail: email, password:password) { (result, err) in
                         // check if error creating user
-                        if err != nil {
+                        if let err = err {
                             self.editErrorMessage("Error creating account")
                             print("Error creating account. \(err)")
                         }
@@ -127,9 +127,7 @@ class SignUpViewController: UIViewController {
                             print("Test test test")
                             //Modified this slightly to name the user document the same thing as the auth so that we can search by doc name directly instead of properties
                             // add user to users collection
-                            db.collection("users").document(result!.user.uid).setData(["firstname":firstname, "lastname":lastname, "age":age,"affiliation":affiliation, "uid":result!.user.uid, "email":email, "username":username, "description":"no description"])
-                             
-                             { err in
+                            db.collection("users").document(result!.user.uid).setData(["firstname":firstname, "lastname":lastname, "age":age,"affiliation":affiliation, "uid":result!.user.uid, "email":email, "username":username, "description":"no description"]) { err in
                                 if let err = err {
                                     print("Error adding document: \(err)")
                                 } else {

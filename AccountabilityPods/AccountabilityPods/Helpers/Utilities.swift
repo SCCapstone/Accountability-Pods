@@ -242,6 +242,8 @@ class Profile {
     public var firstName: String
     public var lastName: String
     public var userName: String
+    public var description: String
+    public var uid: String
     public var path: String
     
     init() {
@@ -249,6 +251,8 @@ class Profile {
         self.firstName = "No name"
         self.lastName = "No name"
         self.userName = "UnknownUsernameForUserHere12345"
+        self.description = ""
+        self.uid = ""
     }
     
     init(base: Firestore, path_:String) {
@@ -256,6 +260,8 @@ class Profile {
         self.firstName = "No name"
         self.lastName = "No name"
         self.userName = "UnknownUsernameForUserHere12345"
+        self.description = ""
+        self.uid = ""
         readData(database: base, path: path_)
     }
     
@@ -265,13 +271,23 @@ class Profile {
         database.document(path).addSnapshotListener {
             (querySnapshot, error) in
             let data = querySnapshot!.data()
+            if (data?["username"] == nil || data?["firstname"] == nil || data?["lastname"] == nil || data?["uid"] == nil){
+                return
+            }
             let first_ = data!["firstName"] as! String
             let last_ = data!["lastName"] as! String
             let user_ = data!["username"] as! String
+            var des_ = ""
+            if (data?["description"] != nil) {
+                des_ = data!["description"] as! String
+            }
+            let uid_ = data!["uid"] as! String
             
             self.firstName = first_
             self.lastName = last_
             self.userName = user_
+            self.description = des_
+            self.uid = uid_
         }
     }
     
@@ -289,10 +305,17 @@ class Profile {
             let first_ = data!["firstname"] as! String
             let last_ = data!["lastname"] as! String
             let user_ = data!["username"] as! String
+            var des_ = ""
+            if (data?["description"] != nil) {
+                des_ = data!["description"] as! String
+            }
+            let uid_ = data!["uid"] as! String
             
             self.firstName = first_
             self.lastName = last_
             self.userName = user_
+            self.description = des_
+            self.uid = uid_
             //print(self.userName)
             tableview.reloadData()
         }

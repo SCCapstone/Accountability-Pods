@@ -45,6 +45,7 @@
 		D4AF46642562D9EF002CFE4C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D4AF46632562D9EF002CFE4C /* GoogleService-Info.plist */; };
 		D4B716D025E6CB3300EE2D4B /* ProfileSkillsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B716CF25E6CB3300EE2D4B /* ProfileSkillsViewController.swift */; };
 		D4B716DD25E6E47100EE2D4B /* ProfileResourceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B716DC25E6E47100EE2D4B /* ProfileResourceViewController.swift */; };
+		D4B716E225E6EE9C00EE2D4B /* SkillViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B716E125E6EE9C00EE2D4B /* SkillViewController.swift */; };
 		D4D078D225E15DC700B6A05A /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D078D125E15DC700B6A05A /* SearchViewController.swift */; };
 		D4E625B4257AE3C000963DD6 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E625B3257AE3C000963DD6 /* ProfileViewController.swift */; };
 		D4E7E26325E1895C00E3E386 /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E7E26225E1895C00E3E386 /* ProfileCell.swift */; };
@@ -119,6 +120,7 @@
 		D4AF46632562D9EF002CFE4C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D4B716CF25E6CB3300EE2D4B /* ProfileSkillsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProfileSkillsViewController.swift; path = AccountabilityPods/ProfileSkillsViewController.swift; sourceTree = SOURCE_ROOT; };
 		D4B716DC25E6E47100EE2D4B /* ProfileResourceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProfileResourceViewController.swift; path = AccountabilityPods/ProfileResourceViewController.swift; sourceTree = SOURCE_ROOT; };
+		D4B716E125E6EE9C00EE2D4B /* SkillViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SkillViewController.swift; path = AccountabilityPods/SkillViewController.swift; sourceTree = SOURCE_ROOT; };
 		D4D078D125E15DC700B6A05A /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		D4E625B3257AE3C000963DD6 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		D4E7E26225E1895C00E3E386 /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProfileCell.swift; path = AccountabilityPods/ProfileCell.swift; sourceTree = SOURCE_ROOT; };
@@ -254,6 +256,7 @@
 		D4B716C825E6C94C00EE2D4B /* OtherProfile */ = {
 			isa = PBXGroup;
 			children = (
+				D4B716E125E6EE9C00EE2D4B /* SkillViewController.swift */,
 				D4B716DC25E6E47100EE2D4B /* ProfileResourceViewController.swift */,
 				D4B716CF25E6CB3300EE2D4B /* ProfileSkillsViewController.swift */,
 				D4E625B3257AE3C000963DD6 /* ProfileViewController.swift */,
@@ -571,6 +574,7 @@
 				D43570D52579967900FCE20C /* SkillsViewController.swift in Sources */,
 				C3299C3D2570660E00D2C3D7 /* Utilities.swift in Sources */,
 				D4B716DD25E6E47100EE2D4B /* ProfileResourceViewController.swift in Sources */,
+				D4B716E225E6EE9C00EE2D4B /* SkillViewController.swift in Sources */,
 				AE145E2125716A2E00AF0F0C /* ResourceCreationViewController.swift in Sources */,
 				AE90A7EE25E1C19D00E6DBC4 /* ResourceViewCollectionVC.swift in Sources */,
 				AE49711D257A48ED008CCEEB /* OwnSkillViewController.swift in Sources */,

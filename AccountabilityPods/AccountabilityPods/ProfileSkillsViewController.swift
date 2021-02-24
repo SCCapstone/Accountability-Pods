@@ -28,6 +28,7 @@ class ProfileSkillsViewController: UIViewController {
     
     func generateArray() {
         skills = []
+        //profile.uid = Constants.User.sharedInstance.userID
         if profile.uid != "" {
             db.collection("users").document(profile.uid).collection("SKILLS").getDocuments() { (querySnapshot, err) in
                 if let err = err {
@@ -71,10 +72,22 @@ extension ProfileSkillsViewController: UITableViewDataSource, UITableViewDelegat
             cell.setSkill(skill: skill)
             return cell
     }
-    // TODO: create view in main.storyboard to segue to when skill tapped
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        self.performSegue(withIdentifier: "showProfileSkillSegue", sender: Any?.self)
     }
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showProfileSkillSegue"
+        {
+            let indexPath = self.tableView.indexPathForSelectedRow
+            let skill = self.skills[(indexPath?.row)!]
+            if let dView = segue.destination as? SkillViewController {
+                dView.skill = skill
+            }
+        }
+        else
+        {
+            return
+        }
+    }
     
 }

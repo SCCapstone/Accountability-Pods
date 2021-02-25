@@ -36,7 +36,7 @@ class ProfileResourceViewController: UIViewController {
                         let tempResource = Resource(base: self.db, path_: path)
                         tempResource.readData(database: self.db, path: path, tableview: self.tableView)
                         self.resources.append(tempResource)
-                        self.tableView.reloadData()
+                        //self.tableView.reloadData()
                     }
                 }
             }

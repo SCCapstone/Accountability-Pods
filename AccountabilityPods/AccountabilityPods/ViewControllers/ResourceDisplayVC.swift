@@ -31,6 +31,9 @@ class ResourceDisplayVC: UIViewController {
     func setTextFields() {
         nameField.text = resource.name
         descField.text = resource.desc
+        let directories = resource.path.split(separator: "/")
+        //print("" + directories[1])
+        usernameButton.setTitle(("@" + directories[1]), for: UIControl.State.normal)
         
         if(hasLiked)
         {

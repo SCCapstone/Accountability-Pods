@@ -246,6 +246,9 @@ class Profile {
     public var uid: String
     public var path: String
     
+    public var hashableProfile: ProfileHashable
+    
+    
     init() {
         self.path = ""
         self.firstName = "No name"
@@ -253,6 +256,8 @@ class Profile {
         self.userName = "UnknownUsernameForUserHere12345"
         self.description = ""
         self.uid = ""
+        self.hashableProfile = ProfileHashable()
+        
     }
     
     init(base: Firestore, path_:String) {
@@ -262,6 +267,7 @@ class Profile {
         self.userName = "UnknownUsernameForUserHere12345"
         self.description = ""
         self.uid = ""
+        self.hashableProfile = ProfileHashable()
         readData(database: base, path: path_)
     }
     
@@ -321,4 +327,31 @@ class Profile {
         }
     }
     
+    
+    func readFromResourcePath(database: Firestore, path: String)
+    {
+        let directories = path.split(separator: "/")
+        
+        let pathTemp: String
+        pathTemp = directories[0] + "/" + directories[1]
+        
+        self.readData(database: database, path: pathTemp)
+    }
+}
+
+public struct ProfileHashable: Hashable {
+    let firstName: String
+    let lastName: String
+    let userName: String
+    let description: String
+    let uid: String
+    let uniqueID = UUID()
+    
+    init() {
+        self.firstName = ""
+        self.lastName = ""
+        self.userName = ""
+        self.description = ""
+        self.uid = ""
+    }
 }

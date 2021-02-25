@@ -24,6 +24,9 @@ class ViewMsgViewController: UIViewController, UITableViewDelegate, UITableViewD
         reload()
         // Do any additional setup after loading the view.
     }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
     @objc func reload()
     {
         print("Notified")

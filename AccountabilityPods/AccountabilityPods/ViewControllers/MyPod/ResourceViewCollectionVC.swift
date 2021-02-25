@@ -48,7 +48,6 @@ class ResourceViewCollectionVC: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
-    
     override func viewDidLoad() {
         // Immediately set up observer so if there is any saved resource change, i.e. a user likes or unlikes a post, or moves it to/from a group, the update function is called.
         NotificationCenter.default.addObserver(self, selector: #selector(self.genArray), name: NSNotification.Name(rawValue: "SavedResourceChange"), object: nil)
@@ -134,7 +133,9 @@ class ResourceViewCollectionVC: UIViewController {
         
         // Do any additional setup after loading the view.
     }
-    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
     @objc func update()
     {
         

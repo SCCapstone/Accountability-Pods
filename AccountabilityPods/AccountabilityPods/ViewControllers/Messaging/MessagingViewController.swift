@@ -26,6 +26,9 @@ class MessagingViewController: UIViewController, UITableViewDelegate, UITableVie
         // Do any additional setup after loading the view.
         //setUpElements()
     }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }

@@ -34,7 +34,7 @@ class ProfileViewController: UIViewController {
     
     func setName() {
         nameLabel.text = profile.firstName + " " + profile.lastName
-        usernameLabel.text = "@" + profile.userName
+        usernameLabel.text = "@" + profile.uid
         descriptionLabel.text = profile.description
         
     }
@@ -70,6 +70,7 @@ class ProfileViewController: UIViewController {
             } else {
                 print("Contact added with uid: \(self.profile.uid)")
                 self.setContactButton()
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ContactsChanged"), object: nil)
             }
         }
         
@@ -81,6 +82,7 @@ class ProfileViewController: UIViewController {
             } else {
                 print("Contact successfully removed")
                 self.setContactButton()
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ContactsChanged"), object: nil)
             }
             
         }

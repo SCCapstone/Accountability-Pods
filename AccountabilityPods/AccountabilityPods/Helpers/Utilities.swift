@@ -241,10 +241,12 @@ class Skill {
 class Profile {
     public var firstName: String
     public var lastName: String
-    public var userName: String
     public var description: String
     public var uid: String
     public var path: String
+    
+    //Note: Profile originally had both uid and username.
+    //      This has since been changed as there is no longer a reason for the alphanumeric userid to be stored. However, to prevent a large number of changes it made more sense to just condense the two into the uid variable.
     
     public var hashableProfile: ProfileHashable
     
@@ -253,7 +255,6 @@ class Profile {
         self.path = ""
         self.firstName = "No name"
         self.lastName = "No name"
-        self.userName = "UnknownUsernameForUserHere12345"
         self.description = ""
         self.uid = ""
         self.hashableProfile = ProfileHashable()
@@ -264,7 +265,6 @@ class Profile {
         self.path = ""
         self.firstName = "No name"
         self.lastName = "No name"
-        self.userName = "UnknownUsernameForUserHere12345"
         self.description = ""
         self.uid = ""
         self.hashableProfile = ProfileHashable()
@@ -287,13 +287,12 @@ class Profile {
             if (data?["description"] != nil) {
                 des_ = data!["description"] as! String
             }
-            let uid_ = data!["uid"] as! String
             
             self.firstName = first_
             self.lastName = last_
-            self.userName = user_
+            
             self.description = des_
-            self.uid = uid_
+            self.uid = user_
         }
     }
     
@@ -315,13 +314,12 @@ class Profile {
             if (data?["description"] != nil) {
                 des_ = data!["description"] as! String
             }
-            let uid_ = data!["uid"] as! String
             
             self.firstName = first_
             self.lastName = last_
-            self.userName = user_
+            self.uid = user_
             self.description = des_
-            self.uid = uid_
+            //self.uid = uid_
             //print(self.userName)
             tableview.reloadData()
         }
@@ -342,15 +340,13 @@ class Profile {
 public struct ProfileHashable: Hashable {
     let firstName: String
     let lastName: String
-    let userName: String
-    let description: String
     let uid: String
+    let description: String
     let uniqueID = UUID()
     
     init() {
         self.firstName = ""
         self.lastName = ""
-        self.userName = ""
         self.description = ""
         self.uid = ""
     }

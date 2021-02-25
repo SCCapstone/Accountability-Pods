@@ -25,6 +25,8 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var errorLabel: UILabel!
     
+    let db = Firestore.firestore()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     
@@ -85,8 +87,24 @@ class LoginViewController: UIViewController {
                     self.editErrorMessage(error!.localizedDescription)
                 }
                 else {
+                    
+                    self.db.collection("userids").getDocuments() { docs, err in
+                    if let err = err {
+                        print(err)
+                    }
+                    else
+                    {
+                        for doc in docs!.documents {
+                            if (doc.documentID == result!.user.uid)
+                            {
+                                print("Successfully got the username from ID!")
+                                Constants.User.sharedInstance.userID = doc.data()["username"] as! String
+                            }
+                        }
+                    }
+                    }
                     Constants.User.sharedInstance.userID = result!.user.uid;
-                    print(Constants.User.sharedInstance.userID)
+                    //print(Constants.User.sharedInstance.userID)
                     self.transitionToHome()
                 }
             }    }

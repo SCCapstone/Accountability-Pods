@@ -61,7 +61,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         print("QUERY: \(query)")
         filteredProfiles.removeAll()
         for profile in profiles {
-            let userString = profile.userName
+            let userString = profile.uid
             let firstString = profile.firstName
             let lastString = profile.lastName
             if (userString.lowercased().starts(with: query.lowercased()) || firstString.lowercased().starts(with: query.lowercased()) || lastString.lowercased().starts(with: query.lowercased()))

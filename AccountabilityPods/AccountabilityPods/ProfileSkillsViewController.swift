@@ -18,7 +18,7 @@ class ProfileSkillsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("Profile id: \(profile.uid)")
+        //print("Profile id: \(profile.uid)")
         self.generateArray()
         tableView.delegate = self
         tableView.dataSource = self

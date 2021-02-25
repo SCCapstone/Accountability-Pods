@@ -14,6 +14,8 @@ class ResourceBrowseViewController: UIViewController {
     var resources: [Resource] = []
     let db = Firestore.firestore()
     override func viewDidLoad() {
+        NotificationCenter.default.addObserver(self, selector: #selector(self.genArray), name: NSNotification.Name(rawValue: "ContactsChanged"), object: nil)
+       
         super.viewDidLoad()
         genArray()
         // Do any additional setup after loading the view.
@@ -25,7 +27,8 @@ class ResourceBrowseViewController: UIViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
-    func genArray(){
+    @objc func genArray(){
+        self.resources = []
         let usersRef = db.collection("users")
         let currUserRef = usersRef.document(Constants.User.sharedInstance.userID)
         let userContactRef = currUserRef.collection("CONTACTS")

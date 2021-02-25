@@ -16,7 +16,7 @@ class ProfileCell: UITableViewCell {
     
     func setProfile(profile: Profile) {
         self.nameLabel.text = profile.firstName + " " + profile.lastName
-        self.usernameLabel.text = "@" + profile.userName
+        self.usernameLabel.text = "@" + profile.uid
     }
     
 }

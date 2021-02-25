@@ -30,6 +30,7 @@ class ChatViewController: JSQMessagesViewController
     override func viewDidLoad() {
     
         super.viewDidLoad()
+        super.viewDidLoad()
         
         //senderId = "1234"
         //senderDisplayName = "Jhada"
@@ -62,18 +63,18 @@ class ChatViewController: JSQMessagesViewController
         
         //observing the chat displaying on screen
         let query = Constants.chatRefs.databaseChats.whereField("sender_id", isEqualTo: senderId!)
-        query .addSnapshotListener { querySnapshot, error in guard let documents = querySnapshot?.documents else{
+        query.addSnapshotListener { querySnapshot, error in guard let documents = querySnapshot?.documents else{
             print("Error getting documents: \(error!)")
             return
         }
-        self.messages.removeAll()
+        //self.messages.removeAll()
         for document in querySnapshot!.documents {
             if let data = document.data()  as? [String: String],
             let id = data["sender_id"],
                let name = data["name"],
                let text = data["text"],
                !text.isEmpty {
-                if let message = JSQMessage(senderId: id, displayName: name, text: text)
+                if let message = JSQMessage(senderId: id, displayName: name,  text: text)
                 {
                     self.messages.append(message)
                     self.finishReceivingMessage()
@@ -207,15 +208,14 @@ class ChatViewController: JSQMessagesViewController
     {
         let ref = Constants.chatRefs.databaseChats.document()
         
-        let message = ["sender_id": senderId, "name": senderDisplayName, "text": text]
+        let message = ["sender_id": senderId!, "name": senderDisplayName!, "date": date!, "text": text!] as [String : Any]
         
         ref.setData(message as [String : Any])
         
         finishSendingMessage()
     }
     
-
-    
+   
     /*
     // MARK: - Navigation
 

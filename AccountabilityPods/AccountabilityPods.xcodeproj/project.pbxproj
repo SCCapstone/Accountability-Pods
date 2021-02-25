@@ -12,6 +12,7 @@
 		6840CD1C257B066C00640DF4 /* ViewMsgViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6840CD1B257B066C00640DF4 /* ViewMsgViewController.swift */; };
 		68BF202B25C9F05400B6C79B /* Messages.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68BF202A25C9F05400B6C79B /* Messages.storyboard */; };
 		68BF202D25C9F90500B6C79B /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68BF202C25C9F90500B6C79B /* Search.storyboard */; };
+		68CEA2FA25E86651004F9F3A /* ContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CEA2F925E86651004F9F3A /* ContactCell.swift */; };
 		84ED207CF02B0D2EEF6A272E /* Pods_AccountabilityPods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5DD0F88BC86A0A685D0D37E /* Pods_AccountabilityPods.framework */; };
 		A912BE0BE48CD3ADFB693F96 /* Pods_AccountabilityPodsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AF016F9E02C0910794434E8 /* Pods_AccountabilityPodsTests.framework */; };
 		AE145E2125716A2E00AF0F0C /* ResourceCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE145E2025716A2D00AF0F0C /* ResourceCreationViewController.swift */; };
@@ -76,6 +77,7 @@
 		6840CD1B257B066C00640DF4 /* ViewMsgViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewMsgViewController.swift; sourceTree = "<group>"; };
 		68BF202A25C9F05400B6C79B /* Messages.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Messages.storyboard; sourceTree = "<group>"; };
 		68BF202C25C9F90500B6C79B /* Search.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
+		68CEA2F925E86651004F9F3A /* ContactCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ContactCell.swift; path = AccountabilityPods/Helpers/ContactCell.swift; sourceTree = SOURCE_ROOT; };
 		AE145E2025716A2D00AF0F0C /* ResourceCreationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceCreationViewController.swift; sourceTree = "<group>"; };
 		AE4970F72579F994008CCEEB /* SavedResourceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedResourceViewController.swift; sourceTree = "<group>"; };
 		AE4970FF257A1968008CCEEB /* PostedResourcesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostedResourcesViewController.swift; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 				C3299C3C2570660E00D2C3D7 /* Utilities.swift */,
 				C3299C5E2571324800D2C3D7 /* Constants.swift */,
 				AE49710F257A467F008CCEEB /* SkillCell.swift */,
+				68CEA2F925E86651004F9F3A /* ContactCell.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -562,6 +565,7 @@
 				D4D078D225E15DC700B6A05A /* SearchViewController.swift in Sources */,
 				D484062F2545CB7F0020830A /* ViewController.swift in Sources */,
 				C3299C0B257016C800D2C3D7 /* ForgotPasswordViewController.swift in Sources */,
+				68CEA2FA25E86651004F9F3A /* ContactCell.swift in Sources */,
 				D484062B2545CB7F0020830A /* AppDelegate.swift in Sources */,
 				AE4970F82579F994008CCEEB /* SavedResourceViewController.swift in Sources */,
 				C3299BF825700BBD00D2C3D7 /* SignUpViewController.swift in Sources */,

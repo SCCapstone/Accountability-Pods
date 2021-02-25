@@ -16,6 +16,7 @@ class ProfileResourceViewController: UIViewController {
     var profile = Profile()
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         self.generateArray()
         tableView.delegate = self
@@ -24,6 +25,7 @@ class ProfileResourceViewController: UIViewController {
     }
     
     func generateArray(){
+        //print("HEREHERHERHERHERHE" + self.profile.uid)
         resources = []
         if profile.uid != "" {
             db.collection("users").document(profile.uid).collection("POSTEDRESOURCES").getDocuments() { (querySnapshot, err) in

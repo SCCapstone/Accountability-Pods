@@ -28,8 +28,20 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         setName()
         setContactButton()
-
+     
         // Do any additional setup after loading the view.
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if let vc = segue.destination as? ProfileResourceViewController
+        {
+            vc.profile = self.profile
+        }
+        else if let vc = segue.destination as? ProfileSkillsViewController
+        {
+            vc.profile = self.profile
+        }
+        
     }
     
     func setName() {

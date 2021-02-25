@@ -735,13 +735,13 @@
                                     <constraint firstAttribute="height" constant="540" id="IAM-DJ-Pzo"/>
                                 </constraints>
                                 <connections>
-                                    <segue destination="gBc-ai-DDI" kind="embed" id="OzH-Fr-rZD"/>
+                                    <segue destination="gBc-ai-DDI" kind="embed" identifier="profileEmbedSegue" id="OzH-Fr-rZD"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WED-UF-4hS" userLabel="Skills Container">
                                 <rect key="frame" x="0.0" y="356" width="414" height="540"/>
                                 <connections>
-                                    <segue destination="T0y-UM-fsT" kind="embed" id="wCx-4Z-HdX"/>
+                                    <segue destination="T0y-UM-fsT" kind="embed" identifier="profileEmbedSegue" id="wCx-4Z-HdX"/>
                                 </connections>
                             </containerView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="DDx-Px-6Id">

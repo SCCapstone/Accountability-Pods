@@ -31,6 +31,9 @@ class ProfileViewController: UIViewController {
      
         // Do any additional setup after loading the view.
     }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if let vc = segue.destination as? ProfileResourceViewController

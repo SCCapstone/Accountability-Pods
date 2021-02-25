@@ -30,6 +30,7 @@ class MessagingViewController: UIViewController, UITableViewDelegate, UITableVie
         // Do any additional setup after loading the view.
         //setUpElements()
     }
+<<<<<<< HEAD
     
     //get users from the database load data
     private func loadData() {
@@ -50,6 +51,13 @@ class MessagingViewController: UIViewController, UITableViewDelegate, UITableVie
                 }
             }
         }
+=======
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+>>>>>>> 8ec25d4fa5d3595424ebbe093f5940f5e0652621
     }
     
     func filterText(_ query: String) {

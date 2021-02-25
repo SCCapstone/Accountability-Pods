@@ -63,6 +63,9 @@ class OwnSkillViewController: UIViewController {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "OnEditSkill"), object: nil)
         self.dismiss(animated: true)
     }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
     /*
     // MARK: - Navigation
 

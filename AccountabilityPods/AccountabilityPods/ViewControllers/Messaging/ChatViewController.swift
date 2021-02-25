@@ -215,7 +215,14 @@ class ChatViewController: JSQMessagesViewController
         finishSendingMessage()
     }
     
+<<<<<<< HEAD
    
+=======
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+>>>>>>> 8ec25d4fa5d3595424ebbe093f5940f5e0652621
     /*
     // MARK: - Navigation
 

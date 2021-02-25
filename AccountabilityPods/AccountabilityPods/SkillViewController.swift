@@ -24,7 +24,9 @@ class SkillViewController: UIViewController {
         SkillDescTextView.text = skill.desc
         skillNameLabel.text = skill.name
     }
-
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
     /*
     // MARK: - Navigation
 

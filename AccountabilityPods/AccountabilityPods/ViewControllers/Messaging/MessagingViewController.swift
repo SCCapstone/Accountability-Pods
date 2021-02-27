@@ -20,6 +20,7 @@ class MessagingViewController: UIViewController, UITableViewDelegate, UITableVie
     var filteredData = [String]()
     var filteredContacts = [Profile]()
     var filtered = false
+    //var userID = Constants.User.sharedInstance.userID;
 
     
     override func viewDidLoad() {
@@ -33,14 +34,14 @@ class MessagingViewController: UIViewController, UITableViewDelegate, UITableVie
     
     //get users from the database load data
     private func loadData() {
-        let usersRef = db.collection("users")
+        let usersRef = db.collection("users")//.document(userID).collection("CONTACTS")
         
         usersRef.getDocuments() {(querySnapshot, err) in
             if let err = err {
                 print("Error getting users for searching: \(err)")
             }
             else {
-                print("Loading Users for Search Display")
+                print("Loading Users Contacts")
                 for document in querySnapshot!.documents {
                     if document.documentID != "adminuser" {
                         let tempProfile = Profile()

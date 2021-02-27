@@ -22,6 +22,7 @@
 		AE497110257A467F008CCEEB /* SkillCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE49710F257A467F008CCEEB /* SkillCell.swift */; };
 		AE49711D257A48ED008CCEEB /* OwnSkillViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE49711C257A48ED008CCEEB /* OwnSkillViewController.swift */; };
 		AE57ADCC2579EAFD0079B717 /* ResourceDisplayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE57ADCB2579EAFC0079B717 /* ResourceDisplayVC.swift */; };
+		AE5C947325EACC1B00DB2023 /* ProfileViewCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5C947225EACC1B00DB2023 /* ProfileViewCollectionVC.swift */; };
 		AE77454225797C1B000CB90C /* ResourceBrowseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE77454125797C1B000CB90C /* ResourceBrowseViewController.swift */; };
 		AE77454725797C46000CB90C /* ResourceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE77454625797C46000CB90C /* ResourceCell.swift */; };
 		AE90A7EE25E1C19D00E6DBC4 /* ResourceViewCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE90A7ED25E1C19D00E6DBC4 /* ResourceViewCollectionVC.swift */; };
@@ -85,6 +86,7 @@
 		AE49710F257A467F008CCEEB /* SkillCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillCell.swift; sourceTree = "<group>"; };
 		AE49711C257A48ED008CCEEB /* OwnSkillViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnSkillViewController.swift; sourceTree = "<group>"; };
 		AE57ADCB2579EAFC0079B717 /* ResourceDisplayVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourceDisplayVC.swift; sourceTree = "<group>"; };
+		AE5C947225EACC1B00DB2023 /* ProfileViewCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewCollectionVC.swift; sourceTree = "<group>"; };
 		AE77454125797C1B000CB90C /* ResourceBrowseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourceBrowseViewController.swift; sourceTree = "<group>"; };
 		AE77454625797C46000CB90C /* ResourceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourceCell.swift; sourceTree = "<group>"; };
 		AE90A7ED25E1C19D00E6DBC4 /* ResourceViewCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceViewCollectionVC.swift; sourceTree = "<group>"; };
@@ -270,6 +272,7 @@
 		D4B716C925E6C98B00EE2D4B /* MyPod */ = {
 			isa = PBXGroup;
 			children = (
+				AE5C947225EACC1B00DB2023 /* ProfileViewCollectionVC.swift */,
 				D43570D0257975E500FCE20C /* MyPodViewController.swift */,
 				AE4970FF257A1968008CCEEB /* PostedResourcesViewController.swift */,
 				AE497104257A1AC1008CCEEB /* OwnResourceVC.swift */,
@@ -565,6 +568,7 @@
 				D4D078D225E15DC700B6A05A /* SearchViewController.swift in Sources */,
 				D484062F2545CB7F0020830A /* ViewController.swift in Sources */,
 				C3299C0B257016C800D2C3D7 /* ForgotPasswordViewController.swift in Sources */,
+				AE5C947325EACC1B00DB2023 /* ProfileViewCollectionVC.swift in Sources */,
 				68CEA2FA25E86651004F9F3A /* ContactCell.swift in Sources */,
 				D484062B2545CB7F0020830A /* AppDelegate.swift in Sources */,
 				AE4970F82579F994008CCEEB /* SavedResourceViewController.swift in Sources */,

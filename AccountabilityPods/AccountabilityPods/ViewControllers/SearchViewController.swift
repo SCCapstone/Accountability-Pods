@@ -53,6 +53,10 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if let text = textField.text {
             filterText(text + string)
         }
+        else
+        {
+            filtered = false;
+        }
         table.reloadData()
         return true
     }

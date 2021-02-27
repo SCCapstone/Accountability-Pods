@@ -3,6 +3,7 @@
 //  AccountabilityPods
 //
 //  Created by duncan evans on 12/3/20.
+//  May be removed in the near future
 //  Copyright © 2020 CapstoneGroup. All rights reserved.
 //
 

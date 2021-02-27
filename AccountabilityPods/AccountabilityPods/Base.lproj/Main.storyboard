@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3nk-Sv-Rqm">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3nk-Sv-Rqm">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -510,7 +510,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7sM-gN-QRx" userLabel="PodGroupsContainer">
                                 <rect key="frame" x="0.0" y="300" width="414" height="513"/>
                                 <connections>
-                                    <segue destination="dyA-tW-AMb" kind="embed" id="uj5-MO-ncD"/>
+                                    <segue destination="FxM-Ux-Vlh" kind="embed" id="Zbo-JW-9BC"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gxa-10-QuU" userLabel="SkillsContainer">
@@ -704,11 +704,11 @@
             <objects>
                 <viewController storyboardIdentifier="ProfileView" id="XcG-3C-Qbm" userLabel="Profile View" customClass="ProfileViewController" customModule="AccountabilityPods" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Rkn-IS-uPu">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4CN-3D-Seb">
-                                <rect key="frame" x="0.0" y="44" width="414" height="47"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="47"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Power Pods" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EFc-7r-QCH">
                                         <rect key="frame" x="153" y="19" width="108" height="28"/>
@@ -730,7 +730,7 @@
                                 </constraints>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4aG-Wk-FSE" userLabel="Post Container">
-                                <rect key="frame" x="0.0" y="356" width="414" height="540"/>
+                                <rect key="frame" x="0.0" y="302" width="414" height="540"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="540" id="IAM-DJ-Pzo"/>
                                 </constraints>
@@ -739,13 +739,13 @@
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WED-UF-4hS" userLabel="Skills Container">
-                                <rect key="frame" x="0.0" y="356" width="414" height="540"/>
+                                <rect key="frame" x="0.0" y="302" width="414" height="540"/>
                                 <connections>
                                     <segue destination="T0y-UM-fsT" kind="embed" identifier="profileEmbedSegue" id="wCx-4Z-HdX"/>
                                 </connections>
                             </containerView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="DDx-Px-6Id">
-                                <rect key="frame" x="0.0" y="316" width="414" height="41"/>
+                                <rect key="frame" x="0.0" y="262" width="414" height="41"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="zZw-KK-O4Z"/>
                                 </constraints>
@@ -758,7 +758,7 @@
                                 </connections>
                             </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U0p-Ww-prE" userLabel="AddContact">
-                                <rect key="frame" x="365" y="114" width="21" height="23"/>
+                                <rect key="frame" x="365" y="70" width="21" height="23"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="23" id="8ni-pu-UcU"/>
                                     <constraint firstAttribute="width" constant="21" id="OTt-0G-eyN"/>
@@ -769,7 +769,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WZL-2p-auh" userLabel="removeContact">
-                                <rect key="frame" x="365" y="114" width="21" height="23"/>
+                                <rect key="frame" x="365" y="70" width="21" height="23"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="23" id="HhZ-wD-INl"/>
                                     <constraint firstAttribute="width" constant="21" id="LLV-kD-tCn"/>
@@ -780,7 +780,7 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="wqc-vA-NCg">
-                                <rect key="frame" x="70" y="156" width="250" height="63.5"/>
+                                <rect key="frame" x="70" y="112" width="250" height="63.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="----------------------" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VDA-qD-P28" userLabel="Name Field">
                                         <rect key="frame" x="0.0" y="0.0" width="250" height="23.5"/>
@@ -811,6 +811,32 @@
                                     </label>
                                 </subviews>
                             </stackView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Leave blank to remove" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mte-kS-V3b">
+                                <rect key="frame" x="197" y="220" width="173" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="TVi-IQ-KKw"/>
+                                    <constraint firstAttribute="width" constant="173" id="cMv-2s-ieH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add to group" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A9l-wH-2Ts">
+                                <rect key="frame" x="207" y="191" width="142" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IN1-Nn-R6B" userLabel="removeContact">
+                                <rect key="frame" x="384" y="226" width="21" height="23"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="21" id="w0k-bk-g5a"/>
+                                    <constraint firstAttribute="height" constant="23" id="xpi-n1-YsK"/>
+                                </constraints>
+                                <state key="normal" image="folder.fill" catalog="system"/>
+                                <connections>
+                                    <action selector="addGroup:" destination="XcG-3C-Qbm" eventType="touchUpInside" id="ygD-i2-1ua"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="4GG-gz-cpJ"/>
                         <color key="backgroundColor" name="accountablegreen"/>
@@ -824,7 +850,10 @@
                             <constraint firstItem="4aG-Wk-FSE" firstAttribute="top" secondItem="DDx-Px-6Id" secondAttribute="bottom" id="OzL-fO-JfG"/>
                             <constraint firstItem="4CN-3D-Seb" firstAttribute="top" secondItem="4GG-gz-cpJ" secondAttribute="top" id="P1h-LG-E7Y"/>
                             <constraint firstItem="4CN-3D-Seb" firstAttribute="trailing" secondItem="4GG-gz-cpJ" secondAttribute="trailing" id="Pyu-8B-F9j"/>
+                            <constraint firstItem="IN1-Nn-R6B" firstAttribute="leading" secondItem="mte-kS-V3b" secondAttribute="trailing" constant="14" id="RDI-sH-DNq"/>
+                            <constraint firstItem="A9l-wH-2Ts" firstAttribute="top" secondItem="wqc-vA-NCg" secondAttribute="bottom" constant="15.5" id="Sgc-ur-W05"/>
                             <constraint firstItem="4GG-gz-cpJ" firstAttribute="trailing" secondItem="DDx-Px-6Id" secondAttribute="trailing" id="TbO-29-rRv"/>
+                            <constraint firstItem="A9l-wH-2Ts" firstAttribute="leading" secondItem="4GG-gz-cpJ" secondAttribute="leading" constant="207" id="UvO-dn-2st"/>
                             <constraint firstItem="4CN-3D-Seb" firstAttribute="leading" secondItem="4GG-gz-cpJ" secondAttribute="leading" id="bL6-gC-CXD"/>
                             <constraint firstItem="DDx-Px-6Id" firstAttribute="leading" secondItem="4GG-gz-cpJ" secondAttribute="leading" id="bTH-i0-iHE"/>
                             <constraint firstItem="wqc-vA-NCg" firstAttribute="top" secondItem="4CN-3D-Seb" secondAttribute="bottom" constant="65" id="eZE-Bl-GQ3"/>
@@ -834,14 +863,24 @@
                             <constraint firstItem="4GG-gz-cpJ" firstAttribute="trailing" secondItem="DDx-Px-6Id" secondAttribute="trailing" id="irM-WH-RDW"/>
                             <constraint firstItem="4GG-gz-cpJ" firstAttribute="trailing" secondItem="U0p-Ww-prE" secondAttribute="trailing" constant="28" id="iw6-VY-JIR"/>
                             <constraint firstItem="4aG-Wk-FSE" firstAttribute="trailing" secondItem="4GG-gz-cpJ" secondAttribute="trailing" id="j6M-JV-gma"/>
+                            <constraint firstItem="mte-kS-V3b" firstAttribute="leading" secondItem="4GG-gz-cpJ" secondAttribute="leading" constant="197" id="nz9-ug-HfB"/>
+                            <constraint firstItem="4GG-gz-cpJ" firstAttribute="trailing" secondItem="A9l-wH-2Ts" secondAttribute="trailing" constant="65" id="oII-Vq-gOL"/>
                             <constraint firstItem="WZL-2p-auh" firstAttribute="top" secondItem="4CN-3D-Seb" secondAttribute="bottom" constant="23" id="rdQ-aW-S7o"/>
+                            <constraint firstItem="4GG-gz-cpJ" firstAttribute="trailing" secondItem="IN1-Nn-R6B" secondAttribute="trailing" constant="9" id="tNH-ug-wTy"/>
+                            <constraint firstItem="mte-kS-V3b" firstAttribute="top" secondItem="A9l-wH-2Ts" secondAttribute="bottom" constant="8.5" id="v4X-cL-mXc"/>
                             <constraint firstAttribute="bottom" secondItem="WED-UF-4hS" secondAttribute="bottom" id="vcX-8u-QGb"/>
+                            <constraint firstItem="DDx-Px-6Id" firstAttribute="top" secondItem="IN1-Nn-R6B" secondAttribute="bottom" constant="13" id="zB9-uo-TpA"/>
                             <constraint firstItem="WED-UF-4hS" firstAttribute="leading" secondItem="4GG-gz-cpJ" secondAttribute="leading" id="zpw-Xu-X6l"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="BNP-2d-u0f"/>
+                    <modalPageSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="addContactButton" destination="U0p-Ww-prE" id="iTc-Vb-DYc"/>
+                        <outlet property="addGroupButton" destination="IN1-Nn-R6B" id="KEb-o4-QtC"/>
                         <outlet property="descriptionLabel" destination="ahk-4a-R3B" id="95f-jc-U8v"/>
+                        <outlet property="groupLabel" destination="A9l-wH-2Ts" id="sG4-gL-BPz"/>
+                        <outlet property="groupText" destination="mte-kS-V3b" id="F2R-Zm-alf"/>
                         <outlet property="nameLabel" destination="VDA-qD-P28" id="sOH-nA-XQ0"/>
                         <outlet property="postContainer" destination="4aG-Wk-FSE" id="KBe-OQ-5V7"/>
                         <outlet property="removeContactButton" destination="WZL-2p-auh" id="QD2-IL-lWh"/>
@@ -852,7 +891,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1og-3y-6L9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6599" y="-701"/>
+            <point key="canvasLocation" x="6598.5507246376819" y="-701.11607142857144"/>
         </scene>
         <!--Home-->
         <scene sceneID="gkW-kg-yVg">
@@ -1115,34 +1154,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YOv-R6-DmC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="7468" y="316"/>
-        </scene>
-        <!--PodGroups-->
-        <scene sceneID="LPD-lX-Jvk">
-            <objects>
-                <viewController id="dyA-tW-AMb" userLabel="PodGroups" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8rQ-En-cr7">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="513"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Adding and organizing contacts will be implemented Spring 2020" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iE3-FR-3lE">
-                                <rect key="frame" x="20" y="84" width="374" height="41"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="SmU-7b-Wz3"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="iE3-FR-3lE" secondAttribute="trailing" constant="20" id="DIn-gT-Ejl"/>
-                            <constraint firstItem="iE3-FR-3lE" firstAttribute="top" secondItem="SmU-7b-Wz3" secondAttribute="top" constant="40" id="Tcx-3j-QFJ"/>
-                            <constraint firstItem="iE3-FR-3lE" firstAttribute="leading" secondItem="SmU-7b-Wz3" secondAttribute="leading" constant="20" id="UZF-uG-yPd"/>
-                        </constraints>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="bPE-xO-QG4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="5462.3188405797109" y="413.50446428571428"/>
         </scene>
         <!--Resource View CollectionVC-->
         <scene sceneID="3Ev-0T-FfM">
@@ -1909,6 +1920,44 @@
             </objects>
             <point key="canvasLocation" x="7393" y="-934"/>
         </scene>
+        <!--Profile View CollectionVC-->
+        <scene sceneID="V2b-Qy-PcE">
+            <objects>
+                <viewController id="FxM-Ux-Vlh" customClass="ProfileViewCollectionVC" customModule="AccountabilityPods" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="q9B-co-Hzw">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="513"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="KuJ-e3-0R9">
+                                <rect key="frame" x="20" y="29" width="374" height="464"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Vf1-3V-Uvg">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Ehy-hK-Tmn"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Ehy-hK-Tmn" firstAttribute="trailing" secondItem="KuJ-e3-0R9" secondAttribute="trailing" constant="20" id="78b-jX-6Vd"/>
+                            <constraint firstItem="KuJ-e3-0R9" firstAttribute="top" secondItem="q9B-co-Hzw" secondAttribute="top" constant="29" id="8uF-7X-reY"/>
+                            <constraint firstItem="Ehy-hK-Tmn" firstAttribute="bottom" secondItem="KuJ-e3-0R9" secondAttribute="bottom" constant="20" id="AcC-hQ-QRO"/>
+                            <constraint firstItem="KuJ-e3-0R9" firstAttribute="leading" secondItem="Ehy-hK-Tmn" secondAttribute="leading" constant="20" id="YXd-mZ-S74"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="KuJ-e3-0R9" id="CAU-ue-QH8"/>
+                        <segue destination="XcG-3C-Qbm" kind="show" identifier="showProfileSegue" id="jaU-Hq-HV1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZOB-3f-yZN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5588" y="292"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="wxW-nl-QRV"/>
@@ -1921,6 +1970,7 @@
         <image name="bubble_tailless.png" width="56" height="35"/>
         <image name="circle.fill" catalog="system" width="128" height="121"/>
         <image name="escape" catalog="system" width="128" height="121"/>
+        <image name="folder.fill" catalog="system" width="128" height="97"/>
         <image name="heart.fill" catalog="system" width="128" height="109"/>
         <image name="house.fill" catalog="system" width="128" height="106"/>
         <image name="pencil" catalog="system" width="128" height="113"/>

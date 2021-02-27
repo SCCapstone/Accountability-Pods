@@ -13,9 +13,12 @@ class ProfileViewController: UIViewController {
 
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var addGroupButton: UIButton!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
+    @IBOutlet weak var groupLabel: UILabel!
     @IBOutlet weak var postContainer: UIView!
     @IBOutlet weak var skillsContainer: UIView!
+    @IBOutlet weak var groupText: UITextField!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var addContactButton: UIButton!
     @IBOutlet weak var removeContactButton: UIButton!
@@ -54,24 +57,55 @@ class ProfileViewController: UIViewController {
         
     }
     
+    @IBAction func addGroup(_ sender: Any) {
+        
+        
+            let docRef = db.collection("users").document(Constants.User.sharedInstance.userID).collection("CONTACTS").getDocuments(){
+                docs, error in
+                if let error = error
+                {
+                    print(error)
+                }
+                else
+                {
+                    for doc in docs!.documents {
+                        if(doc.data()["userRef"] as! String == self.profile.uid)
+                        {
+                            doc.reference.setData(["groupName" : self.groupText.text], merge: true)
+                            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ContactsChanged"), object: nil)
+                        }
+                    }
+                }
+                
+            }
+        
+    }
     func setContactButton() {
         if profile.uid == userID {
             // if you are viewing your own profile you cannot add or remove as a contact
             addContactButton.alpha = 0
             removeContactButton.alpha = 0
         } else {
+            
             let docRef = db.collection("users").document(userID).collection("CONTACTS").document(profile.uid)
+         
             docRef.getDocument { (document, error) in
                 if let document = document, document.exists {
                     // profile is already contact
                     self.addContactButton.alpha = 0
                     self.removeContactButton.alpha = 1
                     print("profile is contact")
+                    self.groupLabel.isHidden = false
+                    self.groupText.isHidden = false
+                    self.addGroupButton.isHidden = false;
                 } else {
                     // profile is not yet a contact
                     self.addContactButton.alpha = 1
                     self.removeContactButton.alpha = 0
                     print("profile is not yet contact")
+                    self.groupLabel.isHidden = true
+                    self.groupText.isHidden = true
+                    self.addGroupButton.isHidden = true;
                 }
             }
         }

@@ -280,8 +280,9 @@ class Profile {
             if (data?["username"] == nil || data?["firstname"] == nil || data?["lastname"] == nil || data?["uid"] == nil){
                 return
             }
-            let first_ = data!["firstName"] as! String
-            let last_ = data!["lastName"] as! String
+            
+            let first_ = data!["firstname"] as! String
+            let last_ = data!["lastname"] as! String
             let user_ = data!["username"] as! String
             var des_ = ""
             if (data?["description"] != nil) {
@@ -324,6 +325,41 @@ class Profile {
             tableview.reloadData()
         }
     }
+    func readData(database: Firestore, path: String, collectionview: UICollectionView) {
+        self.path = path
+        
+        database.document(path).addSnapshotListener {
+            (querySnapshot, error) in
+            let data = querySnapshot!.data()
+            //print("\(data)")
+            
+            if (data?["username"] == nil || data?["firstname"] == nil || data?["lastname"] == nil) {
+                return
+            }
+            let first_ = data!["firstname"] as! String
+            let last_ = data!["lastname"] as! String
+            let user_ = data!["username"] as! String
+            var des_ = ""
+            if (data?["description"] != nil) {
+                des_ = data!["description"] as! String
+            }
+            
+            self.firstName = first_
+            self.lastName = last_
+            self.uid = user_
+            self.description = des_
+            
+        
+            //self.uid = uid_
+            //print(self.userName)
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ProfileAsyncFinished"), object: nil)
+            collectionview.reloadData()
+        }
+    }
+    func hash()
+    {
+        self.hashableProfile = ProfileHashable(first:self.firstName,last:self.lastName,desc: self.description,path:self.path,uid:self.uid)
+    }
     
     
     func readFromResourcePath(database: Firestore, path: String)
@@ -335,6 +371,14 @@ class Profile {
         
         self.readData(database: database, path: pathTemp)
     }
+    
+    func unHash(hashProfile: ProfileHashable)
+    {
+        self.firstName = hashProfile.firstName
+        self.lastName = hashProfile.lastName
+        self.uid = hashProfile.uid
+        self.description = hashProfile.description
+    }
 }
 
 public struct ProfileHashable: Hashable {
@@ -342,12 +386,22 @@ public struct ProfileHashable: Hashable {
     let lastName: String
     let uid: String
     let description: String
+    let path: String
     let uniqueID = UUID()
     
     init() {
         self.firstName = ""
         self.lastName = ""
         self.description = ""
+        self.path = ""
         self.uid = ""
+    }
+    init(first: String, last: String, desc: String, path: String, uid: String)
+    {
+        self.firstName = first
+        self.lastName = last
+        self.description = desc
+        self.path = path
+        self.uid = uid
     }
 }

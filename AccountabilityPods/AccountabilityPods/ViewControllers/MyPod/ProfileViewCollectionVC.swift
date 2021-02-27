@@ -1,5 +1,5 @@
 //
-//  ResourceViewCollectionVC.swift
+//  ProfileViewCollectionVC.swift
 //  AccountabilityPods
 //
 //  Created by duncan evans on 2/12/21.
@@ -10,19 +10,19 @@ import UIKit
 import Firebase
 
 // Small struct which functions as the folders
-struct ResourceGroup: Hashable {
+struct ProfileGroup: Hashable {
     let uuid = UUID()
     let name: String
-    var resources: [ResourceHashable]
+    var profiles: [ProfileHashable]
 }
 
-struct ResourceGroupUnhashed {
+struct ProfileGroupUnhashed {
     let name: String
-    var resources: [Resource]
+    var profiles: [Profile]
 }
 
 @available(iOS 14.0, *)
-class ResourceViewCollectionVC: UIViewController {
+class ProfileViewCollectionVC: UIViewController {
     // Required
     enum ViewSection {
         case main
@@ -31,16 +31,16 @@ class ResourceViewCollectionVC: UIViewController {
     var data: UICollectionViewDiffableDataSource<ViewSection, ListType>!
     
     // Define the various arrays stored here-- this is not optimal, but it is acceptable.
-    var resources: [ResourceHashable] = []
-    var resourcesUnhashed: [Resource] = []
-    var groups: [ResourceGroup] = []
-    var groupsUnhashed: [ResourceGroupUnhashed] = []
-    var selectedResource: ResourceHashable = ResourceHashable(name:"none",desc:"none",path:"nil")
+    var profiles: [ProfileHashable] = []
+    var profilesUnhashed: [Profile] = []
+    var groups: [ProfileGroup] = []
+    var groupsUnhashed: [ProfileGroupUnhashed] = []
+    var selectedProfile: ProfileHashable = ProfileHashable()
     
     //Enum allows for properly creating the cells
     enum ListType: Hashable {
-        case group(ResourceGroup)
-        case resource(ResourceHashable)
+        case group(ProfileGroup)
+        case profile(ProfileHashable)
     }
     // The main snapshot for the entire collection view
     var snapshotMain: NSDiffableDataSourceSnapshot<ViewSection, ListType>!
@@ -49,14 +49,14 @@ class ResourceViewCollectionVC: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
     override func viewDidLoad() {
-        // Immediately set up observer so if there is any saved resource change, i.e. a user likes or unlikes a post, or moves it to/from a group, the update function is called.
-        NotificationCenter.default.addObserver(self, selector: #selector(self.genArray), name: NSNotification.Name(rawValue: "SavedResourceChange"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.update), name: NSNotification.Name(rawValue: "ResourceAsyncFinished"), object: nil)
+        // Immediately set up observer so if there is any saved profile change, i.e. a user likes or unlikes a post, or moves it to/from a group, the update function is called.
+        NotificationCenter.default.addObserver(self, selector: #selector(self.genArray), name: NSNotification.Name(rawValue: "ContactsChanged"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.update), name: NSNotification.Name(rawValue: "ProfileAsyncFinished"), object: nil)
         
         
         super.viewDidLoad()
         
-        //Populate both the grouped and ungrouped resource arrays
+        //Populate both the grouped and ungrouped profile arrays
         genArray()
         
         let layoutConfig = UICollectionLayoutListConfiguration(appearance: .insetGrouped);
@@ -64,17 +64,17 @@ class ResourceViewCollectionVC: UIViewController {
         
         collectionView.collectionViewLayout = listLayout
         
-        let resourceCellReg = UICollectionView.CellRegistration<UICollectionViewListCell, ResourceHashable> {
-            (cell, indexPath, resource) in
+        let profileCellReg = UICollectionView.CellRegistration<UICollectionViewListCell, ProfileHashable> {
+            (cell, indexPath, profile) in
             
             var contents = cell.defaultContentConfiguration()
-            contents.text = resource.name
+            contents.text = (profile.firstName + " " + profile.lastName)
             contents.image = UIImage(systemName: "bolt.fill")
             
             cell.contentConfiguration = contents
         }
         
-        let groupCellReg = UICollectionView.CellRegistration<UICollectionViewListCell, ResourceGroup> {
+        let groupCellReg = UICollectionView.CellRegistration<UICollectionViewListCell, ProfileGroup> {
             (cell, indexPath, group) in
             var contents = cell.defaultContentConfiguration()
             contents.text = group.name
@@ -95,8 +95,8 @@ class ResourceViewCollectionVC: UIViewController {
             case .group(let group):
                 let cell = collectionView.dequeueConfiguredReusableCell(using: groupCellReg, for: indexPath, item: group)
                 return cell
-            case .resource(let resource):
-                let cell = collectionView.dequeueConfiguredReusableCell(using: resourceCellReg, for: indexPath, item: resource)
+            case .profile(let profile):
+                let cell = collectionView.dequeueConfiguredReusableCell(using: profileCellReg, for: indexPath, item: profile)
                 return cell
             }
         }
@@ -111,18 +111,18 @@ class ResourceViewCollectionVC: UIViewController {
             let groupItem = ListType.group(group)
             snapshotSection.append([groupItem])
             
-            let resourceItem = group.resources.map { ListType.resource($0)}
-            snapshotSection.append(resourceItem, to: groupItem)
+            let profileItem = group.profiles.map { ListType.profile($0)}
+            snapshotSection.append(profileItem, to: groupItem)
             snapshotSection.expand([groupItem])
         }
         
-        for resource in resources {
-            let resourceItem = ListType.resource(resource)
-            snapshotSection.append([resourceItem])
-            //snapshotSection.expand([resourceItem])
+        for profile in profiles {
+            let profileItem = ListType.profile(profile)
+            snapshotSection.append([profileItem])
+            //snapshotSection.expand([profileItem])
             
         }
-       // data.apply(snapshotResources, to: .main, animatingDifferences: false)
+       // data.apply(snapshotProfiles, to: .main, animatingDifferences: false)
         data.apply(snapshotSection, to: .main, animatingDifferences: false)
         self.collectionView.reloadData()
         
@@ -139,37 +139,39 @@ class ResourceViewCollectionVC: UIViewController {
     @objc func update()
     {
         
-        resources = []
+        profiles = []
         self.collectionView.reloadData()
-        for resource in self.resourcesUnhashed {
-            resources.append(resource.hashableResource)
+        for profile in self.profilesUnhashed {
+            profile.hash()
+            profiles.append(profile.hashableProfile)
         }
         
         groups = []
     
         for group in self.groupsUnhashed {
             
-            var tempGroup = ResourceGroup(name:group.name,resources: [])
-            for res in group.resources
+            var tempGroup = ProfileGroup(name:group.name,profiles: [])
+            for res in group.profiles
             {
-                print("--------asdasd------- " + res.name)
-                tempGroup.resources.append(res.hashableResource)
+                print("--------asdasd------- " + res.firstName)
+                res.hash()
+                tempGroup.profiles.append(res.hashableProfile)
             }
             groups.append(tempGroup)
         }
         
         
-        let resourceCellReg = UICollectionView.CellRegistration<UICollectionViewListCell, ResourceHashable> {
-            (cell, indexPath, resource) in
+        let profileCellReg = UICollectionView.CellRegistration<UICollectionViewListCell, ProfileHashable> {
+            (cell, indexPath, profile) in
             
             var contents = cell.defaultContentConfiguration()
-            contents.text = resource.name
+            contents.text = profile.firstName + " " + profile.lastName
             contents.image = UIImage(systemName: "bolt.fill")
             
             cell.contentConfiguration = contents
         }
         
-        let groupCellReg = UICollectionView.CellRegistration<UICollectionViewListCell, ResourceGroup> {
+        let groupCellReg = UICollectionView.CellRegistration<UICollectionViewListCell, ProfileGroup> {
             (cell, indexPath, group) in
             var contents = cell.defaultContentConfiguration()
             contents.text = group.name
@@ -190,8 +192,8 @@ class ResourceViewCollectionVC: UIViewController {
             case .group(let group):
                 let cell = collectionView.dequeueConfiguredReusableCell(using: groupCellReg, for: indexPath, item: group)
                 return cell
-            case .resource(let resource):
-                let cell = collectionView.dequeueConfiguredReusableCell(using: resourceCellReg, for: indexPath, item: resource)
+            case .profile(let profile):
+                let cell = collectionView.dequeueConfiguredReusableCell(using: profileCellReg, for: indexPath, item: profile)
                 return cell
             }
         }
@@ -204,80 +206,94 @@ class ResourceViewCollectionVC: UIViewController {
             let groupItem = ListType.group(group)
             snapshotSection.append([groupItem])
             
-            let resourceItem = group.resources.map { ListType.resource($0)}
-            snapshotSection.append(resourceItem, to: groupItem)
+            let profileItem = group.profiles.map { ListType.profile($0)}
+            snapshotSection.append(profileItem, to: groupItem)
             snapshotSection.expand([groupItem])
         }
         
         
-        for resource in resources {
-            let resourceItem = ListType.resource(resource)
-            snapshotSection.append([resourceItem])
-            //snapshotSection.expand([resourceItem])
+        for profile in profiles {
+            let profileItem = ListType.profile(profile)
+            snapshotSection.append([profileItem])
+            //snapshotSection.expand([profileItem])
             
         }
         data.apply(snapshotSection, to: .main, animatingDifferences: false)
     }
     
-    //Populate the hashable arrays with resources
+    //Populate the hashable arrays with profiles
     @objc func genArray(){
-        resourcesUnhashed = []
+        profilesUnhashed = []
         groupsUnhashed = []
         let usersRef = db.collection("users")
         let currUserRef = usersRef.document(Constants.User.sharedInstance.userID)
-        let savedResourceRef = currUserRef.collection("SAVEDRESOURCES")
-        savedResourceRef.getDocuments() {
+        let savedProfileRef = currUserRef.collection("CONTACTS")
+        savedProfileRef.getDocuments() {
             docsSnap, error in
             if let error = error {
-                print("Error getting saved resources. \(error)")
+                print("Error getting saved profiles. \(error)")
             }
             else
             {
 
-                for doc in docsSnap!.documents {
-                    
-                    let path = doc.data()["docRef"] as! String
-                    //print("\n\n\n\n\n" + path + "\n\n\n\n\n")
-                    let newResource = Resource(base: self.db, path_:path)
-                    newResource.readData(database: self.db, path: path, collectionview: self.collectionView)
-                                
-                                //print(newResource.name)
-                    let tempName = doc.data()["groupName"] as! String
-                    if(tempName == "")
+                for doc in docsSnap!.documents
+                {
+                    if doc.documentID == "adminuser"
                     {
-                    self.resourcesUnhashed.append(newResource)
+                        continue
+                    }
+                    else {
+                    let path = "users/" + (doc.data()["userRef"] as! String)
+                    //print("\n\n\n\n\n" + path + "\n\n\n\n\n")
+                    let newProfile = Profile()
+                    newProfile.readData(database: self.db, path: path, collectionview: self.collectionView)
+                    
+                                //print(newProfile.name)
+                    if (doc.data()["groupName"] == nil)
+                    {
+                        doc.reference.setData(["groupName": ""],merge:true)
+                        self.profilesUnhashed.append(newProfile)
                     }
                     else
                     {
-                        
-                        var isNameLogged = false
-                        var i = 0;
-                        for group in self.groupsUnhashed {
-                           
-                            if(group.name == tempName && !isNameLogged)
-                            {
-                                print("Group name here: " + group.name)
-                                print("New name here: " + tempName)
-                                isNameLogged = true
-                                //group.resources.append(newResource)
-                                self.groupsUnhashed[i].resources.append(newResource)
-                            }
-                            i+=1
-                        }
-                        if(!isNameLogged)
+                        let tempName = doc.data()["groupName"] as! String
+                        if(tempName == "")
                         {
-                            var tempGroup = ResourceGroupUnhashed(name:tempName,resources:[])
-                            tempGroup.resources.append(newResource)
-                            self.groupsUnhashed.append(tempGroup)
+                        self.profilesUnhashed.append(newProfile)
+                        }
+                        else
+                        {
+                            
+                            var isNameLogged = false
+                            var i = 0;
+                            for group in self.groupsUnhashed {
+                               
+                                if(group.name == tempName && !isNameLogged)
+                                {
+                                    print("Group name here: " + group.name)
+                                    print("New name here: " + tempName)
+                                    isNameLogged = true
+                                    //group.profiles.append(newProfile)
+                                    self.groupsUnhashed[i].profiles.append(newProfile)
+                                }
+                                i+=1
+                            }
+                            if(!isNameLogged)
+                            {
+                                var tempGroup = ProfileGroupUnhashed(name:tempName,profiles:[])
+                                tempGroup.profiles.append(newProfile)
+                                self.groupsUnhashed.append(tempGroup)
+                                
+                            }
+                            
                             
                         }
-                        
-                        
                     }
+                    
                                 
                                 
-                                
-                            }
+                    }
+                }
                 
                 
                         }
@@ -289,11 +305,13 @@ class ResourceViewCollectionVC: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showResourceSegue"
+        if segue.identifier == "showProfileSegue"
         {
             
-            if let dView = segue.destination as? ResourceDisplayVC {
-                dView.resource = self.selectedResource
+            if let dView = segue.destination as? ProfileViewController {
+                var tempProf = Profile()
+                tempProf.unHash(hashProfile:self.selectedProfile)
+                dView.profile = tempProf
             }
            
             
@@ -316,22 +334,22 @@ class ResourceViewCollectionVC: UIViewController {
 
 
 @available(iOS 14.0, *)
-extension ResourceViewCollectionVC: UICollectionViewDelegate {
+extension ProfileViewCollectionVC: UICollectionViewDelegate {
     
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
     {
-        guard let selectedResource = data.itemIdentifier(for:indexPath) else {
+        guard let selectedProfile = data.itemIdentifier(for:indexPath) else {
             collectionView.deselectItem(at: indexPath, animated: true)
             return
         }
        
         
-        switch selectedResource {
-        case .resource(let resource):
-            self.selectedResource = resource
-            self.performSegue(withIdentifier: "showResourceSegue", sender: Any?.self)
+        switch selectedProfile {
+        case .profile(let profile):
+            self.selectedProfile = profile
+            self.performSegue(withIdentifier: "showProfileSegue", sender: Any?.self)
             break;
         default:
             break;

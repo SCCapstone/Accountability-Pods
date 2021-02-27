@@ -294,6 +294,7 @@ class Profile {
             
             self.description = des_
             self.uid = user_
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ProfileAsyncFinished"), object: nil)
         }
     }
     

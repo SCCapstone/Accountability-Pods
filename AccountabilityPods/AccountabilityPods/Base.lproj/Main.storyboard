@@ -1516,6 +1516,9 @@
                                 <rect key="frame" x="98" y="379" width="162" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="@Temp"/>
+                                <connections>
+                                    <action selector="onClickUsername:" destination="RVU-aC-KZr" eventType="touchUpInside" id="Khp-L3-eQy"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="T1a-MN-mwR"/>
@@ -1551,6 +1554,7 @@
                         <outlet property="likeButton" destination="iea-p6-Dke" id="miE-35-drf"/>
                         <outlet property="nameField" destination="yyN-3T-mkS" id="ewI-Le-1Ru"/>
                         <outlet property="usernameButton" destination="Mbi-5u-dpD" id="CYl-bu-8I8"/>
+                        <segue destination="XcG-3C-Qbm" kind="show" identifier="showProfileSegue" id="leE-kP-HDT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XpA-wd-OXn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1962,6 +1966,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="wxW-nl-QRV"/>
         <segue reference="6NI-3A-tLu"/>
+        <segue reference="leE-kP-HDT"/>
         <segue reference="S9D-eA-qW5"/>
         <segue reference="4kW-um-cGD"/>
     </inferredMetricsTieBreakers>

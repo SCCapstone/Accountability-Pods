@@ -99,13 +99,15 @@ class LoginViewController: UIViewController {
                             {
                                 print("Successfully got the username from ID!")
                                 Constants.User.sharedInstance.userID = doc.data()["username"] as! String
+                                self.transitionToHome()
                             }
                         }
+                        print("Error getting username from ID.")
                     }
                     }
-                    Constants.User.sharedInstance.userID = result!.user.uid;
+                    //Constants.User.sharedInstance.userID = result!.user.uid;
                     //print(Constants.User.sharedInstance.userID)
-                    self.transitionToHome()
+                    
                 }
             }    }
     }

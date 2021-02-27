@@ -20,11 +20,14 @@ class ResourceDisplayVC: UIViewController {
     var docID: String? = nil
     var resource: ResourceHashable = Resource.init().makeHashableStruct()
     var hasLiked: Bool = false
+    var profile = Profile()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(self.onProfileComplete), name: NSNotification.Name(rawValue: "ProfileAsyncFinished"), object: nil)
         checkIfLiked()
         setTextFields()
+        
         // Do any additional setup after loading the view.
     }
     
@@ -54,6 +57,27 @@ class ResourceDisplayVC: UIViewController {
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
+    }
+    @IBAction func onClickUsername(_ sender: Any) {
+        print("username clicked")
+        let user = resource.path.split(separator:"/")[1]
+        
+        self.profile = Profile(base:db, path_: ("users/" + user))
+    }
+    @objc func onProfileComplete() {
+        print("test")
+        performSegue(withIdentifier: "showProfileSegue", sender: Any?.self)
+        
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "showProfileSegue")
+        {
+            if let dView = segue.destination as? ProfileViewController
+            {
+            dView.profile = self.profile
+            }
+            
+        }
     }
     func checkIfLiked()
     {

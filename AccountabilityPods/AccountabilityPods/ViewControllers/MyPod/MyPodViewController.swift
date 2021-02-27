@@ -13,7 +13,7 @@ import FirebaseAuth
 class MyPodViewController: UIViewController {
      //ADDED
     let db = Firestore.firestore()
-    var userID = Constants.User.sharedInstance.userID;
+    let userID = Constants.User.sharedInstance.userID;
     //HERE
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var MyPostsContainer: UIView!
@@ -33,8 +33,8 @@ class MyPodViewController: UIViewController {
         setName()
         
         //added
-        let users = db.collection("USERS");
-        let userDoc = users.document(userID);
+        //let users = db.collection("USERS");
+        //let userDoc = users.document(userID);
         
         // unti here
         
@@ -66,6 +66,7 @@ class MyPodViewController: UIViewController {
         self.descriptionLabel.alpha = 1;
         db.collection("users").document(userID).updateData(["description": editDescriptionText.text!])
         setName()
+        print(userID)
     }
     /*
     // MARK: - Navigation
@@ -82,31 +83,34 @@ class MyPodViewController: UIViewController {
         // get current userID
         let uid = Constants.User.sharedInstance.userID
         let db = Firestore.firestore()
-        let userRef = db.collection("users").whereField("uid", isEqualTo: uid)
-        userRef.getDocuments() { (querySnapshot, err) in
-        if let err = err {
-            print("Error getting documents: \(err)")
-        } else {
-            for document in querySnapshot!.documents {
-                let firstname: String? = document.get("firstname") as? String
-                let lastname: String? = document.get("lastname") as? String
-                let username: String? = document.get("username") as? String
-                let description: String? = document.get("description") as? String
-                let firstnameUnwrapped = firstname ?? "Unknown"
-                let lastnameUnwrapped = lastname ?? "Unknown"
-                let usernameUnwrapped = username ?? "Unknown"
-                let descriptionUnwrapped = description ?? ""
-                let name = firstnameUnwrapped + " " + lastnameUnwrapped
-                self.NameLabel.alpha = 1
-                self.editDescriptionText.alpha = 0;
-                self.descriptionLabel.alpha = 1
-                self.editDescButton.alpha = 1;
-                self.addDescButton.alpha = 0;
-                self.NameLabel.text = name
-                self.descriptionLabel.text = descriptionUnwrapped
-                self.usernameLabel.text = "@" + usernameUnwrapped
+        let userRef = db.collection("users").document(uid)
+        
+        _ = userRef.addSnapshotListener() {
+            document, err in
+            if let err = err {
+                print("Error getting documents: \(err)")
             }
+            else
+            {
+                
+                let firstname = document!.get("firstname") as! String
+                let lastname = document!.get("lastname") as! String
+                let username = document!.get("username") as! String
+                let description = document!.get("description") as! String
+                   
+                    let name = firstname + " " + lastname
+                    self.NameLabel.alpha = 1
+                    self.editDescriptionText.alpha = 0;
+                    self.descriptionLabel.alpha = 1
+                    self.editDescButton.alpha = 1;
+                    self.addDescButton.alpha = 0;
+                    self.NameLabel.text = name
+                    self.descriptionLabel.text = description
+                    self.usernameLabel.text = "@" + username
+            
         }
+        
+      
             
         }
     }

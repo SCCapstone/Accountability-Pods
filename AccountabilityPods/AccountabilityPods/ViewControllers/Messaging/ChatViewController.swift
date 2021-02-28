@@ -14,6 +14,7 @@ class chatMsg {
     public var msg: JSQMessage
     public var msgTime: Int64
     init()
+    {
         self.msg = JSQMessage(senderId: "jsq_id", displayName: "jsq_name",  text: "jsq_test")
         self.msgTime = 0
     }
@@ -267,6 +268,18 @@ class ChatViewController: JSQMessagesViewController
         messages.remove(at: indexPath.item)
     }
     
+    func collectionView(_ collectionView: JSQMessagesCollectionView!, didTapMessageBubbleAtIndexPath indexPath: IndexPath!)   {
+       // Do the custom JSQM stuff
+        super.collectionView(collectionView, didTapMessageBubbleAt: indexPath)
+        let message = orderedMsgs[indexPath.item].msg
+       print("Did Select this method!")
+      // And return true for all message types (we don't want the long press menu disabled for any message types)
+    }
+
+    
+    /*override func collectionView(collectionView: UICollectionView, performAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?) {
+      super.collectionView(collectionView, performAction: action, forItemAtIndexPath: indexPath, withSender: sender)
+    }*/
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }

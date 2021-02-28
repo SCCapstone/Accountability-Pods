@@ -95,5 +95,47 @@ class MessagingViewController: UIViewController, UITableViewDelegate, UITableVie
             }
         }
     }
+    
+    //delete all messages with a specific contact
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        //delete your messages sent to a user
+        if editingStyle == .delete {
+            //pull docs from both users
+            let userIDs = [userID, contactsA[indexPath.item].uid]
+                
+            let query = Constants.chatRefs.databaseChats.whereField("sender_id", in: userIDs)
+            query.getDocuments() { (querySnapshot, err) in
+                if let err = err {
+                    print("error getting documents: \(err)")
+                } else {
+                    print("\(querySnapshot!.documents)")
+                    for document in querySnapshot!.documents {
+                    let data = document.data()  as? [String: String]
+                    let id = data?["sender_id"]
+                    let rid = data?["receiver_id"]
+                    if id == self.userID && rid == self.contactsA[indexPath.item].uid {
+                        self.db.document(document.reference.path).delete() { err in if let err = err {
+                            print("Error ermoving document: \(err)")
+                        } else {
+                            print("Document successfully removed!")
+                            }
+                        }
+                        }
+                    else if id == self.contactsA[indexPath.item].uid && rid == self.userID {
+                        self.db.document(document.reference.path).delete() { err in if let err = err {
+                            print("Error ermoving document: \(err)")
+                        } else {
+                            print("Document successfully removed!")
+                            }
+                        }
+                    }
+                    }
+                }
+            }
+        }
+                else if editingStyle == .insert {
+                // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
+            }
+        }
 
 }

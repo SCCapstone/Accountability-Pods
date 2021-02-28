@@ -145,20 +145,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bOc-wJ-Qju">
-                                <rect key="frame" x="0.0" y="52" width="374" height="373"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bOc-wJ-Qju">
+                                <rect key="frame" x="0.0" y="49" width="768" height="975"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="separatorColor" red="0.80784313730000001" green="0.90196078430000004" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Send Message to Database" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PZr-Jz-zDF">
-                                <rect key="frame" x="82" y="23" width="227" height="25"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Send Message to Database" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PZr-Jz-zDF">
+                                <rect key="frame" x="0.0" y="20" width="768" height="25"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="18"/>
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vYr-L0-acL"/>
                         <color key="backgroundColor" red="0.80784313730000001" green="0.90196078430000004" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="PZr-Jz-zDF" firstAttribute="centerX" secondItem="vJB-4n-TAG" secondAttribute="centerX" id="2nM-Pb-fKs"/>
+                            <constraint firstItem="bOc-wJ-Qju" firstAttribute="centerX" secondItem="vJB-4n-TAG" secondAttribute="centerX" id="9at-cs-Dj9"/>
+                            <constraint firstItem="PZr-Jz-zDF" firstAttribute="leading" secondItem="vYr-L0-acL" secondAttribute="leading" id="G8d-QI-dym"/>
+                            <constraint firstItem="bOc-wJ-Qju" firstAttribute="top" secondItem="PZr-Jz-zDF" secondAttribute="bottom" constant="4" id="Gs8-So-zIS"/>
+                            <constraint firstItem="PZr-Jz-zDF" firstAttribute="top" secondItem="vYr-L0-acL" secondAttribute="top" constant="20" id="O4Y-Yb-Lqy"/>
+                            <constraint firstItem="vYr-L0-acL" firstAttribute="trailing" secondItem="bOc-wJ-Qju" secondAttribute="trailing" id="S6Y-xk-5sJ"/>
+                            <constraint firstItem="vYr-L0-acL" firstAttribute="bottom" secondItem="bOc-wJ-Qju" secondAttribute="bottom" id="chi-xr-sS3"/>
+                            <constraint firstItem="bOc-wJ-Qju" firstAttribute="leading" secondItem="vYr-L0-acL" secondAttribute="leading" id="hKI-26-dnN"/>
+                            <constraint firstItem="bOc-wJ-Qju" firstAttribute="top" secondItem="PZr-Jz-zDF" secondAttribute="bottom" constant="4" id="mSv-su-QQ2"/>
+                            <constraint firstItem="vYr-L0-acL" firstAttribute="trailing" secondItem="PZr-Jz-zDF" secondAttribute="trailing" id="wfx-nJ-gEH"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="msgTable" destination="bOc-wJ-Qju" id="cYn-o0-vEo"/>

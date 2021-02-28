@@ -84,7 +84,7 @@ class ChatViewController: JSQMessagesViewController
         let defaults = UserDefaults.standard
         // get current userID
         let uid = Constants.User.sharedInstance.userID
-        let db = Firestore.firestore()
+        //let db = Firestore.firestore()
         let userRef = db.collection("users").whereField("username", isEqualTo: uid)
         userRef.getDocuments() { (querySnapshot, err) in
         if let err = err {
@@ -136,12 +136,13 @@ class ChatViewController: JSQMessagesViewController
         }
         }*/
         let userIDs = [userID, sendToProfile.uid]
+        // get documents where the sender_id is either userID or the user id of the clicked contact - this gets all messages sent by both users to any user
         let query = Constants.chatRefs.databaseChats.whereField("sender_id", in: userIDs)
         query.addSnapshotListener { querySnapshot, error in guard (querySnapshot?.documents) != nil else {
             print("error getting documents: \(error)")
             return
         }
-        self.messages.removeAll()
+        //self.messages.removeAll()
         for chatDocument in querySnapshot!.documents {
             let data = chatDocument.data()  as? [String: String]
             let id = data?["sender_id"]
@@ -149,21 +150,23 @@ class ChatViewController: JSQMessagesViewController
             let name = data?["name"]
             let text = data!["text"]
             
-                if id == self.userID && rid == self.sendToProfile.uid{
-                    if let message = JSQMessage(senderId: id, displayName: name,  text: text)
-                    {
-                        print("Sent message: \(message)")
-                        self.messages.append(message)
-                        self.finishReceivingMessage()
-                    }
-                } else if id == self.sendToProfile.uid && rid == self.userID {
-                    if let message = JSQMessage(senderId: id, displayName: self.receiverName,  text: text)
-                    {
-                        print("Recieved message: \(message)")
-                        self.messages.append(message)
-                        self.finishReceivingMessage()
-                    }
+            if id == self.userID && rid == self.sendToProfile.uid{
+                // messages sent by current user and recieved by clicked profile
+                if let message = JSQMessage(senderId: id, displayName: name,  text: text)
+                {
+                    print("Sent message: \(message)")
+                    self.messages.append(message)
+                    self.finishReceivingMessage()
                 }
+            } else if id == self.sendToProfile.uid && rid == self.userID {
+                // messages sent by clicked profile and recieved by current user
+                if let message = JSQMessage(senderId: id, displayName: self.receiverName, text: text)
+                {
+                    print("Recieved message: \(message)")
+                    self.messages.append(message)
+                    self.finishReceivingMessage()
+                }
+            }
             
         }
         }
@@ -217,10 +220,14 @@ class ChatViewController: JSQMessagesViewController
     {
         let ref = Constants.chatRefs.databaseChats.document()
         
-        let message = ["sender_id": senderId!, "receiver_id": sendToProfile.uid, "name": senderDisplayName!, "text": text!]
+        let timeStamp = Firebase.Timestamp().dateValue()
+        //print("timestampHERE: \(timeStamp)")
         
+        let message = ["sender_id": senderId!, "receiver_id": sendToProfile.uid, "name": senderDisplayName!, "text": text!, "date":"\(timeStamp)"]
+        
+        print("MESSAGEWITHDATE: \(message["date"])")
         ref.setData( message as [String : Any])
-        //realtimeUpdate()
+        
         finishSendingMessage()
     }
     

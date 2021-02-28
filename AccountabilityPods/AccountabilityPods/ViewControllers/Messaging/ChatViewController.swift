@@ -14,6 +14,7 @@ class chatMsg {
     public var msg: JSQMessage
     public var msgTime: Int64
     init()
+    {
         self.msg = JSQMessage(senderId: "jsq_id", displayName: "jsq_name",  text: "jsq_test")
         self.msgTime = 0
     }

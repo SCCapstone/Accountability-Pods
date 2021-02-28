@@ -20,6 +20,7 @@ class MessagingViewController: UIViewController, UITableViewDelegate, UITableVie
     var userID  = Constants.User.sharedInstance.userID;
     
     override func viewDidLoad() {
+        NotificationCenter.default.addObserver(self, selector: #selector(self.loadData), name: NSNotification.Name(rawValue: "ContactsChanged"), object: nil)
         super.viewDidLoad()
         loadData()
         contactTable.delegate = self
@@ -29,7 +30,8 @@ class MessagingViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     //get users from the database load data
-    private func loadData() {
+    @objc private func loadData() {
+        self.contactsA = []
         let usersRef = db.collection("users").document(userID).collection("CONTACTS");
         
         usersRef.getDocuments() {(querySnapshot, err) in

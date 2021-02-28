@@ -35,7 +35,7 @@ class ChatViewController: JSQMessagesViewController
     override func viewDidLoad() {
         print("Sending message to: \(sendToProfile.uid)")
         super.viewDidLoad()
-        super.viewDidLoad()
+        //super.viewDidLoad()
         
         //set up chat name
         //let defaults = UserDefaults.standard
@@ -134,39 +134,39 @@ class ChatViewController: JSQMessagesViewController
                 
             }
         }
-        } */
-        db.collection("Chat").getDocuments() { (querySnapshot, err) in
-            if let err = err {
-                print("Error getting chat documents: \(err)")
-            } else {
-                for chatDocument in querySnapshot!.documents {
-                    
-                    let data = chatDocument.data()  as? [String: String]
-                    let id = data?["sender_id"]
-                    let rid = data?["receiver_id"]
-                    let name = data?["name"]
-                    let text = data!["text"]
-                    
-                        if id == self.userID && rid == self.sendToProfile.uid{
-                            if let message = JSQMessage(senderId: id, displayName: name,  text: text)
-                            {
-                                print("Sent message: \(message)")
-                                self.messages.append(message)
-                                self.finishReceivingMessage()
-                            }
-                        } else if id == self.sendToProfile.uid && rid == self.userID {
-                            if let message = JSQMessage(senderId: id, displayName: self.receiverName,  text: text)
-                            {
-                                print("Recieved message: \(message)")
-                                self.messages.append(message)
-                                self.finishReceivingMessage()
-                            }
-                        }
-                    
-                }
-            }
+        }*/
+        let userIDs = [userID, sendToProfile.uid]
+        let query = Constants.chatRefs.databaseChats.whereField("sender_id", in: userIDs)
+        query.addSnapshotListener { querySnapshot, error in guard (querySnapshot?.documents) != nil else {
+            print("error getting documents: \(error)")
+            return
         }
-        
+        self.messages.removeAll()
+        for chatDocument in querySnapshot!.documents {
+            let data = chatDocument.data()  as? [String: String]
+            let id = data?["sender_id"]
+            let rid = data?["receiver_id"]
+            let name = data?["name"]
+            let text = data!["text"]
+            
+                if id == self.userID && rid == self.sendToProfile.uid{
+                    if let message = JSQMessage(senderId: id, displayName: name,  text: text)
+                    {
+                        print("Sent message: \(message)")
+                        self.messages.append(message)
+                        self.finishReceivingMessage()
+                    }
+                } else if id == self.sendToProfile.uid && rid == self.userID {
+                    if let message = JSQMessage(senderId: id, displayName: self.receiverName,  text: text)
+                    {
+                        print("Recieved message: \(message)")
+                        self.messages.append(message)
+                        self.finishReceivingMessage()
+                    }
+                }
+            
+        }
+        }
     }
 
     //returns data for message by index
@@ -220,7 +220,7 @@ class ChatViewController: JSQMessagesViewController
         let message = ["sender_id": senderId!, "receiver_id": sendToProfile.uid, "name": senderDisplayName!, "text": text!]
         
         ref.setData( message as [String : Any])
-        
+        //realtimeUpdate()
         finishSendingMessage()
     }
     

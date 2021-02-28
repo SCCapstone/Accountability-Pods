@@ -30,12 +30,10 @@
                                 <viewLayoutGuide key="safeArea" id="zgi-x9-Rdr"/>
                                 <color key="backgroundColor" red="0.1843137255" green="0.25490196079999999" blue="0.17254901959999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstItem="pD0-6a-wfL" firstAttribute="centerX" secondItem="w05-dh-eMD" secondAttribute="centerX" id="60s-b8-1tK"/>
                                     <constraint firstAttribute="bottom" secondItem="pD0-6a-wfL" secondAttribute="bottom" id="JN1-ZR-a43"/>
-                                    <constraint firstAttribute="trailing" secondItem="pD0-6a-wfL" secondAttribute="trailing" constant="153" id="JQZ-fz-cE7"/>
                                     <constraint firstItem="pD0-6a-wfL" firstAttribute="top" secondItem="w05-dh-eMD" secondAttribute="top" constant="19" id="St7-Br-G4x"/>
                                     <constraint firstAttribute="height" constant="47" id="WDn-f3-pfZ"/>
-                                    <constraint firstAttribute="width" constant="414" id="jqp-hd-aS5"/>
-                                    <constraint firstItem="pD0-6a-wfL" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="w05-dh-eMD" secondAttribute="leading" constant="20" symbolic="YES" id="z8w-lD-Jxb"/>
                                 </constraints>
                             </view>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HId-8h-sL7">

@@ -129,37 +129,8 @@
                     <view key="view" contentMode="scaleToFill" id="UQt-qx-G2w">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" id="K4Y-Sd-xCY">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="47"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Power Pods" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AsF-AN-g17">
-                                        <rect key="frame" x="153" y="19" width="108" height="28"/>
-                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="20"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <viewLayoutGuide key="safeArea" id="rqT-Sc-aPp"/>
-                                <color key="backgroundColor" red="0.1843137255" green="0.25490196079999999" blue="0.17254901959999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="AsF-AN-g17" secondAttribute="trailing" constant="153" id="L27-5t-1Ip"/>
-                                    <constraint firstAttribute="bottom" secondItem="AsF-AN-g17" secondAttribute="bottom" id="YY4-Hf-juS"/>
-                                    <constraint firstAttribute="width" constant="414" id="aTl-wn-Rrh"/>
-                                    <constraint firstItem="AsF-AN-g17" firstAttribute="top" secondItem="K4Y-Sd-xCY" secondAttribute="top" constant="19" id="dpl-TM-8dX"/>
-                                    <constraint firstItem="AsF-AN-g17" firstAttribute="leading" secondItem="K4Y-Sd-xCY" secondAttribute="leading" constant="153" id="loc-LL-8Nw"/>
-                                    <constraint firstAttribute="height" constant="47" id="rS6-2h-HcZ"/>
-                                </constraints>
-                            </view>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="f4b-pp-E8E"/>
                         <color key="backgroundColor" red="0.80784313730000001" green="0.90196078430000004" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstItem="K4Y-Sd-xCY" firstAttribute="trailing" secondItem="f4b-pp-E8E" secondAttribute="trailing" id="3gr-us-1qa"/>
-                            <constraint firstItem="K4Y-Sd-xCY" firstAttribute="leading" secondItem="f4b-pp-E8E" secondAttribute="leading" id="6EA-G7-vlu"/>
-                            <constraint firstItem="K4Y-Sd-xCY" firstAttribute="top" secondItem="f4b-pp-E8E" secondAttribute="top" id="m1v-Kz-WT7"/>
-                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6rr-jO-1k5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

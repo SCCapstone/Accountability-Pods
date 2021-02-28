@@ -25,7 +25,9 @@ class MessagingViewController: UIViewController, UITableViewDelegate, UITableVie
         loadData()
         contactTable.delegate = self
         contactTable.dataSource =  self
-        // Do any additional setup after loading the view.
+        
+        //view controller to use when presenting modal Chat view controller
+        //definesPresentationContext = true
         //setUpElements()
     }
     

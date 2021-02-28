@@ -10,9 +10,12 @@ import UIKit
 import Firebase
 import JSQMessagesViewController
 
+
 class ChatViewController: JSQMessagesViewController
 {
     var messages = [JSQMessage]()
+    
+    var sendToProfile = Profile()
     
     //colors for message bubbles
     lazy var outgoingBubble: JSQMessagesBubbleImage = {
@@ -29,7 +32,7 @@ class ChatViewController: JSQMessagesViewController
     
     //load view controller
     override func viewDidLoad() {
-        
+        print("Sending message to: \(sendToProfile.uid)")
         super.viewDidLoad()
         super.viewDidLoad()
         
@@ -39,8 +42,10 @@ class ChatViewController: JSQMessagesViewController
         if  let id = defaults.string(forKey: "jsq_id"),
             let name = defaults.string(forKey: "jsq_name")
         {
+            print("Chat: in this if statement")
             senderId = id
             senderDisplayName = name
+            //print("senderId = \(senderId)")
         }
         else
         {
@@ -62,7 +67,7 @@ class ChatViewController: JSQMessagesViewController
         
         //observing the chat displaying on screen
         self.realtimeUpdate()
-        messages.append(JSQMessage(senderId: "id", displayName: "tim",  text: "testing"))
+        //messages.append(JSQMessage(senderId: "id", displayName: "tim",  text: "testing"))
     }
     
     //user's display name
@@ -72,7 +77,7 @@ class ChatViewController: JSQMessagesViewController
         // get current userID
         let uid = Constants.User.sharedInstance.userID
         let db = Firestore.firestore()
-        let userRef = db.collection("users").whereField("uid", isEqualTo: uid)
+        let userRef = db.collection("users").whereField("username", isEqualTo: uid)
         userRef.getDocuments() { (querySnapshot, err) in
         if let err = err {
             print("Error getting documents: \(err)")

@@ -15,13 +15,9 @@ class MessagingViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet var contactTable: UITableView!
     
     let db = Firestore.firestore()
-    var data = [String]()
     var contactsA = [Profile]()
-    var filteredData = [String]()
-    var filteredContacts = [Profile]()
-    var filtered = false
     //var userID = Constants.User.sharedInstance.userID;
-
+    var userID  = Constants.User.sharedInstance.userID;
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +30,7 @@ class MessagingViewController: UIViewController, UITableViewDelegate, UITableVie
     
     //get users from the database load data
     private func loadData() {
-        let usersRef = db.collection("users")//.document(userID).collection("CONTACTS")
+        let usersRef = db.collection("users").document(userID).collection("CONTACTS");
         
         usersRef.getDocuments() {(querySnapshot, err) in
             if let err = err {
@@ -43,10 +39,15 @@ class MessagingViewController: UIViewController, UITableViewDelegate, UITableVie
             else {
                 print("Loading Users Contacts")
                 for document in querySnapshot!.documents {
-                    if document.documentID != "adminuser" {
+                    if document.documentID != "adminuser" && document.documentID != self.userID {
                         let tempProfile = Profile()
                         self.contactsA.append(tempProfile)
-                        tempProfile.readData(database: self.db, path: document.reference.path, tableview: self.contactTable)                    }
+                        let path = "users/" + document.documentID
+                        tempProfile.readData(database: self.db, path: path, tableview: self.contactTable)
+                        //print("document path: \(path)")
+                        self.contactTable.reloadData()
+                        
+                    }
                     
                 }
             }
@@ -58,54 +59,19 @@ class MessagingViewController: UIViewController, UITableViewDelegate, UITableVie
     }
 
     
-    func filterText(_ query: String) {
-        print("QUERY: \(query)")
-        filteredContacts.removeAll()
-        for profile in contactsA {
-            let userString = profile.uid
-            let firstString = profile.firstName
-            let lastString = profile.lastName
-            if (userString.lowercased().starts(with: query.lowercased()) || firstString.lowercased().starts(with: query.lowercased()) || lastString.lowercased().starts(with: query.lowercased()))
-            {
-                filteredContacts.append(profile)
-                contactTable.reloadData()
-            }
-        }
-        if query.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-            filtered = false
-            filteredContacts.removeAll()
-        } else {
-            filtered = true
-        }
-        print("FILTERED: \(filtered)")
-        contactTable.reloadData()
-        
-    }
-    
-    /*func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }*/
-    
-    //setting size to num of users
+    //setting size to num of contacts
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if !filteredContacts.isEmpty {
-            return filteredContacts.count
-        }
-        return filtered ? 0 : contactsA.count
+        //print("contacts count: \(contactsA.count)")
+        return contactsA.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print("filling cells")
+        
         let cell = contactTable.dequeueReusableCell(withIdentifier: "contactName") as! ContactCell
-        if !filteredContacts.isEmpty {
-            print("showing filtered profiles")
-            let contact = filteredContacts[indexPath.row]
-            cell.setContact(profile: contact)
-        } else {
-            print("showing all profiles")
-            let contact = contactsA[indexPath.row]
-            cell.setContact(profile: contact)
-        }
+        let contact = contactsA[indexPath.row]
+        //print("contact id: \(contact.uid)")
+        cell.setContact(profile: contact)
+        
         return cell
     }
     
@@ -114,25 +80,16 @@ class MessagingViewController: UIViewController, UITableViewDelegate, UITableVie
         self.performSegue(withIdentifier: "ToChat", sender: Any?.self)
     }
     
-    //for retrieving names for contacts from firestore
-    /*func loadData() {
-        db.collection("users").document(Constants.User.sharedInstance.userID).collection("CONTACTS").getDocuments() { (querySnapshot, err) in
-            if let err = err {
-                print("Error getting documents: \(err)")
-            } else {
-                if let querySnapshot = querySnapshot {
-                    for document in querySnapshot.documents{
-                    let data = document.data()
-                    let con = data["userRef"] as? String ?? ""
-                    self.contactsA.append(con)
-                    }
-                }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        //print("in prepare override func")
+        if segue.identifier == "ToChat" {
+            let indexPath = self.contactTable.indexPathForSelectedRow
+            let profile = self.contactsA[(indexPath?.row)!]
+            //print("selected profile: \(profile.uid)")
+            if let dView = segue.destination as? ChatViewController {
+                dView.sendToProfile = profile
             }
         }
-        
-    }*/
-    /*func setUpElements() {
-        errorLabel.alpha = 0 // hide error label
-    }*/
+    }
 
 }

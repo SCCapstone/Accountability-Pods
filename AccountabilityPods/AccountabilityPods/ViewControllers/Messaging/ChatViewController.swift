@@ -16,6 +16,7 @@ class ChatViewController: JSQMessagesViewController
     var messages = [JSQMessage]()
     
     var sendToProfile = Profile()
+    var receiverName = ""
     
     //colors for message bubbles
     lazy var outgoingBubble: JSQMessagesBubbleImage = {
@@ -37,8 +38,9 @@ class ChatViewController: JSQMessagesViewController
         super.viewDidLoad()
         
         //set up chat name
-        let defaults = UserDefaults.standard
+        //let defaults = UserDefaults.standard
 
+        /*
         if  let id = defaults.string(forKey: "jsq_id"),
             let name = defaults.string(forKey: "jsq_name")
         {
@@ -49,6 +51,7 @@ class ChatViewController: JSQMessagesViewController
         }
         else
         {
+            print("Chat: in this else statement")
             senderId = String(arc4random_uniform(999999))
             senderDisplayName = ""
 
@@ -57,7 +60,12 @@ class ChatViewController: JSQMessagesViewController
 
             setSenderName()
         }
-
+        */
+        senderDisplayName = ""
+        senderId = userID as! String
+        setSenderName()
+        receiverName = sendToProfile.firstName + " " + sendToProfile.lastName
+        
         self.title = "Chat: \\(senderDisplayName!)"
         
         //hide attachment and avatars
@@ -88,8 +96,10 @@ class ChatViewController: JSQMessagesViewController
                 let firstnameUnwrapped = firstname ?? "Unknown"
                 let lastnameUnwrapped = lastname ?? "Unknown"
                 let name = firstnameUnwrapped + " " + lastnameUnwrapped
+                self.senderId = document.get("username") as? String
                 self.senderDisplayName = name
                 self.parent?.title = "Chat: \(self.senderDisplayName!)"
+                defaults.set(self.userID, forKey: "jsq_id")
                 defaults.set(name, forKey: "jsq_name")
                 defaults.synchronize()
             }
@@ -103,6 +113,7 @@ class ChatViewController: JSQMessagesViewController
     //query to database unordered but illegal to add .order(by:  ) with is equal to
     func realtimeUpdate()
     {
+        /*
         let query = Constants.chatRefs.databaseChats.whereField("sender_id", isEqualTo: self.senderId!)
         query.addSnapshotListener { querySnapshot, error in guard (querySnapshot?.documents) != nil else{
             print("Error getting documents: \(error!)")
@@ -123,12 +134,45 @@ class ChatViewController: JSQMessagesViewController
                 
             }
         }
+        } */
+        db.collection("Chat").getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting chat documents: \(err)")
+            } else {
+                for chatDocument in querySnapshot!.documents {
+                    
+                    let data = chatDocument.data()  as? [String: String]
+                    let id = data?["sender_id"]
+                    let rid = data?["receiver_id"]
+                    let name = data?["name"]
+                    let text = data!["text"]
+                    
+                        if id == self.userID && rid == self.sendToProfile.uid{
+                            if let message = JSQMessage(senderId: id, displayName: name,  text: text)
+                            {
+                                print("Sent message: \(message)")
+                                self.messages.append(message)
+                                self.finishReceivingMessage()
+                            }
+                        } else if id == self.sendToProfile.uid && rid == self.userID {
+                            if let message = JSQMessage(senderId: id, displayName: self.receiverName,  text: text)
+                            {
+                                print("Recieved message: \(message)")
+                                self.messages.append(message)
+                                self.finishReceivingMessage()
+                            }
+                        }
+                    
+                }
+            }
         }
+        
     }
 
     //returns data for message by index
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageDataForItemAt indexPath: IndexPath!) -> JSQMessageData!
     {
+        print("JSQ message: \(messages[indexPath.item])")
         return messages[indexPath.item]
     }
     
@@ -173,7 +217,7 @@ class ChatViewController: JSQMessagesViewController
     {
         let ref = Constants.chatRefs.databaseChats.document()
         
-        let message = ["sender_id": senderId!, "name": senderDisplayName!, "text": text!]
+        let message = ["sender_id": senderId!, "receiver_id": sendToProfile.uid, "name": senderDisplayName!, "text": text!]
         
         ref.setData( message as [String : Any])
         

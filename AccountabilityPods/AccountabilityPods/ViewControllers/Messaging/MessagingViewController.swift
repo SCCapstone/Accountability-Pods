@@ -120,6 +120,7 @@ class MessagingViewController: UIViewController, UITableViewDelegate, UITableVie
                             print("Error ermoving document: \(err)")
                         } else {
                             print("Document successfully removed!")
+                            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "OutgoingMessagesDeleted"), object: nil)
                             }
                         }
                         }
@@ -128,6 +129,7 @@ class MessagingViewController: UIViewController, UITableViewDelegate, UITableVie
                             print("Error ermoving document: \(err)")
                         } else {
                             print("Document successfully removed!")
+                            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "IncomingMessagesDeleted"), object: nil)
                             }
                         }
                     }

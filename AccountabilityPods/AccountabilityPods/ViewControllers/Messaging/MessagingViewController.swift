@@ -82,6 +82,7 @@ class MessagingViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.performSegue(withIdentifier: "ToChat", sender: Any?.self)
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -92,6 +93,7 @@ class MessagingViewController: UIViewController, UITableViewDelegate, UITableVie
             //print("selected profile: \(profile.uid)")
             if let dView = segue.destination as? ChatViewController {
                 dView.sendToProfile = profile
+
             }
         }
     }

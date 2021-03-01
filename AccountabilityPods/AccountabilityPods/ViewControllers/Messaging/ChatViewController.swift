@@ -10,6 +10,11 @@ import UIKit
 import Firebase
 import JSQMessagesViewController
 
+extension Collection {
+    subscript(safe index: Index) -> Element? {
+        return indices.contains(index) ? self[index] : nil
+    }
+}
 class chatMsg {
     public var msg: JSQMessage
     public var msgTime: Int64
@@ -75,6 +80,7 @@ class ChatViewController: JSQMessagesViewController
         //observing the chat displaying on screen
         self.realtimeUpdate()
         //messages.append(JSQMessage(senderId: "id", displayName: "tim",  text: "testing"))
+        collectionView.reloadData()
     }
     
     //user's display name
@@ -276,7 +282,6 @@ class ChatViewController: JSQMessagesViewController
       // And return true for all message types (we don't want the long press menu disabled for any message types)
     }
 
-    
     /*override func collectionView(collectionView: UICollectionView, performAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?) {
       super.collectionView(collectionView, performAction: action, forItemAtIndexPath: indexPath, withSender: sender)
     }*/

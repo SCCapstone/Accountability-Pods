@@ -18,6 +18,7 @@ class ProfileSkillsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        overrideUserInterfaceStyle = .light
         //print("Profile id: \(profile.uid)")
         self.generateArray()
         tableView.delegate = self

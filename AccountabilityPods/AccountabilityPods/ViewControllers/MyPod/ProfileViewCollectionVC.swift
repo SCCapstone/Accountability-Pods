@@ -55,7 +55,7 @@ class ProfileViewCollectionVC: UIViewController {
         
         
         super.viewDidLoad()
-        
+        overrideUserInterfaceStyle = .light
         //Populate both the grouped and ungrouped profile arrays
         genArray()
         

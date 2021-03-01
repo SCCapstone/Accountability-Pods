@@ -18,6 +18,7 @@ class ForgotPasswordViewController: UIViewController {
     @IBOutlet weak var errorLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
+        overrideUserInterfaceStyle = .light
           self.errorLabel.text = ""
         // Do any additional setup after loading the view.
     }

@@ -16,6 +16,7 @@ class SkillViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        overrideUserInterfaceStyle = .light
         configureText()
         // Do any additional setup after loading the view.
     }

@@ -29,7 +29,7 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        overrideUserInterfaceStyle = .light
        let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(swipeAction(swipe:)))
         rightSwipe.direction=UISwipeGestureRecognizer.Direction.right
         self.view.addGestureRecognizer(rightSwipe)

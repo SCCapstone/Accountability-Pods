@@ -55,7 +55,7 @@ class ResourceViewCollectionVC: UIViewController {
         
         
         super.viewDidLoad()
-        
+        overrideUserInterfaceStyle = .light
         //Populate both the grouped and ungrouped resource arrays
         genArray()
         

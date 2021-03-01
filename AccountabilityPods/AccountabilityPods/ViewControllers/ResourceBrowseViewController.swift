@@ -18,6 +18,7 @@ class ResourceBrowseViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(self.genArray), name: NSNotification.Name(rawValue: "ContactsChanged"), object: nil)
        
         super.viewDidLoad()
+        overrideUserInterfaceStyle = .light
         genArray()
         // Do any additional setup after loading the view.
         tableView.delegate = self

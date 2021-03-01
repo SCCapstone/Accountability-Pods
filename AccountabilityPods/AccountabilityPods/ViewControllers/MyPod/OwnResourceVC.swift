@@ -18,6 +18,7 @@ class OwnResourceVC: UIViewController {
     var resource: Resource = Resource()
     override func viewDidLoad() {
         super.viewDidLoad()
+        overrideUserInterfaceStyle = .light
         configureText()
         // Do any additional setup after loading the view.
     }

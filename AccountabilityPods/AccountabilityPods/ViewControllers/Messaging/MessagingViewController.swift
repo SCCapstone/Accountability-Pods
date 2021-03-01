@@ -22,6 +22,7 @@ class MessagingViewController: UIViewController, UITableViewDelegate, UITableVie
     override func viewDidLoad() {
         NotificationCenter.default.addObserver(self, selector: #selector(self.loadData), name: NSNotification.Name(rawValue: "ContactsChanged"), object: nil)
         super.viewDidLoad()
+        overrideUserInterfaceStyle = .light
         loadData()
         contactTable.delegate = self
         contactTable.dataSource =  self

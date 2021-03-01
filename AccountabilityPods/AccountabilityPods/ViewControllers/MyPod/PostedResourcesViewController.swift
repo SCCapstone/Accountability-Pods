@@ -15,6 +15,7 @@ class PostedResourcesViewController: UIViewController {
     var resources: [Resource] = []
     override func viewDidLoad() {
         super.viewDidLoad()
+        overrideUserInterfaceStyle = .light
         self.genArray()
         tableView.delegate = self
         tableView.dataSource = self

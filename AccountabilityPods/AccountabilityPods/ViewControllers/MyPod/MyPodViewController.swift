@@ -30,6 +30,7 @@ class MyPodViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        overrideUserInterfaceStyle = .light
         setName()
         
         //added

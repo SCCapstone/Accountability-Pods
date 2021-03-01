@@ -21,6 +21,7 @@ class ResourceCreationViewController: UIViewController {
     @IBOutlet weak var resourceDesc: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
+        overrideUserInterfaceStyle = .light
         let users = db.collection("USERS");
 
         

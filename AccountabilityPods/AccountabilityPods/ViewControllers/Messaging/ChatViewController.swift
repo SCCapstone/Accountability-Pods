@@ -54,6 +54,8 @@ class ChatViewController: JSQMessagesViewController
     
     //load view controller
     override func viewDidLoad() {
+        NotificationCenter.default.addObserver(self, selector: #selector(self.realtimeUpdate), name: NSNotification.Name(rawValue: "OutgoingMessagesDeleted"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.realtimeUpdate), name: NSNotification.Name(rawValue: "IncomingMessagesDeleted"), object: nil)
         print("Sending message to: \(sendToProfile.uid)")
         super.viewDidLoad()
         //super.viewDidLoad()
@@ -110,7 +112,7 @@ class ChatViewController: JSQMessagesViewController
     }
     
     //query to database unordered but illegal to add .order(by:  ) with is equal to
-    func realtimeUpdate()
+    @objc func realtimeUpdate()
     {
         /*
         let query = Constants.chatRefs.databaseChats.whereField("sender_id", isEqualTo: self.senderId!)
@@ -202,6 +204,9 @@ class ChatViewController: JSQMessagesViewController
     //returns data for message by index
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageDataForItemAt indexPath: IndexPath!) -> JSQMessageData!
     {
+        if indexPath.item >= orderedMsgs.count {
+            return JSQMessage(senderId: "", displayName: "", text: "")
+        }
         print("JSQ message: \(orderedMsgs[indexPath.item].msg)")
         return orderedMsgs[indexPath.item].msg
     }
@@ -216,6 +221,9 @@ class ChatViewController: JSQMessagesViewController
     //bubble image color associated with message sending
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageBubbleImageDataForItemAt indexPath: IndexPath!) -> JSQMessageBubbleImageDataSource!
     {
+        if indexPath.item >= orderedMsgs.count {
+            return self.incomingBubble
+        }
         let message = orderedMsgs[indexPath.row].msg
         
         if self.senderId == message.senderId {
@@ -235,11 +243,17 @@ class ChatViewController: JSQMessagesViewController
     //name labels for message buttons
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, attributedTextForMessageBubbleTopLabelAt indexPath: IndexPath!) -> NSAttributedString!
     {
+        if indexPath.item >= orderedMsgs.count {
+            return NSAttributedString(string: "")
+        }
         return orderedMsgs[indexPath.item].msg.senderId == self.senderId ? nil : NSAttributedString(string: orderedMsgs[indexPath.item].msg.senderDisplayName)
     }
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, layout collectionViewLayout: JSQMessagesCollectionViewFlowLayout!, heightForMessageBubbleTopLabelAt indexPath: IndexPath!) -> CGFloat
     {
+        if indexPath.item >= orderedMsgs.count {
+            return 0
+        }
         return orderedMsgs[indexPath.item].msg.senderId == self.senderId ? 0 : 15
     }
     
@@ -261,6 +275,9 @@ class ChatViewController: JSQMessagesViewController
     
     //beginning of delete message
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, didDeleteMessageAt indexPath: IndexPath!) {
+        if indexPath.item >= orderedMsgs.count {
+            return
+        }
         //let message = messages[indexPath.item]
         let message = orderedMsgs[indexPath.item].msg
         //Constants.chatRefs.databaseChats.whereField("sender_id", isEqualTo: message.senderId!).document(where("text", isEqualTo: message.text!))
@@ -269,6 +286,9 @@ class ChatViewController: JSQMessagesViewController
     }
     
     func collectionView(_ collectionView: JSQMessagesCollectionView!, didTapMessageBubbleAtIndexPath indexPath: IndexPath!)   {
+        if indexPath.item >= orderedMsgs.count {
+            return
+        }
        // Do the custom JSQM stuff
         super.collectionView(collectionView, didTapMessageBubbleAt: indexPath)
         let message = orderedMsgs[indexPath.item].msg

@@ -9,10 +9,14 @@
 
 import UIKit
 import SwiftUI
+import Firebase
+import FirebaseAuth
 class ViewController: UIViewController {
-
+    let db = Firestore.firestore()
     override func viewDidLoad() {
         super.viewDidLoad()
+        tryLogin();
+        
         overrideUserInterfaceStyle = .light
         // Do any additional setup after loading the view.
    
@@ -27,6 +31,80 @@ class ViewController: UIViewController {
                    .scaledToFit()
                }
            }
+    
+    func tryLogin() {
+        let defaults = UserDefaults.standard
+        
+        let userID = defaults.string(forKey: "userID");
+        let sessID = defaults.string(forKey: "sessID");
+        
+        if(userID == nil || sessID == nil)
+        {
+            return;
+        }
+        else
+        {
+            print("Made it here:");
+            print(userID);
+            print(sessID);
+            let userIDString = userID!
+            let sessionIDString = sessID!
+            tryLoginFromStorage(userID: userIDString, sessID: sessionIDString);
+        }
+        
+        
+        
+    }
+    
+    func tryLoginFromStorage(userID: String, sessID: String)
+    {
+        self.db.collection("userids").getDocuments() { docs, err in
+        if let err = err {
+            print(err)
+            return;
+        }
+        else
+        {
+            for doc in docs!.documents {
+                if (doc.documentID == userID)
+                {
+                    if((doc.data()["sessionID"]) != nil)
+                    {
+                        let storedID = doc.data()["sessionID"] as! String
+                        if(storedID == sessID)
+                        {
+                        Constants.User.sharedInstance.userID = doc.data()["username"] as! String
+                            let uID = UUID().uuidString
+                            
+                            doc.reference.setData(["sessionID": uID], merge:true);
+                            UserDefaults.standard.setValue(uID, forKey: "sessID")
+                        self.transitionToHome()
+                        }
+                        else
+                        {
+                            Constants.User.sharedInstance.userID = "";
+                            return;
+                        }
+                    }
+                    else
+                    {
+                        return;
+                    }
+                    
+                }
+            }
+        }
+        }
+    }
+    
+    func transitionToHome() {
+        let homeViewController = storyboard?.instantiateViewController(identifier: Constants.Storyboard.homeViewController) as? UITabBarController
+        
+           
+           view.window?.rootViewController = homeViewController
+           view.window?.makeKeyAndVisible()
+           
+    }
 }
 extension UIViewController
 {
@@ -73,3 +151,4 @@ extension UIViewController
             return [startColor.cgColor, endColor.cgColor]
         }
     }
+

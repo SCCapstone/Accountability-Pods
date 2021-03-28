@@ -12,6 +12,7 @@ import Firebase
 struct Constants {
     struct Storyboard {
         static let homeViewController = "HomeVC"
+        static let startViewController = "ViewController"
     }
     //This will let us keep the userID shared across all VCs without any extra work
     class User {

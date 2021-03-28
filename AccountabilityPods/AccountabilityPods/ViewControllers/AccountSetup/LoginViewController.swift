@@ -99,6 +99,10 @@ class LoginViewController: UIViewController {
                             {
                                 print("Successfully got the username from ID!")
                                 Constants.User.sharedInstance.userID = doc.data()["username"] as! String
+                                
+                                UserDefaults.standard.setValue(doc.documentID, forKey: "userID")
+                                UserDefaults.standard.setValue(UUID().uuidString, forKey: "sessID")
+                                self.db.collection("userids").document(result!.user.uid).setData(["sessionID": UserDefaults.standard.string(forKey: "sessID")!], merge:true)
                                 self.transitionToHome()
                             }
                         }
@@ -111,6 +115,8 @@ class LoginViewController: UIViewController {
                 }
             }    }
     }
+    
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }

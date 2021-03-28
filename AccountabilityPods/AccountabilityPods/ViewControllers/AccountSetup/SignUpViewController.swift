@@ -135,9 +135,12 @@ class SignUpViewController: UIViewController {
                                     print("Document added with ID: \(result!.user.uid)")
                                     //Grab the userID here for use everywhere else in the app
                                     Constants.User.sharedInstance.userID = username;
+                                    UserDefaults.standard.setValue(result!.user.uid, forKey: "userID")
+                                    UserDefaults.standard.setValue(UUID().uuidString, forKey: "sessID")
                                     print("reached Here")
                                     // add userID to userID collection
                                     db.collection("userids").document(result!.user.uid).setData(["username": username])
+                                    db.collection("userids").document(result!.user.uid).setData(["sessionID": UserDefaults.standard.string(forKey: "sessID")!], merge: true)
                                     db.collection("users").document(username).setData(["uid": result!.user.uid], merge:true) {
                                         err in
                                         if err != nil {

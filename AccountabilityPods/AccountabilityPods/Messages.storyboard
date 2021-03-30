@@ -111,7 +111,7 @@
                             <constraint firstItem="uqL-m4-353" firstAttribute="top" secondItem="Mg6-lg-dg1" secondAttribute="top" id="sOA-WM-HV3"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Messaging" id="zob-le-Jmn"/>
+                    <tabBarItem key="tabBarItem" title="" image="message.fill" catalog="system" id="zob-le-Jmn"/>
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -146,12 +146,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bOc-wJ-Qju">
-                                <rect key="frame" x="0.0" y="49" width="768" height="975"/>
+                                <rect key="frame" x="0.0" y="93" width="414" height="769"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="separatorColor" red="0.80784313730000001" green="0.90196078430000004" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Send Message to Database" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PZr-Jz-zDF">
-                                <rect key="frame" x="0.0" y="20" width="768" height="25"/>
+                                <rect key="frame" x="0.0" y="64" width="414" height="25"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="18"/>
                             </label>
                         </subviews>
@@ -180,6 +180,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="message.fill" catalog="system" width="128" height="113"/>
         <namedColor name="accountablegreen">
             <color red="0.7839999794960022" green="0.90200001001358032" blue="0.74500000476837158" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

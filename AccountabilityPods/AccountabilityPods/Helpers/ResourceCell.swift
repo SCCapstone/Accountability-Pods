@@ -16,5 +16,6 @@ class ResourceCell: UITableViewCell {
     {
         self.resourceName.text = resource.name
         self.resourceDesc.text = resource.desc
+        resourceDesc.sizeToFit()
     }
 }

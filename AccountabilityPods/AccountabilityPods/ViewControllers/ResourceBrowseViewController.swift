@@ -26,6 +26,7 @@ class ResourceBrowseViewController: UIViewController {
         print("Test: Loading Resources")
         
     }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
@@ -98,18 +99,31 @@ class ResourceBrowseViewController: UIViewController {
     
 }
 extension ResourceBrowseViewController: UITableViewDataSource, UITableViewDelegate {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return self.resources.count
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return resources.count
+        return 1
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let resource = resources[indexPath.row]
+        let resource = resources[indexPath.section]
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ResourceCell") as! ResourceCell
         
         cell.setResource(resource: resource)
+        cell.layer.cornerRadius = 15
         return cell
         
     }
+    func  tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 20
+    }
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView()
+        headerView.backgroundColor = UIColor.clear
+        return headerView
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.performSegue(withIdentifier: "showResourceSegue", sender: Any?.self)
     }
@@ -117,7 +131,7 @@ extension ResourceBrowseViewController: UITableViewDataSource, UITableViewDelega
         if segue.identifier == "showResourceSegue"
         {
             let indexPath = self.tableView.indexPathForSelectedRow
-            let resource = self.resources[(indexPath?.row)!]
+            let resource = self.resources[(indexPath?.section)!]
             if let dView = segue.destination as? ResourceDisplayVC {
                 dView.resource = resource.makeHashableStruct()
             }

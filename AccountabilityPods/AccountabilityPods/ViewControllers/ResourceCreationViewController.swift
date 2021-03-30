@@ -17,8 +17,8 @@ class ResourceCreationViewController: UIViewController {
     @IBAction func cancelButton(_ sender: Any) {
         self.performSegue(withIdentifier: "cancelShareResource", sender: self)
     }
+    @IBOutlet weak var resourceDesc: UITextView!
     @IBOutlet weak var resourceName: UITextField!
-    @IBOutlet weak var resourceDesc: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
         overrideUserInterfaceStyle = .light

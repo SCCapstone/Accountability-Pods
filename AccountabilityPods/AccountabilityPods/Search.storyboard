@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Search-->
+        <!--Search View Controller-->
         <scene sceneID="s8t-HN-W6c">
             <objects>
                 <viewController storyboardIdentifier="SearchViewController" id="RfQ-wL-zwu" customClass="SearchViewController" customModule="AccountabilityPods" customModuleProvider="target" sceneMemberID="viewController">
@@ -106,7 +106,7 @@
                             <constraint firstItem="N0W-N3-Ffb" firstAttribute="leading" secondItem="1W7-GW-9Uf" secondAttribute="leading" id="wCY-Zv-7Ds"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Search" id="zqD-Zt-Pvu"/>
+                    <tabBarItem key="tabBarItem" title="" image="magnifyingglass" catalog="system" id="zqD-Zt-Pvu"/>
                     <connections>
                         <outlet property="field" destination="HId-8h-sL7" id="xcw-Oa-huN"/>
                         <outlet property="table" destination="N0W-N3-Ffb" id="VJR-d6-BZe"/>
@@ -126,6 +126,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

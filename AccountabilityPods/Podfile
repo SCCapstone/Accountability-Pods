@@ -13,6 +13,7 @@ target 'AccountabilityPods' do
   pod 'JSQMessagesViewController'
   # IN APP MESSAGING ADD
   pod 'Firebase/Messaging'
+  pod 'MessageKit'
   # END IN APP MESSAGING ADD?
 
   target 'AccountabilityPodsTests' do

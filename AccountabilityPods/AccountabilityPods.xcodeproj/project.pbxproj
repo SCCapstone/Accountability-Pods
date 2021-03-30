@@ -36,6 +36,7 @@
 		D43570D52579967900FCE20C /* SkillsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43570D42579967900FCE20C /* SkillsViewController.swift */; };
 		D43570D72579C14A00FCE20C /* AddSkillViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43570D62579C14A00FCE20C /* AddSkillViewController.swift */; };
 		D43570D92579CA4200FCE20C /* ViewSkillsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43570D82579CA4200FCE20C /* ViewSkillsViewController.swift */; };
+		D46710452613789A0065A7B6 /* Tutorial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D46710442613789A0065A7B6 /* Tutorial.storyboard */; };
 		D484062B2545CB7F0020830A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D484062A2545CB7F0020830A /* AppDelegate.swift */; };
 		D484062D2545CB7F0020830A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D484062C2545CB7F0020830A /* SceneDelegate.swift */; };
 		D484062F2545CB7F0020830A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D484062E2545CB7F0020830A /* ViewController.swift */; };
@@ -107,6 +108,7 @@
 		D43570D42579967900FCE20C /* SkillsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillsViewController.swift; sourceTree = "<group>"; };
 		D43570D62579C14A00FCE20C /* AddSkillViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSkillViewController.swift; sourceTree = "<group>"; };
 		D43570D82579CA4200FCE20C /* ViewSkillsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSkillsViewController.swift; sourceTree = "<group>"; };
+		D46710442613789A0065A7B6 /* Tutorial.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Tutorial.storyboard; sourceTree = "<group>"; };
 		D48406272545CB7F0020830A /* AccountabilityPods.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AccountabilityPods.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D484062A2545CB7F0020830A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D484062C2545CB7F0020830A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -236,6 +238,7 @@
 				D48406352545CB800020830A /* LaunchScreen.storyboard */,
 				D48406382545CB800020830A /* Info.plist */,
 				D4AF46632562D9EF002CFE4C /* GoogleService-Info.plist */,
+				D46710442613789A0065A7B6 /* Tutorial.storyboard */,
 			);
 			path = AccountabilityPods;
 			sourceTree = "<group>";
@@ -430,6 +433,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D48406372545CB800020830A /* LaunchScreen.storyboard in Resources */,
+				D46710452613789A0065A7B6 /* Tutorial.storyboard in Resources */,
 				D4AF46642562D9EF002CFE4C /* GoogleService-Info.plist in Resources */,
 				D48406342545CB800020830A /* Assets.xcassets in Resources */,
 				68BF202B25C9F05400B6C79B /* Messages.storyboard in Resources */,

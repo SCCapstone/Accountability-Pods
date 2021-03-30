@@ -38,7 +38,7 @@ class ViewController: UIViewController {
         let userID = defaults.string(forKey: "userID");
         let sessID = defaults.string(forKey: "sessID");
         
-        if(userID == nil || sessID == nil)
+        if(userID == nil || sessID == nil || userID == "" || sessID == "")
         {
             return;
         }

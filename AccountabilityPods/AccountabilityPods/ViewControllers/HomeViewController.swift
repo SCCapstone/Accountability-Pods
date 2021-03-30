@@ -30,8 +30,23 @@ class HomeViewController: UIViewController {
 }
     @IBAction func onSignOutTapped(_ sender: Any) {
         do {
-            try Auth.auth().signOut()
-            performSegue(withIdentifier: "signOutSegue", sender: nil)
+            
+            self.dismiss(animated:true, completion: {
+                
+                //performSegue(withIdentifier: "signOutSegue", sender: nil)
+                UserDefaults.standard.setValue("", forKey: "userID")
+                UserDefaults.standard.setValue("", forKey: "sessID")
+                Constants.User.sharedInstance.userID = "";
+                
+                let homeViewController = self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.startViewController)
+                
+                   
+                self.view.window?.rootViewController = homeViewController
+                self.view.window?.makeKeyAndVisible()
+                
+                
+            })
+            //try Auth.auth().signOut()
         } catch {
             print(error)
         }

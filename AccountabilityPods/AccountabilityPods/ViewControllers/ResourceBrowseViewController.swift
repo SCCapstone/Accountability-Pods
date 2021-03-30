@@ -15,6 +15,8 @@ class ResourceBrowseViewController: UIViewController {
     var resources: [Resource] = []
     let db = Firestore.firestore()
     override func viewDidLoad() {
+        if(Constants.User.sharedInstance.userID != "")
+        {
         NotificationCenter.default.addObserver(self, selector: #selector(self.genArray), name: NSNotification.Name(rawValue: "ContactsChanged"), object: nil)
        
         super.viewDidLoad()
@@ -24,6 +26,11 @@ class ResourceBrowseViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         print("Test: Loading Resources")
+        }
+        else
+        {
+            print("Should not be logged in.");
+        }
         
     }
     

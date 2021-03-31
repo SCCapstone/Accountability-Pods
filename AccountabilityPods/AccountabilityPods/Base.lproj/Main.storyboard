@@ -445,6 +445,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MTa-vf-CPj">
                                         <rect key="frame" x="0.0" y="24.666666666666629" width="217" height="30"/>
                                         <state key="normal" title="learn more"/>
+                                        <connections>
+                                            <action selector="learnMoreButton_Pressed:" destination="1LW-JL-zUg" eventType="touchUpInside" id="yPG-yg-BGX"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -509,6 +512,7 @@
                         <outlet property="editButton" destination="cYS-LO-V6R" id="1hf-QL-lkh"/>
                         <outlet property="editDescriptionTextview" destination="w35-yn-Pn2" id="PBO-qa-a2D"/>
                         <outlet property="editNameTextfield" destination="RSA-Wg-O5W" id="Kmp-1x-XWC"/>
+                        <outlet property="learnMorePopup" destination="MTa-vf-CPj" id="Vql-uh-xzA"/>
                         <outlet property="nameLabel" destination="NTr-Gq-TG7" id="yJr-9E-tN0"/>
                         <outlet property="updateButton" destination="mHc-d6-shQ" id="BEv-rd-x1X"/>
                     </connections>

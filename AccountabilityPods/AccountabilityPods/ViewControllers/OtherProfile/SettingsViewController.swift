@@ -21,6 +21,7 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var editNameTextfield: UITextField!
     @IBOutlet weak var editDescriptionTextview: UITextView!
 
+    @IBOutlet weak var learnMorePopup: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -94,14 +95,15 @@ class SettingsViewController: UIViewController {
             }
         }
     }
+    @IBAction func learnMoreButton_Pressed(_ sender: UIButton) {
+        let alertController = UIAlertController(title: "Learn More", message: "By making your account private, you eliminate the option to make your own posts, you can still browse other posts", preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title:"Got it!", style: .default, handler: nil))
+        self.present(alertController, animated: true)
+    }
+
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
-    /*
-    func setUpElements() {
-        errorLabel.alpha = 0 // hide error label
-    }
- */
 
 }
 

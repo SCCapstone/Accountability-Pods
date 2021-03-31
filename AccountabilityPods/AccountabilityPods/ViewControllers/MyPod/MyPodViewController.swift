@@ -93,16 +93,16 @@ class MyPodViewController: UIViewController {
             }
             else
             {
-                
+        
                 let firstname = document!.get("firstname") as! String
                 let lastname = document!.get("lastname") as! String
                 let username = document!.get("username") as! String
                 let description = document!.get("description") as! String
                    
                     let name = firstname + " " + lastname
-                    self.NameLabel.alpha = 1
+                self.NameLabel.alpha = 1;
                     self.editDescriptionText.alpha = 0;
-                    self.descriptionLabel.alpha = 1
+                self.descriptionLabel.alpha = 1;
                     self.editDescButton.alpha = 1;
                     self.addDescButton.alpha = 0;
                     self.NameLabel.text = name

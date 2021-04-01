@@ -96,7 +96,7 @@ class SettingsViewController: UIViewController {
         }
     }
     @IBAction func learnMoreButton_Pressed(_ sender: UIButton) {
-        let alertController = UIAlertController(title: "Learn More", message: "By making your account private, you eliminate the option to make your own posts, you can still browse other posts", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Learn More", message: "By making your account private, no one can find or view you're profile", preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title:"Got it!", style: .default, handler: nil))
         self.present(alertController, animated: true)
     }

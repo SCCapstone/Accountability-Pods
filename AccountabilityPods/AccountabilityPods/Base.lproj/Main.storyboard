@@ -230,6 +230,14 @@
             </objects>
             <point key="canvasLocation" x="2234.5323741007196" y="-635.678391959799"/>
         </scene>
+        <!--tutorial reference-->
+        <scene sceneID="sb2-QS-Fwx">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="tutorial" storyboardName="Tutorial" referencedIdentifier="tutorial1" id="eut-cd-lkp" userLabel="tutorial reference" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ylz-qU-mHq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2736" y="-789"/>
+        </scene>
         <!--Login View Controller-->
         <scene sceneID="PvB-5x-Mua">
             <objects>
@@ -700,16 +708,16 @@
                                 </connections>
                             </containerView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VA5-EW-SjP">
-                                <rect key="frame" x="0.0" y="44" width="414" height="46.5"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="47"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Power Pods" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nis-3l-U0a">
-                                        <rect key="frame" x="153" y="19" width="108" height="27.5"/>
+                                        <rect key="frame" x="153" y="19" width="108" height="28"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="20"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dCA-kT-1HB">
-                                        <rect key="frame" x="388.5" y="5" width="20.5" height="36.5"/>
+                                        <rect key="frame" x="388.5" y="5" width="20.5" height="37"/>
                                         <color key="tintColor" systemColor="systemGray4Color"/>
                                         <state key="normal" image="gearshape.fill" catalog="system"/>
                                         <connections>
@@ -756,7 +764,7 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QOQ-ak-9cj">
-                                <rect key="frame" x="331" y="125.5" width="56" height="35"/>
+                                <rect key="frame" x="331" y="126" width="56" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="PUa-id-v10"/>
                                 </constraints>
@@ -769,7 +777,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dht-in-lSJ">
-                                <rect key="frame" x="344" y="125.5" width="31" height="36"/>
+                                <rect key="frame" x="344" y="126" width="31" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="71q-zj-0tL"/>
                                 </constraints>
@@ -782,7 +790,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xg9-iv-uMG">
-                                <rect key="frame" x="57" y="192.5" width="255" height="34"/>
+                                <rect key="frame" x="57" y="193" width="255" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="255" id="tn2-7W-bix"/>
                                 </constraints>

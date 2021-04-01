@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Tutorial1-->
         <scene sceneID="sX0-m2-cR1">
             <objects>
-                <viewController id="LgT-WK-W0q" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="tutorial1" id="LgT-WK-W0q" userLabel="Tutorial1" customClass="Tutorial1ViewController" customModule="AccountabilityPods" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8W1-fD-8P9">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -45,21 +45,41 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YWV-aE-hri">
                                 <rect key="frame" x="188" y="673" width="38" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="OBV-yP-RzX"/>
+                                    <constraint firstAttribute="width" constant="38" id="j3k-2R-4J4"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="17"/>
                                 <state key="normal" title="Next"/>
                                 <connections>
-                                    <segue destination="4yB-gH-Fvb" kind="showDetail" id="0DM-2Y-Pbn"/>
+                                    <action selector="nextTapped:" destination="LgT-WK-W0q" eventType="touchUpInside" id="8QC-Y1-bow"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xgi-bT-8qX">
                                 <rect key="frame" x="167" y="710" width="80" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="mIx-n1-tyv"/>
+                                    <constraint firstAttribute="height" constant="30" id="pSM-3w-IPA"/>
+                                </constraints>
                                 <state key="normal" title="skip tutorial">
                                     <color key="titleColor" systemColor="systemRedColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="skipTapped:" destination="LgT-WK-W0q" eventType="touchUpInside" id="w8S-3w-XN1"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We provide tools to help you build your community" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VIt-nd-7Bm">
                                 <rect key="frame" x="20" y="215" width="374" height="55"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(Access tutorial again from settings)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5dG-bf-bOy">
+                                <rect key="frame" x="69" y="793" width="276" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="E4Y-04-Mpd"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -68,8 +88,10 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="v4H-at-tGb" firstAttribute="leading" secondItem="DPz-EE-d0V" secondAttribute="leading" constant="30" id="0bT-Vc-HjJ"/>
+                            <constraint firstItem="5dG-bf-bOy" firstAttribute="centerX" secondItem="8W1-fD-8P9" secondAttribute="centerX" id="4Re-HX-1cR"/>
                             <constraint firstItem="3Nb-U4-GmL" firstAttribute="top" secondItem="DPz-EE-d0V" secondAttribute="top" constant="100" id="5ZU-Ph-GAe"/>
                             <constraint firstItem="xgi-bT-8qX" firstAttribute="top" secondItem="YWV-aE-hri" secondAttribute="bottom" constant="1" id="7Hd-PY-P6C"/>
+                            <constraint firstItem="5dG-bf-bOy" firstAttribute="top" secondItem="xgi-bT-8qX" secondAttribute="bottom" constant="53" id="822-MB-vfM"/>
                             <constraint firstItem="v4H-at-tGb" firstAttribute="top" secondItem="pcE-I9-tiN" secondAttribute="bottom" constant="20" id="DiD-i9-gHo"/>
                             <constraint firstItem="YWV-aE-hri" firstAttribute="top" secondItem="F06-lf-Wpb" secondAttribute="bottom" constant="40" id="Dkf-S0-3iM"/>
                             <constraint firstItem="DPz-EE-d0V" firstAttribute="trailing" secondItem="v4H-at-tGb" secondAttribute="trailing" constant="30" id="IPr-ks-QLQ"/>
@@ -87,21 +109,25 @@
                             <constraint firstItem="F06-lf-Wpb" firstAttribute="top" secondItem="v4H-at-tGb" secondAttribute="bottom" constant="20" id="ye0-Be-zJU"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="nextButton" destination="YWV-aE-hri" id="HLD-cL-XPB"/>
+                        <outlet property="skipButton" destination="xgi-bT-8qX" id="Ijm-NA-0Au"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eHI-cv-blV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-313.04347826086956" y="169.41964285714286"/>
         </scene>
-        <!--View Controller-->
+        <!--Tutorial 2-->
         <scene sceneID="E9C-Gp-Enn">
             <objects>
-                <viewController id="4yB-gH-Fvb" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="tutorial2" id="4yB-gH-Fvb" userLabel="Tutorial 2" customClass="Tutorial2ViewController" customModule="AccountabilityPods" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Xxh-Ww-ech">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Navigation" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XFH-go-NKK">
-                                <rect key="frame" x="148.5" y="60" width="117" height="30"/>
+                                <rect key="frame" x="148.5" y="104" width="117" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Mb4-aM-xXX"/>
                                 </constraints>
@@ -110,30 +136,49 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon tutorial" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UET-KF-udO">
-                                <rect key="frame" x="30" y="147" width="354" height="475"/>
+                                <rect key="frame" x="30" y="191" width="354" height="475"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="354" id="OO6-7G-L0Y"/>
                                     <constraint firstAttribute="height" constant="475" id="hg0-cT-cRf"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HFL-ol-SRn">
-                                <rect key="frame" x="188" y="652" width="38" height="36"/>
+                                <rect key="frame" x="188" y="696" width="38" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="0fC-Dv-zZg"/>
+                                    <constraint firstAttribute="width" constant="38" id="4iy-55-eud"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="17"/>
                                 <state key="normal" title="Next"/>
                                 <connections>
-                                    <segue destination="6pJ-ct-nvg" kind="showDetail" id="3wN-gI-gxH"/>
+                                    <action selector="nextTapped:" destination="4yB-gH-Fvb" eventType="touchUpInside" id="IAT-Tp-4ch"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8N8-4I-XVy">
+                                <rect key="frame" x="167" y="740" width="80" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="doo-lI-aSw"/>
+                                    <constraint firstAttribute="height" constant="30" id="yVb-qt-Esc"/>
+                                </constraints>
+                                <state key="normal" title="skip tutorial">
+                                    <color key="titleColor" systemColor="systemRedColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="skipTapped:" destination="4yB-gH-Fvb" eventType="touchUpInside" id="4Gw-av-QsL"/>
                                 </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="BnZ-YX-aHS"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="8N8-4I-XVy" firstAttribute="top" secondItem="HFL-ol-SRn" secondAttribute="bottom" constant="8" symbolic="YES" id="65H-eO-MvY"/>
                             <constraint firstItem="XFH-go-NKK" firstAttribute="top" secondItem="BnZ-YX-aHS" secondAttribute="top" constant="60" id="G9M-G3-nAo"/>
                             <constraint firstItem="UET-KF-udO" firstAttribute="top" secondItem="XFH-go-NKK" secondAttribute="bottom" constant="57" id="UdF-dW-IPk"/>
                             <constraint firstItem="HFL-ol-SRn" firstAttribute="top" secondItem="UET-KF-udO" secondAttribute="bottom" constant="30" id="eU1-jJ-d8m"/>
                             <constraint firstItem="HFL-ol-SRn" firstAttribute="centerX" secondItem="Xxh-Ww-ech" secondAttribute="centerX" id="nMk-ae-fxI"/>
                             <constraint firstItem="XFH-go-NKK" firstAttribute="centerX" secondItem="Xxh-Ww-ech" secondAttribute="centerX" id="qGW-zG-yWm"/>
                             <constraint firstItem="UET-KF-udO" firstAttribute="centerX" secondItem="Xxh-Ww-ech" secondAttribute="centerX" id="sqQ-RP-uCK"/>
+                            <constraint firstItem="8N8-4I-XVy" firstAttribute="centerX" secondItem="Xxh-Ww-ech" secondAttribute="centerX" id="wgY-7k-h3V"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="dvU-dP-oxc"/>
@@ -142,24 +187,115 @@
             </objects>
             <point key="canvasLocation" x="394.20289855072468" y="174.77678571428569"/>
         </scene>
-        <!--View Controller-->
+        <!--Tutorial 3-->
         <scene sceneID="MxO-uF-9kt">
             <objects>
-                <viewController id="6pJ-ct-nvg" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="tutorial3" id="6pJ-ct-nvg" userLabel="Tutorial 3" customClass="Tutorial3ViewController" customModule="AccountabilityPods" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1jp-SA-udl">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="search tutorial" translatesAutoresizingMaskIntoConstraints="NO" id="YLh-qH-kUM">
+                                <rect key="frame" x="0.0" y="44" width="414" height="464"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="414" id="NF4-I1-fyG"/>
+                                    <constraint firstAttribute="height" constant="464" id="f9l-3r-NCm"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="hGY-WJ-mZg">
+                                <rect key="frame" x="188" y="508" width="38" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="17"/>
+                                <state key="normal" title="Next"/>
+                                <connections>
+                                    <action selector="nextTapped:" destination="6pJ-ct-nvg" eventType="touchUpInside" id="XZ4-fh-AmJ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="83z-Wj-9zX">
+                                <rect key="frame" x="167" y="552" width="80" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="56h-S2-oFe"/>
+                                    <constraint firstAttribute="height" constant="30" id="e2d-Wi-g1P"/>
+                                </constraints>
+                                <state key="normal" title="skip tutorial">
+                                    <color key="titleColor" systemColor="systemRedColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="skipTapped:" destination="6pJ-ct-nvg" eventType="touchUpInside" id="vwI-r2-EFN"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="fdA-Tf-W11"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="hGY-WJ-mZg" firstAttribute="top" secondItem="YLh-qH-kUM" secondAttribute="bottom" id="DRV-oy-uAv"/>
+                            <constraint firstItem="YLh-qH-kUM" firstAttribute="centerX" secondItem="1jp-SA-udl" secondAttribute="centerX" id="Gjw-co-qLG"/>
+                            <constraint firstItem="83z-Wj-9zX" firstAttribute="centerX" secondItem="1jp-SA-udl" secondAttribute="centerX" id="Rj6-Zz-WoB"/>
+                            <constraint firstItem="83z-Wj-9zX" firstAttribute="top" secondItem="hGY-WJ-mZg" secondAttribute="bottom" constant="8" symbolic="YES" id="aF1-gL-ugq"/>
+                            <constraint firstItem="YLh-qH-kUM" firstAttribute="top" secondItem="fdA-Tf-W11" secondAttribute="top" id="kdk-0z-i5R"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HcC-ov-1gC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1159" y="175"/>
+            <point key="canvasLocation" x="1157.9710144927537" y="174.77678571428569"/>
+        </scene>
+        <!--Tutorial4-->
+        <scene sceneID="wBy-8T-ivv">
+            <objects>
+                <viewController storyboardIdentifier="tutorial4" id="fJs-14-elc" userLabel="Tutorial4" customClass="Tutorial4ViewController" customModule="AccountabilityPods" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0la-iQ-A8e">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile page tutorial" translatesAutoresizingMaskIntoConstraints="NO" id="0nm-Ni-mJ0">
+                                <rect key="frame" x="23.5" y="44" width="367" height="510"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="367" id="adW-Oo-JcF"/>
+                                    <constraint firstAttribute="height" constant="510" id="ayR-oD-b5x"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IZf-KK-DwO">
+                                <rect key="frame" x="185" y="597" width="44" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="UHB-Ap-uHO"/>
+                                    <constraint firstAttribute="width" constant="44" id="UjN-4R-nEP"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="17"/>
+                                <state key="normal" title="Done"/>
+                                <connections>
+                                    <action selector="doneTapped:" destination="fJs-14-elc" eventType="touchUpInside" id="42z-88-sJG"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="IlZ-iA-838"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="IZf-KK-DwO" firstAttribute="top" secondItem="0nm-Ni-mJ0" secondAttribute="bottom" constant="43" id="0JF-fH-LZ8"/>
+                            <constraint firstItem="0nm-Ni-mJ0" firstAttribute="top" secondItem="IlZ-iA-838" secondAttribute="top" id="MDB-CH-9ou"/>
+                            <constraint firstItem="0nm-Ni-mJ0" firstAttribute="centerX" secondItem="0la-iQ-A8e" secondAttribute="centerX" id="VOi-QI-x79"/>
+                            <constraint firstItem="0nm-Ni-mJ0" firstAttribute="centerX" secondItem="0la-iQ-A8e" secondAttribute="centerX" id="j7F-ZQ-cRz"/>
+                            <constraint firstItem="IZf-KK-DwO" firstAttribute="centerX" secondItem="0la-iQ-A8e" secondAttribute="centerX" id="m4k-M6-ty7"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NLa-sI-Tb6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1821.7391304347827" y="174.77678571428569"/>
+        </scene>
+        <!--home reference-->
+        <scene sceneID="Iql-8b-gLq">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="toHome" storyboardName="Main" referencedIdentifier="HomeVC" id="JjS-bi-Hjl" userLabel="home reference" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mO8-2G-lW4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2438" y="73"/>
         </scene>
     </scenes>
     <resources>
         <image name="icon tutorial" width="1072" height="1466"/>
+        <image name="profile page tutorial" width="1256" height="1392"/>
+        <image name="search tutorial" width="1102" height="1176"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

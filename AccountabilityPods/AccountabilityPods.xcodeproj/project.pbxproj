@@ -17,6 +17,7 @@
 		7053ADC87B004E47E6BC2688 /* Pods_AccountabilityPods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5F2AD14A2FCA3106D3D4D89 /* Pods_AccountabilityPods.framework */; };
 		81EA9050A7EFB72940720773 /* Pods_AccountabilityPodsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D3ACD7AC4C6BD83FC19813E /* Pods_AccountabilityPodsTests.framework */; };
 		AE145E2125716A2E00AF0F0C /* ResourceCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE145E2025716A2D00AF0F0C /* ResourceCreationViewController.swift */; };
+		AE1A89F4261630F3001D386C /* TempViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1A89F3261630F2001D386C /* TempViewController.swift */; };
 		AE4970F82579F994008CCEEB /* SavedResourceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4970F72579F994008CCEEB /* SavedResourceViewController.swift */; };
 		AE497100257A1968008CCEEB /* PostedResourcesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4970FF257A1968008CCEEB /* PostedResourcesViewController.swift */; };
 		AE497105257A1AC1008CCEEB /* OwnResourceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE497104257A1AC1008CCEEB /* OwnResourceVC.swift */; };
@@ -88,6 +89,7 @@
 		864858BE5572824A209DA8F1 /* Pods-AccountabilityPods-AccountabilityPodsUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AccountabilityPods-AccountabilityPodsUITests.debug.xcconfig"; path = "Target Support Files/Pods-AccountabilityPods-AccountabilityPodsUITests/Pods-AccountabilityPods-AccountabilityPodsUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		899EB030F26E16A7F8D5921E /* Pods-AccountabilityPodsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AccountabilityPodsTests.release.xcconfig"; path = "Target Support Files/Pods-AccountabilityPodsTests/Pods-AccountabilityPodsTests.release.xcconfig"; sourceTree = "<group>"; };
 		AE145E2025716A2D00AF0F0C /* ResourceCreationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceCreationViewController.swift; sourceTree = "<group>"; };
+		AE1A89F3261630F2001D386C /* TempViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempViewController.swift; sourceTree = "<group>"; };
 		AE4970F72579F994008CCEEB /* SavedResourceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedResourceViewController.swift; sourceTree = "<group>"; };
 		AE4970FF257A1968008CCEEB /* PostedResourcesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostedResourcesViewController.swift; sourceTree = "<group>"; };
 		AE497104257A1AC1008CCEEB /* OwnResourceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnResourceVC.swift; sourceTree = "<group>"; };
@@ -278,6 +280,7 @@
 				D43570D42579967900FCE20C /* SkillsViewController.swift */,
 				AE49711C257A48ED008CCEEB /* OwnSkillViewController.swift */,
 				D43570D82579CA4200FCE20C /* ViewSkillsViewController.swift */,
+				AE1A89F3261630F2001D386C /* TempViewController.swift */,
 			);
 			path = MyPod;
 			sourceTree = "<group>";
@@ -601,6 +604,7 @@
 				C3299C0225700BE100D2C3D7 /* HomeViewController.swift in Sources */,
 				AE77454225797C1B000CB90C /* ResourceBrowseViewController.swift in Sources */,
 				D4E625B4257AE3C000963DD6 /* ProfileViewController.swift in Sources */,
+				AE1A89F4261630F3001D386C /* TempViewController.swift in Sources */,
 				D43570D72579C14A00FCE20C /* AddSkillViewController.swift in Sources */,
 				C3299C5F2571324800D2C3D7 /* Constants.swift in Sources */,
 				6840CD1C257B066C00640DF4 /* ViewMsgViewController.swift in Sources */,

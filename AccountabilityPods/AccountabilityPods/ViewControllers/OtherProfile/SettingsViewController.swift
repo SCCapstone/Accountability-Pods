@@ -47,42 +47,8 @@ class SettingsViewController: UIViewController {
             }
             
         }
-
-
-        // Do any additional setup after loading the view.
     }
-    /*
-    @objc func switchValueDidChange(_ sender: UISwitch) {
-       // self.db.collection("users").document(userID){()}
-       // var privateVar: Int
-        let docRef = db.collection("users").document(userID)
-        docRef.getDocument { (document,error) in
-            if let document = document, document.exists {
-                self.privateVar = document.get("private") as! Int
-            }
-            else {
-                print("couldn't get private field from user")
-                return
-            }
-            
-        }
-        if (privateVar == 0){
-            accountIsPrivate.isOn = false
-        }
-        else {
-            accountIsPrivate.isOn = true
-        }
-        
-    }*/
-    /*func updateSwitchButton() {
-        if (privateVar == 0){
-            accountIsPrivate.isOn = false
-        }
-        else {
-            accountIsPrivate.isOn = true
-        }
-        
-    }*/
+
     @IBAction func onEditPressed(_ sender: Any) {
         self.editNameTextfield.alpha=1;
         self.nameLabel.alpha=0;

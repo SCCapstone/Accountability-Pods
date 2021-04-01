@@ -19,10 +19,6 @@ class SignUpViewController: UIViewController {
     
     @IBOutlet weak var lastnameTextField: UITextField!
     
-    @IBOutlet weak var ageTextField: UITextField!
-    
-    @IBOutlet weak var affiliationTextField: UITextField!
-    
     @IBOutlet weak var emailTextField: UITextField!
     
     @IBOutlet weak var passwordTextField: UITextField!
@@ -63,8 +59,7 @@ class SignUpViewController: UIViewController {
         // check if all text fields have text
         if usernameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
             firstnameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" || lastnameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
-            ageTextField.text?.trimmingCharacters(in:.whitespacesAndNewlines) == "" ||
-            affiliationTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||         passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" || emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
+            passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" || emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
             return "please enter values for all boxes"
         }
         // remove whitespace from email and password
@@ -115,8 +110,6 @@ class SignUpViewController: UIViewController {
             let lastname = lastnameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-            let age = ageTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-            let affiliation = affiliationTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let isPrivateAccount = accountIsPrivate.isOn
             var privateAccountVar = 0
             if(isPrivateAccount == true)  {
@@ -145,7 +138,7 @@ class SignUpViewController: UIViewController {
                             //Modified this slightly to name the user document the same thing as the auth so that we can search by doc name directly instead of properties
                             // add user to users collection
                             print(username)
-                            db.collection("users").document(username).setData(["firstname": firstname, "lastname": lastname, "age": age,"affiliation": affiliation, "email": email, "username": username, "description": "no description","private": privateAccountVar]) { err in
+                            db.collection("users").document(username).setData(["firstname": firstname, "lastname": lastname, "email": email, "username": username, "description": "no description","private": privateAccountVar]) { err in
                                 if let err = err {
                                     print("Error adding document: \(err)")
                                 } else {

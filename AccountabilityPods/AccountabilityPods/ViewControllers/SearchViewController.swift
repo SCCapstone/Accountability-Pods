@@ -127,6 +127,11 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
             }
         }
     }
+    @IBAction func helpTapped(_ sender: Any) {
+        let alertController = UIAlertController(title: "Search Help", message: "Type someones username or name information to search for their profile\nTo see all profiles clear the search bar and press enter\nTap on profile to view and add them to your pod\nYou will not be able to search for any private accounts", preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title:"Got it!", style: .default, handler: nil))
+        self.present(alertController, animated: true)
+    }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }

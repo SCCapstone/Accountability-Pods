@@ -235,6 +235,14 @@
             </objects>
             <point key="canvasLocation" x="2234.5323741007196" y="-635.678391959799"/>
         </scene>
+        <!--tutorial reference-->
+        <scene sceneID="sb2-QS-Fwx">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="tutorial" storyboardName="Tutorial" referencedIdentifier="tutorial1" id="eut-cd-lkp" userLabel="tutorial reference" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ylz-qU-mHq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2736" y="-789"/>
+        </scene>
         <!--Login View Controller-->
         <scene sceneID="PvB-5x-Mua">
             <objects>
@@ -725,10 +733,23 @@
                                             <segue destination="1LW-JL-zUg" kind="showDetail" id="5Ly-7c-jUj"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="3mO-pR-oAZ" userLabel="Help">
+                                        <rect key="frame" x="8" y="5" width="30" height="36"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal">
+                                            <imageReference key="image" image="questionmark.circle" catalog="system" symbolScale="large"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="helpTapped:" destination="Y2e-Af-v60" eventType="touchUpInside" id="hGx-AV-Z4v"/>
+                                            <action selector="helpTapped:" destination="Cgh-OO-ehM" eventType="touchUpInside" id="hwg-eZ-9DN"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <viewLayoutGuide key="safeArea" id="X8j-Q3-j5I"/>
                                 <color key="backgroundColor" red="0.1843137255" green="0.25490196079999999" blue="0.17254901959999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstItem="nis-3l-U0a" firstAttribute="leading" secondItem="3mO-pR-oAZ" secondAttribute="trailing" constant="115" id="1Hp-6s-Sm9"/>
                                     <constraint firstAttribute="bottom" secondItem="nis-3l-U0a" secondAttribute="bottom" id="GDT-hS-p36"/>
                                     <constraint firstItem="nis-3l-U0a" firstAttribute="top" secondItem="VA5-EW-SjP" secondAttribute="top" constant="19" id="Igc-qR-Tsl"/>
                                     <constraint firstAttribute="height" constant="47" id="SAd-MN-jIq"/>
@@ -853,7 +874,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xvE-aY-qxo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3869.1588785046729" y="505.39956803455726"/>
+            <point key="canvasLocation" x="3868.115942028986" y="504.91071428571428"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Ewe-gD-HBj">
@@ -1123,26 +1144,41 @@
                                 <action selector="onSignOutTapped:" destination="Cgh-OO-ehM" id="7tv-rS-w9s"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Item" width="50" style="plain" id="xJt-N5-ISm">
-                            <inset key="imageInsets" minX="0.0" minY="20" maxX="0.0" maxY="0.0"/>
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="kvu-mK-JXy">
-                                <rect key="frame" x="346" y="0.0" width="48" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <accessibility key="accessibilityConfiguration" identifier="addPostButton">
-                                    <accessibilityTraits key="traits" button="YES"/>
-                                </accessibility>
+                        <rightBarButtonItems>
+                            <barButtonItem style="plain" id="DDS-GM-gGx">
+                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Jk3-AX-d9l" userLabel="Help">
+                                    <rect key="frame" x="364" y="10" width="30" height="24"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <state key="normal">
+                                        <imageReference key="image" image="questionmark.circle" catalog="system" symbolScale="large"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="helpTapped:" destination="Cgh-OO-ehM" eventType="touchUpInside" id="CKn-kC-dgk"/>
+                                    </connections>
+                                </button>
+                            </barButtonItem>
+                            <barButtonItem title="Item" width="50" style="plain" id="xJt-N5-ISm">
+                                <inset key="imageInsets" minX="0.0" minY="20" maxX="0.0" maxY="0.0"/>
+                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="kvu-mK-JXy">
+                                    <rect key="frame" x="308" y="0.0" width="48" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <accessibility key="accessibilityConfiguration" identifier="addPostButton">
+                                        <accessibilityTraits key="traits" button="YES"/>
+                                    </accessibility>
+                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <state key="normal">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <imageReference key="image" image="plus.circle.fill" catalog="system" symbolScale="large"/>
+                                    </state>
+                                    <connections>
+                                        <segue destination="6JP-g9-gqz" kind="presentation" id="3mW-fO-yJx"/>
+                                    </connections>
+                                </button>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <imageReference key="image" image="plus.circle.fill" catalog="system" symbolScale="large"/>
-                                </state>
-                                <connections>
-                                    <segue destination="6JP-g9-gqz" kind="presentation" id="3mW-fO-yJx"/>
-                                </connections>
-                            </button>
-                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </barButtonItem>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -2114,6 +2150,7 @@
         <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="person.fill.badge.minus" catalog="system" width="128" height="124"/>
         <image name="plus.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="questionmark.circle" catalog="system" width="128" height="121"/>
         <image name="suit.heart.fill" catalog="system" width="128" height="109"/>
         <image name="trash" catalog="system" width="121" height="128"/>
         <namedColor name="accountablegreen">

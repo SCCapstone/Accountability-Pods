@@ -152,6 +152,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5k2-6S-aZw">
                                         <rect key="frame" x="0.0" y="338.5" width="334" height="30"/>
                                         <state key="normal" title="learn more"/>
+                                        <connections>
+                                            <action selector="learnMoreButton_Pressed:" destination="Rwu-MT-yi4" eventType="touchUpInside" id="gts-Eu-Z2g"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X9l-pQ-U7e">
                                         <rect key="frame" x="0.0" y="378.5" width="334" height="30"/>
@@ -215,6 +218,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="EwC-Ak-1Cg"/>
                     <connections>
+                        <outlet property="accountIsPrivate" destination="vZg-rG-hBT" id="PFG-dK-eUC"/>
                         <outlet property="affiliationTextField" destination="fEK-bY-bnX" id="bgB-EC-zkm"/>
                         <outlet property="ageTextField" destination="WwQ-yP-X25" id="QAx-AW-gSr"/>
                         <outlet property="createAccountButton" destination="X9l-pQ-U7e" id="Kq6-ms-EQj"/>
@@ -222,6 +226,7 @@
                         <outlet property="errorLabel" destination="qno-z7-GVf" id="oUo-UN-p9t"/>
                         <outlet property="firstnameTextField" destination="XOk-Dw-N0R" id="Mu9-6B-LOv"/>
                         <outlet property="lastnameTextField" destination="foR-hV-CqF" id="jMD-5f-djM"/>
+                        <outlet property="learnMore" destination="5k2-6S-aZw" id="Cyg-Im-DqG"/>
                         <outlet property="passwordTextField" destination="lgO-6b-mcq" id="HxD-MZ-YuD"/>
                         <outlet property="usernameTextField" destination="lWa-w9-rl6" id="b47-vb-iLf"/>
                     </connections>
@@ -487,6 +492,9 @@
                             </textView>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MMa-QM-V3x">
                                 <rect key="frame" x="345" y="282.5" width="51" height="31"/>
+                                <connections>
+                                    <action selector="makeAccountPrivateSwitch_Pressed:" destination="1LW-JL-zUg" eventType="valueChanged" id="jrg-DL-H2h"/>
+                                </connections>
                             </switch>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="FjX-Jt-Etu"/>
@@ -523,6 +531,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="accountIsPrivate" destination="MMa-QM-V3x" id="1DA-sU-Ihg"/>
                         <outlet property="descriptionLabel" destination="9iu-vp-UDV" id="Xsa-6b-x7q"/>
                         <outlet property="editButton" destination="cYS-LO-V6R" id="1hf-QL-lkh"/>
                         <outlet property="editDescriptionTextview" destination="w35-yn-Pn2" id="PBO-qa-a2D"/>
@@ -700,16 +709,16 @@
                                 </connections>
                             </containerView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VA5-EW-SjP">
-                                <rect key="frame" x="0.0" y="44" width="414" height="46.5"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="47"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Power Pods" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nis-3l-U0a">
-                                        <rect key="frame" x="153" y="19" width="108" height="27.5"/>
+                                        <rect key="frame" x="153" y="19" width="108" height="28"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="20"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dCA-kT-1HB">
-                                        <rect key="frame" x="388.5" y="5" width="20.5" height="36.5"/>
+                                        <rect key="frame" x="388.5" y="5" width="20.5" height="37"/>
                                         <color key="tintColor" systemColor="systemGray4Color"/>
                                         <state key="normal" image="gearshape.fill" catalog="system"/>
                                         <connections>
@@ -756,7 +765,7 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QOQ-ak-9cj">
-                                <rect key="frame" x="331" y="125.5" width="56" height="35"/>
+                                <rect key="frame" x="331" y="126" width="56" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="PUa-id-v10"/>
                                 </constraints>
@@ -769,7 +778,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dht-in-lSJ">
-                                <rect key="frame" x="344" y="125.5" width="31" height="36"/>
+                                <rect key="frame" x="344" y="126" width="31" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="71q-zj-0tL"/>
                                 </constraints>
@@ -782,7 +791,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xg9-iv-uMG">
-                                <rect key="frame" x="57" y="192.5" width="255" height="34"/>
+                                <rect key="frame" x="57" y="193" width="255" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="255" id="tn2-7W-bix"/>
                                 </constraints>
@@ -1173,7 +1182,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="8bi-88-eke">
-                                <rect key="frame" x="171" y="692" width="67" height="36"/>
+                                <rect key="frame" x="170" y="692" width="67" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="0.57139021866059125" blue="0.48902985952428157" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="17"/>

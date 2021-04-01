@@ -22,14 +22,67 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var editDescriptionTextview: UITextView!
 
     @IBOutlet weak var learnMorePopup: UIButton!
-    
+    @IBOutlet weak var accountIsPrivate: UISwitch!
+  //  var privateVar: Int = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         overrideUserInterfaceStyle = .light
         setName()
+      /*  accountIsPrivate.addTarget(self, action: #selector(switchValueDidChange(_:)), for: .valueChanged)
+*/
+        let docRef = db.collection("users").document(userID)
+        docRef.getDocument { (document,error) in
+            if let document = document, document.exists {
+                let privateVar = document.get("private") as! Int
+                if (privateVar == 0){
+                    self.accountIsPrivate.isOn = false
+                }
+                else {
+                    self.accountIsPrivate.isOn = true
+                }
+            }
+            else {
+                print("couldn't get private field from user")
+                return
+            }
+            
+        }
+
+
         // Do any additional setup after loading the view.
     }
-
+    /*
+    @objc func switchValueDidChange(_ sender: UISwitch) {
+       // self.db.collection("users").document(userID){()}
+       // var privateVar: Int
+        let docRef = db.collection("users").document(userID)
+        docRef.getDocument { (document,error) in
+            if let document = document, document.exists {
+                self.privateVar = document.get("private") as! Int
+            }
+            else {
+                print("couldn't get private field from user")
+                return
+            }
+            
+        }
+        if (privateVar == 0){
+            accountIsPrivate.isOn = false
+        }
+        else {
+            accountIsPrivate.isOn = true
+        }
+        
+    }*/
+    /*func updateSwitchButton() {
+        if (privateVar == 0){
+            accountIsPrivate.isOn = false
+        }
+        else {
+            accountIsPrivate.isOn = true
+        }
+        
+    }*/
     @IBAction func onEditPressed(_ sender: Any) {
         self.editNameTextfield.alpha=1;
         self.nameLabel.alpha=0;
@@ -94,6 +147,13 @@ class SettingsViewController: UIViewController {
                     self.editDescriptionTextview.alpha = 0;
             }
         }
+    }
+    @IBAction func makeAccountPrivateSwitch_Pressed(_ sender: Any) {
+        if ((sender as AnyObject).isOn == true) {
+            db.collection("users").document(userID).updateData(["private": 1])
+                  } else {
+                    db.collection("users").document(userID).updateData(["private": 0])
+                  }
     }
     @IBAction func learnMoreButton_Pressed(_ sender: UIButton) {
         let alertController = UIAlertController(title: "Learn More", message: "By making your account private, no one can find or view you're profile", preferredStyle: .alert)

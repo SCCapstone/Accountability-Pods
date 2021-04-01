@@ -31,6 +31,9 @@ class SignUpViewController: UIViewController {
     
     @IBOutlet weak var errorLabel: UILabel!
     
+    @IBOutlet weak var accountIsPrivate: UISwitch!
+    
+    @IBOutlet weak var learnMore: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         overrideUserInterfaceStyle = .light
@@ -39,6 +42,12 @@ class SignUpViewController: UIViewController {
     }
     func setUpElements() {
         errorLabel.alpha = 0 // hide error label
+        self.accountIsPrivate.isOn = false
+    }
+    @IBAction func learnMoreButton_Pressed(_ sender: Any) {
+        let alertController = UIAlertController(title: "Learn More", message: "By making your account private, no one can find or view you're profile", preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title:"Got it!", style: .default, handler: nil))
+        self.present(alertController, animated: true)
     }
 
     /*
@@ -108,6 +117,14 @@ class SignUpViewController: UIViewController {
             let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let age = ageTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let affiliation = affiliationTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            let isPrivateAccount = accountIsPrivate.isOn
+            var privateAccountVar = 0
+            if(isPrivateAccount == true)  {
+                privateAccountVar=1
+            }
+            else {
+                privateAccountVar=0
+            }
             // check if username aleady exists before creating account
             let db = Firestore.firestore()
             let docRef = db.collection("users").document(username)
@@ -128,7 +145,7 @@ class SignUpViewController: UIViewController {
                             //Modified this slightly to name the user document the same thing as the auth so that we can search by doc name directly instead of properties
                             // add user to users collection
                             print(username)
-                            db.collection("users").document(username).setData(["firstname": firstname, "lastname": lastname, "age": age,"affiliation": affiliation, "email": email, "username": username, "description": "no description"]) { err in
+                            db.collection("users").document(username).setData(["firstname": firstname, "lastname": lastname, "age": age,"affiliation": affiliation, "email": email, "username": username, "description": "no description","private": privateAccountVar]) { err in
                                 if let err = err {
                                     print("Error adding document: \(err)")
                                 } else {

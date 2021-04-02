@@ -135,6 +135,7 @@ extension ResourceBrowseViewController: UITableViewDataSource, UITableViewDelega
         return 1
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let resource = resources[indexPath.section]
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ResourceCell") as! ResourceCell

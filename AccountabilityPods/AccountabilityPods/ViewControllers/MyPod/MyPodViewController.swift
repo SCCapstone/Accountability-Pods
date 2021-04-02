@@ -24,9 +24,7 @@ class MyPodViewController: UIViewController {
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     
-    @IBOutlet weak var editDescButton: UIButton!
-    @IBOutlet weak var addDescButton: UIButton!
-    @IBOutlet weak var editDescriptionText: UITextField!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,23 +50,7 @@ class MyPodViewController: UIViewController {
             self.SkillsContainer.alpha = 0;
         })
     }
-    @IBAction func onEditDescription(_ sender: Any) {
-       self.editDescriptionText.alpha = 1;
-        self.descriptionLabel.alpha = 0;
-        self.editDescButton.alpha = 0;
-        self.addDescButton.alpha = 1;
-        self.editDescriptionText.text = descriptionLabel.text
-    }
-    
-    @IBAction func onAddDescription(_ sender: Any) {
-        self.editDescButton.alpha = 1;
-        self.addDescButton.alpha = 0;
-        self.editDescriptionText.alpha = 0;
-        self.descriptionLabel.alpha = 1;
-        db.collection("users").document(userID).updateData(["description": editDescriptionText.text!])
-        setName()
-        print(userID)
-    }
+  
     /*
     // MARK: - Navigation
 
@@ -100,11 +82,8 @@ class MyPodViewController: UIViewController {
                 let description = document!.get("description") as! String
                    
                     let name = firstname + " " + lastname
-                self.NameLabel.alpha = 1;
-                    self.editDescriptionText.alpha = 0;
-                self.descriptionLabel.alpha = 1;
-                    self.editDescButton.alpha = 1;
-                    self.addDescButton.alpha = 0;
+                    self.NameLabel.alpha = 1;
+                    self.descriptionLabel.alpha = 1;
                     self.NameLabel.text = name
                     self.descriptionLabel.text = description
                     self.usernameLabel.text = "@" + username

@@ -26,7 +26,6 @@ class MessagingViewController: UIViewController, UITableViewDelegate, UITableVie
         loadData()
         contactTable.delegate = self
         contactTable.dataSource =  self
-        
         //view controller to use when presenting modal Chat view controller
         //definesPresentationContext = true
         //setUpElements()
@@ -82,7 +81,11 @@ class MessagingViewController: UIViewController, UITableViewDelegate, UITableVie
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let presented = self.presentedViewController {
+            presented.removeFromParent()
+        }
         self.performSegue(withIdentifier: "ToChat", sender: Any?.self)
+        //ßself.present(ChatViewController, animated: true, completion: nil)
         
     }
     

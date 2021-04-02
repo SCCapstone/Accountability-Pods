@@ -226,12 +226,15 @@ class ChatViewController: MessagesViewController, InputBarAccessoryViewDelegate 
     func inputBar(_ inputBar: InputBarAccessoryView, didPressSendButtonWith text: String) {
     //When use press send button this method is called.
         let message = Message(id: UUID().uuidString, content: text, created: Int64(Date().timeIntervalSince1970), senderID: userID, senderName: self.senderName ?? "No Sender Name", showMsg: true)
-    //calling function to insert and save message
-    insertNewMessage(message)
-    save(message)
-    //clearing input field
-    inputBar.inputTextView.text = ""
-    messagesCollectionView.reloadData()
+    
+        //calling function to insert and save message
+        insertNewMessage(message)
+        save(message)
+        sendPush()
+        
+        //clearing input field
+        inputBar.inputTextView.text = ""
+        messagesCollectionView.reloadData()
         messagesCollectionView.scrollToLastItem(animated: true)
     }
     
@@ -246,10 +249,12 @@ class ChatViewController: MessagesViewController, InputBarAccessoryViewDelegate 
             else
             {
                 let token = document!.get("fcmToken") as! String
+                print("GOT USER 2 TOKEN \(token)")
                 sender.sendPushNotification(to: token, title: self.senderName ?? "New Message", body: "Open to Read Message")
             }
+        }
     }
-    }
+    
     //perfom actions overrides
     override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
             
@@ -262,32 +267,32 @@ class ChatViewController: MessagesViewController, InputBarAccessoryViewDelegate 
         
     override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
 
-            if action == NSSelectorFromString("delete:") {
-                // 1.) Remove from datasource
-                let time = messages[indexPath.row + 1].created
-                print(" THIS IS THE MESSAGE\(messages[indexPath.row + 1].content)")
-                print("THIS IS CREATE: \(time)")
-                //let show = false
-                let docC = docReference?.collection("thread").whereField("created", isEqualTo: time)
-                docC?.getDocuments() { (querySnapshot, err) in
+        if action == NSSelectorFromString("delete:") {
+            // Remove from datasource
+            let time = messages[indexPath.row + 1].created
+            print("THIS IS CREATE: \(time)")
+
+            let docC = docReference?.collection("thread").whereField("created", isEqualTo: time)
+            docC?.getDocuments() { (querySnapshot, err) in
                 if let err = err {
-                print("Error getting documents: \(err)")
+                    print("Error getting documents: \(err)")
                 } else {
-                let document = querySnapshot!.documents.first
-                document?.reference.updateData(["showMsg": false])
-                }
+                    let document = querySnapshot!.documents.first
+                    document?.reference.updateData(["showMsg": false])
+                    }
                 }
             
-                messages.remove(at: indexPath.section)
-                print(" AM I HERE \(messages.count)")
-                messagesCollectionView.deleteSections([indexPath.section])
-                print(" WHAT Messages after collection remove \(messages.count)")
-                messagesCollectionView.reloadData()
+            messages.remove(at: indexPath.section)
+            print(" AM I HERE \(messages.count)")
+            messagesCollectionView.deleteSections([indexPath.section])
+            print(" WHAT Messages after collection remove \(messages.count)")
+            messagesCollectionView.reloadData()
             } else {
                 super.collectionView(collectionView, performAction: action, forItemAt: indexPath, withSender: sender)
                 print("WHAT ISTHIS HERE")
             }
         }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
@@ -320,8 +325,7 @@ extension ChatViewController: MessagesDisplayDelegate {
 
   func shouldDisplayHeader(for message: MessageType, at indexPath: IndexPath,
     in messagesCollectionView: MessagesCollectionView) -> Bool {
-
-    return false
+        return false
   }
     func configureAvatarView(_ avatarView: AvatarView, for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) {
         avatarView.isHidden = true
@@ -332,8 +336,6 @@ extension ChatViewController: MessagesDisplayDelegate {
     in messagesCollectionView: MessagesCollectionView) -> MessageStyle {
 
     let corner: MessageStyle.TailCorner = isFromCurrentSender(message: message) ? .bottomRight : .bottomLeft
-
-    // 3
     return .bubbleTail(corner, .curved)
   }
 }
@@ -346,39 +348,26 @@ extension ChatViewController: MessagesLayoutDelegate {
     func avatarSize(for message: MessageType, at indexPath: IndexPath,
     in messagesCollectionView: MessagesCollectionView) -> CGSize {
 
-    // 1
-    return .zero
-  }
+        return .zero
+    }
 
-  func footerViewSize(for message: MessageType, at indexPath: IndexPath,
+    func footerViewSize(for message: MessageType, at indexPath: IndexPath,
     in messagesCollectionView: MessagesCollectionView) -> CGSize {
 
-    // 2
-    return CGSize(width: 0, height: 8)
-  }
+        return CGSize(width: 0, height: 8)
+    }
 
-  func heightForLocation(message: MessageType, at indexPath: IndexPath,
+    func heightForLocation(message: MessageType, at indexPath: IndexPath,
     with maxWidth: CGFloat, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
-        return 0
-  }
+            return 0
+    }
 }
 
 extension ChatViewController: MessagesDataSource {
     func currentSender() -> SenderType {
         return Sender(id: userID, displayName: senderName ?? "Name not Found")
     }
-    /*@objc func delete(sender: UILongPressGestureRecognizer) {
-        if sender.state == UIGestureRecognizer.State.began {
-            let touchPoint = sender.location(in: self.messagesCollectionView)
-            if let indexPath = messagesCollectionView.indexPathForItem(at: touchPoint){
-                messages.remove(at: indexPath.section)
-                print(" AM I HERE \(messages.count)")
-                messagesCollectionView.deleteSections([indexPath.section])
-                print(" WHAT Messages after collection remove \(messages.count)")
-                messagesCollectionView.reloadData()
-                }
-        }
-    }*/
+    
     func numberOfSections(in messagesCollectionView: MessagesCollectionView) -> Int {
         print("GETTING NUM OF SECTIONS: \(messages.count)")
         return messages.count

@@ -107,10 +107,10 @@ extension PostedResourcesViewController: UITableViewDataSource, UITableViewDeleg
         
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let resource = resources[indexPath.row]
-        print(resource)
+        let resource = resources[indexPath.section]
+        print("INDEXX: \(indexPath.section)")
         let cell = tableView.dequeueReusableCell(withIdentifier: "ResourceCell") as! ResourceCell
-        print(resource.name)
+        print("OWNNN: \(resource.name)")
         cell.setResource(resource: resource)
         cell.layer.cornerRadius = 15
         return cell
@@ -133,7 +133,7 @@ extension PostedResourcesViewController: UITableViewDataSource, UITableViewDeleg
         {
             
             let indexPath = self.tableView.indexPathForSelectedRow
-            let resource = self.resources[(indexPath?.row)!]
+            let resource = self.resources[(indexPath?.section)!]
             if let dView = segue.destination as? OwnResourceVC {
                 
                 dView.resource = resource

@@ -11,11 +11,9 @@ import UIKit
 class ResourceDisplayVC: UIViewController {
     let db = Firestore.firestore()
     
-    @IBOutlet weak var groupName: UITextField!
     @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var usernameButton: UIButton!
     @IBOutlet weak var nameField: UILabel!
-    @IBOutlet weak var groupButton: UIButton!
     @IBOutlet weak var descField: UITextView!
     var docID: String? = nil
     var resource: ResourceHashable = Resource.init().makeHashableStruct()
@@ -41,16 +39,10 @@ class ResourceDisplayVC: UIViewController {
         
         if(hasLiked)
         {
-            self.groupButton.isHidden = false;
-            self.groupButton.isUserInteractionEnabled = true;
-            self.groupName.isHidden = false;
             self.likeButton.tintColor = .systemPink
         }
         else
         {
-            self.groupButton.isHidden = true;
-            self.groupButton.isUserInteractionEnabled = false;
-            self.groupName.isHidden = true;
             self.likeButton.tintColor = .lightGray
             
         }
@@ -104,38 +96,12 @@ class ResourceDisplayVC: UIViewController {
         }
     }
 
-    @IBAction func onGroupButton(_ sender: Any) {
-        
-        
-            let docRef = db.collection("users").document(Constants.User.sharedInstance.userID).collection("SAVEDRESOURCES").getDocuments(){
-                docs, error in
-                if let error = error
-                {
-                    print(error)
-                }
-                else
-                {
-                    for doc in docs!.documents {
-                        if(doc.data()["docRef"] as! String == self.resource.path)
-                        {
-                            doc.reference.setData(["groupName" : self.groupName.text], merge: true)
-                            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "SavedResourceChange"), object: nil)
-                        }
-                    }
-                }
-                
-            }
-        
-        
-        
-    }
+    
     @IBAction func onLike(_ sender: Any) {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "SavedResourceChange"), object: nil)
         
         if(!hasLiked) {
-            self.groupButton.isHidden = false;
-            self.groupButton.isUserInteractionEnabled = true;
-            self.groupName.isHidden = false;
+ 
             let docRef = db.collection("users").document(Constants.User.sharedInstance.userID).collection("SAVEDRESOURCES").addDocument(data: ["docRef" : self.resource.path, "groupName": ""]) {err in
             
                 if let err = err {
@@ -150,9 +116,7 @@ class ResourceDisplayVC: UIViewController {
         }
         else
         {
-            self.groupButton.isHidden = true;
-            self.groupButton.isUserInteractionEnabled = false;
-            self.groupName.isHidden = true;
+ 
             db.collection("users").document(Constants.User.sharedInstance.userID).collection("SAVEDRESOURCES").document((self.docID)!).delete()
             self.hasLiked = false
             

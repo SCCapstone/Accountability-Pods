@@ -36,7 +36,15 @@ class ResourceViewCollectionVC: UIViewController {
     var groups: [ResourceGroup] = []
     var groupsUnhashed: [ResourceGroupUnhashed] = []
     var selectedResource: ResourceHashable = ResourceHashable(name:"none",desc:"none",path:"nil")
+    var inputString = ""
     
+    let alert = UIAlertController(title: "Create Group", message: "Enter your group name.", preferredStyle: .alert)
+    
+    
+    
+    @IBAction func createGroup(_ sender: Any) {
+        self.present(alert, animated: true, completion: nil)
+    }
     //Enum allows for properly creating the cells
     enum ListType: Hashable {
         case group(ResourceGroup)
@@ -53,7 +61,24 @@ class ResourceViewCollectionVC: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(self.genArray), name: NSNotification.Name(rawValue: "SavedResourceChange"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.update), name: NSNotification.Name(rawValue: "ResourceAsyncFinished"), object: nil)
         
+        alert.addTextField {
+            (textField) in
+            textField.text = ""
+        }
         
+        
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
+            [weak alert] (_) in
+            let textField = alert?.textFields![0]
+            if(textField != nil && textField!.text != "" )
+            {
+                self.inputString = textField!.text as! String
+                print(self.inputString)
+                self.addGroup()
+            }
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         super.viewDidLoad()
         overrideUserInterfaceStyle = .light
         //Populate both the grouped and ungrouped resource arrays
@@ -85,8 +110,7 @@ class ResourceViewCollectionVC: UIViewController {
             cell.accessories = [.outlineDisclosure(options:groupDisclose)]
             
         }
-        
-        
+  
         
         
         data = UICollectionViewDiffableDataSource<ViewSection, ListType>(collectionView: collectionView) {
@@ -138,6 +162,9 @@ class ResourceViewCollectionVC: UIViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
+    
+    
+    
     @objc func update()
     {
         
@@ -158,6 +185,7 @@ class ResourceViewCollectionVC: UIViewController {
                 tempGroup.resources.append(res.hashableResource)
             }
             groups.append(tempGroup)
+            print(tempGroup.name + " added to group array")
         }
         
         
@@ -306,12 +334,20 @@ class ResourceViewCollectionVC: UIViewController {
         }
     }
     
-    
-    
-    
-
-    
-    // MARK: - Extensions
+    func addGroup() {
+        if(self.inputString != "")
+        {
+            print("adding group")
+            let newGroup = ResourceGroupUnhashed(name: self.inputString, resources: [])
+            
+            self.groupsUnhashed.append(newGroup)
+            self.update()
+        }
+        else
+        {
+            print("input string blank")
+        }
+    }
 
 
 }

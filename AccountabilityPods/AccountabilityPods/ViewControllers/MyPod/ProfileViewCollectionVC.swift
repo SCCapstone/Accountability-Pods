@@ -36,6 +36,8 @@ class ProfileViewCollectionVC: UIViewController {
     var groups: [ProfileGroup] = []
     var groupsUnhashed: [ProfileGroupUnhashed] = []
     var selectedProfile: ProfileHashable = ProfileHashable()
+    var inputString = ""
+    let alert = UIAlertController(title: "Create Group", message: "Enter your group name.", preferredStyle: .alert)
     
     //Enum allows for properly creating the cells
     enum ListType: Hashable {
@@ -49,6 +51,24 @@ class ProfileViewCollectionVC: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
     override func viewDidLoad() {
+        
+        alert.addTextField {
+            (textField) in
+            textField.text = ""
+        }
+        
+        
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
+            [weak alert] (_) in
+            let textField = alert?.textFields![0]
+            if(textField != nil && textField!.text != "" )
+            {
+                self.inputString = textField!.text as! String
+                print(self.inputString)
+                self.addGroup()
+            }
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         // Immediately set up observer so if there is any saved profile change, i.e. a user likes or unlikes a post, or moves it to/from a group, the update function is called.
         NotificationCenter.default.addObserver(self, selector: #selector(self.genArray), name: NSNotification.Name(rawValue: "ContactsChanged"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.update), name: NSNotification.Name(rawValue: "ProfileAsyncFinished"), object: nil)
@@ -224,6 +244,28 @@ class ProfileViewCollectionVC: UIViewController {
         data.apply(snapshotSection, to: .main, animatingDifferences: false)
     }
     
+    @IBAction func createGroup(_ sender: Any) {
+        
+        self.present(alert, animated: true, completion: nil)
+        
+    }
+    
+    func addGroup() {
+        
+        if(self.inputString != "")
+        {
+            print("adding group")
+            let newGroup = ProfileGroupUnhashed(name: self.inputString, profiles:[])
+            
+            self.groupsUnhashed.append(newGroup)
+            self.update()
+        }
+        else
+        {
+            print("input string blank")
+        }
+        
+    }
     //Populate the hashable arrays with profiles
     @objc func genArray(){
         profilesUnhashed = []

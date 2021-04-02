@@ -41,27 +41,30 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 print("Loading Users for Search Display")
                 for document in querySnapshot!.documents {
                     if document.documentID != "adminuser" {
-                        let tempProfile = Profile()
-                        self.profiles.append(tempProfile)
-                        tempProfile.readData(database: self.db, path: document.reference.path, tableview: self.table)                    }
+                        if document.get("private") as? Int != 1 {
+                            let tempProfile = Profile()
+                            self.profiles.append(tempProfile)
+                            tempProfile.readData(database: self.db, path: document.reference.path, tableview: self.table)
+                        }
+                                            
+                    }
                     
                 }
             }
         }
     }
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        
-        if let text = textField.text {
-            filterText(text + string)
+    
+    
+    @IBAction func searchPressed(_ sender: Any) {
+        if let text = field.text {
+            filterText(text)
         }
         else
         {
             filtered = false;
         }
         table.reloadData()
-        return true
     }
-    
     func filterText(_ query: String) {
         print("QUERY: \(query)")
         filteredProfiles.removeAll()
@@ -114,6 +117,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showProfileSegue" {
             let indexPath = self.table.indexPathForSelectedRow
+            print("index: \(indexPath)")
             if filtered {
                 let profile = self.filteredProfiles[(indexPath?.row)!]
                 if let dView = segue.destination as? ProfileViewController {
@@ -128,7 +132,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
     }
     @IBAction func helpTapped(_ sender: Any) {
-        let alertController = UIAlertController(title: "Search Help", message: "Type someones username or name information to search for their profile\nTo see all profiles clear the search bar and press enter\nTap on profile to view and add them to your pod\nYou will not be able to search for any private accounts", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Search Help", message: "Type someones username or name information and press search to search for their profile\nTo see all profiles clear the search bar and press search\nTap on profile to view and add them to your pod\nYou will not be able to search for any private accounts", preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title:"Got it!", style: .default, handler: nil))
         self.present(alertController, animated: true)
     }

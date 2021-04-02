@@ -10,7 +10,6 @@
 		442DC923257873DA00036D18 /* MessagingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442DC922257873DA00036D18 /* MessagingViewController.swift */; };
 		443469A02614FB5700D567E7 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4434699F2614FB5700D567E7 /* SettingsViewController.swift */; };
 		6840CD1A257B062700640DF4 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6840CD19257B062700640DF4 /* ChatViewController.swift */; };
-		6840CD1C257B066C00640DF4 /* ViewMsgViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6840CD1B257B066C00640DF4 /* ViewMsgViewController.swift */; };
 		68BF202B25C9F05400B6C79B /* Messages.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68BF202A25C9F05400B6C79B /* Messages.storyboard */; };
 		68BF202D25C9F90500B6C79B /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68BF202C25C9F90500B6C79B /* Search.storyboard */; };
 		68CEA2FA25E86651004F9F3A /* ContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CEA2F925E86651004F9F3A /* ContactCell.swift */; };
@@ -83,7 +82,6 @@
 		4434699F2614FB5700D567E7 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		4D3ACD7AC4C6BD83FC19813E /* Pods_AccountabilityPodsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AccountabilityPodsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6840CD19257B062700640DF4 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
-		6840CD1B257B066C00640DF4 /* ViewMsgViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewMsgViewController.swift; sourceTree = "<group>"; };
 		68BF202A25C9F05400B6C79B /* Messages.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Messages.storyboard; sourceTree = "<group>"; };
 		68BF202C25C9F90500B6C79B /* Search.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
 		68CEA2F925E86651004F9F3A /* ContactCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ContactCell.swift; path = AccountabilityPods/Helpers/ContactCell.swift; sourceTree = SOURCE_ROOT; };
@@ -295,7 +293,6 @@
 			isa = PBXGroup;
 			children = (
 				6840CD19257B062700640DF4 /* ChatViewController.swift */,
-				6840CD1B257B066C00640DF4 /* ViewMsgViewController.swift */,
 				442DC922257873DA00036D18 /* MessagingViewController.swift */,
 			);
 			path = Messaging;
@@ -627,7 +624,6 @@
 				D4E594DA26165FDD00231E3B /* Tutorial2ViewController.swift in Sources */,
 				D43570D72579C14A00FCE20C /* AddSkillViewController.swift in Sources */,
 				C3299C5F2571324800D2C3D7 /* Constants.swift in Sources */,
-				6840CD1C257B066C00640DF4 /* ViewMsgViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

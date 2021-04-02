@@ -1319,7 +1319,7 @@
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="LrB-ry-hXC"/>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.25367057320000003" green="0.31102222200000001" blue="0.2352984548" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </view>
                     <connections>
                         <outlet property="tableView" destination="WFo-5e-CjC" id="Bix-1G-RNy"/>

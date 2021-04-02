@@ -37,11 +37,12 @@ class ResourceCreationViewController: UIViewController {
         self.view.endEditing(true)
     }
     @IBAction func onAddPressed(_ sender: Any) {
+        let timeStamp = Firebase.Timestamp().seconds
         var docRef = db.collection("users").document(userID).collection("POSTEDRESOURCES").addDocument(data: [
                     "creatorRef" : userID,
                     "imageLink" : "TODO", //TODO
                     "resourceDesc" : resourceDesc.text ?? "N/A",
-                    "resourceName" : resourceName.text ?? "N/A"
+            "resourceName" : resourceName.text ?? "N/A", "time": timeStamp
                 ]) {err in
                     if let err = err {
                         print("The document was invalid for some reason? \(err)")

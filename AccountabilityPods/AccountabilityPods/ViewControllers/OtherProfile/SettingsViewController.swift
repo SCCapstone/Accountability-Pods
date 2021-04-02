@@ -33,7 +33,7 @@ class SettingsViewController: UIViewController {
         let docRef = db.collection("users").document(userID)
         docRef.getDocument { (document,error) in
             if let document = document, document.exists {
-                let privateVar = document.get("private") as! Int
+                let privateVar = document.get("private") as? Int ?? 0
                 if (privateVar == 0){
                     self.accountIsPrivate.isOn = false
                 }

@@ -40,7 +40,7 @@ class Utilities {
 class Resource {
     public var name: String
     public var desc: String
-    
+    public var timeStamp: Int64
     public var path: String
     
     public var hashableResource: ResourceHashable
@@ -51,6 +51,7 @@ class Resource {
         self.path = ""
         self.name = "No name"
         self.desc = "No desc"
+        self.timeStamp = 0
         self.hashableResource = ResourceHashable(name:self.name,desc:self.desc,path:self.path)
     }
     init(base: Firestore, path_: String)
@@ -58,6 +59,7 @@ class Resource {
         self.path = ""
         self.name = "No name"
         self.desc = "No desc"
+        self.timeStamp = 0
         self.hashableResource = ResourceHashable(name:self.name,desc:self.desc,path:self.path)
         readData(database: base,path: path_)
         
@@ -68,6 +70,7 @@ class Resource {
         self.path = path
         self.name = name
         self.desc = desc
+        self.timeStamp = 0
         self.hashableResource = ResourceHashable(name:self.name,desc:self.desc,path:self.path)
     }
     
@@ -103,15 +106,19 @@ class Resource {
         database.document(path).addSnapshotListener {
             (querySnapshot, error) in
             let data = querySnapshot!.data()
-            if(data?["resourceName"] == nil || data?["resourceDesc"] == nil || path == nil )
+            if(data?["resourceName"] == nil || data?["resourceDesc"] == nil || path == nil)
             {
                 return
             }
             let name_ = data!["resourceName"] as! String
             let desc_ = data!["resourceDesc"] as! String
-            
             self.name = name_
             self.desc = desc_
+            if(data?["time"] != nil){
+                let time_ = data!["time"] as! Int64
+                self.timeStamp = time_
+            }
+            
             tableview.reloadData()
             
             

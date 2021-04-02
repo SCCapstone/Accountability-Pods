@@ -7,7 +7,6 @@
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -150,47 +149,6 @@
             </objects>
             <point key="canvasLocation" x="3799" y="2458"/>
         </scene>
-        <!--View Msg View-->
-        <scene sceneID="P94-j6-NQX">
-            <objects>
-                <viewController id="eRK-Oy-gqr" userLabel="View Msg View" customClass="ViewMsgViewController" customModule="AccountabilityPods" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="vJB-4n-TAG">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bOc-wJ-Qju">
-                                <rect key="frame" x="0.0" y="93" width="414" height="769"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <color key="separatorColor" red="0.80784313730000001" green="0.90196078430000004" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
-                            </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Send Message to Database" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PZr-Jz-zDF">
-                                <rect key="frame" x="0.0" y="64" width="414" height="25"/>
-                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="18"/>
-                            </label>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="vYr-L0-acL"/>
-                        <color key="backgroundColor" red="0.80784313730000001" green="0.90196078430000004" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstItem="PZr-Jz-zDF" firstAttribute="centerX" secondItem="vJB-4n-TAG" secondAttribute="centerX" id="2nM-Pb-fKs"/>
-                            <constraint firstItem="bOc-wJ-Qju" firstAttribute="centerX" secondItem="vJB-4n-TAG" secondAttribute="centerX" id="9at-cs-Dj9"/>
-                            <constraint firstItem="PZr-Jz-zDF" firstAttribute="leading" secondItem="vYr-L0-acL" secondAttribute="leading" id="G8d-QI-dym"/>
-                            <constraint firstItem="bOc-wJ-Qju" firstAttribute="top" secondItem="PZr-Jz-zDF" secondAttribute="bottom" constant="4" id="Gs8-So-zIS"/>
-                            <constraint firstItem="PZr-Jz-zDF" firstAttribute="top" secondItem="vYr-L0-acL" secondAttribute="top" constant="20" id="O4Y-Yb-Lqy"/>
-                            <constraint firstItem="vYr-L0-acL" firstAttribute="trailing" secondItem="bOc-wJ-Qju" secondAttribute="trailing" id="S6Y-xk-5sJ"/>
-                            <constraint firstItem="vYr-L0-acL" firstAttribute="bottom" secondItem="bOc-wJ-Qju" secondAttribute="bottom" id="chi-xr-sS3"/>
-                            <constraint firstItem="bOc-wJ-Qju" firstAttribute="leading" secondItem="vYr-L0-acL" secondAttribute="leading" id="hKI-26-dnN"/>
-                            <constraint firstItem="bOc-wJ-Qju" firstAttribute="top" secondItem="PZr-Jz-zDF" secondAttribute="bottom" constant="4" id="mSv-su-QQ2"/>
-                            <constraint firstItem="vYr-L0-acL" firstAttribute="trailing" secondItem="PZr-Jz-zDF" secondAttribute="trailing" id="wfx-nJ-gEH"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="msgTable" destination="bOc-wJ-Qju" id="cYn-o0-vEo"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wqp-Y7-M2E" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4416" y="1935"/>
-        </scene>
     </scenes>
     <resources>
         <image name="message.fill" catalog="system" width="128" height="113"/>
@@ -203,9 +161,6 @@
         </systemColor>
         <systemColor name="groupTableViewBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>
 </document>

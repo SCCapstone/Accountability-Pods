@@ -18,11 +18,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        //push manager for notifications
-        let pushManager = PushNotificationManager(userID: Constants.User.sharedInstance.userID)
-        pushManager.registerForPushNotifications()
         FirebaseApp.configure()
         
+        //push manager for notifications
+        let userId = Auth.auth().currentUser?.uid ?? "current_user_id"
+        let userRef = Firestore.firestore().collection("users").whereField("uid", isEqualTo: userId)
+        
+        userRef.getDocuments() { (querySnapshot, err) in
+        if let err = err {
+            print("Error getting documents: \(err)")
+        } else {
+            for document in querySnapshot!.documents {
+                let pushManager = PushNotificationManager(userName: Constants.User.sharedInstance.userID )
+                pushManager.registerForPushNotifications()
+            }
+          }
+        }
         return true
     }
 

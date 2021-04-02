@@ -12,9 +12,12 @@ import UIKit
 import UserNotifications
 
 class PushNotificationManager: NSObject, MessagingDelegate, UNUserNotificationCenterDelegate {
-    let userID: String
-        init(userID: String) {
-            self.userID = userID
+    //var userN: String
+    let userName: String
+        init(userName: String) {
+            
+            self.userName =  userName
+            print("USERNAME NOTIFICATIONS \(self.userName)")
             super.init()
         }
         func registerForPushNotifications() {
@@ -38,7 +41,7 @@ class PushNotificationManager: NSObject, MessagingDelegate, UNUserNotificationCe
     
         func updateFirestorePushTokenIfNeeded() {
             if let token = Messaging.messaging().fcmToken {
-                let usersRef = Firestore.firestore().collection("users").document(userID)
+                let usersRef = Firestore.firestore().collection("users").document(userName)
                 usersRef.setData(["fcmToken": token], merge: true)
             }
         }

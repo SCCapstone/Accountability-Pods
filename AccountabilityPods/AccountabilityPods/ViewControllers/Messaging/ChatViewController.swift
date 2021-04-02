@@ -84,7 +84,7 @@ class ChatViewController: MessagesViewController, InputBarAccessoryViewDelegate 
     //private var messageListener: ListenerRegistration?
     var sendToProfile = Profile()
     
-    var userID  = Constants.User.sharedInstance.userID;
+    var userID  = Constants.User.sharedInstance.userID
 
 
     override func viewDidLoad() {

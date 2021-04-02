@@ -78,7 +78,7 @@ class ResourceBrowseViewController: UIViewController {
                                 var newResource = Resource(base: self.db, path_:path)
                                 newResource.readData(database: self.db, path: path, tableview: self.tableView)
                                 
-                                print(newResource.name)
+                                print("Resource: \(newResource.name)")
                                 
                                 self.resources.append(newResource)
                                 for item in self.resources {
@@ -101,12 +101,34 @@ class ResourceBrowseViewController: UIViewController {
             }
             
         }
-        
     }
     
+    func sortResources()
+    {
+        var count = 0
+        while count < self.resources.count {
+            var count2 = 0
+            while count2 < self.resources.count
+            {
+                print("Checking if resource at \(count) < \(count2)")
+                print("time 1: \(self.resources[count].timeStamp)")
+                if self.resources[count].timeStamp > self.resources[count2].timeStamp
+                {
+                    print("swapping")
+                    let tempMsg = self.resources[count]
+                    self.resources[count] = self.resources[count2]
+                    self.resources[count2] = tempMsg
+                }
+              count2 += 1
+            }
+            count += 1
+        }
+    }
 }
+
 extension ResourceBrowseViewController: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
+        sortResources()
         return self.resources.count
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

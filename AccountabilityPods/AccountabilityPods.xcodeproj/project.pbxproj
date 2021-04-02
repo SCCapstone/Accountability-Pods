@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		442DC923257873DA00036D18 /* MessagingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442DC922257873DA00036D18 /* MessagingViewController.swift */; };
+		443469A02614FB5700D567E7 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4434699F2614FB5700D567E7 /* SettingsViewController.swift */; };
 		6840CD1A257B062700640DF4 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6840CD19257B062700640DF4 /* ChatViewController.swift */; };
 		68BF202B25C9F05400B6C79B /* Messages.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68BF202A25C9F05400B6C79B /* Messages.storyboard */; };
 		68BF202D25C9F90500B6C79B /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68BF202C25C9F90500B6C79B /* Search.storyboard */; };
@@ -50,6 +51,10 @@
 		D4B716DD25E6E47100EE2D4B /* ProfileResourceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B716DC25E6E47100EE2D4B /* ProfileResourceViewController.swift */; };
 		D4B716E225E6EE9C00EE2D4B /* SkillViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B716E125E6EE9C00EE2D4B /* SkillViewController.swift */; };
 		D4D078D225E15DC700B6A05A /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D078D125E15DC700B6A05A /* SearchViewController.swift */; };
+		D4E594D526165FCF00231E3B /* Tutorial1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E594D426165FCF00231E3B /* Tutorial1ViewController.swift */; };
+		D4E594DA26165FDD00231E3B /* Tutorial2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E594D926165FDD00231E3B /* Tutorial2ViewController.swift */; };
+		D4E594DF26165FEA00231E3B /* Tutorial3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E594DE26165FEA00231E3B /* Tutorial3ViewController.swift */; };
+		D4E594E426165FF700231E3B /* Tutorial4ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E594E326165FF700231E3B /* Tutorial4ViewController.swift */; };
 		D4E625B4257AE3C000963DD6 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E625B3257AE3C000963DD6 /* ProfileViewController.swift */; };
 		D4E7E26325E1895C00E3E386 /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E7E26225E1895C00E3E386 /* ProfileCell.swift */; };
 /* End PBXBuildFile section */
@@ -74,6 +79,7 @@
 /* Begin PBXFileReference section */
 		18A069DE85DA6B69AA1976FF /* Pods-AccountabilityPodsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AccountabilityPodsTests.debug.xcconfig"; path = "Target Support Files/Pods-AccountabilityPodsTests/Pods-AccountabilityPodsTests.debug.xcconfig"; sourceTree = "<group>"; };
 		442DC922257873DA00036D18 /* MessagingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagingViewController.swift; sourceTree = "<group>"; };
+		4434699F2614FB5700D567E7 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		4D3ACD7AC4C6BD83FC19813E /* Pods_AccountabilityPodsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AccountabilityPodsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6840CD19257B062700640DF4 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		68BF202A25C9F05400B6C79B /* Messages.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Messages.storyboard; sourceTree = "<group>"; };
@@ -127,6 +133,10 @@
 		D4B716DC25E6E47100EE2D4B /* ProfileResourceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProfileResourceViewController.swift; path = AccountabilityPods/ProfileResourceViewController.swift; sourceTree = SOURCE_ROOT; };
 		D4B716E125E6EE9C00EE2D4B /* SkillViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SkillViewController.swift; path = AccountabilityPods/SkillViewController.swift; sourceTree = SOURCE_ROOT; };
 		D4D078D125E15DC700B6A05A /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		D4E594D426165FCF00231E3B /* Tutorial1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Tutorial1ViewController.swift; path = AccountabilityPods/ViewControllers/Tutorial/Tutorial1ViewController.swift; sourceTree = SOURCE_ROOT; };
+		D4E594D926165FDD00231E3B /* Tutorial2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Tutorial2ViewController.swift; path = AccountabilityPods/ViewControllers/Tutorial/Tutorial2ViewController.swift; sourceTree = SOURCE_ROOT; };
+		D4E594DE26165FEA00231E3B /* Tutorial3ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Tutorial3ViewController.swift; path = AccountabilityPods/ViewControllers/Tutorial/Tutorial3ViewController.swift; sourceTree = SOURCE_ROOT; };
+		D4E594E326165FF700231E3B /* Tutorial4ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Tutorial4ViewController.swift; path = AccountabilityPods/ViewControllers/Tutorial/Tutorial4ViewController.swift; sourceTree = SOURCE_ROOT; };
 		D4E625B3257AE3C000963DD6 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		D4E7E26225E1895C00E3E386 /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProfileCell.swift; path = AccountabilityPods/ProfileCell.swift; sourceTree = SOURCE_ROOT; };
 		D5F2AD14A2FCA3106D3D4D89 /* Pods_AccountabilityPods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AccountabilityPods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -163,6 +173,7 @@
 		C3299C0625700BEA00D2C3D7 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				D4E594D326165FB700231E3B /* TutorialPages */,
 				D4B716CB25E6CAB500EE2D4B /* AccountSetup */,
 				D4B716C925E6C98B00EE2D4B /* MyPod */,
 				D4B716C825E6C94C00EE2D4B /* OtherProfile */,
@@ -252,6 +263,7 @@
 		D4B716C825E6C94C00EE2D4B /* OtherProfile */ = {
 			isa = PBXGroup;
 			children = (
+				4434699F2614FB5700D567E7 /* SettingsViewController.swift */,
 				D4B716E125E6EE9C00EE2D4B /* SkillViewController.swift */,
 				D4B716DC25E6E47100EE2D4B /* ProfileResourceViewController.swift */,
 				D4B716CF25E6CB3300EE2D4B /* ProfileSkillsViewController.swift */,
@@ -295,6 +307,17 @@
 				C3299C0A257016C800D2C3D7 /* ForgotPasswordViewController.swift */,
 			);
 			path = AccountSetup;
+			sourceTree = "<group>";
+		};
+		D4E594D326165FB700231E3B /* TutorialPages */ = {
+			isa = PBXGroup;
+			children = (
+				D4E594D426165FCF00231E3B /* Tutorial1ViewController.swift */,
+				D4E594D926165FDD00231E3B /* Tutorial2ViewController.swift */,
+				D4E594DE26165FEA00231E3B /* Tutorial3ViewController.swift */,
+				D4E594E326165FF700231E3B /* Tutorial4ViewController.swift */,
+			);
+			path = TutorialPages;
 			sourceTree = "<group>";
 		};
 		DFDAAE56C64E247351D3921A /* Frameworks */ = {
@@ -563,6 +586,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4E594E426165FF700231E3B /* Tutorial4ViewController.swift in Sources */,
 				AE497105257A1AC1008CCEEB /* OwnResourceVC.swift in Sources */,
 				D43570D1257975E500FCE20C /* MyPodViewController.swift in Sources */,
 				AE77454725797C46000CB90C /* ResourceCell.swift in Sources */,
@@ -573,12 +597,14 @@
 				68CEA2FA25E86651004F9F3A /* ContactCell.swift in Sources */,
 				D484062B2545CB7F0020830A /* AppDelegate.swift in Sources */,
 				AE4970F82579F994008CCEEB /* SavedResourceViewController.swift in Sources */,
+				D4E594DF26165FEA00231E3B /* Tutorial3ViewController.swift in Sources */,
 				C3299BF825700BBD00D2C3D7 /* SignUpViewController.swift in Sources */,
 				442DC923257873DA00036D18 /* MessagingViewController.swift in Sources */,
 				AE57ADCC2579EAFD0079B717 /* ResourceDisplayVC.swift in Sources */,
 				C3299BFD25700BCE00D2C3D7 /* LoginViewController.swift in Sources */,
 				D484062D2545CB7F0020830A /* SceneDelegate.swift in Sources */,
 				D4E7E26325E1895C00E3E386 /* ProfileCell.swift in Sources */,
+				D4E594D526165FCF00231E3B /* Tutorial1ViewController.swift in Sources */,
 				AE497100257A1968008CCEEB /* PostedResourcesViewController.swift in Sources */,
 				D43570D52579967900FCE20C /* SkillsViewController.swift in Sources */,
 				C3299C3D2570660E00D2C3D7 /* Utilities.swift in Sources */,
@@ -586,6 +612,7 @@
 				D4B716E225E6EE9C00EE2D4B /* SkillViewController.swift in Sources */,
 				AE145E2125716A2E00AF0F0C /* ResourceCreationViewController.swift in Sources */,
 				AE90A7EE25E1C19D00E6DBC4 /* ResourceViewCollectionVC.swift in Sources */,
+				443469A02614FB5700D567E7 /* SettingsViewController.swift in Sources */,
 				AE49711D257A48ED008CCEEB /* OwnSkillViewController.swift in Sources */,
 				D4B716D025E6CB3300EE2D4B /* ProfileSkillsViewController.swift in Sources */,
 				D43570D92579CA4200FCE20C /* ViewSkillsViewController.swift in Sources */,
@@ -594,6 +621,7 @@
 				C3299C0225700BE100D2C3D7 /* HomeViewController.swift in Sources */,
 				AE77454225797C1B000CB90C /* ResourceBrowseViewController.swift in Sources */,
 				D4E625B4257AE3C000963DD6 /* ProfileViewController.swift in Sources */,
+				D4E594DA26165FDD00231E3B /* Tutorial2ViewController.swift in Sources */,
 				D43570D72579C14A00FCE20C /* AddSkillViewController.swift in Sources */,
 				C3299C5F2571324800D2C3D7 /* Constants.swift in Sources */,
 			);

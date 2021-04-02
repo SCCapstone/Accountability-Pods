@@ -129,7 +129,9 @@ class ResourceViewCollectionVC: UIViewController {
         
        
         collectionView.delegate = self;
-        
+        collectionView.dragDelegate = self;
+        collectionView.dropDelegate = self;
+        collectionView.dragInteractionEnabled = true;
         
         // Do any additional setup after loading the view.
     }
@@ -345,5 +347,146 @@ extension ResourceViewCollectionVC: UICollectionViewDelegate {
     
 }
 
+@available(iOS 14.0, *)
+extension ResourceViewCollectionVC: UICollectionViewDragDelegate {
+    func collectionView(_ collectionView: UICollectionView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
+        
+        let selectedResource = data.itemIdentifier(for:indexPath)
+        
+        switch selectedResource {
+        case .resource(let resource):
+            self.selectedResource = resource
+            break;
+        default:
+            break;
+            
+        }
+        
+        let item = self.selectedResource
+        let itemProvider = NSItemProvider(object: item.name as NSItemProviderWriting)
+        let draggedItem = UIDragItem(itemProvider: itemProvider)
+        draggedItem.localObject = item
+        print("Dragging " + item.name);
+        return [draggedItem]
+    }
+}
+@available(iOS 14.0, *)
+extension ResourceViewCollectionVC: UICollectionViewDropDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, dropSessionDidUpdate session: UIDropSession, withDestinationIndexPath destinationIndexPath: IndexPath?) -> UICollectionViewDropProposal {
+        if collectionView.hasActiveDrag {
+            return UICollectionViewDropProposal(operation: .move, intent: .unspecified)
+        }
+        return UICollectionViewDropProposal(operation: .forbidden)
+    }
+    func collectionView(_ collectionView: UICollectionView, performDropWith coordinator: UICollectionViewDropCoordinator) {
+        var destinationPath: IndexPath
+        
+        var destinationItem : ListType;
+        print("dragging here");
+        if let indexPath = coordinator.destinationIndexPath {
+            destinationPath = indexPath
+            destinationItem = data.itemIdentifier(for: coordinator.destinationIndexPath!)!;
+            
+            switch destinationItem {
+            case .group(let group):
+                print("group")
+                let name = group.name;
+                let usersRef = db.collection("users")
+                let currUserRef = usersRef.document(Constants.User.sharedInstance.userID)
+                let savedResourceRef = currUserRef.collection("SAVEDRESOURCES")
+                savedResourceRef.getDocuments() {
+                    docsSnap, error in
+                    if let error = error {
+                        print("Error getting saved resources while dragging. \(error)")
+                    }
+                    else
+                    {
+                        for doc in docsSnap!.documents {
+                            if(doc.data()["docRef"] as! String == self.selectedResource.path)
+                            {
+                                doc.reference.setData(["groupName": name], merge:true)
+                                self.genArray()
+                                return
+                            }
+                        }
+                    
+                    }
+                
+            }
+                break
+            case .resource(let resource):
+                print("resource");
+                let usersRef = db.collection("users")
+                var groupName = "";
+                let currUserRef = usersRef.document(Constants.User.sharedInstance.userID)
+                let savedResourceRef = currUserRef.collection("SAVEDRESOURCES")
+                savedResourceRef.getDocuments() {
+                    docsSnap, error in
+                    if let error = error {
+                        print("Error getting saved resources while dragging. \(error)")
+                    }
+                    else
+                    {
+                        for doc in docsSnap!.documents {
+                            
+                            if(doc.data()["docRef"] as! String == resource.path)
+                            {
+                                groupName = doc.data()["groupName"] as! String
+                            }
+                        }
+                        for doc in docsSnap!.documents {
+                            
+                            if(doc.data()["docRef"] as! String == self.selectedResource.path)
+                            {
+                                doc.reference.setData(["groupName": groupName], merge:true)
+                                self.genArray()
+                                return
+                            }
+                        }
+                    
+                    }
+                
+            }
+                
+                break
+            
+        }
+            
+        } else
+        {
+            let row = collectionView.numberOfItems(inSection: 0)
+            destinationPath = IndexPath(item: row-1, section: 0)
+            print("none")
+            
+            let usersRef = db.collection("users")
+            let currUserRef = usersRef.document(Constants.User.sharedInstance.userID)
+            let savedResourceRef = currUserRef.collection("SAVEDRESOURCES")
+            savedResourceRef.getDocuments() {
+                docsSnap, error in
+                if let error = error {
+                    print("Error getting saved resources while dragging. \(error)")
+                }
+                else
+                {
+                    for doc in docsSnap!.documents {
+                        if(doc.data()["docRef"] as! String == self.selectedResource.path)
+                        {
+                            doc.reference.setData(["groupName": ""], merge:true)
+                            self.genArray()
+                            return
+                        }
+                    }
+                
+                }
+            
+        }
+        }
+        
+        
+    
+    
+}
+}
 
 

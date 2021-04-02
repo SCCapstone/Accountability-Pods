@@ -145,5 +145,9 @@ class MessagingViewController: UIViewController, UITableViewDelegate, UITableVie
                 // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
             }
         }
-
+    @IBAction func helpTapped(_ sender: Any) {
+        let alertController = UIAlertController(title: "Messages Help", message: "Tap on user to view, send, and delete messages\nTo send message to a new user add them to your pod and they will appear", preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title:"Got it!", style: .default, handler: nil))
+        self.present(alertController, animated: true)    }
+    
 }

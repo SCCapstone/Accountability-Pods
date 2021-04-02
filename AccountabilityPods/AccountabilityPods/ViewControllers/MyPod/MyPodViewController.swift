@@ -93,16 +93,16 @@ class MyPodViewController: UIViewController {
             }
             else
             {
-                
+        
                 let firstname = document!.get("firstname") as! String
                 let lastname = document!.get("lastname") as! String
                 let username = document!.get("username") as! String
                 let description = document!.get("description") as! String
                    
                     let name = firstname + " " + lastname
-                    self.NameLabel.alpha = 1
+                self.NameLabel.alpha = 1;
                     self.editDescriptionText.alpha = 0;
-                    self.descriptionLabel.alpha = 1
+                self.descriptionLabel.alpha = 1;
                     self.editDescButton.alpha = 1;
                     self.addDescButton.alpha = 0;
                     self.NameLabel.text = name
@@ -149,6 +149,11 @@ class MyPodViewController: UIViewController {
                 self.SkillsContainer.alpha = 1;
             })
         }
+    }
+    @IBAction func helpTapped(_ sender: Any) {
+        let alertController = UIAlertController(title: "My Profile Help", message: "View and edit your own posts, view and delete saved posts, view and organize contacts, add and remove skills\nTap settings in top right to change name and description or view tutorial for more detailed information", preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title:"Got it!", style: .default, handler: nil))
+        self.present(alertController, animated: true)
     }
     
 }

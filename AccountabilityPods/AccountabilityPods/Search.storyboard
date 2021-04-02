@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -26,20 +27,33 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="bIN-Nm-mmR" userLabel="Help">
+                                        <rect key="frame" x="14" y="3" width="30" height="36"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal">
+                                            <imageReference key="image" image="questionmark.circle" catalog="system" symbolScale="large"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="helpTapped:" destination="RfQ-wL-zwu" eventType="touchUpInside" id="2FY-EI-dG7"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <viewLayoutGuide key="safeArea" id="zgi-x9-Rdr"/>
                                 <color key="backgroundColor" red="0.1843137255" green="0.25490196079999999" blue="0.17254901959999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="pD0-6a-wfL" firstAttribute="centerX" secondItem="w05-dh-eMD" secondAttribute="centerX" id="60s-b8-1tK"/>
+                                    <constraint firstItem="pD0-6a-wfL" firstAttribute="leading" secondItem="bIN-Nm-mmR" secondAttribute="trailing" constant="109" id="F1F-0Q-Mrd"/>
                                     <constraint firstAttribute="bottom" secondItem="pD0-6a-wfL" secondAttribute="bottom" id="JN1-ZR-a43"/>
                                     <constraint firstItem="pD0-6a-wfL" firstAttribute="top" secondItem="w05-dh-eMD" secondAttribute="top" constant="19" id="St7-Br-G4x"/>
                                     <constraint firstAttribute="height" constant="47" id="WDn-f3-pfZ"/>
                                 </constraints>
                             </view>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HId-8h-sL7">
-                                <rect key="frame" x="10" y="101" width="394" height="52"/>
+                                <rect key="frame" x="10" y="101" width="288" height="52"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="52" id="Fk4-Qj-Ga1"/>
+                                    <constraint firstAttribute="width" constant="288" id="GON-sC-WB1"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -90,15 +104,25 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kmO-lY-u60">
+                                <rect key="frame" x="308" y="112" width="53" height="36"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="17"/>
+                                <state key="normal" title="Search"/>
+                                <connections>
+                                    <action selector="searchPressed:" destination="RfQ-wL-zwu" eventType="touchUpInside" id="uQ9-lQ-cQk"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="1W7-GW-9Uf"/>
                         <color key="backgroundColor" red="0.80784313730000001" green="0.90196078430000004" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="N0W-N3-Ffb" firstAttribute="top" secondItem="HId-8h-sL7" secondAttribute="bottom" constant="10" id="DpP-VV-77g"/>
                             <constraint firstItem="1W7-GW-9Uf" firstAttribute="bottom" secondItem="N0W-N3-Ffb" secondAttribute="bottom" id="EZ9-SI-cDo"/>
-                            <constraint firstItem="1W7-GW-9Uf" firstAttribute="trailing" secondItem="HId-8h-sL7" secondAttribute="trailing" constant="10" id="FiT-MZ-i5s"/>
+                            <constraint firstItem="N0W-N3-Ffb" firstAttribute="top" secondItem="kmO-lY-u60" secondAttribute="bottom" constant="15" id="HYn-AI-v7z"/>
                             <constraint firstItem="HId-8h-sL7" firstAttribute="top" secondItem="w05-dh-eMD" secondAttribute="bottom" constant="10" id="Hqz-ra-ARe"/>
                             <constraint firstItem="w05-dh-eMD" firstAttribute="top" secondItem="1W7-GW-9Uf" secondAttribute="top" id="YjY-sU-lk7"/>
+                            <constraint firstItem="kmO-lY-u60" firstAttribute="leading" secondItem="HId-8h-sL7" secondAttribute="trailing" constant="10" id="hOW-es-tBd"/>
+                            <constraint firstItem="kmO-lY-u60" firstAttribute="top" secondItem="w05-dh-eMD" secondAttribute="bottom" constant="21" id="i8B-93-hNW"/>
                             <constraint firstItem="w05-dh-eMD" firstAttribute="trailing" secondItem="1W7-GW-9Uf" secondAttribute="trailing" id="r9O-jx-wr7"/>
                             <constraint firstItem="w05-dh-eMD" firstAttribute="leading" secondItem="1W7-GW-9Uf" secondAttribute="leading" id="rgs-WI-cDa"/>
                             <constraint firstItem="1W7-GW-9Uf" firstAttribute="trailing" secondItem="N0W-N3-Ffb" secondAttribute="trailing" id="uda-S0-NEN"/>
@@ -127,6 +151,7 @@
     </scenes>
     <resources>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
+        <image name="questionmark.circle" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

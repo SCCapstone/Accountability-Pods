@@ -72,13 +72,38 @@ class PostedResourcesViewController: UIViewController {
         
         
     }
+    func sortResources()
+    {
+        var count = 0
+        while count < self.resources.count {
+            var count2 = 0
+            while count2 < self.resources.count
+            {
+                print("Checking if resource at \(count) < \(count2)")
+                print("time 1: \(self.resources[count].timeStamp)")
+                if self.resources[count].timeStamp > self.resources[count2].timeStamp
+                {
+                    print("swapping")
+                    let tempMsg = self.resources[count]
+                    self.resources[count] = self.resources[count2]
+                    self.resources[count2] = tempMsg
+                }
+              count2 += 1
+            }
+            count += 1
+        }
+    }
 
 }
 
 extension PostedResourcesViewController: UITableViewDataSource, UITableViewDelegate {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        sortResources()
+        return self.resources.count
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //print("AEIOU - - - \(resources.count)")
-        return resources.count
+        return 1
         
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -87,12 +112,21 @@ extension PostedResourcesViewController: UITableViewDataSource, UITableViewDeleg
         let cell = tableView.dequeueReusableCell(withIdentifier: "ResourceCell") as! ResourceCell
         print(resource.name)
         cell.setResource(resource: resource)
+        cell.layer.cornerRadius = 15
         return cell
         
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.performSegue(withIdentifier: "showOwnSegue", sender: Any?.self)
         
+    }
+    func  tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 20
+    }
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView()
+        headerView.backgroundColor = UIColor.clear
+        return headerView
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showOwnSegue"

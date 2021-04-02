@@ -19,10 +19,6 @@ class SignUpViewController: UIViewController {
     
     @IBOutlet weak var lastnameTextField: UITextField!
     
-    @IBOutlet weak var ageTextField: UITextField!
-    
-    @IBOutlet weak var affiliationTextField: UITextField!
-    
     @IBOutlet weak var emailTextField: UITextField!
     
     @IBOutlet weak var passwordTextField: UITextField!
@@ -31,6 +27,9 @@ class SignUpViewController: UIViewController {
     
     @IBOutlet weak var errorLabel: UILabel!
     
+    @IBOutlet weak var accountIsPrivate: UISwitch!
+    
+    @IBOutlet weak var learnMore: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         overrideUserInterfaceStyle = .light
@@ -39,6 +38,12 @@ class SignUpViewController: UIViewController {
     }
     func setUpElements() {
         errorLabel.alpha = 0 // hide error label
+        self.accountIsPrivate.isOn = false
+    }
+    @IBAction func learnMoreButton_Pressed(_ sender: Any) {
+        let alertController = UIAlertController(title: "Learn More", message: "By making your account private, no one can find or view you're profile", preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title:"Got it!", style: .default, handler: nil))
+        self.present(alertController, animated: true)
     }
 
     /*
@@ -54,8 +59,7 @@ class SignUpViewController: UIViewController {
         // check if all text fields have text
         if usernameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
             firstnameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" || lastnameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
-            ageTextField.text?.trimmingCharacters(in:.whitespacesAndNewlines) == "" ||
-            affiliationTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||         passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" || emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
+            passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" || emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
             return "please enter values for all boxes"
         }
         // remove whitespace from email and password
@@ -83,7 +87,7 @@ class SignUpViewController: UIViewController {
         
     }
     func transitionToHome() {
-        let homeViewController = storyboard?.instantiateViewController(identifier: Constants.Storyboard.homeViewController) as? UITabBarController
+        let homeViewController = storyboard?.instantiateViewController(identifier: "tutorial") as? UIViewController
         
         view.window?.rootViewController = homeViewController
         view.window?.makeKeyAndVisible()
@@ -106,8 +110,14 @@ class SignUpViewController: UIViewController {
             let lastname = lastnameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-            let age = ageTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-            let affiliation = affiliationTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            let isPrivateAccount = accountIsPrivate.isOn
+            var privateAccountVar = 0
+            if(isPrivateAccount == true)  {
+                privateAccountVar=1
+            }
+            else {
+                privateAccountVar=0
+            }
             // check if username aleady exists before creating account
             let db = Firestore.firestore()
             let docRef = db.collection("users").document(username)
@@ -128,7 +138,7 @@ class SignUpViewController: UIViewController {
                             //Modified this slightly to name the user document the same thing as the auth so that we can search by doc name directly instead of properties
                             // add user to users collection
                             print(username)
-                            db.collection("users").document(username).setData(["firstname": firstname, "lastname": lastname, "age": age,"affiliation": affiliation, "email": email, "username": username, "description": "no description"]) { err in
+                            db.collection("users").document(username).setData(["firstname": firstname, "lastname": lastname, "email": email, "username": username, "description": "no description","private": privateAccountVar]) { err in
                                 if let err = err {
                                     print("Error adding document: \(err)")
                                 } else {

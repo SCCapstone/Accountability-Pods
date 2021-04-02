@@ -54,6 +54,11 @@ class HomeViewController: UIViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
+    @IBAction func helpTapped(_ sender: Any) {
+        let alertController = UIAlertController(title: "Home Help", message: "Click + to make a post, scroll through other posts, tap on resources to see more, or logout by tapping left hand corner\n Watch tutorial from settings for more detail!", preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title:"Got it!", style: .default, handler: nil))
+        self.present(alertController, animated: true)
+    }
 }
 
 

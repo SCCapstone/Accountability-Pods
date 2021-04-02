@@ -17,25 +17,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        // Built the project and added this comment here -- Duncan Evans
+        
+        //push manager for notifications
+        let pushManager = PushNotificationManager(userID: Constants.User.sharedInstance.userID)
+        pushManager.registerForPushNotifications()
         FirebaseApp.configure()
-        //not sure if we need set messaging delegate registration token
-        //Messaging.messaging().delegate = self
-        //remote notifications registration
-        if #available(iOS 10.0, *){
-            UNUserNotificationCenter.current().delegate = self
-            let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
-            UNUserNotificationCenter.current().requestAuthorization(options: authOptions,
-                                                                    completionHandler: {_, _ in})
-        }
-        else{
-            //'UIUserNotificationSettings' was deprecated in iOS 10.0: Use UserNotifications Framework's UNNotificationSettings
-            let settings: UIUserNotificationSettings =
-                UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
-            application.registerUserNotificationSettings(settings)
-        }
-        application.registerForRemoteNotifications()
+        
         return true
     }
 

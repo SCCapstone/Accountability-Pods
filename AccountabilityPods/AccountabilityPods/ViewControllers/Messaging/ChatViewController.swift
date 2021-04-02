@@ -235,6 +235,21 @@ class ChatViewController: MessagesViewController, InputBarAccessoryViewDelegate 
         messagesCollectionView.scrollToLastItem(animated: true)
     }
     
+    func sendPush() {
+        let sender = PushNotificationSender()
+        let uRef = Firestore.firestore().collection("users").document(user2UID ?? "No User")
+        _ = uRef.addSnapshotListener() {
+            document, err in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            }
+            else
+            {
+                let token = document!.get("fcmToken") as! String
+                sender.sendPushNotification(to: token, title: self.senderName ?? "New Message", body: "Open to Read Message")
+            }
+    }
+    }
     //perfom actions overrides
     override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
             

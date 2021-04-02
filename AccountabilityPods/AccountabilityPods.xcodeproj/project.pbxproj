@@ -10,6 +10,8 @@
 		442DC923257873DA00036D18 /* MessagingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442DC922257873DA00036D18 /* MessagingViewController.swift */; };
 		443469A02614FB5700D567E7 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4434699F2614FB5700D567E7 /* SettingsViewController.swift */; };
 		6840CD1A257B062700640DF4 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6840CD19257B062700640DF4 /* ChatViewController.swift */; };
+		685A332B2616B0BB00B0B54C /* PushNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685A332A2616B0BB00B0B54C /* PushNotificationManager.swift */; };
+		685A33302616B3A400B0B54C /* PushNotificationSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685A332F2616B3A400B0B54C /* PushNotificationSender.swift */; };
 		68BF202B25C9F05400B6C79B /* Messages.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68BF202A25C9F05400B6C79B /* Messages.storyboard */; };
 		68BF202D25C9F90500B6C79B /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68BF202C25C9F90500B6C79B /* Search.storyboard */; };
 		68CEA2FA25E86651004F9F3A /* ContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CEA2F925E86651004F9F3A /* ContactCell.swift */; };
@@ -82,6 +84,8 @@
 		4434699F2614FB5700D567E7 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		4D3ACD7AC4C6BD83FC19813E /* Pods_AccountabilityPodsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AccountabilityPodsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6840CD19257B062700640DF4 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		685A332A2616B0BB00B0B54C /* PushNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationManager.swift; sourceTree = "<group>"; };
+		685A332F2616B3A400B0B54C /* PushNotificationSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationSender.swift; sourceTree = "<group>"; };
 		68BF202A25C9F05400B6C79B /* Messages.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Messages.storyboard; sourceTree = "<group>"; };
 		68BF202C25C9F90500B6C79B /* Search.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
 		68CEA2F925E86651004F9F3A /* ContactCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ContactCell.swift; path = AccountabilityPods/Helpers/ContactCell.swift; sourceTree = SOURCE_ROOT; };
@@ -190,6 +194,8 @@
 		C3299C3B257065C500D2C3D7 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				685A332A2616B0BB00B0B54C /* PushNotificationManager.swift */,
+				685A332F2616B3A400B0B54C /* PushNotificationSender.swift */,
 				D4E7E26225E1895C00E3E386 /* ProfileCell.swift */,
 				AE77454625797C46000CB90C /* ResourceCell.swift */,
 				C3299C3C2570660E00D2C3D7 /* Utilities.swift */,
@@ -601,6 +607,7 @@
 				C3299BF825700BBD00D2C3D7 /* SignUpViewController.swift in Sources */,
 				442DC923257873DA00036D18 /* MessagingViewController.swift in Sources */,
 				AE57ADCC2579EAFD0079B717 /* ResourceDisplayVC.swift in Sources */,
+				685A332B2616B0BB00B0B54C /* PushNotificationManager.swift in Sources */,
 				C3299BFD25700BCE00D2C3D7 /* LoginViewController.swift in Sources */,
 				D484062D2545CB7F0020830A /* SceneDelegate.swift in Sources */,
 				D4E7E26325E1895C00E3E386 /* ProfileCell.swift in Sources */,
@@ -608,6 +615,7 @@
 				AE497100257A1968008CCEEB /* PostedResourcesViewController.swift in Sources */,
 				D43570D52579967900FCE20C /* SkillsViewController.swift in Sources */,
 				C3299C3D2570660E00D2C3D7 /* Utilities.swift in Sources */,
+				685A33302616B3A400B0B54C /* PushNotificationSender.swift in Sources */,
 				D4B716DD25E6E47100EE2D4B /* ProfileResourceViewController.swift in Sources */,
 				D4B716E225E6EE9C00EE2D4B /* SkillViewController.swift in Sources */,
 				AE145E2125716A2E00AF0F0C /* ResourceCreationViewController.swift in Sources */,

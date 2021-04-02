@@ -16,8 +16,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tryLogin();
-        
-        overrideUserInterfaceStyle = .light
         // Do any additional setup after loading the view.
    
         let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(swipeAction(swipe:)))
@@ -31,7 +29,7 @@ class ViewController: UIViewController {
                    .scaledToFit()
                }
            }
-    
+
     func tryLogin() {
         let defaults = UserDefaults.standard
         

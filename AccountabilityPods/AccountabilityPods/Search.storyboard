@@ -43,21 +43,27 @@
                                 <color key="backgroundColor" red="0.1843137255" green="0.25490196079999999" blue="0.17254901959999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="pD0-6a-wfL" firstAttribute="centerX" secondItem="w05-dh-eMD" secondAttribute="centerX" id="60s-b8-1tK"/>
-                                    <constraint firstItem="pD0-6a-wfL" firstAttribute="leading" secondItem="bIN-Nm-mmR" secondAttribute="trailing" constant="109" id="F1F-0Q-Mrd"/>
                                     <constraint firstAttribute="bottom" secondItem="pD0-6a-wfL" secondAttribute="bottom" id="JN1-ZR-a43"/>
                                     <constraint firstItem="pD0-6a-wfL" firstAttribute="top" secondItem="w05-dh-eMD" secondAttribute="top" constant="19" id="St7-Br-G4x"/>
                                     <constraint firstAttribute="height" constant="47" id="WDn-f3-pfZ"/>
                                 </constraints>
                             </view>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HId-8h-sL7">
-                                <rect key="frame" x="10" y="101" width="288" height="52"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="52" id="Fk4-Qj-Ga1"/>
-                                    <constraint firstAttribute="width" constant="288" id="GON-sC-WB1"/>
-                                </constraints>
+                                <rect key="frame" x="20" y="101" width="314" height="52"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kmO-lY-u60">
+                                <rect key="frame" x="344" y="112" width="60" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="qA0-Od-2rV"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="17"/>
+                                <state key="normal" title="Search"/>
+                                <connections>
+                                    <action selector="searchPressed:" destination="RfQ-wL-zwu" eventType="touchUpInside" id="uQ9-lQ-cQk"/>
+                                </connections>
+                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="N0W-N3-Ffb">
                                 <rect key="frame" x="0.0" y="163" width="414" height="699"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -104,30 +110,23 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kmO-lY-u60">
-                                <rect key="frame" x="308" y="112" width="53" height="36"/>
-                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="17"/>
-                                <state key="normal" title="Search"/>
-                                <connections>
-                                    <action selector="searchPressed:" destination="RfQ-wL-zwu" eventType="touchUpInside" id="uQ9-lQ-cQk"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="1W7-GW-9Uf"/>
                         <color key="backgroundColor" red="0.80784313730000001" green="0.90196078430000004" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="N0W-N3-Ffb" firstAttribute="top" secondItem="HId-8h-sL7" secondAttribute="bottom" constant="10" id="DpP-VV-77g"/>
                             <constraint firstItem="1W7-GW-9Uf" firstAttribute="bottom" secondItem="N0W-N3-Ffb" secondAttribute="bottom" id="EZ9-SI-cDo"/>
                             <constraint firstItem="N0W-N3-Ffb" firstAttribute="top" secondItem="kmO-lY-u60" secondAttribute="bottom" constant="15" id="HYn-AI-v7z"/>
-                            <constraint firstItem="HId-8h-sL7" firstAttribute="top" secondItem="w05-dh-eMD" secondAttribute="bottom" constant="10" id="Hqz-ra-ARe"/>
+                            <constraint firstItem="1W7-GW-9Uf" firstAttribute="trailing" secondItem="kmO-lY-u60" secondAttribute="trailing" constant="10" id="NwN-IC-O2Y"/>
+                            <constraint firstItem="HId-8h-sL7" firstAttribute="leading" secondItem="kDr-qJ-YLc" secondAttribute="leadingMargin" id="VMG-8Z-1Lz"/>
                             <constraint firstItem="w05-dh-eMD" firstAttribute="top" secondItem="1W7-GW-9Uf" secondAttribute="top" id="YjY-sU-lk7"/>
-                            <constraint firstItem="kmO-lY-u60" firstAttribute="leading" secondItem="HId-8h-sL7" secondAttribute="trailing" constant="10" id="hOW-es-tBd"/>
                             <constraint firstItem="kmO-lY-u60" firstAttribute="top" secondItem="w05-dh-eMD" secondAttribute="bottom" constant="21" id="i8B-93-hNW"/>
+                            <constraint firstItem="HId-8h-sL7" firstAttribute="top" secondItem="w05-dh-eMD" secondAttribute="bottom" constant="10" id="nqV-d3-8Dc"/>
                             <constraint firstItem="w05-dh-eMD" firstAttribute="trailing" secondItem="1W7-GW-9Uf" secondAttribute="trailing" id="r9O-jx-wr7"/>
                             <constraint firstItem="w05-dh-eMD" firstAttribute="leading" secondItem="1W7-GW-9Uf" secondAttribute="leading" id="rgs-WI-cDa"/>
                             <constraint firstItem="1W7-GW-9Uf" firstAttribute="trailing" secondItem="N0W-N3-Ffb" secondAttribute="trailing" id="uda-S0-NEN"/>
-                            <constraint firstItem="HId-8h-sL7" firstAttribute="leading" secondItem="1W7-GW-9Uf" secondAttribute="leading" constant="10" id="w5g-8p-yYU"/>
                             <constraint firstItem="N0W-N3-Ffb" firstAttribute="leading" secondItem="1W7-GW-9Uf" secondAttribute="leading" id="wCY-Zv-7Ds"/>
+                            <constraint firstItem="kmO-lY-u60" firstAttribute="leading" secondItem="HId-8h-sL7" secondAttribute="trailing" constant="10" id="wCf-uw-yvS"/>
+                            <constraint firstItem="N0W-N3-Ffb" firstAttribute="top" secondItem="HId-8h-sL7" secondAttribute="bottom" constant="10" id="yEd-hv-SPR"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="magnifyingglass" catalog="system" id="zqD-Zt-Pvu"/>

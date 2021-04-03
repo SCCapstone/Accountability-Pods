@@ -18,6 +18,7 @@ class OwnSkillViewController: UIViewController {
     {
         desc.text = skill.desc
         nameLabel.text = skill.name
+        nameEdit.isHidden = true
     }
     
     @IBAction func editResource(_ sender: Any) {
@@ -33,7 +34,7 @@ class OwnSkillViewController: UIViewController {
             nameLabel.isEnabled = true
             nameEdit.isEnabled = false
             nameEdit.isUserInteractionEnabled = false
-            
+            desc.layer.backgroundColor = UIColor.clear.cgColor
             db.document(skill.path).setData(["skillName" : nameLabel.text, "skillDescription" : desc.text]) {err in
                 if let err = err {
                     print(err)
@@ -53,7 +54,12 @@ class OwnSkillViewController: UIViewController {
             nameEdit.isEnabled = true
             nameEdit.isUserInteractionEnabled = true
             nameEdit.isHidden = false
+            //desc.layer.borderWidth = 1
+            desc.layer.cornerRadius = 10
+            desc.layer.backgroundColor = UIColor.systemGray6.cgColor
             
+            nameEdit.layer.cornerRadius = 5
+            nameEdit.layer.backgroundColor = UIColor.systemGray6.cgColor
         }
     
     }

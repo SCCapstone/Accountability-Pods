@@ -17,6 +17,7 @@ class PostedResourcesViewController: UIViewController {
         super.viewDidLoad()
         overrideUserInterfaceStyle = .light
         self.genArray()
+        self.sortResources()
         tableView.delegate = self
         tableView.dataSource = self
         NotificationCenter.default.addObserver(self, selector: #selector(self.reload), name: NSNotification.Name(rawValue: "OnEditResource"), object: nil)

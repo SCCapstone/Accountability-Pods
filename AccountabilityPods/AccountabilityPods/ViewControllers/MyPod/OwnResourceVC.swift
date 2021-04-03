@@ -44,7 +44,7 @@ class OwnResourceVC: UIViewController {
             nameLabel.isEnabled = true
             nameEdit.isEnabled = false
             nameEdit.isUserInteractionEnabled = false
-            
+            desc.layer.backgroundColor = UIColor.clear.cgColor
             db.document(resource.path).setData(["resourceName" : nameLabel.text, "resourceDesc" : desc.text]) {err in
                 if let err = err {
                     print(err)
@@ -64,7 +64,11 @@ class OwnResourceVC: UIViewController {
             nameEdit.isEnabled = true
             nameEdit.isUserInteractionEnabled = true
             nameEdit.isHidden = false
-            
+            desc.layer.cornerRadius = 10
+            desc.layer.backgroundColor = UIColor.systemGray6.cgColor
+            nameEdit.layer.borderWidth = 0
+            nameEdit.layer.cornerRadius = 5
+            nameEdit.layer.backgroundColor = UIColor.systemGray6.cgColor
         }
     
     }

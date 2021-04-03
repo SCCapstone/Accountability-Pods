@@ -90,7 +90,7 @@ class ChatViewController: MessagesViewController, InputBarAccessoryViewDelegate 
     override func viewDidLoad() {
     
         super.viewDidLoad()
-        
+        overrideUserInterfaceStyle = .light
         user2Name = sendToProfile.firstName + " " + sendToProfile.lastName
         user2UID = sendToProfile.uid
         self.title = user2Name ?? "Chat"

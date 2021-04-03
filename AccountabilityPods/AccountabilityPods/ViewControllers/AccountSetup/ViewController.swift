@@ -17,7 +17,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         tryLogin();
         // Do any additional setup after loading the view.
-   
+        overrideUserInterfaceStyle = .light
         let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(swipeAction(swipe:)))
         leftSwipe.direction=UISwipeGestureRecognizer.Direction.left
         self.view.addGestureRecognizer(leftSwipe)

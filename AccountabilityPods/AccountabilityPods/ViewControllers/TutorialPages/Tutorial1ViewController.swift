@@ -15,7 +15,7 @@ class Tutorial1ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        overrideUserInterfaceStyle = .light
         // Do any additional setup after loading the view.
     }
     
@@ -30,6 +30,9 @@ class Tutorial1ViewController: UIViewController {
         
         view.window?.rootViewController = nextViewController
         view.window?.makeKeyAndVisible()
+    }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
     
     /*

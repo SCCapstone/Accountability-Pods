@@ -81,7 +81,7 @@
 /* Begin PBXFileReference section */
 		18A069DE85DA6B69AA1976FF /* Pods-AccountabilityPodsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AccountabilityPodsTests.debug.xcconfig"; path = "Target Support Files/Pods-AccountabilityPodsTests/Pods-AccountabilityPodsTests.debug.xcconfig"; sourceTree = "<group>"; };
 		442DC922257873DA00036D18 /* MessagingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagingViewController.swift; sourceTree = "<group>"; };
-		4434699F2614FB5700D567E7 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		4434699F2614FB5700D567E7 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = ../OtherProfile/SettingsViewController.swift; sourceTree = "<group>"; };
 		4D3ACD7AC4C6BD83FC19813E /* Pods_AccountabilityPodsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AccountabilityPodsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6840CD19257B062700640DF4 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		685A332A2616B0BB00B0B54C /* PushNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationManager.swift; sourceTree = "<group>"; };
@@ -280,7 +280,6 @@
 		D4B716C825E6C94C00EE2D4B /* OtherProfile */ = {
 			isa = PBXGroup;
 			children = (
-				4434699F2614FB5700D567E7 /* SettingsViewController.swift */,
 				D4B716E125E6EE9C00EE2D4B /* SkillViewController.swift */,
 				D4B716DC25E6E47100EE2D4B /* ProfileResourceViewController.swift */,
 				D4B716CF25E6CB3300EE2D4B /* ProfileSkillsViewController.swift */,
@@ -292,6 +291,7 @@
 		D4B716C925E6C98B00EE2D4B /* MyPod */ = {
 			isa = PBXGroup;
 			children = (
+				4434699F2614FB5700D567E7 /* SettingsViewController.swift */,
 				AE5C947225EACC1B00DB2023 /* ProfileViewCollectionVC.swift */,
 				D43570D0257975E500FCE20C /* MyPodViewController.swift */,
 				AE4970FF257A1968008CCEEB /* PostedResourcesViewController.swift */,

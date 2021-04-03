@@ -47,6 +47,27 @@ class ProfileResourceViewController: UIViewController {
             }
         }
     }
+    func sortResources()
+    {
+        var count = 0
+        while count < self.resources.count {
+            var count2 = 0
+            while count2 < self.resources.count
+            {
+                print("Checking if resource at \(count) < \(count2)")
+                print("time 1: \(self.resources[count].timeStamp)")
+                if self.resources[count].timeStamp > self.resources[count2].timeStamp
+                {
+                    print("swapping")
+                    let tempMsg = self.resources[count]
+                    self.resources[count] = self.resources[count2]
+                    self.resources[count2] = tempMsg
+                }
+              count2 += 1
+            }
+            count += 1
+        }
+    }
     /*
     // MARK: - Navigation
 
@@ -60,6 +81,7 @@ class ProfileResourceViewController: UIViewController {
 }
 extension ProfileResourceViewController: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
+        sortResources()
         return resources.count
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

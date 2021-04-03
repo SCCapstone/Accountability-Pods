@@ -22,7 +22,7 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="47"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Power Pods" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pD0-6a-wfL">
-                                        <rect key="frame" x="153" y="19" width="108" height="28"/>
+                                        <rect key="frame" x="153" y="0.0" width="108" height="47"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="20"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -44,8 +44,8 @@
                                 <constraints>
                                     <constraint firstItem="pD0-6a-wfL" firstAttribute="centerX" secondItem="w05-dh-eMD" secondAttribute="centerX" id="60s-b8-1tK"/>
                                     <constraint firstAttribute="bottom" secondItem="pD0-6a-wfL" secondAttribute="bottom" id="JN1-ZR-a43"/>
-                                    <constraint firstItem="pD0-6a-wfL" firstAttribute="top" secondItem="w05-dh-eMD" secondAttribute="top" constant="19" id="St7-Br-G4x"/>
                                     <constraint firstAttribute="height" constant="47" id="WDn-f3-pfZ"/>
+                                    <constraint firstItem="pD0-6a-wfL" firstAttribute="centerY" secondItem="w05-dh-eMD" secondAttribute="centerY" id="biW-is-5Qm"/>
                                 </constraints>
                             </view>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HId-8h-sL7">

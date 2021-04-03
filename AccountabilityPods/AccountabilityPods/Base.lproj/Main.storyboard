@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3nk-Sv-Rqm">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3nk-Sv-Rqm">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -1304,14 +1304,25 @@
                                 </collectionViewFlowLayout>
                                 <cells/>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ywe-f1-dUU">
+                                <rect key="frame" x="359" y="2" width="42" height="38"/>
+                                <state key="normal" image="folder.fill.badge.plus" catalog="system"/>
+                                <connections>
+                                    <action selector="createGroup:" destination="1BF-Fi-i6j" eventType="touchUpInside" id="N5M-3A-fHh"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="mDt-tk-eQw"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="HCy-gM-yGV" firstAttribute="top" secondItem="hGj-HP-feM" secondAttribute="top" constant="29" id="2O9-uh-CAO"/>
+                            <constraint firstItem="mDt-tk-eQw" firstAttribute="bottom" secondItem="ywe-f1-dUU" secondAttribute="bottom" constant="473" id="99X-2j-2Pf"/>
                             <constraint firstItem="mDt-tk-eQw" firstAttribute="trailing" secondItem="HCy-gM-yGV" secondAttribute="trailing" constant="20" id="FYb-tg-btw"/>
                             <constraint firstItem="mDt-tk-eQw" firstAttribute="bottom" secondItem="HCy-gM-yGV" secondAttribute="bottom" constant="20" id="HRG-b9-chG"/>
+                            <constraint firstItem="ywe-f1-dUU" firstAttribute="leading" secondItem="hGj-HP-feM" secondAttribute="leading" constant="359" id="Jrw-q3-cSL"/>
                             <constraint firstItem="HCy-gM-yGV" firstAttribute="leading" secondItem="mDt-tk-eQw" secondAttribute="leading" constant="20" id="SU7-hj-IWt"/>
+                            <constraint firstItem="ywe-f1-dUU" firstAttribute="top" secondItem="hGj-HP-feM" secondAttribute="top" constant="2" id="Xgg-Fo-ZtO"/>
+                            <constraint firstAttribute="trailing" secondItem="ywe-f1-dUU" secondAttribute="trailing" constant="13" id="eJp-Bv-7cM"/>
                         </constraints>
                     </view>
                     <connections>
@@ -1589,7 +1600,7 @@
             <objects>
                 <viewController storyboardIdentifier="resourceVC" id="RVU-aC-KZr" customClass="ResourceDisplayVC" customModule="AccountabilityPods" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gEf-5K-uaR">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="468"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="459"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Default" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="yyN-3T-mkS">
@@ -1599,7 +1610,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dMD-xk-wtr">
-                                <rect key="frame" x="20" y="63.5" width="374" height="262"/>
+                                <rect key="frame" x="20" y="63.5" width="374" height="253"/>
                                 <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint </string>
                                 <color key="textColor" systemColor="labelColor"/>
@@ -1607,14 +1618,14 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="continue"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mbi-5u-dpD">
-                                <rect key="frame" x="20" y="428" width="52" height="30"/>
+                                <rect key="frame" x="20" y="419" width="52" height="30"/>
                                 <state key="normal" title="@Temp"/>
                                 <connections>
                                     <action selector="onClickUsername:" destination="RVU-aC-KZr" eventType="touchUpInside" id="Khp-L3-eQy"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iea-p6-Dke">
-                                <rect key="frame" x="368.5" y="422" width="25.5" height="26"/>
+                                <rect key="frame" x="368.5" y="413" width="25.5" height="26"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <color key="tintColor" systemColor="systemGrayColor"/>
                                 <size key="titleShadowOffset" width="7" height="6"/>
@@ -1626,7 +1637,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Posted by" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q8G-z4-fIp">
-                                <rect key="frame" x="20" y="387.5" width="76" height="20.5"/>
+                                <rect key="frame" x="20" y="378.5" width="76" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -2037,6 +2048,13 @@
                                 </collectionViewFlowLayout>
                                 <cells/>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5tT-Yz-aCp">
+                                <rect key="frame" x="363" y="0.0" width="42" height="38"/>
+                                <state key="normal" image="folder.fill.badge.plus" catalog="system"/>
+                                <connections>
+                                    <action selector="createGroup:" destination="FxM-Ux-Vlh" eventType="touchUpInside" id="Cba-2R-2SW"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Ehy-hK-Tmn"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -2045,6 +2063,10 @@
                             <constraint firstItem="KuJ-e3-0R9" firstAttribute="top" secondItem="q9B-co-Hzw" secondAttribute="top" constant="29" id="8uF-7X-reY"/>
                             <constraint firstItem="Ehy-hK-Tmn" firstAttribute="bottom" secondItem="KuJ-e3-0R9" secondAttribute="bottom" constant="20" id="AcC-hQ-QRO"/>
                             <constraint firstItem="KuJ-e3-0R9" firstAttribute="leading" secondItem="Ehy-hK-Tmn" secondAttribute="leading" constant="20" id="YXd-mZ-S74"/>
+                            <constraint firstItem="5tT-Yz-aCp" firstAttribute="leading" secondItem="q9B-co-Hzw" secondAttribute="leading" constant="363" id="bfX-oN-gAE"/>
+                            <constraint firstAttribute="trailing" secondItem="5tT-Yz-aCp" secondAttribute="trailing" constant="9" id="d4p-Cp-fSj"/>
+                            <constraint firstItem="Ehy-hK-Tmn" firstAttribute="bottom" secondItem="5tT-Yz-aCp" secondAttribute="bottom" constant="475" id="eoL-Q7-r4S"/>
+                            <constraint firstItem="5tT-Yz-aCp" firstAttribute="top" secondItem="q9B-co-Hzw" secondAttribute="top" id="jBj-PD-eLT"/>
                         </constraints>
                     </view>
                     <connections>
@@ -2058,7 +2080,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="SWW-9v-psJ"/>
+        <segue reference="wxW-nl-QRV"/>
         <segue reference="jaU-Hq-HV1"/>
         <segue reference="g9z-kc-Y9I"/>
         <segue reference="Jcs-tv-78Z"/>
@@ -2066,6 +2088,7 @@
     <resources>
         <image name="bubble_full" width="56" height="35"/>
         <image name="escape" catalog="system" width="128" height="121"/>
+        <image name="folder.fill.badge.plus" catalog="system" width="128" height="91"/>
         <image name="gearshape.fill" catalog="system" width="128" height="121"/>
         <image name="heart.fill" catalog="system" width="128" height="109"/>
         <image name="house.fill" catalog="system" width="128" height="106"/>

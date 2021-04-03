@@ -41,7 +41,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 print("Loading Users for Search Display")
                 for document in querySnapshot!.documents {
                     if document.documentID != "adminuser" {
-                        if document.get("private") as? Int != 1 {
+                        if document.get("private") as? Int != 1 && document.get("username") != nil{
                             let tempProfile = Profile()
                             self.profiles.append(tempProfile)
                             tempProfile.readData(database: self.db, path: document.reference.path, tableview: self.table)

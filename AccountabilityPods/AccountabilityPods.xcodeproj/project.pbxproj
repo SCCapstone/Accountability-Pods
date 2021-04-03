@@ -137,10 +137,10 @@
 		D4B716DC25E6E47100EE2D4B /* ProfileResourceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProfileResourceViewController.swift; path = AccountabilityPods/ProfileResourceViewController.swift; sourceTree = SOURCE_ROOT; };
 		D4B716E125E6EE9C00EE2D4B /* SkillViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SkillViewController.swift; path = AccountabilityPods/SkillViewController.swift; sourceTree = SOURCE_ROOT; };
 		D4D078D125E15DC700B6A05A /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
-		D4E594D426165FCF00231E3B /* Tutorial1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Tutorial1ViewController.swift; path = AccountabilityPods/ViewControllers/Tutorial/Tutorial1ViewController.swift; sourceTree = SOURCE_ROOT; };
-		D4E594D926165FDD00231E3B /* Tutorial2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Tutorial2ViewController.swift; path = AccountabilityPods/ViewControllers/Tutorial/Tutorial2ViewController.swift; sourceTree = SOURCE_ROOT; };
-		D4E594DE26165FEA00231E3B /* Tutorial3ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Tutorial3ViewController.swift; path = AccountabilityPods/ViewControllers/Tutorial/Tutorial3ViewController.swift; sourceTree = SOURCE_ROOT; };
-		D4E594E326165FF700231E3B /* Tutorial4ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Tutorial4ViewController.swift; path = AccountabilityPods/ViewControllers/Tutorial/Tutorial4ViewController.swift; sourceTree = SOURCE_ROOT; };
+		D4E594D426165FCF00231E3B /* Tutorial1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Tutorial1ViewController.swift; path = AccountabilityPods/ViewControllers/TutorialPages/Tutorial1ViewController.swift; sourceTree = SOURCE_ROOT; };
+		D4E594D926165FDD00231E3B /* Tutorial2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Tutorial2ViewController.swift; path = AccountabilityPods/ViewControllers/TutorialPages/Tutorial2ViewController.swift; sourceTree = SOURCE_ROOT; };
+		D4E594DE26165FEA00231E3B /* Tutorial3ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Tutorial3ViewController.swift; path = AccountabilityPods/ViewControllers/TutorialPages/Tutorial3ViewController.swift; sourceTree = SOURCE_ROOT; };
+		D4E594E326165FF700231E3B /* Tutorial4ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Tutorial4ViewController.swift; path = AccountabilityPods/ViewControllers/TutorialPages/Tutorial4ViewController.swift; sourceTree = SOURCE_ROOT; };
 		D4E625B3257AE3C000963DD6 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		D4E7E26225E1895C00E3E386 /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProfileCell.swift; path = AccountabilityPods/ProfileCell.swift; sourceTree = SOURCE_ROOT; };
 		D5F2AD14A2FCA3106D3D4D89 /* Pods_AccountabilityPods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AccountabilityPods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -177,7 +177,7 @@
 		C3299C0625700BEA00D2C3D7 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				D4E594D326165FB700231E3B /* TutorialPages */,
+				D48BFD7F2618F72E00102373 /* TutorialPages */,
 				D4B716CB25E6CAB500EE2D4B /* AccountSetup */,
 				D4B716C925E6C98B00EE2D4B /* MyPod */,
 				D4B716C825E6C94C00EE2D4B /* OtherProfile */,
@@ -266,6 +266,17 @@
 			path = AccountabilityPodsUITests;
 			sourceTree = "<group>";
 		};
+		D48BFD7F2618F72E00102373 /* TutorialPages */ = {
+			isa = PBXGroup;
+			children = (
+				D4E594D426165FCF00231E3B /* Tutorial1ViewController.swift */,
+				D4E594D926165FDD00231E3B /* Tutorial2ViewController.swift */,
+				D4E594DE26165FEA00231E3B /* Tutorial3ViewController.swift */,
+				D4E594E326165FF700231E3B /* Tutorial4ViewController.swift */,
+			);
+			path = TutorialPages;
+			sourceTree = "<group>";
+		};
 		D4B716C825E6C94C00EE2D4B /* OtherProfile */ = {
 			isa = PBXGroup;
 			children = (
@@ -313,17 +324,6 @@
 				C3299C0A257016C800D2C3D7 /* ForgotPasswordViewController.swift */,
 			);
 			path = AccountSetup;
-			sourceTree = "<group>";
-		};
-		D4E594D326165FB700231E3B /* TutorialPages */ = {
-			isa = PBXGroup;
-			children = (
-				D4E594D426165FCF00231E3B /* Tutorial1ViewController.swift */,
-				D4E594D926165FDD00231E3B /* Tutorial2ViewController.swift */,
-				D4E594DE26165FEA00231E3B /* Tutorial3ViewController.swift */,
-				D4E594E326165FF700231E3B /* Tutorial4ViewController.swift */,
-			);
-			path = TutorialPages;
 			sourceTree = "<group>";
 		};
 		DFDAAE56C64E247351D3921A /* Frameworks */ = {

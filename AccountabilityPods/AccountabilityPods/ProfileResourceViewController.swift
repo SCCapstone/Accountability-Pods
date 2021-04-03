@@ -59,17 +59,28 @@ class ProfileResourceViewController: UIViewController {
 
 }
 extension ProfileResourceViewController: UITableViewDataSource, UITableViewDelegate {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return resources.count
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let resource = resources[indexPath.row]
+        let resource = resources[indexPath.section]
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileResourceCell") as! ResourceCell
         cell.setResource(resource: resource)
+        cell.layer.cornerRadius = 15
         return cell
     }
-    
+    func  tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 20
+    }
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView()
+        headerView.backgroundColor = UIColor.clear
+        return headerView
+    }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.performSegue(withIdentifier: "showProfileResourceSegue", sender: Any?.self)
     }
@@ -77,7 +88,7 @@ extension ProfileResourceViewController: UITableViewDataSource, UITableViewDeleg
         if segue.identifier == "showProfileResourceSegue"
         {
             let indexPath = self.tableView.indexPathForSelectedRow
-            let resource = self.resources[(indexPath?.row)!]
+            let resource = self.resources[(indexPath?.section)!]
             if let dView = segue.destination as? ResourceDisplayVC {
                 dView.resource = resource.makeHashableStruct()
             }

@@ -21,9 +21,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         FirebaseApp.configure()
         
         //push manager for notifications
-        let userId = Auth.auth().currentUser?.uid ?? "current_user_id"
+        let userId = Constants.User.sharedInstance.userID 
         let userRef = Firestore.firestore().collection("users").whereField("uid", isEqualTo: userId)
-        
+        print("APPLICATION userId: \(userId)")
         userRef.getDocuments() { (querySnapshot, err) in
         if let err = err {
             print("Error getting documents: \(err)")

@@ -9,11 +9,12 @@
 import UIKit
 import Firebase
 
-class AddSkillViewController: UIViewController {
+class AddSkillViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate {
 
     @IBOutlet weak var addSkillStackView: UIStackView!
     @IBOutlet weak var skillNameTextField: UITextField!
-    @IBOutlet weak var skillDescriptionTextField: UITextField!
+    @IBOutlet weak var skillDescriptionTextField: UITextView!
+    
     @IBOutlet weak var doneAddingButton: UIButton!
     
     let db = Firestore.firestore()
@@ -25,18 +26,42 @@ class AddSkillViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         overrideUserInterfaceStyle = .light
+        skillDescriptionTextField.delegate = self
+        skillNameTextField.delegate = self
+        editBoxes()
         // Do any additional setup after loading the view.
+    }
+    func editBoxes() {
+        skillNameTextField.layer.cornerRadius = 15
+        skillDescriptionTextField.layer.cornerRadius = 15
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        skillDescriptionTextField.text = ""
+    }
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if skillDescriptionTextField.text == "" {
+            skillDescriptionTextField.text = "Skill description ..."
+        }
+        
+    }
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        // clear fields
+        if skillNameTextField.text == "" {
+            skillNameTextField.text = "Skill name ..."
+        }
+        
+    }
     @IBAction func donePressed(_ sender: Any) {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "OnEditSkill"), object: nil)
-        var docRef = db.collection("users").document(userID).collection("SKILLS").addDocument(data: [
+        _ = db.collection("users").document(userID).collection("SKILLS").addDocument(data: [
                         "creatorRef" : userID,
                         "skillName" : skillNameTextField.text ?? "N/A",
                         "skillDescription" : skillDescriptionTextField.text ?? "N/A"
-                    ]) {err in
+                    ])
+        {err in
                         if let err = err {
                             print("The document was invalid for some reason? \(err)")
                         }
@@ -46,9 +71,8 @@ class AddSkillViewController: UIViewController {
                         }
 
         }
-        // clear fields
-        skillNameTextField.text = "Skill name ..."
-        skillDescriptionTextField.text = "Skill description ..."
+        
+        
     }
         
     

@@ -71,8 +71,8 @@ class AddSkillViewController: UIViewController, UITextViewDelegate, UITextFieldD
                         }
 
         }
-        
-        
+        skillNameTextField.text = "Skill name ..."
+        skillDescriptionTextField.text = "Skill description ..."
     }
         
     

@@ -65,7 +65,7 @@ extension ViewSkillsViewController: UITableViewDataSource, UITableViewDelegate {
         return 1
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let skill = skills[indexPath.row]
+        let skill = skills[indexPath.section]
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "SkillCell") as! SkillCell
         
@@ -91,7 +91,7 @@ extension ViewSkillsViewController: UITableViewDataSource, UITableViewDelegate {
         if segue.identifier == "showSkillSegue"
         {
             let indexPath = self.tableView.indexPathForSelectedRow
-            let skill = self.skills[(indexPath?.row)!]
+            let skill = self.skills[(indexPath?.section)!]
             if let dView = segue.destination as? OwnSkillViewController {
                 dView.skill = skill
             }

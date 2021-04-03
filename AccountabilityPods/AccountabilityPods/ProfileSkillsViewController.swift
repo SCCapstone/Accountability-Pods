@@ -64,16 +64,29 @@ class ProfileSkillsViewController: UIViewController {
 
 }
 extension ProfileSkillsViewController: UITableViewDataSource, UITableViewDelegate {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        
+        return self.skills.count
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return skills.count
+        return 1
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            let skill = skills[indexPath.row]
+            let skill = skills[indexPath.section]
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileSkillCell") as! SkillCell
             
             cell.setSkill(skill: skill)
+        cell.layer.cornerRadius = 15
             return cell
+    }
+    func  tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 20
+    }
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView()
+        headerView.backgroundColor = UIColor.clear
+        return headerView
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.performSegue(withIdentifier: "showProfileSkillSegue", sender: Any?.self)
@@ -82,7 +95,7 @@ extension ProfileSkillsViewController: UITableViewDataSource, UITableViewDelegat
         if segue.identifier == "showProfileSkillSegue"
         {
             let indexPath = self.tableView.indexPathForSelectedRow
-            let skill = self.skills[(indexPath?.row)!]
+            let skill = self.skills[(indexPath?.section)!]
             if let dView = segue.destination as? SkillViewController {
                 dView.skill = skill
             }

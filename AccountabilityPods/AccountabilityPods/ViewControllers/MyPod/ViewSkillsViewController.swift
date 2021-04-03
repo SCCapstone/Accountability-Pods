@@ -57,8 +57,12 @@ class ViewSkillsViewController: UIViewController {
 
 }
 extension ViewSkillsViewController: UITableViewDataSource, UITableViewDelegate {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        
+        return self.skills.count
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return skills.count
+        return 1
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let skill = skills[indexPath.row]
@@ -66,8 +70,18 @@ extension ViewSkillsViewController: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SkillCell") as! SkillCell
         
         cell.setSkill(skill: skill)
+        cell.layer.cornerRadius = 15
+
         return cell
         
+    }
+    func  tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 20
+    }
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView()
+        headerView.backgroundColor = UIColor.clear
+        return headerView
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.performSegue(withIdentifier: "showSkillSegue", sender: Any?.self)

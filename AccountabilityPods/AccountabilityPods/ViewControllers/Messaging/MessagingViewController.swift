@@ -33,26 +33,21 @@ class MessagingViewController: UIViewController, UITableViewDelegate, UITableVie
     
     //get users from the database load data
     @objc private func loadData() {
-        self.contactsA = []
-        let usersRef = db.collection("users").document(userID).collection("CONTACTS");
-        
-        usersRef.getDocuments() {(querySnapshot, err) in
+
+        let chatRef = db.collection("Chats").whereField("users" , arrayContains: self.userID)
+        .getDocuments{(querySnapshot, err) in
             if let err = err {
                 print("Error getting users for searching: \(err)")
             }
             else {
-                print("Loading Users Contacts")
+                print("Loading Users Messages")
                 for document in querySnapshot!.documents {
-                    if document.documentID != "adminuser" && document.documentID != self.userID {
-                        let tempProfile = Profile()
-                        self.contactsA.append(tempProfile)
-                        let path = "users/" + document.documentID
-                        tempProfile.readData(database: self.db, path: path, tableview: self.contactTable)
-                        //print("document path: \(path)")
-                        self.contactTable.reloadData()
-                        
-                    }
-                    
+                    let chatUsers = document["users"] as? Array ?? [""]
+                    let tempProfile = Profile()
+                    self.contactsA.append(tempProfile)
+                    let path = "users/" + chatUsers[1]
+                    tempProfile.readData(database: self.db, path: path, tableview: self.contactTable)
+                    self.contactTable.reloadData()
                 }
             }
         }

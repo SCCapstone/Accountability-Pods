@@ -16,6 +16,7 @@ class MessagingViewController: UIViewController, UITableViewDelegate, UITableVie
     
     let db = Firestore.firestore()
     var contactsA = [Profile]()
+    var usernames = [String]()
     //var userID = Constants.User.sharedInstance.userID;
     var userID  = Constants.User.sharedInstance.userID;
     
@@ -33,8 +34,8 @@ class MessagingViewController: UIViewController, UITableViewDelegate, UITableVie
     
     //get users from the database load data
     @objc private func loadData() {
-
-        let chatRef = db.collection("Chats").whereField("users" , arrayContains: self.userID)
+        contactsA = []
+        _ = db.collection("Chats").whereField("users" , arrayContains: self.userID)
         .getDocuments{(querySnapshot, err) in
             if let err = err {
                 print("Error getting users for searching: \(err)")
@@ -45,9 +46,37 @@ class MessagingViewController: UIViewController, UITableViewDelegate, UITableVie
                     let chatUsers = document["users"] as? Array ?? [""]
                     let tempProfile = Profile()
                     self.contactsA.append(tempProfile)
-                    let path = "users/" + chatUsers[1]
-                    tempProfile.readData(database: self.db, path: path, tableview: self.contactTable)
-                    self.contactTable.reloadData()
+                    for user in chatUsers{
+                        if user != self.userID {
+                            self.usernames.append(user)
+                            let path = "users/" + user
+                            tempProfile.readData(database: self.db, path: path, tableview: self.contactTable)
+                            self.contactTable.reloadData()
+                        }
+                    }
+                    
+                }
+            }
+        }
+        let usersRef = db.collection("users").document(userID).collection("CONTACTS");
+
+        usersRef.getDocuments() {(querySnapshot, err) in
+            if let err = err {
+                print("Error getting users: \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                    if document.documentID != "adminuser" && document.documentID != self.userID {
+                                             
+                        let tempProfile = Profile()
+                        self.contactsA.append(tempProfile)
+                        let path = "users/" + document.documentID
+                         tempProfile.readData(database: self.db, path: path, tableview: self.contactTable)
+                        //print("document path: \(path)")
+                        self.contactTable.reloadData()
+
+                                         
+                    }
+                    
                 }
             }
         }

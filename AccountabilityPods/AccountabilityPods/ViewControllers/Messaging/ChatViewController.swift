@@ -168,8 +168,9 @@ class ChatViewController: MessagesViewController, InputBarAccessoryViewDelegate 
             //Find second user
             if (chat?.users.contains(self.user2UID ?? "No Second User"))! {
                 self.docReference = doc.reference
-                let showUsers = doc["user"] as? Array ?? [""]
+                let showUsers = doc["users"] as? Array ?? [""]
                 self.indexUser = showUsers.firstIndex(of: self.userID)
+                //print("LOAD DATA INDEX \(self.indexUser ?? 300)")
             //fetch thread collection
             doc.reference.collection("thread").order(by: "created", descending:false).addSnapshotListener(includeMetadataChanges: true, listener: { (threadQuery, error) in
             if let error = error {
@@ -289,8 +290,9 @@ class ChatViewController: MessagesViewController, InputBarAccessoryViewDelegate 
                     print("Error getting documents: \(err)")
                 } else {
                     for document in querySnapshot!.documents {
-                        print("MESSAGE CONTENT \(thisMsg.content)")
+                        //print("MESSAGE CONTENT \(thisMsg.content)")
                         if thisMsg.content == document.get("content") as! String {
+                           // print("INDEX OF user: \(self.indexUser) ")
                             if self.indexUser == 0 {
                                 document.reference.updateData(["showMsg": false])
                             }

@@ -26,7 +26,8 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var errorLabel: UILabel!
     
     let db = Firestore.firestore()
-    
+  //  var userID  = Constants.User.sharedInstance.userID
+   // var username = Constants.User.sharedInstance.userID
     override func viewDidLoad() {
         super.viewDidLoad()
         overrideUserInterfaceStyle = .light
@@ -35,7 +36,6 @@ class LoginViewController: UIViewController {
         self.view.addGestureRecognizer(rightSwipe)
         // Do any additional setup after loading the view.
         setUpElements()
-
     }
     
     func setUpElements() {
@@ -50,6 +50,34 @@ class LoginViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    func checkTokenChanged(username: String) {
+        
+        let usersRef = db.collection("users").document(username)
+        
+
+    //    let uRef = db.collection("users").document(userID)
+       usersRef.getDocument {
+            (document, error) in
+            if let document = document, document.exists {
+                print("DOCUMENT FOUND \(document.data())")
+                let newtoken = Messaging.messaging().fcmToken
+                let currToken = document.get("fcmToken") as? String
+                if(currToken == newtoken) {
+                    print("USER USES SAME TOKEN \(currToken ?? "new token")")
+                    return
+                }
+                else {
+                    print("USER is on different device replacing token to updated token")
+                    usersRef.setData(["fcmToken": newtoken], merge: true)
+                   // sender.sendPushNotification(to: newtoken ?? "No token found", title: self.senderName ?? "New Message", body: "Open to Read Message")
+
+                }
+            }
+        }
+     //   let token = Messaging.messaging().fcmToken
+    //    let usersRef = Firestore.firestore().collection("users").document(username)
+      
+    }
     func checkFields() -> String? {
         if passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" || emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
             return "please enter values for all boxes"
@@ -99,7 +127,7 @@ class LoginViewController: UIViewController {
                             {
                                 print("Successfully got the username from ID!")
                                 Constants.User.sharedInstance.userID = doc.data()["username"] as! String
-                                
+                                self.checkTokenChanged(username: doc.data()["username"] as! String)
                                 UserDefaults.standard.setValue(doc.documentID, forKey: "userID")
                                 UserDefaults.standard.setValue(UUID().uuidString, forKey: "sessID")
                                 self.db.collection("userids").document(result!.user.uid).setData(["sessionID": UserDefaults.standard.string(forKey: "sessID")!], merge:true)

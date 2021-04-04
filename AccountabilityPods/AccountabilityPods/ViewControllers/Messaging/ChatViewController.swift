@@ -33,8 +33,9 @@ struct Message {
     var senderID: String
     var senderName: String
     var showMsg: Bool
+    var showMsg1: Bool
     var dictionary: [String: Any] {
-        return ["id": id, "content": content, "created": created, "senderID": senderID, "senderName": senderName, "showMsg": showMsg]
+        return ["id": id, "content": content, "created": created, "senderID": senderID, "senderName": senderName, "showMsg": showMsg, "showMsg1": showMsg1]
     }
     
 }
@@ -46,9 +47,10 @@ extension Message {
               let created = dictionary["created"] as? Int64,
               let senderID = dictionary["senderID"] as? String,
               let senderName = dictionary["senderName"] as? String,
-              let showMsg = dictionary["showMsg"] as? Bool
+              let showMsg = dictionary["showMsg"] as? Bool,
+              let showMsg1 = dictionary["showMsg1"] as? Bool
         else { return nil}
-        self.init(id: id, content: content, created: created, senderID: senderID, senderName: senderName, showMsg: showMsg)
+        self.init(id: id, content: content, created: created, senderID: senderID, senderName: senderName, showMsg: showMsg, showMsg1: showMsg1)
     }
     
 }
@@ -77,6 +79,7 @@ class ChatViewController: MessagesViewController, InputBarAccessoryViewDelegate 
     var senderName: String?
     var user2Name: String?
     var user2UID: String?
+    var indexUser: Int?
     
     //let db = Firestore.firestore()
     
@@ -165,6 +168,8 @@ class ChatViewController: MessagesViewController, InputBarAccessoryViewDelegate 
             //Find second user
             if (chat?.users.contains(self.user2UID ?? "No Second User"))! {
                 self.docReference = doc.reference
+                let showUsers = doc["user"] as? Array ?? [""]
+                self.indexUser = showUsers.firstIndex(of: self.userID)
             //fetch thread collection
             doc.reference.collection("thread").order(by: "created", descending:false).addSnapshotListener(includeMetadataChanges: true, listener: { (threadQuery, error) in
             if let error = error {
@@ -173,11 +178,21 @@ class ChatViewController: MessagesViewController, InputBarAccessoryViewDelegate 
             } else {
                 self.messages.removeAll()
                 for message in threadQuery!.documents {
-                    let view = message.get("showMsg")
-                    if view as! Bool == true {
-                        let msg = Message(dictionary: message.data())
-                        self.messages.append(msg!)
-                        print("Data: \(msg?.content ?? "No message found")")
+                    if self.indexUser == 0 {
+                        let view = message.get("showMsg")
+                        if view as! Bool == true {
+                            let msg = Message(dictionary: message.data())
+                            self.messages.append(msg!)
+                            print("Data: \(msg?.content ?? "No message found")")
+                        }
+                    }
+                    else {
+                        let view = message.get("showMsg1")
+                        if view as! Bool == true {
+                            let msg = Message(dictionary: message.data())
+                            self.messages.append(msg!)
+                            print("Data: \(msg?.content ?? "No message found")")
+                        }
                     }
                     //print("No messages found")
                 }
@@ -209,7 +224,7 @@ class ChatViewController: MessagesViewController, InputBarAccessoryViewDelegate 
     }
     private func save(_ message: Message) {
     //Preparing the data as per our firestore collection
-        let data: [String: Any] = ["content": message.content, "created": message.created, "id": message.id, "senderID": message.senderID, "senderName": message.senderName, "showMsg": message.showMsg]
+        let data: [String: Any] = ["content": message.content, "created": message.created, "id": message.id, "senderID": message.senderID, "senderName": message.senderName, "showMsg": message.showMsg, "showMsg1": message.showMsg1]
     //Writing it to the thread using the saved document reference we saved in load chat function
     docReference?.collection("thread").addDocument(data: data, completion: { (error) in
     if let error = error {
@@ -222,7 +237,7 @@ class ChatViewController: MessagesViewController, InputBarAccessoryViewDelegate 
     
     func inputBar(_ inputBar: InputBarAccessoryView, didPressSendButtonWith text: String) {
     //When use press send button this method is called.
-        let message = Message(id: UUID().uuidString, content: text, created: Int64(Date().timeIntervalSince1970), senderID: userID, senderName: self.senderName ?? "No Sender Name", showMsg: true)
+        let message = Message(id: UUID().uuidString, content: text, created: Int64(Date().timeIntervalSince1970), senderID: userID, senderName: self.senderName ?? "No Sender Name", showMsg: true, showMsg1: true)
     
         //calling function to insert and save message
         insertNewMessage(message)
@@ -264,24 +279,35 @@ class ChatViewController: MessagesViewController, InputBarAccessoryViewDelegate 
 
         if action == NSSelectorFromString("delete:") {
             // Remove from datasource
-            let time = messages[indexPath.row + 1].created
+            let thisMsg = messages[indexPath.section]
+            let time = thisMsg.created
             print("THIS IS CREATE: \(time)")
-
+            print("MESSAGE CONTENT BEFORE DOC \(thisMsg.content)")
             let docC = docReference?.collection("thread").whereField("created", isEqualTo: time)
             docC?.getDocuments() { (querySnapshot, err) in
                 if let err = err {
                     print("Error getting documents: \(err)")
                 } else {
-                    let document = querySnapshot!.documents.first
-                    document?.reference.updateData(["showMsg": false])
+                    for document in querySnapshot!.documents {
+                        print("MESSAGE CONTENT \(thisMsg.content)")
+                        if thisMsg.content == document.get("content") as! String {
+                            if self.indexUser == 0 {
+                                document.reference.updateData(["showMsg": false])
+                            }
+                            else {
+                                //let document = querySnapshot!.documents.first
+                                document.reference.updateData(["showMsg1": false])
+                            }
+                    }
                     }
                 }
-            print("MESSAGE COUNT BEFORE DELETE \(messages.count)")
+                }
+            print("MESSAGE TRYING TO DELETE \(messagesCollectionView.messagesDataSource?.messageForItem(at: indexPath, in: messagesCollectionView))")
             messages.remove(at: indexPath.section)
             print(" AM I HERE \(messages.count)")
-            messagesCollectionView.deleteSections([indexPath.section])
+            messagesCollectionView.deleteSections([indexPath.section]) //messagesCollectionView
             print(" WHAT Messages after collection remove \(messages.count)")
-            messagesCollectionView.reloadData()
+            messagesCollectionView.reloadData() //messages collection view
             } else {
                 super.collectionView(collectionView, performAction: action, forItemAt: indexPath, withSender: sender)
                 print("WHAT ISTHIS HERE")
@@ -364,7 +390,6 @@ extension ChatViewController: MessagesDataSource {
     }
     
     func numberOfSections(in messagesCollectionView: MessagesCollectionView) -> Int {
-        print("GETTING NUM OF SECTIONS: \(messages.count)")
         return messages.count
     }
 

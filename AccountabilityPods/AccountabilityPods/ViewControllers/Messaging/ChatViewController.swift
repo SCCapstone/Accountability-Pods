@@ -224,7 +224,7 @@ class ChatViewController: MessagesViewController, InputBarAccessoryViewDelegate 
     }
     private func save(_ message: Message) {
     //Preparing the data as per our firestore collection
-        let data: [String: Any] = ["content": message.content, "created": message.created, "id": message.id, "senderID": message.senderID, "senderName": message.senderName, "showMsg": message.showMsg]
+        let data: [String: Any] = ["content": message.content, "created": message.created, "id": message.id, "senderID": message.senderID, "senderName": message.senderName, "showMsg": message.showMsg, "showMsg1": message.showMsg1]
     //Writing it to the thread using the saved document reference we saved in load chat function
     docReference?.collection("thread").addDocument(data: data, completion: { (error) in
     if let error = error {

@@ -16,7 +16,6 @@ class MessagingViewController: UIViewController, UITableViewDelegate, UITableVie
     
     let db = Firestore.firestore()
     var contactsA = [Profile]()
-    var usernames = [String]()
     //var userID = Constants.User.sharedInstance.userID;
     var userID  = Constants.User.sharedInstance.userID;
     
@@ -34,8 +33,34 @@ class MessagingViewController: UIViewController, UITableViewDelegate, UITableVie
     
     //get users from the database load data
     @objc private func loadData() {
-        contactsA = []
-        _ = db.collection("Chats").whereField("users" , arrayContains: self.userID)
+        self.contactsA.removeAll()
+        
+        // GET USERS FROM CONTACTS
+        let usersRef = db.collection("users").document(userID).collection("CONTACTS");
+
+        usersRef.getDocuments() {(querySnapshot, err) in
+            if let err = err {
+                print("Error getting users: \(err)")
+            } else {
+                print("Reading users from contacts")
+                for document in querySnapshot!.documents {
+                    if document.documentID != "adminuser" && document.documentID != self.userID {
+                        let tempProfile = Profile()
+                        self.contactsA.append(tempProfile)
+                        let path = "users/" + document.documentID
+                         tempProfile.readData(database: self.db, path: path, tableview: self.contactTable)
+                        print("msgContact added: \(document.documentID)")
+                        print("msgContact array size: \(self.contactsA.count)")
+                        self.contactTable.reloadData()
+
+                                         
+                    }
+                    
+                }
+            }
+        }
+        // GET USERS FROM CHATS
+        db.collection("Chats").whereField("users" , arrayContains: self.userID)
         .getDocuments{(querySnapshot, err) in
             if let err = err {
                 print("Error getting users for searching: \(err)")
@@ -44,37 +69,27 @@ class MessagingViewController: UIViewController, UITableViewDelegate, UITableVie
                 print("Loading Users Messages")
                 for document in querySnapshot!.documents {
                     let chatUsers = document["users"] as? Array ?? [""]
-                    let tempProfile = Profile()
-                    self.contactsA.append(tempProfile)
+                    
+                    // get both listed users and choose the one that is not self
                     for user in chatUsers{
                         if user != self.userID {
-                            self.usernames.append(user)
-                            let path = "users/" + user
-                            tempProfile.readData(database: self.db, path: path, tableview: self.contactTable)
-                            self.contactTable.reloadData()
+                            // Check if user var is in contacts
+                            let contactRef = self.db.collection("users").document(self.userID).collection("CONTACTS").document(user)
+                            contactRef.getDocument { (document, err) in
+                                if let document = document, document.exists{
+                                    print("\(user) is already contact")
+                                } else {
+                                    print("\(user) sent message but is not a contact")
+                                    let path = "users/" + user
+                                    let tempProfile = Profile()
+                                    self.contactsA.append(tempProfile)
+                                    tempProfile.readData(database: self.db, path: path, tableview: self.contactTable)
+                                    self.contactTable.reloadData()
+                                    
+                                }
+                            }
+                            
                         }
-                    }
-                    
-                }
-            }
-        }
-        let usersRef = db.collection("users").document(userID).collection("CONTACTS");
-
-        usersRef.getDocuments() {(querySnapshot, err) in
-            if let err = err {
-                print("Error getting users: \(err)")
-            } else {
-                for document in querySnapshot!.documents {
-                    if document.documentID != "adminuser" && document.documentID != self.userID {
-                                             
-                        let tempProfile = Profile()
-                        self.contactsA.append(tempProfile)
-                        let path = "users/" + document.documentID
-                         tempProfile.readData(database: self.db, path: path, tableview: self.contactTable)
-                        //print("document path: \(path)")
-                        self.contactTable.reloadData()
-
-                                         
                     }
                     
                 }

@@ -20,6 +20,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var filteredData = [String]()
     var filteredProfiles = [Profile]()
     var filtered = false
+    var userID = Constants.User.sharedInstance.userID
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +41,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
             else {
                 print("Loading Users for Search Display")
                 for document in querySnapshot!.documents {
-                    if document.documentID != "adminuser" {
+                    if document.documentID != "adminuser" && document.documentID != self.userID {
                         if document.get("private") as? Int != 1 && document.get("username") != nil{
                             let tempProfile = Profile()
                             self.profiles.append(tempProfile)

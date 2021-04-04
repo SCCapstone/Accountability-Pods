@@ -240,17 +240,15 @@ class ChatViewController: MessagesViewController, InputBarAccessoryViewDelegate 
     
     func sendPush() {
         let sender = PushNotificationSender()
+        print("this is user2id \(user2UID ?? "no user 2 found for token")")
         let uRef = Firestore.firestore().collection("users").document(user2UID ?? "No User")
-        _ = uRef.addSnapshotListener() {
-            document, err in
-            if let err = err {
-                print("Error getting documents: \(err)")
-            }
-            else
-            {
-                let token = document!.get("fcmToken") as! String
-                print("GOT USER 2 TOKEN \(token)")
-                sender.sendPushNotification(to: token, title: self.senderName ?? "New Message", body: "Open to Read Message")
+        uRef.getDocument {
+            (document, error) in
+            if let document = document, document.exists {
+                print("DOCUMENT FOUND \(document.data())")
+                let token = document.get("fcmToken") as? String
+                print("GOT USER 2 TOKEN \(token ?? "wtoken")")
+                sender.sendPushNotification(to: token ?? "No token found", title: self.senderName ?? "New Message", body: "Open to Read Message")
             }
         }
     }

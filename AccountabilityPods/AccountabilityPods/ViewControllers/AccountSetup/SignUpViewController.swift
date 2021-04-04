@@ -138,6 +138,9 @@ class SignUpViewController: UIViewController {
                             //Modified this slightly to name the user document the same thing as the auth so that we can search by doc name directly instead of properties
                             // add user to users collection
                             print(username)
+                            let token = Messaging.messaging().fcmToken
+                            let usersRef = Firestore.firestore().collection("users").document(username)
+                            
                             db.collection("users").document(username).setData(["firstname": firstname, "lastname": lastname, "email": email, "username": username, "description": "no description","private": privateAccountVar]) { err in
                                 if let err = err {
                                     print("Error adding document: \(err)")
@@ -147,6 +150,7 @@ class SignUpViewController: UIViewController {
                                     Constants.User.sharedInstance.userID = username;
                                     UserDefaults.standard.setValue(result!.user.uid, forKey: "userID")
                                     UserDefaults.standard.setValue(UUID().uuidString, forKey: "sessID")
+                                    usersRef.setData(["fcmToken": token], merge: true)
                                     print("reached Here")
                                     // add userID to userID collection
                                     db.collection("userids").document(result!.user.uid).setData(["username": username])

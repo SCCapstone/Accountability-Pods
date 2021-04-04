@@ -31,6 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             print("APPDELEGATE in else statement")
             for document in querySnapshot!.documents {
                 let userN = document.get("username") as? String ?? ""
+                print("call to register for push notification")
                 let pushManager = PushNotificationManager(userName: userN)
                 pushManager.registerForPushNotifications()
             }

@@ -140,7 +140,6 @@ class SignUpViewController: UIViewController {
                             print(username)
                             let token = Messaging.messaging().fcmToken
                             let usersRef = Firestore.firestore().collection("users").document(username)
-                            
                             db.collection("users").document(username).setData(["firstname": firstname, "lastname": lastname, "email": email, "username": username, "description": "no description","private": privateAccountVar]) { err in
                                 if let err = err {
                                     print("Error adding document: \(err)")

@@ -34,7 +34,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         table.refreshControl = refresh;
 
         refresh.addTarget(self, action: #selector(self.reload(_:)), for: .valueChanged);
-        refresh.attributedTitle = NSAttributedString(string: "Fetching resources")
+        refresh.attributedTitle = NSAttributedString(string: "Fetching users")
     }
     
     private func setupData() {

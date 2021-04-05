@@ -37,6 +37,7 @@ class ResourceViewCollectionVC: UIViewController {
     var groupsUnhashed: [ResourceGroupUnhashed] = []
     var selectedResource: ResourceHashable = ResourceHashable(name:"none",desc:"none",path:"nil")
     var inputString = ""
+    let refresh = UIRefreshControl()
     
     let alert = UIAlertController(title: "Create Group", message: "Enter your group name.", preferredStyle: .alert)
     
@@ -66,6 +67,9 @@ class ResourceViewCollectionVC: UIViewController {
             textField.text = ""
         }
         
+        collectionView.refreshControl = refresh;
+        refresh.addTarget(self, action: #selector(self.reload(_:)), for: .valueChanged);
+        refresh.attributedTitle = NSAttributedString(string: "Fetching resources")
         
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
             [weak alert] (_) in
@@ -163,7 +167,10 @@ class ResourceViewCollectionVC: UIViewController {
         self.view.endEditing(true)
     }
     
-    
+    @objc func reload(_ sender: Any) {
+        self.genArray();
+        refresh.endRefreshing();
+    }
     
     @objc func update()
     {

@@ -21,6 +21,8 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var filteredProfiles = [Profile]()
     var filtered = false
     var userID = Constants.User.sharedInstance.userID
+    let refresh = UIRefreshControl()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +31,9 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         table.delegate = self
         table.dataSource = self
         field.delegate = self
+        
+        refresh.addTarget(self, action: #selector(self.reload(_:)), for: .valueChanged);
+        refresh.attributedTitle = NSAttributedString(string: "Fetching resources")
     }
     
     private func setupData() {
@@ -95,6 +100,10 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
             return filteredProfiles.count
         }
         return filtered ? 0 : profiles.count
+    }
+    @objc func reload(_ sender: Any) {
+        self.setupData();
+        refresh.endRefreshing();
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

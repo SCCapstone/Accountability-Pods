@@ -9,10 +9,12 @@
 import UIKit
 import Firebase
 class HomeViewController: UIViewController {
-
+    
     override func viewDidLoad() {
+       
         super.viewDidLoad()
         overrideUserInterfaceStyle = .light
+        
 
         // Do any additional setup after loading the view.
    
@@ -51,6 +53,9 @@ class HomeViewController: UIViewController {
             print(error)
         }
     }
+    
+    
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }

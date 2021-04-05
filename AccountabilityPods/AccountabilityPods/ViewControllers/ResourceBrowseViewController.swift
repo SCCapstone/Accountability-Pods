@@ -14,7 +14,11 @@ class ResourceBrowseViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     var resources: [Resource] = []
     let db = Firestore.firestore()
+    let refresh = UIRefreshControl()
+
     override func viewDidLoad() {
+        refresh.addTarget(self, action: #selector(self.reload(_:)), for: .valueChanged);
+        refresh.attributedTitle = NSAttributedString(string: "Fetching resources")
         if(Constants.User.sharedInstance.userID != "")
         {
         NotificationCenter.default.addObserver(self, selector: #selector(self.genArray), name: NSNotification.Name(rawValue: "ContactsChanged"), object: nil)
@@ -37,6 +41,11 @@ class ResourceBrowseViewController: UIViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
+    @objc func reload(_ sender: Any) {
+        self.genArray();
+        refresh.endRefreshing();
+    }
+    
     @objc func genArray(){
         self.resources = []
         let usersRef = db.collection("users")

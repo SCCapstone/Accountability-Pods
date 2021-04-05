@@ -15,6 +15,7 @@ class ResourceBrowseViewController: UIViewController {
     var resources: [Resource] = []
     let db = Firestore.firestore()
     let refresh = UIRefreshControl()
+    var finishedRefreshing = true;
 
     override func viewDidLoad() {
         
@@ -45,7 +46,11 @@ class ResourceBrowseViewController: UIViewController {
         self.view.endEditing(true)
     }
     @objc func reload(_ sender: Any) {
+        if(finishedRefreshing)
+        {
+            finishedRefreshing = false;
         self.genArray();
+        }
         refresh.endRefreshing();
     }
     
@@ -59,6 +64,8 @@ class ResourceBrowseViewController: UIViewController {
             docsSnap, error in
             if let error = error {
                 print("Error getting contacts. \(error)")
+                self.finishedRefreshing = true;
+
             }
             else
             {
@@ -110,6 +117,7 @@ class ResourceBrowseViewController: UIViewController {
                         
                     }
                 }
+                self.finishedRefreshing = true
             }
             
         }
@@ -147,7 +155,16 @@ extension ResourceBrowseViewController: UITableViewDataSource, UITableViewDelega
         return 1
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+        //print(indexPath.section)
+        //print(resources.count)
+        if(resources.count == 0)
+        {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ResourceCell") as! ResourceCell
+            
+            cell.setResource(resource: Resource())
+            cell.layer.cornerRadius = 15
+            return cell
+        }
         let resource = resources[indexPath.section]
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ResourceCell") as! ResourceCell

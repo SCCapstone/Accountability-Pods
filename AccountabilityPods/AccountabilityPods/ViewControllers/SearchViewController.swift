@@ -20,6 +20,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var filteredData = [String]()
     var filteredProfiles = [Profile]()
     var filtered = false
+    var finishedRefreshing = true;
     var userID = Constants.User.sharedInstance.userID
     let refresh = UIRefreshControl()
 
@@ -43,6 +44,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         usersRef.getDocuments() {(querySnapshot, err) in
             if let err = err {
                 print("Error getting users for searching: \(err)")
+                self.finishedRefreshing = true;
             }
             else {
                 print("Loading Users for Search Display")
@@ -57,6 +59,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     }
                     
                 }
+                self.finishedRefreshing = true;
             }
         }
     }
@@ -103,7 +106,11 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         return filtered ? 0 : profiles.count
     }
     @objc func reload(_ sender: Any) {
+        if(finishedRefreshing)
+        {
+            finishedRefreshing = false;
         self.setupData();
+        }
         refresh.endRefreshing();
     }
     

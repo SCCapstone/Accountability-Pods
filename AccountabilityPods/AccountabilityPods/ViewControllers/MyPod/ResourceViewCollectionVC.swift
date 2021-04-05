@@ -34,6 +34,7 @@ class ResourceViewCollectionVC: UIViewController {
     var resources: [ResourceHashable] = []
     var resourcesUnhashed: [Resource] = []
     var groups: [ResourceGroup] = []
+    var finishedRefreshing = true;
     var groupsUnhashed: [ResourceGroupUnhashed] = []
     var selectedResource: ResourceHashable = ResourceHashable(name:"none",desc:"none",path:"nil")
     var inputString = ""
@@ -168,7 +169,11 @@ class ResourceViewCollectionVC: UIViewController {
     }
     
     @objc func reload(_ sender: Any) {
+        if(finishedRefreshing)
+        {
+            finishedRefreshing = false;
         self.genArray();
+        }
         refresh.endRefreshing();
     }
     
@@ -267,6 +272,8 @@ class ResourceViewCollectionVC: UIViewController {
             docsSnap, error in
             if let error = error {
                 print("Error getting saved resources. \(error)")
+                self.finishedRefreshing = true;
+
             }
             else
             {
@@ -315,6 +322,8 @@ class ResourceViewCollectionVC: UIViewController {
                                 
                                 
                             }
+                    self.finishedRefreshing = true
+
                 
                 
                         }

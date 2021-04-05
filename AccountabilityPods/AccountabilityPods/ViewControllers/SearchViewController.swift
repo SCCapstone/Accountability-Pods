@@ -31,7 +31,8 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         table.delegate = self
         table.dataSource = self
         field.delegate = self
-        
+        table.refreshControl = refresh;
+
         refresh.addTarget(self, action: #selector(self.reload(_:)), for: .valueChanged);
         refresh.attributedTitle = NSAttributedString(string: "Fetching resources")
     }

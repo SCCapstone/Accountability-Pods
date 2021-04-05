@@ -17,8 +17,11 @@ class ResourceBrowseViewController: UIViewController {
     let refresh = UIRefreshControl()
 
     override func viewDidLoad() {
+        
         refresh.addTarget(self, action: #selector(self.reload(_:)), for: .valueChanged);
         refresh.attributedTitle = NSAttributedString(string: "Fetching resources")
+        tableView.refreshControl = refresh;
+
         if(Constants.User.sharedInstance.userID != "")
         {
         NotificationCenter.default.addObserver(self, selector: #selector(self.genArray), name: NSNotification.Name(rawValue: "ContactsChanged"), object: nil)

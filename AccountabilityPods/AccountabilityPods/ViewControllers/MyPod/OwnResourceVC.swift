@@ -35,6 +35,7 @@ class OwnResourceVC: UIViewController {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "OnEditResource"), object: nil)
         if(userIsEditing)
         {
+            overrideUserInterfaceStyle = .light
             nameEdit.isHidden = true
             nameLabel.isHidden = false
             userIsEditing = false
@@ -44,7 +45,7 @@ class OwnResourceVC: UIViewController {
             nameLabel.isEnabled = true
             nameEdit.isEnabled = false
             nameEdit.isUserInteractionEnabled = false
-            desc.layer.backgroundColor = UIColor.clear.cgColor
+            desc.layer.backgroundColor = UIColor.white.cgColor
             db.document(resource.path).setData(["resourceName" : nameLabel.text, "resourceDesc" : desc.text]) {err in
                 if let err = err {
                     print(err)
@@ -55,6 +56,7 @@ class OwnResourceVC: UIViewController {
         }
         else
         {
+            overrideUserInterfaceStyle = .light
             userIsEditing = true
             nameLabel.isHidden = true
             editButton.tintColor = .blue
@@ -65,10 +67,10 @@ class OwnResourceVC: UIViewController {
             nameEdit.isUserInteractionEnabled = true
             nameEdit.isHidden = false
             desc.layer.cornerRadius = 10
-            desc.layer.backgroundColor = UIColor.systemGray6.cgColor
+            desc.layer.backgroundColor = UIColor.systemGray6.resolvedColor(with: self.traitCollection).cgColor
             nameEdit.layer.borderWidth = 0
             nameEdit.layer.cornerRadius = 5
-            nameEdit.layer.backgroundColor = UIColor.systemGray6.cgColor
+            //nameEdit.layer.backgroundColor = UIColor.systemGray6.cgColor
         }
     
     }

@@ -1458,7 +1458,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Bra-0U-EBb">
-                                <rect key="frame" x="40" y="84" width="334" height="218"/>
+                                <rect key="frame" x="40" y="64" width="334" height="218"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text=" Skill name ..." textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="t0N-W7-nyY">
                                         <rect key="frame" x="0.0" y="0.0" width="334" height="40"/>
@@ -1472,6 +1472,9 @@
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Skill description..." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="H7H-D9-gm9">
                                         <rect key="frame" x="0.0" y="50" width="334" height="128"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="128" id="4jt-v8-KQB"/>
+                                        </constraints>
                                         <color key="textColor" systemColor="labelColor"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -1479,6 +1482,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T9a-LZ-3pt">
                                         <rect key="frame" x="0.0" y="188" width="334" height="30"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="4sb-Bt-aIK"/>
+                                        </constraints>
                                         <state key="normal" title="Done"/>
                                         <connections>
                                             <action selector="donePressed:" destination="r7H-zr-Rt1" eventType="touchUpInside" id="Pw2-xa-DHm"/>
@@ -1491,12 +1497,9 @@
                         <viewLayoutGuide key="safeArea" id="ebY-HE-ClW"/>
                         <color key="backgroundColor" systemColor="systemGray6Color"/>
                         <constraints>
-                            <constraint firstItem="Bra-0U-EBb" firstAttribute="leading" secondItem="aGE-vW-0Wc" secondAttribute="leadingMargin" constant="20" id="2To-gh-EqJ"/>
-                            <constraint firstItem="ebY-HE-ClW" firstAttribute="bottom" secondItem="Bra-0U-EBb" secondAttribute="bottom" constant="180" id="DyB-Cu-cth"/>
                             <constraint firstItem="Bra-0U-EBb" firstAttribute="leading" secondItem="aGE-vW-0Wc" secondAttribute="leadingMargin" constant="20" id="aw2-K5-cWU"/>
-                            <constraint firstItem="Bra-0U-EBb" firstAttribute="top" secondItem="aGE-vW-0Wc" secondAttribute="topMargin" constant="40" id="lfA-Qo-SIB"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Bra-0U-EBb" secondAttribute="trailing" constant="20" id="o1C-IO-X2n"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Bra-0U-EBb" secondAttribute="trailing" constant="20" id="vBt-oU-Y7l"/>
+                            <constraint firstItem="Bra-0U-EBb" firstAttribute="top" secondItem="ebY-HE-ClW" secondAttribute="top" constant="20" id="zYe-Xp-uX8"/>
                         </constraints>
                     </view>
                     <connections>

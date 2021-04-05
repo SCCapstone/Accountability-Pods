@@ -56,10 +56,10 @@ class OwnSkillViewController: UIViewController {
             nameEdit.isHidden = false
             //desc.layer.borderWidth = 1
             desc.layer.cornerRadius = 10
-            desc.layer.backgroundColor = UIColor.systemGray6.cgColor
-            
+            desc.layer.backgroundColor = UIColor.systemGray6.resolvedColor(with: self.traitCollection).cgColor
+            nameEdit.layer.borderWidth = 0
             nameEdit.layer.cornerRadius = 5
-            nameEdit.layer.backgroundColor = UIColor.systemGray6.cgColor
+            nameEdit.layer.backgroundColor = UIColor.systemGray6.resolvedColor(with: self.traitCollection).cgColor
         }
     
     }

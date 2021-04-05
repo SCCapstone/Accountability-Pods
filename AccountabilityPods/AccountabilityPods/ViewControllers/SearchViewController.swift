@@ -38,6 +38,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     private func setupData() {
+        self.profiles.removeAll()
         let usersRef = db.collection("users")
         
         usersRef.getDocuments() {(querySnapshot, err) in

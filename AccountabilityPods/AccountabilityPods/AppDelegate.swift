@@ -10,6 +10,7 @@
 import UIKit
 import Firebase
 import UserNotifications
+import IQKeyboardManagerSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {//MessagingDelegate {
@@ -19,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         FirebaseApp.configure()
-        
+        IQKeyboardManager.shared.enable = true
         //push manager for notifications
         let userId = Auth.auth().currentUser?.uid ?? "current_user_id"
         let userRef = Firestore.firestore().collection("users").whereField("uid", isEqualTo: userId)

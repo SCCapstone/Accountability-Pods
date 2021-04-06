@@ -47,11 +47,12 @@ class PushNotificationManager: NSObject, MessagingDelegate, UNUserNotificationCe
             }
         }
     
-        func messaging(_ messaging: Messaging, didReceive remoteMessage: MessagingRemoteMessage) {
-            print(remoteMessage.appData)
+        func messaging(_ messaging: Messaging, didReceive remoteMessage: MessagingDelegate) {
+            //print(remoteMessage.appData)
+            print("is getting message data")
         }
     
-        func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
+    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
             updateFirestorePushTokenIfNeeded()
         }
     

@@ -14,6 +14,7 @@ target 'AccountabilityPods' do
   # IN APP MESSAGING ADD
   pod 'Firebase/Messaging'
   pod 'MessageKit'
+  pod 'IQKeyboardManagerSwift'
   # END IN APP MESSAGING ADD?
 
   target 'AccountabilityPodsTests' do

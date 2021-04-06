@@ -32,10 +32,17 @@ class SkillsViewController: UIViewController {
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        UIView.animate(withDuration: 0.1, animations: {
+        
+        switch segmentedController.selectedSegmentIndex {
+        case 0:
             self.viewSkillContainer.alpha = 1;
             self.addSkillContainer.alpha = 0;
-        })
+        case 1:
+            self.viewSkillContainer.alpha = 0;
+            self.addSkillContainer.alpha = 1;
+        default:
+            break
+        }
     }
 
     /*

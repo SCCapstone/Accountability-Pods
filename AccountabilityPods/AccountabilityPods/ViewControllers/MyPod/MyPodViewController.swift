@@ -43,12 +43,31 @@ class MyPodViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         // show myPosts tab when pods tab chosen
-        UIView.animate(withDuration: 0.1, animations: {
+        
+        switch segmentedControl.selectedSegmentIndex {
+        case 0:
             self.MyPostsContainer.alpha = 1;
             self.SavedPostsContainer.alpha = 0;
             self.PodGroupsContainer.alpha = 0;
             self.SkillsContainer.alpha = 0;
-        })
+        case 1:
+            self.MyPostsContainer.alpha = 0;
+            self.SavedPostsContainer.alpha = 1;
+            self.PodGroupsContainer.alpha = 0;
+            self.SkillsContainer.alpha = 0;
+        case 2:
+            self.MyPostsContainer.alpha = 0;
+            self.SavedPostsContainer.alpha = 0;
+            self.PodGroupsContainer.alpha = 1;
+            self.SkillsContainer.alpha = 0;
+        case 3:
+            self.MyPostsContainer.alpha = 0;
+            self.SavedPostsContainer.alpha = 0;
+            self.PodGroupsContainer.alpha = 0;
+            self.SkillsContainer.alpha = 1;
+        default:
+                break
+        }
     }
   
     /*

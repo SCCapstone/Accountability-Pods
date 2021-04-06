@@ -19,17 +19,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uqL-m4-353">
-                                <rect key="frame" x="0.0" y="44" width="414" height="46.5"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="47"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Power Pods" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mrP-Mb-qNv">
-                                        <rect key="frame" x="153" y="9.5" width="108" height="27.5"/>
+                                        <rect key="frame" x="153" y="10" width="108" height="27.5"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="20"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Qgo-IN-Mak" userLabel="Help">
-                                        <rect key="frame" x="8" y="5" width="30" height="36"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qgo-IN-Mak" userLabel="Help">
+                                        <rect key="frame" x="5" y="11.5" width="25" height="24"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal">
                                             <imageReference key="image" image="questionmark.circle" catalog="system" symbolScale="large"/>
@@ -43,11 +42,14 @@
                                 <color key="backgroundColor" red="0.1843137255" green="0.25490196079999999" blue="0.17254901959999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="mrP-Mb-qNv" firstAttribute="centerY" secondItem="uqL-m4-353" secondAttribute="centerY" id="2Ky-Cf-NxI"/>
+                                    <constraint firstAttribute="height" constant="47" id="5Ue-gh-XBI"/>
+                                    <constraint firstItem="Qgo-IN-Mak" firstAttribute="centerY" secondItem="uqL-m4-353" secondAttribute="centerY" id="8SN-Nw-yib"/>
+                                    <constraint firstItem="Qgo-IN-Mak" firstAttribute="leading" secondItem="WvT-0V-VnZ" secondAttribute="leading" constant="5" id="ELn-t6-XSy"/>
                                     <constraint firstItem="mrP-Mb-qNv" firstAttribute="centerX" secondItem="uqL-m4-353" secondAttribute="centerX" id="jwH-ej-J75"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ySY-Zb-WHp">
-                                <rect key="frame" x="0.0" y="137" width="414" height="676"/>
+                                <rect key="frame" x="0.0" y="137.5" width="414" height="675.5"/>
                                 <color key="backgroundColor" red="0.80784313730000001" green="0.90196078430000004" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="separatorColor" name="accountablegreen"/>
                                 <color key="sectionIndexColor" systemColor="darkTextColor"/>
@@ -98,7 +100,7 @@
                                 <sections/>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Messages" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zVJ-gz-AfZ">
-                                <rect key="frame" x="149.5" y="94" width="115" height="35"/>
+                                <rect key="frame" x="149.5" y="94" width="115" height="35.5"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>

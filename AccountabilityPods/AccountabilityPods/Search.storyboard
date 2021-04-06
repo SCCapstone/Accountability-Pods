@@ -27,9 +27,8 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="bIN-Nm-mmR" userLabel="Help">
-                                        <rect key="frame" x="14" y="3" width="30" height="36"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bIN-Nm-mmR" userLabel="Help">
+                                        <rect key="frame" x="5" y="11.5" width="25" height="24"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal">
                                             <imageReference key="image" image="questionmark.circle" catalog="system" symbolScale="large"/>
@@ -43,6 +42,8 @@
                                 <color key="backgroundColor" red="0.1843137255" green="0.25490196079999999" blue="0.17254901959999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="pD0-6a-wfL" firstAttribute="centerX" secondItem="w05-dh-eMD" secondAttribute="centerX" id="60s-b8-1tK"/>
+                                    <constraint firstItem="bIN-Nm-mmR" firstAttribute="centerY" secondItem="w05-dh-eMD" secondAttribute="centerY" id="7i8-G0-MOs"/>
+                                    <constraint firstItem="bIN-Nm-mmR" firstAttribute="leading" secondItem="zgi-x9-Rdr" secondAttribute="leading" constant="5" id="DSD-Tf-yHi"/>
                                     <constraint firstAttribute="bottom" secondItem="pD0-6a-wfL" secondAttribute="bottom" id="JN1-ZR-a43"/>
                                     <constraint firstAttribute="height" constant="47" id="WDn-f3-pfZ"/>
                                     <constraint firstItem="pD0-6a-wfL" firstAttribute="centerY" secondItem="w05-dh-eMD" secondAttribute="centerY" id="biW-is-5Qm"/>

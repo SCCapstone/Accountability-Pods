@@ -4,11 +4,10 @@ title: About Us
 description: Learn about the contirbutors
 ---
 
-<h1 align=center> About Us</h1>
-
 [Home](/index.md)
 [About Us](/about-us.md)
 
+<h1 align=center> About Us</h1>
 
 <p align=center>
   <strong>Vasco Madrid</strong><br>

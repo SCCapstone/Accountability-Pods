@@ -119,7 +119,8 @@ extension PostedResourcesViewController: UITableViewDataSource, UITableViewDeleg
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.performSegue(withIdentifier: "showOwnSegue", sender: Any?.self)
-        
+        tableView.deselectRow(at: indexPath as IndexPath, animated: true)
+
     }
     func  tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 20

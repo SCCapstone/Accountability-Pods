@@ -2,7 +2,7 @@
 layout: default
 ---
 <p align="center">
-  [About Us](./about-us.md)
+  [About Us](./about-us.html)
 <p>
   
 # What is Power Pods?

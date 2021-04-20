@@ -90,6 +90,8 @@ extension ProfileSkillsViewController: UITableViewDataSource, UITableViewDelegat
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.performSegue(withIdentifier: "showProfileSkillSegue", sender: Any?.self)
+        tableView.deselectRow(at: indexPath as IndexPath, animated: true)
+
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showProfileSkillSegue"

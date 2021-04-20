@@ -2,6 +2,7 @@
 layout: default
 ---
 
+[Home](/index.md)
 [About Us](./about-us.md)
   
 # What is Power Pods?

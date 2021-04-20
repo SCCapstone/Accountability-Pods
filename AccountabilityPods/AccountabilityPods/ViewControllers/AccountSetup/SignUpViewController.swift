@@ -105,7 +105,8 @@ class SignUpViewController: UIViewController {
         }
         // add user to firestore database
         else {
-            let username = usernameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            var username = usernameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            username = String(username.filter { !" \n\t\r".contains($0) }).lowercased()
             let firstname = firstnameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let lastname = lastnameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)

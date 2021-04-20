@@ -67,8 +67,13 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     
     @IBAction func searchPressed(_ sender: Any) {
-        if let text = field.text {
-            filterText(text)
+        if let text = field.text{
+            let clean_text = text.trimmingCharacters(in: .whitespacesAndNewlines)
+            if text.count > 0 && clean_text.count == 0 {
+                filterText(text)
+            } else {
+                filterText(clean_text)
+            }
         }
         else
         {
@@ -79,14 +84,39 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func filterText(_ query: String) {
         print("QUERY: \(query)")
         filteredProfiles.removeAll()
+        // checks for profile contents that start with the query
         for profile in profiles {
             let userString = profile.uid
             let firstString = profile.firstName
             let lastString = profile.lastName
             if (userString.lowercased().starts(with: query.lowercased()) || firstString.lowercased().starts(with: query.lowercased()) || lastString.lowercased().starts(with: query.lowercased()))
             {
+                print("starts with profile: \(profile.uid)")
                 filteredProfiles.append(profile)
                 table.reloadData()
+            }
+        }
+        // checks for profile contents that contain query if query is more than one letter (added after so most relevant profiles come first)
+        if query.count > 1 {
+            for profile in profiles {
+                let userString = profile.uid
+                let firstString = profile.firstName
+                let lastString = profile.lastName
+                if (userString.lowercased().contains(query.lowercased()) || firstString.lowercased().contains(query.lowercased()) || lastString.lowercased().contains(query.lowercased()))
+                {
+                    var notInFiltered = true
+                    for fprofile in filteredProfiles {
+                        if fprofile.uid == profile.uid {
+                            notInFiltered = false
+                        }
+                    }
+                    if notInFiltered {
+                        print("contained in profile: \(profile.uid)")
+                        filteredProfiles.append(profile)
+                        table.reloadData()
+                    }
+                    
+                }
             }
         }
         if query.isEmpty {

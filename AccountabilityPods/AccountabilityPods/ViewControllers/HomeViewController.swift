@@ -31,27 +31,32 @@ class HomeViewController: UIViewController {
 
 }
     @IBAction func onSignOutTapped(_ sender: Any) {
-        do {
-            
-            self.dismiss(animated:true, completion: {
+        let alertController = UIAlertController(title: "Sign Out", message: "Would you like to sign out?", preferredStyle: .alert)
+        
+        alertController.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
+            print("Handle Ok logic here")
+                do {
                 
-                //performSegue(withIdentifier: "signOutSegue", sender: nil)
-                UserDefaults.standard.setValue("", forKey: "userID")
-                UserDefaults.standard.setValue("", forKey: "sessID")
-                Constants.User.sharedInstance.userID = "";
-                
-                let homeViewController = self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.startViewController)
-                
-                   
-                self.view.window?.rootViewController = homeViewController
-                self.view.window?.makeKeyAndVisible()
-                
-                
-            })
-            //try Auth.auth().signOut()
-        } catch {
-            print(error)
-        }
+                    self.dismiss(animated:true, completion: {
+                    
+                    //performSegue(withIdentifier: "signOutSegue", sender: nil)
+                    UserDefaults.standard.setValue("", forKey: "userID")
+                    UserDefaults.standard.setValue("", forKey: "sessID")
+                    Constants.User.sharedInstance.userID = "";
+                    
+                    let homeViewController = self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.startViewController)
+                    
+                       
+                    self.view.window?.rootViewController = homeViewController
+                    self.view.window?.makeKeyAndVisible()
+                })
+                //try Auth.auth().signOut()
+                } catch {
+                print(error)
+                }
+            }))
+        alertController.addAction(UIAlertAction(title:"No", style: .default, handler: nil))
+        self.present(alertController, animated: true)
     }
     
     

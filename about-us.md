@@ -3,6 +3,13 @@ layout: default
 title: About Us
 description: Learn about the contirbutors
 ---
+
+<h1 align=center> About Us</h1>
+
+[Home](/index.md)
+[About Us](/about-us.md)
+
+
 <p align=center>
   <strong>Vasco Madrid</strong><br>
   <a href="https://github.com/vascomadrid">@vascomadrid</a>
@@ -28,4 +35,3 @@ description: Learn about the contirbutors
   <strong>Jack Snelgrove</strong><br>
   <a href="https://github.com/Vyzeon">@vyzeon</a>
 </p>
-

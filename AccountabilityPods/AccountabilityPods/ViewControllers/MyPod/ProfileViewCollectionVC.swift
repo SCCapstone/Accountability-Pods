@@ -395,13 +395,15 @@ extension ProfileViewCollectionVC: UICollectionViewDelegate {
         case .profile(let profile):
             self.selectedProfile = profile
             self.performSegue(withIdentifier: "showProfileSegue", sender: Any?.self)
+            // deselects item so it does not stay grey
+            collectionView.deselectItem(at: indexPath as IndexPath, animated: true)
             break;
         default:
             break;
             
         }
         
-        return
+        //return
     }
     
     

@@ -391,7 +391,9 @@ extension ResourceViewCollectionVC: UICollectionViewDelegate {
             break;
             
         }
-        
+        // deselects item, so it does not stay grey
+        collectionView.deselectItem(at: indexPath as IndexPath, animated: true)
+
         return
     }
     

@@ -89,7 +89,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 table.reloadData()
             }
         }
-        if query.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+        if query.isEmpty {
             filtered = false
             filteredProfiles.removeAll()
         } else {

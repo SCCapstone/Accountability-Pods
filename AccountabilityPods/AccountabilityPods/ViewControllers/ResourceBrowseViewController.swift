@@ -185,6 +185,8 @@ extension ResourceBrowseViewController: UITableViewDataSource, UITableViewDelega
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.performSegue(withIdentifier: "showResourceSegue", sender: Any?.self)
+        tableView.deselectRow(at: indexPath as IndexPath, animated: true)
+        
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showResourceSegue"

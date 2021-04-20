@@ -1,7 +1,10 @@
 ---
 layout: default
 ---
-
+<p align="center">
+  [About Us](./about-us.md)
+<p>
+  
 # What is Power Pods?
 
 # Why should you use the app?

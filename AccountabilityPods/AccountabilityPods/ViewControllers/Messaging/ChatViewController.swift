@@ -9,6 +9,7 @@ import Firebase
 import FirebaseFirestore
 import MessageKit
 import InputBarAccessoryView
+import IQKeyboardManagerSwift
 
 struct Chat {
     var users: [String]
@@ -93,11 +94,14 @@ class ChatViewController: MessagesViewController, InputBarAccessoryViewDelegate 
     override func viewDidLoad() {
     
         super.viewDidLoad()
+        
         overrideUserInterfaceStyle = .light
         user2Name = sendToProfile.firstName + " " + sendToProfile.lastName
         user2UID = sendToProfile.uid
         self.title = user2Name ?? "Chat"
         setSenderName()
+        
+        IQKeyboardManager.shared.enable = false
         
         navigationItem.largeTitleDisplayMode = .never
         maintainPositionOnKeyboardFrameChanged = true
@@ -316,8 +320,14 @@ class ChatViewController: MessagesViewController, InputBarAccessoryViewDelegate 
             }
         }
     
+    //to load and let the keyboard appear and disappear to read the text
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
+    }
+    
+    //reenable KeyboardManager when exit view controller
+    override func viewWillDisappear(_ animated: Bool) {
+        IQKeyboardManager.shared.enable = true
     }
 }
 

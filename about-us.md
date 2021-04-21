@@ -27,7 +27,8 @@ description: Learn about the contirbutors
 
 <p align=center>
   <strong>Duncan Evans</strong><br>
-  <a href="https://github.com/DunkkE">@DunkkE</a>
+  <a href="https://github.com/DunkkE">@DunkkE</a><br>
+  <a href="https://www.linkedin.com/in/duncan-evans-748344170/">LinkedIn</a>
 </p>
 
 <p align=center>

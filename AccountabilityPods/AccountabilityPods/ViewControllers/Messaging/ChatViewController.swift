@@ -100,9 +100,11 @@ class ChatViewController: MessagesViewController, InputBarAccessoryViewDelegate 
         user2UID = sendToProfile.uid
         self.title = user2Name ?? "Chat"
         setSenderName()
-        
+        setUpHeader()
         IQKeyboardManager.shared.enable = false
         
+        self.messagesCollectionView.contentInset = UIEdgeInsets(top: 70, left: 0, bottom: 70, right: 0)
+        //navigationController?.isNavigationBarHidden = false
         navigationItem.largeTitleDisplayMode = .never
         maintainPositionOnKeyboardFrameChanged = true
         messageInputBar.inputTextView.tintColor = .white
@@ -116,6 +118,17 @@ class ChatViewController: MessagesViewController, InputBarAccessoryViewDelegate 
         messagesCollectionView.messagesLayoutDelegate = self
         messagesCollectionView.messagesDisplayDelegate = self
         loadChat()
+    }
+    func setUpHeader() {
+        let viewWidth = self.view.frame.size.width
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: viewWidth, height: 75))
+        let descLabel = UILabel(frame: CGRect(x: 5, y: 5, width: headerView.frame.size.width , height: headerView.frame.size.height - 10))
+        descLabel.text = self.title
+        descLabel.textAlignment = .center
+        descLabel.font = UIFont(name:"Avenir Next Demi Bold", size: 19.0)
+        headerView.backgroundColor = UIColor(white: 1, alpha: 0.65)
+        headerView.addSubview(descLabel)
+        self.view.addSubview(headerView)
     }
     //user's display name
     func setSenderName()

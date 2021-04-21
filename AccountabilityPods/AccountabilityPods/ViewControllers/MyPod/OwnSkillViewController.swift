@@ -7,6 +7,7 @@ class OwnSkillViewController: UIViewController {
     var userIsEditing: Bool = false
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var editButton: UIButton!
+    @IBOutlet weak var doneButton: UIButton!
     var skill: Skill = Skill()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,35 +20,18 @@ class OwnSkillViewController: UIViewController {
         desc.text = skill.desc
         nameLabel.text = skill.name
         nameEdit.isHidden = true
+        doneButton.isHidden = true
     }
     
     @IBAction func editResource(_ sender: Any) {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "OnEditSkill"), object: nil)
-        if(userIsEditing)
-        {
-            nameEdit.isHidden = true
-            nameLabel.isHidden = false
-            userIsEditing = false
-            editButton.tintColor = .black
-            desc.isEditable = false
-            nameLabel.text = nameEdit.text
-            nameLabel.isEnabled = true
-            nameEdit.isEnabled = false
-            nameEdit.isUserInteractionEnabled = false
-            desc.layer.backgroundColor = UIColor.clear.cgColor
-            db.document(skill.path).setData(["skillName" : nameLabel.text, "skillDescription" : desc.text]) {err in
-                if let err = err {
-                    print(err)
-                }
-            }
-            
-            
-        }
-        else
-        {
             userIsEditing = true
             nameLabel.isHidden = true
-            editButton.tintColor = .blue
+            
+            //editButton.tintColor = .blue
+            editButton.isHidden = true
+            doneButton.isHidden = false
+        
             desc.isEditable = true
             nameEdit.text = nameLabel.text
             nameLabel.isEnabled = false
@@ -60,8 +44,29 @@ class OwnSkillViewController: UIViewController {
             nameEdit.layer.borderWidth = 0
             nameEdit.layer.cornerRadius = 5
             nameEdit.layer.backgroundColor = UIColor.systemGray6.resolvedColor(with: self.traitCollection).cgColor
-        }
     
+    }
+    
+    @IBAction func onDone(_ sender: Any) {
+        nameEdit.isHidden = true
+        nameLabel.isHidden = false
+        userIsEditing = false
+        
+        editButton.isHidden = false
+        doneButton.isHidden = true
+        editButton.tintColor = .black
+        
+        desc.isEditable = false
+        nameLabel.text = nameEdit.text
+        nameLabel.isEnabled = true
+        nameEdit.isEnabled = false
+        nameEdit.isUserInteractionEnabled = false
+        desc.layer.backgroundColor = UIColor.clear.cgColor
+        db.document(skill.path).setData(["skillName" : nameLabel.text, "skillDescription" : desc.text]) {err in
+            if let err = err {
+                print(err)
+            }
+        }
     }
     
     @IBAction func onDelete(_ sender: Any) {

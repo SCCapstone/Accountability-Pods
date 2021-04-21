@@ -110,6 +110,7 @@ class ChatViewController: MessagesViewController, InputBarAccessoryViewDelegate 
         messageInputBar.inputTextView.tintColor = .white
         messagesCollectionView.messagesCollectionViewFlowLayout.setMessageIncomingMessageTopLabelAlignment(LabelAlignment(textAlignment: .left, textInsets: .zero))
         messagesCollectionView.messagesCollectionViewFlowLayout.setMessageOutgoingMessageTopLabelAlignment(LabelAlignment(textAlignment: .right, textInsets: .zero))
+        messagesCollectionView.messagesCollectionViewFlowLayout.setMessageOutgoingMessageBottomLabelAlignment(LabelAlignment(textAlignment: .right, textInsets: .zero))
         messagesCollectionView.messagesCollectionViewFlowLayout.setMessageOutgoingAvatarSize(.zero)
         messagesCollectionView.messagesCollectionViewFlowLayout.setMessageIncomingAvatarSize(.zero)
         
@@ -275,12 +276,21 @@ class ChatViewController: MessagesViewController, InputBarAccessoryViewDelegate 
         uRef.getDocument {
             (document, error) in
             if let document = document, document.exists {
-                print("DOCUMENT FOUND \(document.data())")
                 let token = document.get("fcmToken") as? String
                 print("GOT USER 2 TOKEN \(token ?? "wtoken")")
                 sender.sendPushNotification(to: token ?? "No token found", title: self.senderName ?? "New Message", body: "Open to Read Message")
             }
         }
+    }
+    
+    func isPreviousMessageSameSender(at indexPath: IndexPath) -> Bool {
+            guard indexPath.section - 1 >= 0 else { return false }
+            return messages[indexPath.section].senderID == messages[indexPath.section - 1].senderID
+        }
+        
+    func isNextMessageSameSender(at indexPath: IndexPath) -> Bool {
+            guard indexPath.section + 1 < messages.count else { return false }
+            return messages[indexPath.section].senderID == messages[indexPath.section + 1].senderID
     }
     
     //perfom actions overrides
@@ -321,15 +331,14 @@ class ChatViewController: MessagesViewController, InputBarAccessoryViewDelegate 
                     }
                 }
                 }
-            print("MESSAGE TRYING TO DELETE \(messagesCollectionView.messagesDataSource?.messageForItem(at: indexPath, in: messagesCollectionView))")
+
             messages.remove(at: indexPath.section)
-            print(" AM I HERE \(messages.count)")
+
             messagesCollectionView.deleteSections([indexPath.section]) //messagesCollectionView
-            print(" WHAT Messages after collection remove \(messages.count)")
+
             messagesCollectionView.reloadData() //messages collection view
             } else {
                 super.collectionView(collectionView, performAction: action, forItemAt: indexPath, withSender: sender)
-                print("WHAT ISTHIS HERE")
             }
         }
     
@@ -407,6 +416,9 @@ extension ChatViewController: MessagesLayoutDelegate {
     with maxWidth: CGFloat, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
             return 0
     }
+    func messageBottomLabelHeight(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
+            return (!isNextMessageSameSender(at: indexPath) && isFromCurrentSender(message: message)) ? 16 : 0
+        }
 }
 
 extension ChatViewController: MessagesDataSource {
@@ -430,5 +442,13 @@ extension ChatViewController: MessagesDataSource {
        
         return NSAttributedString(string: name, attributes: [.font: UIFont.preferredFont(forTextStyle: .caption1),
                        .foregroundColor: UIColor(white: 0.5, alpha: 1)])
+    }
+    
+    func messageBottomLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
+
+        if !isNextMessageSameSender(at: indexPath) && isFromCurrentSender(message: message) {
+            return NSAttributedString(string: "Delivered", attributes: [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .caption1)])
+        }
+        return nil
     }
 }

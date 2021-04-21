@@ -1726,6 +1726,14 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ktN-SO-S5E">
+                                <rect key="frame" x="365" y="417" width="37" height="30"/>
+                                <state key="normal" title="Done"/>
+                                <connections>
+                                    <action selector="editResource:" destination="bTD-hT-DdJ" eventType="touchUpInside" id="MXh-Ff-PgT"/>
+                                    <action selector="onDone:" destination="bTD-hT-DdJ" eventType="touchUpInside" id="U6n-p9-1vm"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="lLX-6M-d34"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1736,17 +1744,21 @@
                             <constraint firstItem="lLX-6M-d34" firstAttribute="trailing" secondItem="8Gs-d7-mFL" secondAttribute="trailing" constant="20" id="7HR-fH-uxR"/>
                             <constraint firstItem="8Gs-d7-mFL" firstAttribute="leading" secondItem="lLX-6M-d34" secondAttribute="leading" constant="20" id="AyA-70-oYe"/>
                             <constraint firstItem="lLX-6M-d34" firstAttribute="bottom" secondItem="V0Z-xE-ChI" secondAttribute="bottom" constant="14" id="Bat-M1-6Zd"/>
+                            <constraint firstItem="ktN-SO-S5E" firstAttribute="centerX" secondItem="V0Z-xE-ChI" secondAttribute="centerX" id="DyG-Wt-T7G"/>
                             <constraint firstItem="Bgi-E6-gps" firstAttribute="top" secondItem="lLX-6M-d34" secondAttribute="top" constant="20" id="F0i-Ae-AgR"/>
                             <constraint firstItem="iKQ-YT-eQT" firstAttribute="centerX" secondItem="w0E-PL-BHb" secondAttribute="centerX" id="F8W-Vd-fCo"/>
                             <constraint firstItem="lLX-6M-d34" firstAttribute="trailing" secondItem="V0Z-xE-ChI" secondAttribute="trailing" constant="20" id="G0D-sW-TJd"/>
+                            <constraint firstItem="ktN-SO-S5E" firstAttribute="height" secondItem="V0Z-xE-ChI" secondAttribute="height" multiplier="1.15385" id="G7o-dI-whu"/>
                             <constraint firstItem="lLX-6M-d34" firstAttribute="trailing" secondItem="Bgi-E6-gps" secondAttribute="trailing" constant="20" id="MJ4-yN-YqB"/>
                             <constraint firstItem="lLX-6M-d34" firstAttribute="trailing" secondItem="iKQ-YT-eQT" secondAttribute="trailing" constant="20" id="NNM-Px-A7A"/>
                             <constraint firstItem="iKQ-YT-eQT" firstAttribute="top" secondItem="Bgi-E6-gps" secondAttribute="bottom" constant="20" id="Ole-No-h4O"/>
                             <constraint firstItem="iKQ-YT-eQT" firstAttribute="leading" secondItem="lWe-lq-hP3" secondAttribute="leading" id="TNR-QO-ESU"/>
+                            <constraint firstItem="ktN-SO-S5E" firstAttribute="top" secondItem="V0Z-xE-ChI" secondAttribute="bottom" constant="-28" id="Ucs-Wt-bDz"/>
                             <constraint firstItem="lLX-6M-d34" firstAttribute="bottom" secondItem="lWe-lq-hP3" secondAttribute="bottom" constant="14" id="XYu-dw-huE"/>
                             <constraint firstItem="lWe-lq-hP3" firstAttribute="leading" secondItem="lLX-6M-d34" secondAttribute="leading" constant="20" id="cup-ZI-jsx"/>
                             <constraint firstItem="V0Z-xE-ChI" firstAttribute="top" secondItem="iKQ-YT-eQT" secondAttribute="bottom" constant="47.5" id="lYn-Sv-Qj4"/>
                             <constraint firstItem="iKQ-YT-eQT" firstAttribute="centerX" secondItem="w0E-PL-BHb" secondAttribute="centerX" id="mzF-va-6fC"/>
+                            <constraint firstItem="ktN-SO-S5E" firstAttribute="centerY" secondItem="V0Z-xE-ChI" secondAttribute="centerY" id="qCc-5O-Pea"/>
                             <constraint firstItem="iKQ-YT-eQT" firstAttribute="leading" secondItem="lLX-6M-d34" secondAttribute="leading" constant="20" id="raR-5u-GlZ"/>
                             <constraint firstItem="8Gs-d7-mFL" firstAttribute="top" secondItem="lLX-6M-d34" secondAttribute="top" constant="20" id="xry-GJ-q27"/>
                         </constraints>
@@ -1754,6 +1766,7 @@
                     <navigationItem key="navigationItem" id="VpF-kE-DJP"/>
                     <connections>
                         <outlet property="desc" destination="iKQ-YT-eQT" id="wWn-rG-t2r"/>
+                        <outlet property="doneButton" destination="ktN-SO-S5E" id="mgw-bI-xPD"/>
                         <outlet property="editButton" destination="V0Z-xE-ChI" id="nhJ-al-WVc"/>
                         <outlet property="nameEdit" destination="8Gs-d7-mFL" id="B5I-Fk-hws"/>
                         <outlet property="nameLabel" destination="Bgi-E6-gps" id="7KW-bl-FWh"/>
@@ -1815,6 +1828,13 @@
                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W2j-l8-bLg">
+                                <rect key="frame" x="365" y="361" width="37" height="30"/>
+                                <state key="normal" title="Done"/>
+                                <connections>
+                                    <action selector="onDone:" destination="s9U-gN-ujM" eventType="touchUpInside" id="zQO-zH-Sw9"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="qVC-M4-TxY"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1830,8 +1850,11 @@
                             <constraint firstItem="wBt-rK-d4E" firstAttribute="leading" secondItem="qVC-M4-TxY" secondAttribute="leading" constant="20" id="SiQ-iU-grb"/>
                             <constraint firstItem="pUw-DH-9aV" firstAttribute="centerX" secondItem="5cW-gZ-0gq" secondAttribute="centerX" id="U2b-G8-Xh6"/>
                             <constraint firstItem="LnD-iW-mpA" firstAttribute="leading" secondItem="qVC-M4-TxY" secondAttribute="leading" constant="20" id="V53-Zd-J0P"/>
+                            <constraint firstItem="W2j-l8-bLg" firstAttribute="centerY" secondItem="3eZ-aQ-nsg" secondAttribute="centerY" id="fSa-eS-41P"/>
                             <constraint firstItem="qVC-M4-TxY" firstAttribute="trailing" secondItem="3eZ-aQ-nsg" secondAttribute="trailing" constant="20" id="fUf-YB-2oR"/>
                             <constraint firstItem="qVC-M4-TxY" firstAttribute="bottom" secondItem="3eZ-aQ-nsg" secondAttribute="bottom" constant="43" id="gJ9-jR-SQ3"/>
+                            <constraint firstItem="W2j-l8-bLg" firstAttribute="height" secondItem="3eZ-aQ-nsg" secondAttribute="height" multiplier="1.15385" id="lFX-ZC-en1"/>
+                            <constraint firstItem="W2j-l8-bLg" firstAttribute="centerX" secondItem="3eZ-aQ-nsg" secondAttribute="centerX" id="ohD-T3-fZY"/>
                             <constraint firstItem="pUw-DH-9aV" firstAttribute="top" secondItem="qVC-M4-TxY" secondAttribute="top" constant="20" id="rMU-vV-681"/>
                             <constraint firstItem="Qs0-4i-KBG" firstAttribute="leading" secondItem="qVC-M4-TxY" secondAttribute="leading" constant="30" id="rUN-kG-3LR"/>
                             <constraint firstItem="wBt-rK-d4E" firstAttribute="top" secondItem="qVC-M4-TxY" secondAttribute="top" constant="20" id="uPG-vk-XNN"/>
@@ -1840,6 +1863,7 @@
                     <navigationItem key="navigationItem" id="dtU-QC-oqf"/>
                     <connections>
                         <outlet property="desc" destination="Qs0-4i-KBG" id="NBW-MW-PkZ"/>
+                        <outlet property="doneButton" destination="W2j-l8-bLg" id="RpL-DI-hYV"/>
                         <outlet property="editButton" destination="3eZ-aQ-nsg" id="sgR-H9-y2V"/>
                         <outlet property="nameEdit" destination="pUw-DH-9aV" id="FTh-N7-7Th"/>
                         <outlet property="nameLabel" destination="wBt-rK-d4E" id="Ks4-e7-coN"/>

@@ -45,21 +45,29 @@ class MessagingViewController: UIViewController, UITableViewDelegate, UITableVie
                 print("Reading users from contacts")
                 for document in querySnapshot!.documents {
                     if document.documentID != "adminuser" && document.documentID != self.userID {
-                        let tempProfile = Profile()
-                        self.contactsA.append(tempProfile)
-                        let path = "users/" + document.documentID
-                         tempProfile.readData(database: self.db, path: path, tableview: self.contactTable)
-                        print("msgContact added: \(document.documentID)")
-                        print("msgContact array size: \(self.contactsA.count)")
-                        self.contactTable.reloadData()
-
+                        // check if user exists
+                        let userRef = self.db.collection("users").document(document.documentID)
+                        userRef.getDocument { (userdocument, err) in
+                            if let userdocument = userdocument, userdocument.exists {
+                                // user exists in database
+                                let tempProfile = Profile()
+                                self.contactsA.append(tempProfile)
+                                let path = "users/" + document.documentID
+                                 tempProfile.readData(database: self.db, path: path, tableview: self.contactTable)
+                                print("msgContact added: \(document.documentID)")
+                                print("msgContact array size: \(self.contactsA.count)")
+                                self.contactTable.reloadData()
+                            } else {
+                                print("user \(document.documentID) does not exist")
+                            }
+                        }
                                          
                     }
                     
                 }
             }
         }
-        // GET USERS FROM CHATS
+        // GET USERS FROM CHATS, should add users that are not in contacts
         db.collection("Chats").whereField("users" , arrayContains: self.userID)
         .getDocuments{(querySnapshot, err) in
             if let err = err {
@@ -72,22 +80,31 @@ class MessagingViewController: UIViewController, UITableViewDelegate, UITableVie
                     
                     // get both listed users and choose the one that is not self
                     for user in chatUsers{
-                        if user != self.userID {
-                            // Check if user var is in contacts
-                            let contactRef = self.db.collection("users").document(self.userID).collection("CONTACTS").document(user)
-                            contactRef.getDocument { (document, err) in
-                                if let document = document, document.exists{
-                                    print("\(user) is already contact")
-                                } else {
-                                    print("\(user) sent message but is not a contact")
-                                    let path = "users/" + user
-                                    let tempProfile = Profile()
-                                    self.contactsA.append(tempProfile)
-                                    tempProfile.readData(database: self.db, path: path, tableview: self.contactTable)
-                                    self.contactTable.reloadData()
-                                    
+                        if user != self.userID && user.count > 0{
+                            // check if user exists
+                            let userRef = self.db.collection("users").document(user)
+                            userRef.getDocument { (document, err) in
+                                if let document = document, document.exists {
+                                    // user exists
+                                    // Check if user var is in contacts
+                                    let contactRef = self.db.collection("users").document(self.userID).collection("CONTACTS").document(user)
+                                    contactRef.getDocument { (document, err) in
+                                        if let document = document, document.exists{
+                                            print("\(user) is already contact")
+                                        } else {
+                                            print("\(user) sent message but is not a contact")
+                                            let path = "users/" + user
+                                            let tempProfile = Profile()
+                                            self.contactsA.append(tempProfile)
+                                            tempProfile.readData(database: self.db, path: path, tableview: self.contactTable)
+                                            self.contactTable.reloadData()
+                                            
+                                        }
+                                    }                                } else {
+                                    print("User \(user) does not exist")
                                 }
                             }
+                            
                             
                         }
                     }

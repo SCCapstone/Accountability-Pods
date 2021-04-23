@@ -3,7 +3,10 @@ layout: default
 ---
 
 [Home](/index.md) &nbsp;&nbsp;&nbsp;&nbsp; [About Us](./about-us.md)
-  
+
+## Video Demo (placeholder)
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Hui9mkxgpGc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+               
 # What is Power Pods?
 Power pods is an app implementation of a transformative justice community building tool to serve as an alternative to policing. The main function of the app is for users to digitally organize their support system as a tool to use during violent, harmful, and abusive situations whether they are a survivor, bystander, or the person that did the harm. 
                                     
@@ -13,6 +16,7 @@ The word "pod" refers to a specific term in transformative justice. It describes
 
 In this app, you can organize these different groups of people, message each other, share your set of skills, and share resources like advice, action plans, information on helpful organizations, etc.               
 ![all](https://user-images.githubusercontent.com/44776047/115801414-b3213d80-a3aa-11eb-8d9f-8d11f3f6abcc.png)
+                 
 # Why should you use the app?
 You should use this app to connect with friends, allies, and organizations that are willing to help you tackle and prevent different issues and situations you typically deal with on your own. Being able to create, map, and manage your community helps gives you a sense of security and the skills you need to live a safe and fulfilling life in world threatened by police brutality and contagious illnesses, that expects individuals to tackle their problems alone or to seek potentially unsafe alternatives.                                                                 
 This app will help you maintain and develop your sense security and learn how resilient communities can overcome large obstacles.                 

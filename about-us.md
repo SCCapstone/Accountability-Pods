@@ -4,8 +4,7 @@ title: About Us
 description: Learn about the contirbutors
 ---
 
-[Home](/index.md)
-[About Us](/about-us.md)
+[Home](/index.md) &nbsp;&nbsp;&nbsp;&nbsp; [About Us](/about-us.md)
 
 <h1 align=center> About Us</h1>
 

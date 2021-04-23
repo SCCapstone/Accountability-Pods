@@ -14,7 +14,8 @@ Power pods provides you tools to help you build your community
 
 The word "pod" refers to a specific term in transformative justice. It describes the kind of relationship between people who would reach out to each other for      support during and to prevent violent, harmful, and abusive experiences (per Bay Area Transformative Collective). Power pods is an application of this concept into a social media framework. To learn more about pods, [click here](https://batjc.wordpress.com/pods-and-pod-mapping-worksheet/)
 
-In this app, you can organize these different groups of people, message each other, share your set of skills, and share resources like advice, action plans, information on helpful organizations, etc.               
+In this app, you can organize these different groups of people, message each other, share your set of skills, and share resources like advice, action plans, information on helpful organizations, etc.                      
+Below are some screenshots demonstrating the different functions of Power Pods.
 ![all](https://user-images.githubusercontent.com/44776047/115801414-b3213d80-a3aa-11eb-8d9f-8d11f3f6abcc.png)
                  
 # Why should you use the app?

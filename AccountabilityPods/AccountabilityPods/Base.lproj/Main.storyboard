@@ -34,6 +34,7 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="lM1-zF-kOh">
                                         <rect key="frame" x="0.0" y="1.6666666666666643" width="404" height="58"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="caButton"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="lM1-zF-kOh" secondAttribute="height" multiplier="24:20" id="Zji-DZ-5wb"/>
                                         </constraints>
@@ -123,8 +124,9 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="fqH-FU-Vdr">
                                 <rect key="frame" x="40" y="107.33333333333331" width="334" height="360"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lWa-w9-rl6">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lWa-w9-rl6" userLabel="usernameTextField">
                                         <rect key="frame" x="0.0" y="0.0" width="334" height="34"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="usernameTextField" label="usernameTextField"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>

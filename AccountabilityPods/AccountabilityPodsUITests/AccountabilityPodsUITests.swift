@@ -56,7 +56,7 @@ class AccountabilityPodsUITests: XCTestCase {
         // test if user can enter email
         let emailTextField = app.textFields["emailTextField"]
         let passwordTextField = app.textFields["passwordTextField"]
-        let email = "testaccount@test.com" // known email account
+        let email = "tester@email.com" // known email account
         let password = "Password!123" // known password
         
         // test email input
@@ -76,5 +76,43 @@ class AccountabilityPodsUITests: XCTestCase {
         // tests if homescreen is shown
         let addPostButton = app.buttons["addPostButton"]
         XCTAssertTrue(addPostButton.exists)
+    }
+    
+    /// Tests if the login button appears
+    func testLoginButtonExists() throws {
+        let app = XCUIApplication()
+        // launch app
+        app.launch()
+        // return true if login button exists
+        let loginButton = app.buttons["loginButton"]
+        XCTAssertTrue(loginButton.exists)
+    }
+    
+    /// Test if login button takes you to the login screen
+    func testLoginButtonTaketoLoginScreen() throws {
+        let app = XCUIApplication()
+        app.launch()
+        let loginButton = app.buttons["loginButton"]
+        loginButton.tap()
+        let emailTextField = app.textFields["emailTextField"]
+        XCTAssertTrue(emailTextField.exists)
+    }
+    
+    /// Test if create account button exists when app is first opened
+    func testCreateAccountButtonExists() throws {
+        let app = XCUIApplication()
+        app.launch()
+        let caButton = app.buttons["caButton"]
+        XCTAssertTrue(caButton.exists)
+    }
+    
+    /// Test if create account button takes you to create account page
+    func testCreateAccountTakeToCAScreen() throws {
+        let app = XCUIApplication()
+        app.launch()
+        let loginButton = app.buttons["caButton"]
+        loginButton.tap()
+        let unTextField = app.textFields["usernameTextField"]
+        XCTAssertTrue(unTextField.exists)
     }
 }

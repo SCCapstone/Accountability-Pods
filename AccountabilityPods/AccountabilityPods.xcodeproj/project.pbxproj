@@ -17,7 +17,6 @@
 		68CEA2FA25E86651004F9F3A /* ContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CEA2F925E86651004F9F3A /* ContactCell.swift */; };
 		9AED154733DEBB4627492F38 /* Pods_AccountabilityPodsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD09F26BB3E87686A32CDCB1 /* Pods_AccountabilityPodsTests.framework */; };
 		AE145E2125716A2E00AF0F0C /* ResourceCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE145E2025716A2D00AF0F0C /* ResourceCreationViewController.swift */; };
-		AE4970F82579F994008CCEEB /* SavedResourceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4970F72579F994008CCEEB /* SavedResourceViewController.swift */; };
 		AE497100257A1968008CCEEB /* PostedResourcesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4970FF257A1968008CCEEB /* PostedResourcesViewController.swift */; };
 		AE497105257A1AC1008CCEEB /* OwnResourceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE497104257A1AC1008CCEEB /* OwnResourceVC.swift */; };
 		AE497110257A467F008CCEEB /* SkillCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE49710F257A467F008CCEEB /* SkillCell.swift */; };
@@ -93,7 +92,6 @@
 		68CEA2F925E86651004F9F3A /* ContactCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ContactCell.swift; path = AccountabilityPods/Helpers/ContactCell.swift; sourceTree = SOURCE_ROOT; };
 		716C81C4E4C0AD9405BCA27B /* Pods_AccountabilityPods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AccountabilityPods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE145E2025716A2D00AF0F0C /* ResourceCreationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceCreationViewController.swift; sourceTree = "<group>"; };
-		AE4970F72579F994008CCEEB /* SavedResourceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedResourceViewController.swift; sourceTree = "<group>"; };
 		AE4970FF257A1968008CCEEB /* PostedResourcesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostedResourcesViewController.swift; sourceTree = "<group>"; };
 		AE497104257A1AC1008CCEEB /* OwnResourceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnResourceVC.swift; sourceTree = "<group>"; };
 		AE49710F257A467F008CCEEB /* SkillCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillCell.swift; sourceTree = "<group>"; };
@@ -177,6 +175,7 @@
 		C3299C0625700BEA00D2C3D7 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				D4DACF5F2634C37600DD65D4 /* Home */,
 				D48BFD7F2618F72E00102373 /* TutorialPages */,
 				D4B716CB25E6CAB500EE2D4B /* AccountSetup */,
 				D4B716C925E6C98B00EE2D4B /* MyPod */,
@@ -184,9 +183,6 @@
 				D4B716CA25E6CA7300EE2D4B /* Messaging */,
 				D4D078D125E15DC700B6A05A /* SearchViewController.swift */,
 				AE57ADCB2579EAFC0079B717 /* ResourceDisplayVC.swift */,
-				AE77454125797C1B000CB90C /* ResourceBrowseViewController.swift */,
-				C3299C0125700BE100D2C3D7 /* HomeViewController.swift */,
-				AE145E2025716A2D00AF0F0C /* ResourceCreationViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -306,7 +302,6 @@
 				D43570D0257975E500FCE20C /* MyPodViewController.swift */,
 				AE4970FF257A1968008CCEEB /* PostedResourcesViewController.swift */,
 				AE497104257A1AC1008CCEEB /* OwnResourceVC.swift */,
-				AE4970F72579F994008CCEEB /* SavedResourceViewController.swift */,
 				AE90A7ED25E1C19D00E6DBC4 /* ResourceViewCollectionVC.swift */,
 				D43570D62579C14A00FCE20C /* AddSkillViewController.swift */,
 				D43570D42579967900FCE20C /* SkillsViewController.swift */,
@@ -334,6 +329,16 @@
 				C3299C0A257016C800D2C3D7 /* ForgotPasswordViewController.swift */,
 			);
 			path = AccountSetup;
+			sourceTree = "<group>";
+		};
+		D4DACF5F2634C37600DD65D4 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				AE77454125797C1B000CB90C /* ResourceBrowseViewController.swift */,
+				C3299C0125700BE100D2C3D7 /* HomeViewController.swift */,
+				AE145E2025716A2D00AF0F0C /* ResourceCreationViewController.swift */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 		FE162DAAE4C88B7CF100D265 /* Pods */ = {
@@ -602,7 +607,6 @@
 				AE5C947325EACC1B00DB2023 /* ProfileViewCollectionVC.swift in Sources */,
 				68CEA2FA25E86651004F9F3A /* ContactCell.swift in Sources */,
 				D484062B2545CB7F0020830A /* AppDelegate.swift in Sources */,
-				AE4970F82579F994008CCEEB /* SavedResourceViewController.swift in Sources */,
 				D4E594DF26165FEA00231E3B /* Tutorial3ViewController.swift in Sources */,
 				C3299BF825700BBD00D2C3D7 /* SignUpViewController.swift in Sources */,
 				442DC923257873DA00036D18 /* MessagingViewController.swift in Sources */,

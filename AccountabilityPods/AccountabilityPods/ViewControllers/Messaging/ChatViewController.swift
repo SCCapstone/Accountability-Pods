@@ -283,14 +283,26 @@ class ChatViewController: MessagesViewController, InputBarAccessoryViewDelegate 
         }
     }
     
+    //Checking messages for setting cell labels for delivered and sender name
     func isPreviousMessageSameSender(at indexPath: IndexPath) -> Bool {
             guard indexPath.section - 1 >= 0 else { return false }
             return messages[indexPath.section].senderID == messages[indexPath.section - 1].senderID
         }
+    
+   func isLastBySender(at indexPath: IndexPath) -> Bool {
+        let lastSenderMsg :Bool = false
+        var countMsg = messages.count-1
+        var message = messages[countMsg]
+        while(lastSenderMsg == false) {
+            if message.senderID == messages[indexPath.item].senderID {
+                guard indexPath.section + 1 < messages.count else { return false }
+                return messages[indexPath.item].senderID == messages[indexPath.item + 1].senderID
+            } else {
+                countMsg -= 1
+                message = messages[countMsg]
+            }
         
-    func isNextMessageSameSender(at indexPath: IndexPath) -> Bool {
-            guard indexPath.section + 1 < messages.count else { return false }
-            return messages[indexPath.section].senderID == messages[indexPath.section + 1].senderID
+        }
     }
     
     //perfom actions overrides
@@ -397,7 +409,7 @@ extension ChatViewController: MessagesDisplayDelegate {
 
 extension ChatViewController: MessagesLayoutDelegate {
     func messageTopLabelHeight(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
-        return 16
+        return !isPreviousMessageSameSender(at: indexPath) ? 16 : 0
     }
   
     func avatarSize(for message: MessageType, at indexPath: IndexPath,
@@ -417,7 +429,7 @@ extension ChatViewController: MessagesLayoutDelegate {
             return 0
     }
     func messageBottomLabelHeight(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
-            return (!isNextMessageSameSender(at: indexPath) && isFromCurrentSender(message: message)) ? 16 : 0
+            return (!isLastBySender(at: indexPath) && isFromCurrentSender(message: message)) ? 16 : 0
         }
 }
 
@@ -440,13 +452,16 @@ extension ChatViewController: MessagesDataSource {
 
         let name = message.sender.displayName
        
+        if !isPreviousMessageSameSender(at: indexPath) {
         return NSAttributedString(string: name, attributes: [.font: UIFont.preferredFont(forTextStyle: .caption1),
                        .foregroundColor: UIColor(white: 0.5, alpha: 1)])
+        }
+        return nil
     }
     
     func messageBottomLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
 
-        if !isNextMessageSameSender(at: indexPath) && isFromCurrentSender(message: message) {
+        if !isLastBySender(at: indexPath) && isFromCurrentSender(message: message) {
             return NSAttributedString(string: "Delivered", attributes: [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .caption1)])
         }
         return nil

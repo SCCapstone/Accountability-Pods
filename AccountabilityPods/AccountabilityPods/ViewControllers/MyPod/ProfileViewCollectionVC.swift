@@ -4,7 +4,8 @@
 //
 //  Created by duncan evans on 2/12/21.
 //  Copyright © 2021 CapstoneGroup. All rights reserved.
-//
+//  
+//  Description: Manages the collection of contacts in the own profile subview
 
 import UIKit
 import Firebase

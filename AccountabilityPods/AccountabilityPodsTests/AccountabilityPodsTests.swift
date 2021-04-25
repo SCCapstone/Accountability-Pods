@@ -54,8 +54,6 @@ class SignUpViewTests: XCTestCase {
     func testSignUpFillersLoad(){
         XCTAssertEqual("First Name", sut.firstnameTextField!.placeholder!)
         XCTAssertEqual("Last Name", sut.lastnameTextField!.placeholder!)
-        XCTAssertEqual("Age", sut.ageTextField!.placeholder!)
-        XCTAssertEqual("Affiliation", sut.affiliationTextField!.placeholder!)
         XCTAssertEqual("Email", sut.emailTextField!.placeholder!)
         XCTAssertEqual("Password", sut.passwordTextField!.placeholder!)
     }

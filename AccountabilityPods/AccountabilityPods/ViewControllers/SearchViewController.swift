@@ -150,12 +150,23 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let cell = table.dequeueReusableCell(withIdentifier: "cell") as! ProfileCell
         if !filteredProfiles.isEmpty {
             print("showing filtered profiles")
+            if(indexPath.row < filteredProfiles.count)
+            {
             let profile = filteredProfiles[indexPath.row]
             cell.setProfile(profile: profile)
-        } else {
+            }
+        } else if !profiles.isEmpty{
             print("showing all profiles")
-            let profile = profiles[indexPath.row]
-            cell.setProfile(profile: profile)
+            if(indexPath.row >= profiles.count)
+            {
+                print("Index out of bounds caught!")
+            
+            }
+            else
+            {
+                let profile = profiles[indexPath.row]
+                cell.setProfile(profile: profile)
+            }
         }
         return cell
     }

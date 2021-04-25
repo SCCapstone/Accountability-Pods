@@ -63,7 +63,7 @@ class PushNotificationManager: NSObject, MessagingDelegate, UNUserNotificationCe
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ContactsChanged"), object: nil)
+        //NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ContactsChanged"), object: nil)
             print(response)
         }
     

@@ -27,6 +27,6 @@ struct Constants {
         static let databaseRoot = Firestore.firestore()
         //is t stored in storage? Storage.storage().reference()
         //firebase.storage().ref()
-        static let databaseChats = databaseRoot.collection("Chat")
+        static let databaseChats = databaseRoot.collection("Chats")
     }
 }

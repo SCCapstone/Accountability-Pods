@@ -195,66 +195,82 @@ class MessagingViewController: UIViewController, UITableViewDelegate, UITableVie
     ///   - editingStyle: the style for the swiped cell
     ///   - indexPath: the index of the swiped cell
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        
-        ///Slide to delete a conversation
+        //delete your messages sent to a user
         if editingStyle == .delete {
-            //reference Chat relationship for current user
-            let query = Constants.chatRefs.databaseChats.whereField("users", arrayContains: userID)
-            query.getDocuments() { (querySnapshot, err) in
-                if let err = err {
-                    print("error getting documents: \(err)")
-                } else {
-                    for doc in querySnapshot!.documents {
-                        let chat = Chat(dictionary: doc.data())
-                        //find if this is the document for selected user
-                        if(chat?.users.contains(self.contactsA[indexPath.item].uid ?? "Can't Find Chat Conversation"))! {
-                            let usersArray = doc["users"] as? Array ?? [""]
-                            //which index the current user is in the documnet
-                            let userIndex = usersArray.firstIndex(of: self.userID)
-                            ///go through the thread of messages to change show message
-                            doc.reference.collection("thread").getDocuments() { (querySnapshot, err) in
-                                if let err = err {
-                                    print("Error getting documents: \(err)")
+            //alert to confirm delete
+            let alertController = UIAlertController(title: "Delete Chat", message: "Would you like to clear your chat? If you're not contacts this user will be removed from messages completely.", preferredStyle: .alert)
+            
+            alertController.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
+                print("Handle Ok logic here")
+                    do {
+                        self.dismiss(animated:true, completion: {
+                                //reference Chat relationship for current user
+                                let query = Constants.chatRefs.databaseChats.whereField("users", arrayContains: self.userID)
+                                query.getDocuments() { (querySnapshot, err) in
+                                    if let err = err {
+                                        print("error getting documents: \(err)")
+                                    } else {
+                                        for doc in querySnapshot!.documents {
+                                            let chat = Chat(dictionary: doc.data())
+                                            //find if this is the document for selected user
+                                            if(chat?.users.contains(self.contactsA[indexPath.item].uid ?? "Can't Find Chat Conversation"))! {
+                                                let usersArray = doc["users"] as? Array ?? [""]
+                                                //which index the current user is in the documnet
+                                                let userIndex = usersArray.firstIndex(of: self.userID)
+                                                ///go through the thread of messages to change show message
+                                                doc.reference.collection("thread").getDocuments() { (querySnapshot, err) in
+                                                    if let err = err {
+                                                        print("Error getting documents: \(err)")
+                                                    }
+                                                    else {
+                                                        for document in querySnapshot!.documents {
+                                                            if userIndex == 0 {
+                                                                document.reference.updateData(["showMsg": false])
+                                                            }
+                                                            else {
+                                                                document.reference.updateData(["showMsg1": false])
+                                                            }
+                                                            
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
                                 }
-                                else {
-                                    for document in querySnapshot!.documents {
-                                        if userIndex == 0 {
-                                            document.reference.updateData(["showMsg": false])
+                            ///Remove the user from the table if they are not the current users contact
+                                let usersRef = self.db.collection("users").document(self.userID).collection("CONTACTS")
+                            usersRef.getDocuments() {(querySnapshot, err) in
+                                if let err = err {
+                                    print("DOCUMENTs DOES EXIST \(err)")
+                                } else {
+                                    //check if document of other user is in the contacts
+                                    let isContact = self.db.collection("users").document(self.userID).collection("CONTACTS").document(self.contactsA[indexPath.item].uid)
+                                    isContact.getDocument { (document, err) in
+                                        if let document = document, document.exists{
+                                            print("\(self.contactsA[indexPath.item].uid) is already contact")
+                                        } else {
+                                            //remove from the table view
+                                            self.contactsA.remove(at: indexPath.row)
+                                            tableView.deleteRows(at: [indexPath], with: .fade)
+                                            print("REMOVED from table view")
                                         }
-                                        else {
-                                            document.reference.updateData(["showMsg1": false])
-                                        }
-                                        
                                     }
                                 }
                             }
-                        }
+                    })
+                    //try Auth.auth().signOut()
+                    } catch {
+                    print(error)
                     }
-                }
-            }
-            ///Remove the user from the table if they are not the current users contact
-            let usersRef = db.collection("users").document(userID).collection("CONTACTS")
-            usersRef.getDocuments() {(querySnapshot, err) in
-                if let err = err {
-                    print("DOCUMENTs DOES EXIST \(err)")
-                } else {
-                    //check if document of other user is in the contacts
-                    let isContact = self.db.collection("users").document(self.userID).collection("CONTACTS").document(self.contactsA[indexPath.item].uid)
-                    isContact.getDocument { (document, err) in
-                        if let document = document, document.exists{
-                            print("\(self.contactsA[indexPath.item].uid) is already contact")
-                        } else {
-                            //remove from the table view
-                            self.contactsA.remove(at: indexPath.row)
-                            tableView.deleteRows(at: [indexPath], with: .fade)
-                            print("REMOVED from table view")
-                        }
-                    }
-                }
-            }
+                }))
+            alertController.addAction(UIAlertAction(title:"No", style: .default, handler: nil))
+            self.present(alertController, animated: true)
+            
         }
-                
-    }
+
+        }
+   
     
     // MARK: - Pop Ups
     

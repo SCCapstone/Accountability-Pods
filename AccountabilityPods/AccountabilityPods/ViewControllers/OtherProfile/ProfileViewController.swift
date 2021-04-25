@@ -21,6 +21,7 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var removeContactButton: UIButton!
     
     var profile = Profile()
+    var contactsChanged = false;
     var userID = Constants.User.sharedInstance.userID;
     let db = Firestore.firestore()
     
@@ -28,7 +29,7 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         overrideUserInterfaceStyle = .light
         setName()
-        setContactButton()
+        setContactButton(addOrRemove: "start")
      
         // Do any additional setup after loading the view.
     }
@@ -55,13 +56,13 @@ class ProfileViewController: UIViewController {
         
     }
     
-    func setContactButton() {
+    func setContactButton(addOrRemove: String) {
         if profile.uid == userID {
             // if you are viewing your own profile you cannot add or remove as a contact
             addContactButton.alpha = 0
             removeContactButton.alpha = 0
-        } else {
-            
+        } else if (addOrRemove == "start") {
+            print("starting contact")
             let docRef = db.collection("users").document(userID).collection("CONTACTS").document(profile.uid)
          
             docRef.getDocument { (document, error) in
@@ -78,6 +79,24 @@ class ProfileViewController: UIViewController {
                 }
             }
         }
+        else if(addOrRemove == "add")
+        {
+            self.contactsChanged = !contactsChanged;
+            print("got told to add")
+            // profile is not yet a contact
+            self.addContactButton.alpha = 0
+            self.removeContactButton.alpha = 1
+            print("profile is not yet contact")
+        }
+        else
+        {
+            self.contactsChanged = !contactsChanged;
+            print("got told to remove")
+            // profile is already contact
+            self.addContactButton.alpha = 1
+            self.removeContactButton.alpha = 0
+            print("profile is contact")
+        }
         
     }
     
@@ -87,8 +106,7 @@ class ProfileViewController: UIViewController {
                 print("Error adding contact: \(err)")
             } else {
                 print("Contact added with uid: \(self.profile.uid)")
-                self.setContactButton()
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ContactsChanged"), object: nil)
+                self.setContactButton(addOrRemove: "add")
             }
         }
         
@@ -99,8 +117,8 @@ class ProfileViewController: UIViewController {
                 print("Error removing contact: \(err)")
             } else {
                 print("Contact successfully removed")
-                self.setContactButton()
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ContactsChanged"), object: nil)
+                self.setContactButton(addOrRemove: "remove")
+                
             }
             
         }
@@ -112,6 +130,13 @@ class ProfileViewController: UIViewController {
             self.postContainer.alpha = 1;
             self.skillsContainer.alpha = 0;
         })
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        if(contactsChanged)
+        {
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ContactsChanged"), object: nil)
+        }
     }
     /*
     // MARK: - Navigation

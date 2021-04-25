@@ -16,6 +16,7 @@ class ResourceDisplayVC: UIViewController {
     @IBOutlet weak var nameField: UILabel!
     @IBOutlet weak var descField: UITextView!
     var docID: String? = nil
+    var needsLoad = false
     var resource: ResourceHashable = Resource.init().makeHashableStruct()
     var hasLiked: Bool = false
     var profile = Profile()
@@ -54,12 +55,16 @@ class ResourceDisplayVC: UIViewController {
     @IBAction func onClickUsername(_ sender: Any) {
         print("username clicked")
         let user = resource.path.split(separator:"/")[1]
-        
+        needsLoad = true;
         self.profile = Profile(base:db, path_: ("users/" + user))
     }
     @objc func onProfileComplete() {
         print("test")
+        if(needsLoad)
+        {
+            needsLoad = false;
         performSegue(withIdentifier: "showProfileSegue", sender: Any?.self)
+        }
         
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

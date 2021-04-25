@@ -196,9 +196,12 @@ class MessagingViewController: UIViewController, UITableViewDelegate, UITableVie
         // create cell using Helpers/ContactCell.swift class
         let cell = contactTable.dequeueReusableCell(withIdentifier: "contactName") as! ContactCell
         // get cell with given index
-        let contact = contactsA[indexPath.row]
-        // set the cell to have the information from the profile object
-        cell.setContact(profile: contact)
+        if indexPath.row < contactsA.count {
+            let contact = contactsA[indexPath.row]
+            // set the cell to have the information from the profile object
+            cell.setContact(profile: contact)
+        }
+        
         return cell
     }
     

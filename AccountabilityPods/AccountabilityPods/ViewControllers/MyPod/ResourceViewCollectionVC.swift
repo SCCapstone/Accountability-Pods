@@ -45,6 +45,7 @@ class ResourceViewCollectionVC: UIViewController {
     
     
     @IBAction func createGroup(_ sender: Any) {
+        alert.textFields![0].text = ""
         self.present(alert, animated: true, completion: nil)
     }
     //Enum allows for properly creating the cells
@@ -78,8 +79,10 @@ class ResourceViewCollectionVC: UIViewController {
             let textField = alert?.textFields![0]
             if(textField != nil && textField!.text != "" )
             {
+                self.inputString = ""
                 self.inputString = textField!.text as! String
                 print(self.inputString)
+                textField!.text = ""
                 self.addGroup()
             }
         }))
@@ -379,6 +382,7 @@ class ResourceViewCollectionVC: UIViewController {
         else
         {
             print("input string blank")
+            
         }
     }
 

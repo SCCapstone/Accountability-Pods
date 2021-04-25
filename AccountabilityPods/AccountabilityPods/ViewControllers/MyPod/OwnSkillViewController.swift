@@ -116,14 +116,27 @@ class OwnSkillViewController: UIViewController {
     ///
     /// - Parameter sender: the delete (trash) button
     @IBAction func onDelete(_ sender: Any) {
-        // removes skill from database
-        let docID = db.document(skill.path).documentID
-        db.collection("users").document(Constants.User.sharedInstance.userID).collection("SKILLS").document((docID)).delete()
-        // sends notification to skill table that skills have been edited
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "OnEditSkill"), object: nil)
-        // closes the viewing screen since skill has been deleted
-        self.dismiss(animated: true)
-    }
+        let alertController = UIAlertController(title: "Delete Post", message: "Would you like to delete your skill?", preferredStyle: .alert)
+        
+        alertController.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
+            print("Handle Ok logic here")
+                do {
+                
+                    self.dismiss(animated:true, completion: {
+                        // removes skill from database
+                        let docID = self.db.document(self.skill.path).documentID
+                        self.db.collection("users").document(Constants.User.sharedInstance.userID).collection("SKILLS").document((docID)).delete()
+                        // sends notification to skill table that skills have been edited
+                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "OnEditSkill"), object: nil)
+                        // closes the viewing screen since skill has been deleted
+                        self.dismiss(animated: true)
+                })
+                //try Auth.auth().signOut()
+                } catch {
+                    print(error)
+                }
+            }))
+        alertController.addAction(UIAlertAction(title:"No", style: .default, handler: nil))
+        self.present(alertController, animated: true)    }
     
-
 }

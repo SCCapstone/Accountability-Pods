@@ -119,13 +119,31 @@ class OwnResourceVC: UIViewController {
     ///
     /// - Parameter sender: the delete button that was pressed
     @IBAction func onDelete(_ sender: Any) {
-        // delete the document from the database
-        let docID = db.document(resource.path).documentID
-        db.collection("users").document(Constants.User.sharedInstance.userID).collection("POSTEDRESOURCES").document((docID)).delete()
-        // send notication to the users own post resource display that a resources have changed
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "OnEditResource"), object: nil)
-        // close the opened display because post has been deleted
-        self.dismiss(animated: true)
+        let alertController = UIAlertController(title: "Delete Post", message: "Would you like to delete your post?", preferredStyle: .alert)
+        
+        alertController.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
+            print("Handle Ok logic here")
+                do {
+                
+                    self.dismiss(animated:true, completion: {
+                        let docID = self.db.document(self.resource.path).documentID
+                    self.db.collection("users").document(Constants.User.sharedInstance.userID).collection("POSTEDRESOURCES").document((docID)).delete()
+                    // send notication to the users own post resource display that a resources have changed
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "OnEditResource"), object: nil)
+                    // close the opened display because post has been deleted
+                    self.dismiss(animated: true)
+                })
+                //try Auth.auth().signOut()
+                } catch {
+                    print(error)
+                }
+            }))
+        alertController.addAction(UIAlertAction(title:"No", style: .default, handler: nil))
+        self.present(alertController, animated: true)
+        
     }
 
+
+
 }
+

@@ -35,7 +35,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         table.refreshControl = refresh;
 
         refresh.addTarget(self, action: #selector(self.reload(_:)), for: .valueChanged);
-        refresh.attributedTitle = NSAttributedString(string: "Fetching users")
+        refresh.attributedTitle = NSAttributedString(string: "Fetching new messages")
     }
     
     private func setupData() {

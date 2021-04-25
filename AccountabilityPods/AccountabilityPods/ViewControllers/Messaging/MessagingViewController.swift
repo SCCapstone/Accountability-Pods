@@ -26,6 +26,10 @@ class MessagingViewController: UIViewController, UITableViewDelegate, UITableVie
     var contactsA = [Profile]()
     /// The username of the current user
     var userID  = Constants.User.sharedInstance.userID;
+    /// Whether refreshing is complete
+    var finishedRefreshing = true;
+    /// The refreshing feature
+    let refresh = UIRefreshControl()
     
     override func viewDidLoad() {
         // calls view did load when a contact is added or removed
@@ -38,6 +42,10 @@ class MessagingViewController: UIViewController, UITableViewDelegate, UITableVie
         // Assign UITableViewDelegate to the contacts table
         contactTable.delegate = self
         contactTable.dataSource =  self
+        // set up refreshing functionality
+        contactTable.refreshControl = refresh;
+        refresh.addTarget(self, action: #selector(self.reload(_:)), for: .valueChanged);
+        refresh.attributedTitle = NSAttributedString(string: "Fetching users")
     }
     
     // MARK: - Set up
@@ -94,22 +102,46 @@ class MessagingViewController: UIViewController, UITableViewDelegate, UITableVie
                         if user != self.userID && user.count > 0{
                             // check if user exists
                             let userRef = self.db.collection("users").document(user)
-                            userRef.getDocument { (document, err) in
-                                if let document = document, document.exists {
+                            userRef.getDocument { (existsdocument, err) in
+                                if let existsdocument = existsdocument, existsdocument.exists {
                                     // user exists
                                     // Check if user var is in contacts
                                     let contactRef = self.db.collection("users").document(self.userID).collection("CONTACTS").document(user)
-                                    contactRef.getDocument { (document, err) in
-                                        if let document = document, document.exists{
+                                    contactRef.getDocument { (userdocument, err) in
+                                        if let userdocument = userdocument, userdocument.exists{
                                             print("\(user) is already contact")
                                         } else {
                                             print("\(user) sent message but is not a contact")
-                                            // add user to array of contacts
-                                            let path = "users/" + user
-                                            let tempProfile = Profile()
-                                            self.contactsA.append(tempProfile)
-                                            tempProfile.readData(database: self.db, path: path, tableview: self.contactTable)
-                                            self.contactTable.reloadData()
+                                            // check if user has deleted messages
+                                            let userIndex = chatUsers.firstIndex(of: self.userID)
+                                            var showMsgFieldName = "showMsg"
+                                            if userIndex == 1 {
+                                                showMsgFieldName = "showMsg1"
+                                            }
+                                            //print("USER INDEX: \(userIndex ?? 2), field: \(showMsgFieldName)")
+                                            let threadPath = document.reference.path + "/thread"
+                                            // get all documents for thread
+                                            self.db.collection(threadPath).getDocuments { (messages, err) in
+                                                if let err = err {
+                                                    print("Error getting messages: \(err)")
+                                                } else {
+                                                    for message in messages!.documents {
+                                                        // if user is able to see a single document
+                                                        
+                                                        if message[showMsgFieldName] as? Int ?? 0 == 1 {
+                                                            print("not contact user has available message")
+                                                            let path = "users/" + user
+                                                            let tempProfile = Profile()
+                                                            self.contactsA.append(tempProfile)
+                                                            tempProfile.readData(database: self.db, path: path, tableview: self.contactTable)
+                                                            self.contactTable.reloadData()
+                                                            return
+                                                        }
+                                                    }
+                                                }
+                                                
+                                            }
+                                            
                                             
                                         }
                                     }                                
@@ -123,8 +155,18 @@ class MessagingViewController: UIViewController, UITableViewDelegate, UITableVie
                     }
                     
                 }
+                self.finishedRefreshing = true
             }
         }
+    }
+    /// Reloads the data when table is pulled down to refresh
+    @objc func reload(_ sender: Any) {
+        if(finishedRefreshing)
+        {
+            finishedRefreshing = false;
+            self.loadData();
+        }
+        refresh.endRefreshing();
     }
     /// Sets keyboard to hide when screen is tapped.
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

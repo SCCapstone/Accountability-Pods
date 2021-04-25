@@ -195,47 +195,66 @@ class MessagingViewController: UIViewController, UITableViewDelegate, UITableVie
     ///   - editingStyle: the style for the swiped cell
     ///   - indexPath: the index of the swiped cell
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        //delete your messages sent to a user
+        
+        ///Slide to delete a conversation
         if editingStyle == .delete {
-            //pull docs from both users
-            let userIDs = [userID, contactsA[indexPath.item].uid]
-                
-            let query = Constants.chatRefs.databaseChats.whereField("sender_id", in: userIDs)
+            //reference Chat relationship for current user
+            let query = Constants.chatRefs.databaseChats.whereField("users", arrayContains: userID)
             query.getDocuments() { (querySnapshot, err) in
                 if let err = err {
                     print("error getting documents: \(err)")
                 } else {
-                    print("\(querySnapshot!.documents)")
-                    for document in querySnapshot!.documents {
-                    let data = document.data()  as? [String: String]
-                    let id = data?["sender_id"]
-                    let rid = data?["receiver_id"]
-                    if id == self.userID && rid == self.contactsA[indexPath.item].uid {
-                        self.db.document(document.reference.path).delete() { err in if let err = err {
-                            print("Error ermoving document: \(err)")
-                        } else {
-                            print("Document successfully removed!")
-                            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "OutgoingMessagesDeleted"), object: nil)
-                            }
-                        }
-                        }
-                    else if id == self.contactsA[indexPath.item].uid && rid == self.userID {
-                        self.db.document(document.reference.path).delete() { err in if let err = err {
-                            print("Error ermoving document: \(err)")
-                        } else {
-                            print("Document successfully removed!")
-                            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "IncomingMessagesDeleted"), object: nil)
+                    for doc in querySnapshot!.documents {
+                        let chat = Chat(dictionary: doc.data())
+                        //find if this is the document for selected user
+                        if(chat?.users.contains(self.contactsA[indexPath.item].uid ?? "Can't Find Chat Conversation"))! {
+                            let usersArray = doc["users"] as? Array ?? [""]
+                            //which index the current user is in the documnet
+                            let userIndex = usersArray.firstIndex(of: self.userID)
+                            ///go through the thread of messages to change show message
+                            doc.reference.collection("thread").getDocuments() { (querySnapshot, err) in
+                                if let err = err {
+                                    print("Error getting documents: \(err)")
+                                }
+                                else {
+                                    for document in querySnapshot!.documents {
+                                        if userIndex == 0 {
+                                            document.reference.updateData(["showMsg": false])
+                                        }
+                                        else {
+                                            document.reference.updateData(["showMsg1": false])
+                                        }
+                                        
+                                    }
+                                }
                             }
                         }
                     }
+                }
+            }
+            ///Remove the user from the table if they are not the current users contact
+            let usersRef = db.collection("users").document(userID).collection("CONTACTS")
+            usersRef.getDocuments() {(querySnapshot, err) in
+                if let err = err {
+                    print("DOCUMENTs DOES EXIST \(err)")
+                } else {
+                    //check if document of other user is in the contacts
+                    let isContact = self.db.collection("users").document(self.userID).collection("CONTACTS").document(self.contactsA[indexPath.item].uid)
+                    isContact.getDocument { (document, err) in
+                        if let document = document, document.exists{
+                            print("\(self.contactsA[indexPath.item].uid) is already contact")
+                        } else {
+                            //remove from the table view
+                            self.contactsA.remove(at: indexPath.row)
+                            tableView.deleteRows(at: [indexPath], with: .fade)
+                            print("REMOVED from table view")
+                        }
                     }
                 }
             }
         }
-                else if editingStyle == .insert {
-                // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
-            }
-        }
+                
+    }
     
     // MARK: - Pop Ups
     

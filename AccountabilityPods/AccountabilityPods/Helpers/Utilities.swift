@@ -80,6 +80,8 @@ class Resource {
         self.path = path
         database.document(path).addSnapshotListener {
             (querySnapshot, error) in
+            if( querySnapshot?.data() != nil)
+            {
             let data = querySnapshot!.data()
             
             if(data?["resourceName"] == nil || data?["resourceDesc"] == nil )
@@ -92,7 +94,12 @@ class Resource {
             self.name = name_
             self.desc = desc_
             
-            
+            }
+            else
+            {
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ResourceDoesNotExist"), object: self)
+            }
+        
         }
         
        
@@ -105,6 +112,7 @@ class Resource {
         self.path = path
         database.document(path).addSnapshotListener {
             (querySnapshot, error) in
+            if( querySnapshot?.data() != nil) {
             let data = querySnapshot!.data()
             if(data?["resourceName"] == nil || data?["resourceDesc"] == nil || path == nil)
             {
@@ -121,7 +129,11 @@ class Resource {
             
             tableview.reloadData()
             
-            
+            }
+            else
+            {
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ResourceDoesNotExist"), object: self)
+            }
         }
     }
     func readData(database: Firestore, path: String, collectionview: UICollectionView)
@@ -131,6 +143,7 @@ class Resource {
         self.path = path
         database.document(path).addSnapshotListener {
             (querySnapshot, error) in
+            if( querySnapshot?.data() != nil) {
             let data = querySnapshot!.data()
             if(data?["resourceName"] == nil || data?["resourceDesc"] == nil || path == nil )
             {
@@ -145,7 +158,11 @@ class Resource {
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ResourceAsyncFinished"), object: nil)
             
             print(self.hashableResource.name + "actual name here")
-            
+            }
+            else
+            {
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ResourceDoesNotExist"), object: self)
+            }
             
         }
     }

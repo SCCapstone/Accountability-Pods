@@ -25,10 +25,51 @@ class ResourceDisplayVC: UIViewController {
         super.viewDidLoad()
         overrideUserInterfaceStyle = .light
         NotificationCenter.default.addObserver(self, selector: #selector(self.onProfileComplete), name: NSNotification.Name(rawValue: "ProfileAsyncFinished"), object: nil)
-        checkIfLiked()
-        setTextFields()
-        
+
+        checkResourceStillValid()
         // Do any additional setup after loading the view.
+    }
+    
+    func checkResourceStillValid()
+    {
+        if(resource.path.count <= 5)
+        {
+            print(resource.path + "aeiou")
+            self.db.collection("users").document(Constants.User.sharedInstance.userID).collection("SAVEDRESOURCES").document((self.docID)!).delete()
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "SavedResourceChange"), object: nil)
+            self.dismiss(animated: true)
+            
+        }
+        else
+        {
+        db.document(resource.path).getDocument() {
+            docRef, err in
+            if let err = err {
+                print(err.localizedDescription)
+                
+            }
+            else
+            {
+                print("loaded resource")
+                if(docRef == nil || !docRef!.exists)
+                {
+                    print("test")
+                    self.nameField.text = "Resource Not Found"
+                    self.descField.text = "The resource you have checked no longer exists. Sorry about that!"
+                    self.likeButton.isHidden = true
+                    self.usernameButton.isHidden = true
+                    if(self.hasLiked)
+                    {
+                        self.db.collection("users").document(Constants.User.sharedInstance.userID).collection("SAVEDRESOURCES").document((self.docID)!).delete()
+                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "SavedResourceChange"), object: nil)
+                        return;
+                    }
+                }
+                self.checkIfLiked()
+                self.setTextFields()
+            }
+        }
+    }
     }
     
     func setTextFields() {

@@ -63,6 +63,7 @@ class ResourceViewCollectionVC: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(self.genArray), name: NSNotification.Name(rawValue: "SavedResourceChange"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.update), name: NSNotification.Name(rawValue: "ResourceAsyncFinished"), object: nil)
         
+        
         alert.addTextField {
             (textField) in
             textField.text = ""
@@ -281,6 +282,15 @@ class ResourceViewCollectionVC: UIViewController {
                 for doc in docsSnap!.documents {
                     
                     let path = doc.data()["docRef"] as! String
+                    self.db.document(path).getDocument() { docs, error in
+                        if let error = error {
+                            
+                        }
+                        else{
+                            if(docs != nil && docs!.exists)
+                            {
+                                
+                        
                     //print("\n\n\n\n\n" + path + "\n\n\n\n\n")
                     let newResource = Resource(base: self.db, path_:path)
                     newResource.readData(database: self.db, path: path, collectionview: self.collectionView)
@@ -320,7 +330,14 @@ class ResourceViewCollectionVC: UIViewController {
                     }
                                 
                                 
-                                
+                        }
+                        else
+                            {
+                                doc.reference.delete()
+                            }
+                            
+                        }
+                }
                             }
                     self.finishedRefreshing = true
 

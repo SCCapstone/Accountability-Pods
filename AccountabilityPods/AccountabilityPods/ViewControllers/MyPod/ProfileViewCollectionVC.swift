@@ -38,7 +38,7 @@ class ProfileViewCollectionVC: UIViewController {
     var groupsUnhashed: [ProfileGroupUnhashed] = []
     var selectedProfile: ProfileHashable = ProfileHashable()
     var inputString = ""
-    let alert = UIAlertController(title: "Create Group", message: "Enter your group name.", preferredStyle: .alert)
+    let alert = UIAlertController(title: "Create Group", message: "Enter your group name.\nEmpty groups will be deleted on refresh.", preferredStyle: .alert)
     
     //Enum allows for properly creating the cells
     enum ListType: Hashable {

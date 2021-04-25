@@ -286,6 +286,8 @@ class ChatViewController: MessagesViewController, InputBarAccessoryViewDelegate 
     // MARK: - Message Helpers
     
     ///inserts a new message into the feed
+    ///
+    /// - Parameter message: message being inserted
     private func insertNewMessage(_ message: Message) {
       
       // add message to messages array and reload
@@ -387,33 +389,50 @@ class ChatViewController: MessagesViewController, InputBarAccessoryViewDelegate 
         }
     }
     
-    //perfom actions overrides
+    // MARK: - Collection View Override
+    
+    /// Sets that delete action for a collection view selection can be performed
+    ///
+    /// - Parameters:
+    ///   - collectionView: the messages collection view
+    ///   - canPerformAction: the long gestue selection
+    ///   - forItemAt: index path of selected cell
+    ///   - withSender: current user
+    /// - Returns: boolean if action can occur
     override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-            
+            //creates allowable action for delete
             if action == NSSelectorFromString("delete:") {
                 return true
             } else {
                 return super.collectionView(collectionView, canPerformAction: action, forItemAt: indexPath, withSender: sender)
             }
-        }
-        
+    }
+    
+    /// Performs the action to delete a message at the selected position of the collection view
+    ///
+    /// - Parameters:
+    ///   - collectionView: the messages collection view
+    ///   - performAction: selector representing action to be performed
+    ///   - forItemAt: index path of selected cell
+    ///   - withSender: current user
     override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
-
+        
+        //applies if action selected was delete
         if action == NSSelectorFromString("delete:") {
-            // Remove from datasource
+            /// Remove from datasource
+            //creates temporary storage for the message selected and message time created
             let thisMsg = messages[indexPath.section]
             let time = thisMsg.created
-            print("THIS IS CREATE: \(time)")
-            print("MESSAGE CONTENT BEFORE DOC \(thisMsg.content)")
+            //finds messages in firestore
             let docC = docReference?.collection("thread").whereField("created", isEqualTo: time)
             docC?.getDocuments() { (querySnapshot, err) in
                 if let err = err {
                     print("Error getting documents: \(err)")
                 } else {
                     for document in querySnapshot!.documents {
-                        //print("MESSAGE CONTENT \(thisMsg.content)")
+                        //checks if message is the correct message
                         if thisMsg.content == document.get("content") as! String {
-                           // print("INDEX OF user: \(self.indexUser) ")
+                           //changes the field to show the message to false depending on which index the username is
                             if self.indexUser == 0 {
                                 document.reference.updateData(["showMsg": false])
                             }
@@ -421,34 +440,40 @@ class ChatViewController: MessagesViewController, InputBarAccessoryViewDelegate 
                                 //let document = querySnapshot!.documents.first
                                 document.reference.updateData(["showMsg1": false])
                             }
-                    }
+                        }
                     }
                 }
-                }
-
-            messages.remove(at: indexPath.section)
-
-            messagesCollectionView.deleteSections([indexPath.section]) //messagesCollectionView
-
-            messagesCollectionView.reloadData() //messages collection view
-            } else {
-                super.collectionView(collectionView, performAction: action, forItemAt: indexPath, withSender: sender)
             }
+            //remove message from messages array
+            messages.remove(at: indexPath.section)
+            //remove the message section from the messages collection view
+            messagesCollectionView.deleteSections([indexPath.section])
+            //reload the messages collection view
+            messagesCollectionView.reloadData()
+        } else {
+            super.collectionView(collectionView, performAction: action, forItemAt: indexPath, withSender: sender)
         }
+    }
     
-    //to load and let the keyboard appear and disappear to read the text
+    // MARK: - Override Helpers
+    
+    /// Sets keyboard to hide when screen is tapped.
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
     
-    //reenable KeyboardManager when exit view controller
+    ///reenable KeyboardManager when exit this view controller
     override func viewWillDisappear(_ animated: Bool) {
         IQKeyboardManager.shared.enable = true
     }
 }
 
+// MARK: - Extensions
+
+/// Override MessageCollectionViewCell to allow for delete actions
 extension MessageCollectionViewCell {
 
+    ///sets action for delete on collection view for a selected cell to appear
     override open func delete(_ sender: Any?) {
         
         // Get the collectionView

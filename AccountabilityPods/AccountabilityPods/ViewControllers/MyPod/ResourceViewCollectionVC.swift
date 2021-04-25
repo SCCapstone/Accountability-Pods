@@ -40,7 +40,7 @@ class ResourceViewCollectionVC: UIViewController {
     var inputString = ""
     let refresh = UIRefreshControl()
     
-    let alert = UIAlertController(title: "Create Group", message: "Enter your group name.", preferredStyle: .alert)
+    let alert = UIAlertController(title: "Create Group", message: "Enter your group name.\nEmpty groups will be deleted on refresh.", preferredStyle: .alert)
     
     
     

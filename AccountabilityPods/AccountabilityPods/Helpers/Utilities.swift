@@ -5,15 +5,22 @@
 //  Created by administrator on 11/26/20.
 //  Copyright © 2020 CapstoneGroup. All rights reserved.
 //
+//  Description: contains helpful static functions and object classes
 
 import Foundation
 import UIKit
 import Firebase
 
 class Utilities {
-    /* validate that email and password are in right format
-     from http://brainwashinc.com/2017/08/18/ios-swift-3-validate-email-password-format/
-    */
+    
+    // MARK: - Validation Functions
+    
+   
+    
+    /// Returns whether given email is in correct format
+    ///
+    /// - Parameter email: the email to be tested
+    /// - Returns: true or false if email is well formatted
     static func isValidEmail(email:String?) -> Bool {
         
         guard email != nil else { return false }
@@ -23,6 +30,11 @@ class Utilities {
         let pred = NSPredicate(format:"SELF MATCHES %@", regEx)
         return pred.evaluate(with: email)
     }
+    
+    /// Returns whether given password is wellformatted
+    ///
+    /// - Parameter testStr: the password to be tested
+    /// - Returns: true or false if password  is well formatted
     static func isValidPassword(testStr:String?) -> Bool {
         guard testStr != nil else { return false }
      
@@ -33,6 +45,10 @@ class Utilities {
         let passwordTest = NSPredicate(format: "SELF MATCHES %@", "(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z]).{8,}")
         return passwordTest.evaluate(with: testStr)
     }
+    
+    /* validate that email and password are in right format
+     from http://brainwashinc.com/2017/08/18/ios-swift-3-validate-email-password-format/
+    */
     
    
 }

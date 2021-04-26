@@ -5,38 +5,57 @@
 //  Created by MADRID, VASCO MADRID on 12/4/20.
 //  Copyright © 2020 CapstoneGroup. All rights reserved.
 //
+//  Description: Manages the first layer of another users profile page
 
 import UIKit
 import Firebase
 
 class ProfileViewController: UIViewController {
-
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var descriptionLabel: UILabel!
-    @IBOutlet weak var segmentedControl: UISegmentedControl!
-    @IBOutlet weak var postContainer: UIView!
-    @IBOutlet weak var skillsContainer: UIView!
-    @IBOutlet weak var usernameLabel: UILabel!
-    @IBOutlet weak var addContactButton: UIButton!
-    @IBOutlet weak var removeContactButton: UIButton!
+    // MARK: - Class Variables
     
+    /// The name of the other user
+    @IBOutlet weak var nameLabel: UILabel!
+    /// The other users description
+    @IBOutlet weak var descriptionLabel: UILabel!
+    /// The inner page tabs to manage posts and skills
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    /// The container for the other users posts
+    @IBOutlet weak var postContainer: UIView!
+    /// The container for the other users skills
+    @IBOutlet weak var skillsContainer: UIView!
+    /// The username of the other user
+    @IBOutlet weak var usernameLabel: UILabel!
+    /// The button to add user as a contact
+    @IBOutlet weak var addContactButton: UIButton!
+    /// The button to remove user as a contact
+    @IBOutlet weak var removeContactButton: UIButton!
+    /// The profile object that has the other users info
     var profile = Profile()
+    /// Variable that changes if the contact value changed
     var contactsChanged = false;
+    /// The current users username
     var userID = Constants.User.sharedInstance.userID;
+    /// The Firestore database
     let db = Firestore.firestore()
+    
+    // MARK: - Set up
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Page only does light mode
         overrideUserInterfaceStyle = .light
+        // Set elements to have the correct values
         setName()
+        // Set contact to either add or remove depending on value in DB 
         setContactButton(addOrRemove: "start")
-     
-        // Do any additional setup after loading the view.
     }
+    
+    /// Hides keyboard when other spot on page is tapped
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
-    // segues to either the resource or skill view
+    
+    ///  Segues to either the resource or skill view depending on tap
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if let vc = segue.destination as? ProfileResourceViewController
@@ -49,14 +68,17 @@ class ProfileViewController: UIViewController {
         }
         
     }
-    // Sets the name of the profile
+    /// Sets the name of the profile
     func setName() {
         nameLabel.text = profile.firstName + " " + profile.lastName
         usernameLabel.text = "@" + profile.uid
         descriptionLabel.text = profile.description
         
     }
-    // Enables the contact button if it is not the creator's profile. Additionally, switches between add and remove dependent on state
+    
+    // MARK: - Manage contacts
+    
+    /// Enables the contact button if it is not the creator's profile. Additionally, switches between add and remove dependent on state
     func setContactButton(addOrRemove: String) {
         if profile.uid == userID {
             // if you are viewing your own profile you cannot add or remove as a contact
@@ -100,7 +122,7 @@ class ProfileViewController: UIViewController {
         }
         
     }
-    // Used to add the contact to the user's saved contacts
+    /// Used to add the contact to the user's saved contacts
     @IBAction func addContact(_ sender: Any) {
         db.collection("users").document(userID).collection("CONTACTS").document(profile.uid).setData(["userRef": profile.uid]) { err in
             if let err = err {
@@ -112,7 +134,7 @@ class ProfileViewController: UIViewController {
         }
         
     }
-    // Lets the user remove the contact
+    /// Lets the user remove the contact
     @IBAction func removeContact(_ sender: Any) {
         db.collection("users").document(userID).collection("CONTACTS").document(profile.uid).delete() { err in
             if let err = err {
@@ -126,7 +148,9 @@ class ProfileViewController: UIViewController {
         }
     }
 
-    // Used to display the containers for resources and skills
+    // MARK: - Segmented Control display
+    
+    /// Used to display the containers for resources and skills
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         UIView.animate(withDuration: 0.1, animations: {
@@ -134,7 +158,7 @@ class ProfileViewController: UIViewController {
             self.skillsContainer.alpha = 0;
         })
     }
-    // Don't refresh the contacts view unless contacts actually get changed
+    /// Don't refresh the contacts view unless contacts actually get changed
     override func viewDidDisappear(_ animated: Bool) {
         if(contactsChanged)
         {
@@ -142,7 +166,7 @@ class ProfileViewController: UIViewController {
         }
     }
     
-    
+    /// Manages what happens when segmented control is pressed
     @IBAction func segmentedControlPressed(_ sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 0 {
             UIView.animate(withDuration: 0.5, animations: {

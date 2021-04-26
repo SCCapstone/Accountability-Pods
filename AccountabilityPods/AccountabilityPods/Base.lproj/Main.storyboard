@@ -296,7 +296,9 @@
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LGj-mD-FRQ" userLabel="passwordTextField">
                                         <rect key="frame" x="0.0" y="54" width="394" height="34"/>
-                                        <accessibility key="accessibilityConfiguration" identifier="passwordTextField"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="lpasswordTextField">
+                                            <bool key="isElement" value="YES"/>
+                                        </accessibility>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="34" id="ZfZ-mD-DAp"/>
                                         </constraints>
@@ -1443,6 +1445,7 @@
                                                 <constraint firstItem="to9-bR-TC2" firstAttribute="centerX" secondItem="LG7-nZ-iPf" secondAttribute="centerX" id="olo-tt-sEB"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <accessibility key="accessibilityConfiguration" identifier="resourceCell"/>
                                         <connections>
                                             <outlet property="resourceDesc" destination="MOc-QL-oN1" id="tIS-q9-PGA"/>
                                             <outlet property="resourceName" destination="to9-bR-TC2" id="kiK-jv-NBS"/>
@@ -1595,17 +1598,17 @@
             <objects>
                 <viewController storyboardIdentifier="resourceVC" id="RVU-aC-KZr" customClass="ResourceDisplayVC" customModule="AccountabilityPods" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gEf-5K-uaR">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="459"/>
+                        <rect key="frame" x="0.0" y="0.0" width="374" height="622"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Default" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="13" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yyN-3T-mkS">
-                                <rect key="frame" x="20" y="20" width="374" height="23.333333333333329"/>
+                                <rect key="frame" x="20" y="20" width="334" height="23.333333333333329"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dMD-xk-wtr">
-                                <rect key="frame" x="20" y="63.333333333333343" width="374" height="259.33333333333326"/>
+                                <rect key="frame" x="20" y="63.333333333333343" width="334" height="422.33333333333326"/>
                                 <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint </string>
                                 <color key="textColor" systemColor="labelColor"/>
@@ -1613,7 +1616,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="continue"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mbi-5u-dpD">
-                                <rect key="frame" x="20" y="413" width="58" height="36"/>
+                                <rect key="frame" x="20" y="576" width="58" height="36"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="17"/>
                                 <state key="normal" title="@Temp"/>
                                 <connections>
@@ -1621,7 +1624,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iea-p6-Dke">
-                                <rect key="frame" x="368.66666666666669" y="413" width="25.333333333333314" height="26"/>
+                                <rect key="frame" x="328.66666666666669" y="576" width="25.333333333333314" height="26"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <color key="tintColor" systemColor="systemGrayColor"/>
                                 <size key="titleShadowOffset" width="7" height="6"/>
@@ -1633,7 +1636,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Posted by" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q8G-z4-fIp">
-                                <rect key="frame" x="20" y="384.66666666666669" width="77.666666666666671" height="23.333333333333314"/>
+                                <rect key="frame" x="20" y="547.66666666666663" width="77.666666666666671" height="23.333333333333371"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -2104,8 +2107,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="wxW-nl-QRV"/>
-        <segue reference="f8s-lp-j3i"/>
+        <segue reference="Gho-tH-KhP"/>
+        <segue reference="3mW-fO-yJx"/>
         <segue reference="jaU-Hq-HV1"/>
         <segue reference="g9z-kc-Y9I"/>
         <segue reference="4kW-um-cGD"/>

@@ -40,45 +40,13 @@ class AccountabilityPodsUITests: XCTestCase {
             }
         }
     }
-    /*
-     UI test for logging in
-     - tests if log in button takes user to login screen
-     - tests if user can enter values in text fields
-     - tests if known account information takes user to home screen
-     */
-    func testLoggingIn() throws {
-        let app = XCUIApplication()
-        app.launch()
-        // tap login button
-        let loginButton = app.buttons["loginButton"]
-        loginButton.tap() // takes user to log in view
-        
-        // test if user can enter email
-        let emailTextField = app.textFields["emailTextField"]
-        let passwordTextField = app.textFields["passwordTextField"]
-        let email = "tester@email.com" // known email account
-        let password = "Password!123" // known password
-        
-        // test email input
-        emailTextField.tap()
-        emailTextField.typeText(email)
-        XCTAssertEqual(emailTextField.value as! String , email)
-        
-        // test password input
-        passwordTextField.tap()
-        passwordTextField.typeText(password)
-        XCTAssertEqual(passwordTextField.value as! String, password)
-        
-        // test enter button
-        let enterButton = app.buttons["enterButton"]
-        enterButton.tap() // takes user to screen
-        
-        // tests if homescreen is shown
-        let addPostButton = app.buttons["addPostButton"]
-        XCTAssertTrue(addPostButton.exists)
-    }
+    
     
     /// Tests if the login button appears
+    ///
+    /// - Conditions:
+    ///   - Pass: Should pass if user is not already logged
+    ///   - Fail: Should fail if user is already logged in
     func testLoginButtonExists() throws {
         let app = XCUIApplication()
         // launch app
@@ -89,6 +57,10 @@ class AccountabilityPodsUITests: XCTestCase {
     }
     
     /// Test if login button takes you to the login screen
+    ///
+    /// - Conditions:
+    ///   - Pass: Should pass if user is not already logged
+    ///   - Fail: Should fail if user is already logged in
     func testLoginButtonTaketoLoginScreen() throws {
         let app = XCUIApplication()
         app.launch()
@@ -99,6 +71,10 @@ class AccountabilityPodsUITests: XCTestCase {
     }
     
     /// Test if create account button exists when app is first opened
+    ///
+    /// - Conditions:
+    ///   - Pass: Should pass if user is not already logged
+    ///   - Fail: Should fail if user is already logged in
     func testCreateAccountButtonExists() throws {
         let app = XCUIApplication()
         app.launch()
@@ -107,6 +83,10 @@ class AccountabilityPodsUITests: XCTestCase {
     }
     
     /// Test if create account button takes you to create account page
+    ///
+    /// - Conditions:
+    ///   - Pass: Should pass if user is not already logged
+    ///   - Fail: Should fail if user is already logged in
     func testCreateAccountTakeToCAScreen() throws {
         let app = XCUIApplication()
         app.launch()
@@ -115,4 +95,41 @@ class AccountabilityPodsUITests: XCTestCase {
         let unTextField = app.textFields["usernameTextField"]
         XCTAssertTrue(unTextField.exists)
     }
+    
+    /// Test if user can log in with test account
+    ///
+    /// - Conditions:
+    ///   - Pass: Should pass if user is not already logged
+    ///   - Fail: Should fail if user is already logged in
+    func testLoggingIn() throws {
+        let app = XCUIApplication()
+        app.launch()
+        // tap login button
+        let loginButton = app.buttons["loginButton"]
+        loginButton.tap() // takes user to log in view
+        
+        // test if user can enter email
+        let emailTextField = app.textFields["emailTextField"]
+        
+        let email = "tester@email.com" // known email account
+        let password = "Password!123" // known password
+        
+        // test email input
+        emailTextField.tap()
+        emailTextField.typeText(email)
+        XCTAssertEqual(emailTextField.value as! String , email)
+        // tap out of keyboard
+        app.toolbars["Toolbar"].buttons["Done"].tap()
+        
+        // test password input
+        let passwordTextField = app/*@START_MENU_TOKEN@*/.secureTextFields["lpasswordTextField"]/*[[".secureTextFields[\"Password\"]",".secureTextFields[\"lpasswordTextField\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        passwordTextField.tap()
+        passwordTextField.typeText(password)
+        
+        // test enter button
+        let enterButton = app.buttons["enterButton"]
+        enterButton.tap() // takes user to screen
+        
+    }
+    
 }

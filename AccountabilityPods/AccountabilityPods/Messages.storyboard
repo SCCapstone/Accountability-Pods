@@ -21,8 +21,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uqL-m4-353">
                                 <rect key="frame" x="0.0" y="44" width="414" height="47"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Power Pods" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mrP-Mb-qNv">
-                                        <rect key="frame" x="153" y="10" width="108" height="27.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Messaging" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mrP-Mb-qNv">
+                                        <rect key="frame" x="156.5" y="10" width="101" height="27.5"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="20"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -49,17 +49,17 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ySY-Zb-WHp">
-                                <rect key="frame" x="0.0" y="137.5" width="414" height="675.5"/>
+                                <rect key="frame" x="20" y="91" width="374" height="723"/>
                                 <color key="backgroundColor" red="0.80784313730000001" green="0.90196078430000004" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="separatorColor" name="accountablegreen"/>
                                 <color key="sectionIndexColor" systemColor="darkTextColor"/>
                                 <color key="sectionIndexBackgroundColor" red="0.80784313730000001" green="0.90196078430000004" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="contactName" rowHeight="107" id="pjf-kU-fFa" customClass="ContactCell" customModule="AccountabilityPods" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="107"/>
+                                        <rect key="frame" x="0.0" y="28" width="374" height="107"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pjf-kU-fFa" id="wM0-zE-IUV">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="107"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="107"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EJ6-fd-VIZ">
@@ -99,25 +99,16 @@
                                 </prototypes>
                                 <sections/>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Messages" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zVJ-gz-AfZ">
-                                <rect key="frame" x="149.5" y="94" width="115" height="35.5"/>
-                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="25"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Mg6-lg-dg1"/>
                         <color key="backgroundColor" red="0.80784313730000001" green="0.90196078430000004" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="ySY-Zb-WHp" firstAttribute="top" secondItem="uqL-m4-353" secondAttribute="bottom" constant="46.5" id="OIO-bW-dlN"/>
-                            <constraint firstItem="zVJ-gz-AfZ" firstAttribute="top" secondItem="Mg6-lg-dg1" secondAttribute="top" constant="50" id="TE9-rL-oQ6"/>
-                            <constraint firstItem="ySY-Zb-WHp" firstAttribute="top" secondItem="zVJ-gz-AfZ" secondAttribute="bottom" constant="8" id="XzA-qg-t4w"/>
+                            <constraint firstItem="ySY-Zb-WHp" firstAttribute="top" secondItem="uqL-m4-353" secondAttribute="bottom" id="OIO-bW-dlN"/>
                             <constraint firstItem="uqL-m4-353" firstAttribute="leading" secondItem="Mg6-lg-dg1" secondAttribute="leading" id="f2h-cb-WzJ"/>
-                            <constraint firstItem="ySY-Zb-WHp" firstAttribute="trailing" secondItem="Mg6-lg-dg1" secondAttribute="trailing" id="gEY-rz-86a"/>
-                            <constraint firstItem="ySY-Zb-WHp" firstAttribute="leading" secondItem="Mg6-lg-dg1" secondAttribute="leading" id="gOK-4S-JBw"/>
-                            <constraint firstItem="Mg6-lg-dg1" firstAttribute="bottom" secondItem="ySY-Zb-WHp" secondAttribute="bottom" id="hhB-i7-rRk"/>
-                            <constraint firstItem="uqL-m4-353" firstAttribute="trailing" secondItem="ySY-Zb-WHp" secondAttribute="trailing" id="nT0-T9-DHW"/>
-                            <constraint firstItem="zVJ-gz-AfZ" firstAttribute="centerX" secondItem="uhw-mH-yf6" secondAttribute="centerX" id="oEZ-uw-Cq4"/>
+                            <constraint firstItem="ySY-Zb-WHp" firstAttribute="trailing" secondItem="Mg6-lg-dg1" secondAttribute="trailing" constant="-20" id="gEY-rz-86a"/>
+                            <constraint firstItem="ySY-Zb-WHp" firstAttribute="leading" secondItem="Mg6-lg-dg1" secondAttribute="leading" constant="20" id="gOK-4S-JBw"/>
+                            <constraint firstItem="Mg6-lg-dg1" firstAttribute="bottom" secondItem="ySY-Zb-WHp" secondAttribute="bottom" constant="-1" id="hhB-i7-rRk"/>
+                            <constraint firstItem="uqL-m4-353" firstAttribute="trailing" secondItem="ySY-Zb-WHp" secondAttribute="trailing" constant="20" id="nT0-T9-DHW"/>
                             <constraint firstItem="uqL-m4-353" firstAttribute="top" secondItem="Mg6-lg-dg1" secondAttribute="top" id="sOA-WM-HV3"/>
                         </constraints>
                     </view>

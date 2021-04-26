@@ -50,12 +50,12 @@
                                 </constraints>
                             </view>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HId-8h-sL7">
-                                <rect key="frame" x="20" y="101" width="314" height="52"/>
+                                <rect key="frame" x="20" y="106" width="314" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kmO-lY-u60">
-                                <rect key="frame" x="344" y="112" width="60" height="36"/>
+                                <rect key="frame" x="344" y="106" width="60" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="60" id="qA0-Od-2rV"/>
                                 </constraints>
@@ -66,7 +66,7 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="N0W-N3-Ffb">
-                                <rect key="frame" x="0.0" y="163" width="414" height="699"/>
+                                <rect key="frame" x="0.0" y="157" width="414" height="705"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="110" id="oLS-lo-O8o" customClass="ProfileCell" customModule="AccountabilityPods" customModuleProvider="target">
@@ -120,14 +120,14 @@
                             <constraint firstItem="1W7-GW-9Uf" firstAttribute="trailing" secondItem="kmO-lY-u60" secondAttribute="trailing" constant="10" id="NwN-IC-O2Y"/>
                             <constraint firstItem="HId-8h-sL7" firstAttribute="leading" secondItem="kDr-qJ-YLc" secondAttribute="leadingMargin" id="VMG-8Z-1Lz"/>
                             <constraint firstItem="w05-dh-eMD" firstAttribute="top" secondItem="1W7-GW-9Uf" secondAttribute="top" id="YjY-sU-lk7"/>
-                            <constraint firstItem="kmO-lY-u60" firstAttribute="top" secondItem="w05-dh-eMD" secondAttribute="bottom" constant="21" id="i8B-93-hNW"/>
-                            <constraint firstItem="HId-8h-sL7" firstAttribute="top" secondItem="w05-dh-eMD" secondAttribute="bottom" constant="10" id="nqV-d3-8Dc"/>
+                            <constraint firstItem="kmO-lY-u60" firstAttribute="top" secondItem="w05-dh-eMD" secondAttribute="bottom" constant="15" id="i8B-93-hNW"/>
+                            <constraint firstItem="HId-8h-sL7" firstAttribute="top" secondItem="w05-dh-eMD" secondAttribute="bottom" constant="15" id="nqV-d3-8Dc"/>
                             <constraint firstItem="w05-dh-eMD" firstAttribute="trailing" secondItem="1W7-GW-9Uf" secondAttribute="trailing" id="r9O-jx-wr7"/>
                             <constraint firstItem="w05-dh-eMD" firstAttribute="leading" secondItem="1W7-GW-9Uf" secondAttribute="leading" id="rgs-WI-cDa"/>
                             <constraint firstItem="1W7-GW-9Uf" firstAttribute="trailing" secondItem="N0W-N3-Ffb" secondAttribute="trailing" id="uda-S0-NEN"/>
                             <constraint firstItem="N0W-N3-Ffb" firstAttribute="leading" secondItem="1W7-GW-9Uf" secondAttribute="leading" id="wCY-Zv-7Ds"/>
                             <constraint firstItem="kmO-lY-u60" firstAttribute="leading" secondItem="HId-8h-sL7" secondAttribute="trailing" constant="10" id="wCf-uw-yvS"/>
-                            <constraint firstItem="N0W-N3-Ffb" firstAttribute="top" secondItem="HId-8h-sL7" secondAttribute="bottom" constant="10" id="yEd-hv-SPR"/>
+                            <constraint firstItem="N0W-N3-Ffb" firstAttribute="top" secondItem="HId-8h-sL7" secondAttribute="bottom" constant="15" id="yEd-hv-SPR"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="magnifyingglass" catalog="system" id="zqD-Zt-Pvu"/>

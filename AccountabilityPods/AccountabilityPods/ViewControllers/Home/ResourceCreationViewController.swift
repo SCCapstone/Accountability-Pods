@@ -23,7 +23,8 @@ class ResourceCreationViewController: UIViewController {
         super.viewDidLoad()
         overrideUserInterfaceStyle = .light
         let users = db.collection("USERS");
-        resourceName.layer.borderWidth = 0
+        resourceName.layer.cornerRadius = 5
+        resourceDesc.layer.cornerRadius = 5
 
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

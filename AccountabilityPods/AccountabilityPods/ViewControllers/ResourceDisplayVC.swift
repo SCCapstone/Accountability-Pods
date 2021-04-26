@@ -7,7 +7,7 @@
 //
 import Firebase
 import UIKit
-
+// Purpose of this view is to display resources, as well as having a like button and a link to the creator's profile
 class ResourceDisplayVC: UIViewController {
     let db = Firestore.firestore()
     
@@ -15,6 +15,7 @@ class ResourceDisplayVC: UIViewController {
     @IBOutlet weak var usernameButton: UIButton!
     @IBOutlet weak var nameField: UILabel!
     @IBOutlet weak var descField: UITextView!
+    // Variables used for more efficient loading
     var docID: String? = nil
     var needsLoad = false
     var resource: ResourceHashable = Resource.init().makeHashableStruct()
@@ -24,17 +25,19 @@ class ResourceDisplayVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         overrideUserInterfaceStyle = .light
+        // Observer is to check if asynchronous operations on loading profile is complete
         NotificationCenter.default.addObserver(self, selector: #selector(self.onProfileComplete), name: NSNotification.Name(rawValue: "ProfileAsyncFinished"), object: nil)
 
         checkResourceStillValid()
         // Do any additional setup after loading the view.
     }
-    
+    // This function is meant for saved resources to determine if the path that they received is still valid-- if not, hides like button, profile button, etc.
+    // Additionally displays an error message. If it no longer exists, it gets removed. Additionally, if the path is already invalid and would cause an error,
+    // it removes the resource reference and immediately dismisses the view.
     func checkResourceStillValid()
     {
         if(resource.path.count <= 5)
         {
-            print(resource.path + "aeiou")
             self.db.collection("users").document(Constants.User.sharedInstance.userID).collection("SAVEDRESOURCES").document((self.docID)!).delete()
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "SavedResourceChange"), object: nil)
             self.dismiss(animated: true)
@@ -71,7 +74,7 @@ class ResourceDisplayVC: UIViewController {
         }
     }
     }
-    
+    // Sets the textfields of the resource from the provided resource
     func setTextFields() {
         nameField.text = resource.name
         descField.text = resource.desc
@@ -93,12 +96,15 @@ class ResourceDisplayVC: UIViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
+    // Prepare to transition to the creator's profile on click
     @IBAction func onClickUsername(_ sender: Any) {
         print("username clicked")
         let user = resource.path.split(separator:"/")[1]
+        // Ensure that this can only trigger if a profile has to be loaded, to avoid issues related to notifications
         needsLoad = true;
         self.profile = Profile(base:db, path_: ("users/" + user))
     }
+    // This is the function that actually transitions, and sets needsLoad back to false to ensure it does not get called until clicked again
     @objc func onProfileComplete() {
         print("test")
         if(needsLoad)
@@ -108,6 +114,7 @@ class ResourceDisplayVC: UIViewController {
         }
         
     }
+    // Sets the destination profile's information
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "showProfileSegue")
         {
@@ -118,6 +125,7 @@ class ResourceDisplayVC: UIViewController {
             
         }
     }
+    // Function that determines if the resource is actually saved/liked. If it is, continue on to setting text.
     func checkIfLiked()
     {
         db.collection("users").document(Constants.User.sharedInstance.userID).collection("SAVEDRESOURCES").getDocuments() {
@@ -142,7 +150,8 @@ class ResourceDisplayVC: UIViewController {
         }
     }
 
-    
+    // Whenever the like button is pressed, it either unsaves or saves the resource, changing the tint
+    // Saved resource gets a reference added to the user's saved resources
     @IBAction func onLike(_ sender: Any) {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "SavedResourceChange"), object: nil)
         
@@ -173,14 +182,5 @@ class ResourceDisplayVC: UIViewController {
         
         
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

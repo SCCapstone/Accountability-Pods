@@ -417,6 +417,7 @@ extension ResourceViewCollectionVC: UICollectionViewDelegate {
         case .resource(let resource):
             self.selectedResource = resource
             self.performSegue(withIdentifier: "showResourceSegue", sender: Any?.self)
+            
             break;
         default:
             break;

@@ -32,6 +32,12 @@ class ProfileViewCollectionVC: UIViewController {
     let db = Firestore.firestore()
     // The actual data used for the collection view cells
     var data: UICollectionViewDiffableDataSource<ViewSection, ListType>!
+    // Add refresh
+    let refresh = UIRefreshControl()
+
+    // Determines if refreshing is finished
+    var finishedRefreshing = true;
+
     
     // Define the various arrays stored here-- this is not optimal, but it is acceptable.
     var profiles: [ProfileHashable] = []
@@ -78,6 +84,10 @@ class ProfileViewCollectionVC: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(self.genArray), name: NSNotification.Name(rawValue: "ContactsChanged"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.update), name: NSNotification.Name(rawValue: "ProfileAsyncFinished"), object: nil)
         
+        //Prepares the refresh control
+        collectionView.refreshControl = refresh;
+        refresh.addTarget(self, action: #selector(self.reload(_:)), for: .valueChanged);
+        refresh.attributedTitle = NSAttributedString(string: "Fetching contacts")
         
         super.viewDidLoad()
         overrideUserInterfaceStyle = .light
@@ -160,6 +170,16 @@ class ProfileViewCollectionVC: UIViewController {
         
         // Do any additional setup after loading the view.
     }
+    // Handles reloading if the refresh function is used
+    @objc func reload(_ sender: Any) {
+        if(finishedRefreshing)
+        {
+            finishedRefreshing = false;
+        self.genArray();
+        }
+        refresh.endRefreshing();
+    }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
@@ -282,6 +302,8 @@ class ProfileViewCollectionVC: UIViewController {
             docsSnap, error in
             if let error = error {
                 print("Error getting saved profiles. \(error)")
+                self.finishedRefreshing = true;
+
             }
             else
             {
@@ -345,7 +367,8 @@ class ProfileViewCollectionVC: UIViewController {
                     }
                 }
                 
-                
+                self.finishedRefreshing = true
+
                         }
                         
                     }

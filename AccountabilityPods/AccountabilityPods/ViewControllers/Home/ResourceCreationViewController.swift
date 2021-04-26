@@ -37,23 +37,31 @@ class ResourceCreationViewController: UIViewController {
         self.view.endEditing(true)
     }
     @IBAction func onAddPressed(_ sender: Any) {
-        let timeStamp = Firebase.Timestamp().seconds
-        var docRef = db.collection("users").document(userID).collection("POSTEDRESOURCES").addDocument(data: [
-                    "creatorRef" : userID,
-                    "imageLink" : "TODO", //TODO
-                    "resourceDesc" : resourceDesc.text ?? "N/A",
-            "resourceName" : resourceName.text ?? "N/A", "time": timeStamp
-                ]) {err in
-                    if let err = err {
-                        print("The document was invalid for some reason? \(err)")
-                    }
-                    else{
-                        print("Document added successfully.")
-                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "OnEditResource"), object: nil)
-                        self.dismiss(animated:true, completion:nil)
-                    }
+        // check if resource has enough information
+        if resourceName.text!.trimmingCharacters(in: .whitespacesAndNewlines) == "" || resourceDesc.text!.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
+            // resource information has not been entered
+            let alertController = UIAlertController(title: "Need more info", message: "Resource name or description is missing. Please add this information", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title:"Got it!", style: .default, handler: nil))
+            self.present(alertController, animated: true)
+        } else {
+            let timeStamp = Firebase.Timestamp().seconds
+            _ = db.collection("users").document(userID).collection("POSTEDRESOURCES").addDocument(data: [
+                        "creatorRef" : userID,
+                        "imageLink" : "TODO", //TODO
+                        "resourceDesc" : resourceDesc.text ?? "N/A",
+                "resourceName" : resourceName.text ?? "N/A", "time": timeStamp
+                    ]) {err in
+                        if let err = err {
+                            print("The document was invalid for some reason? \(err)")
+                        }
+                        else{
+                            print("Document added successfully.")
+                            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "OnEditResource"), object: nil)
+                            self.dismiss(animated:true, completion:nil)
+                        }
 
-    }
+                        }        }
+        
     }
     
 

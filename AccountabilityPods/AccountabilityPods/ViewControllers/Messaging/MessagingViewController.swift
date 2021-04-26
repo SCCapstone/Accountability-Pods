@@ -45,7 +45,7 @@ class MessagingViewController: UIViewController, UITableViewDelegate, UITableVie
         // set up refreshing functionality
         contactTable.refreshControl = refresh;
         refresh.addTarget(self, action: #selector(self.reload(_:)), for: .valueChanged);
-        refresh.attributedTitle = NSAttributedString(string: "Fetching users")
+        refresh.attributedTitle = NSAttributedString(string: "Fetching new messages")
     }
     
     // MARK: - Set up
@@ -324,8 +324,10 @@ class MessagingViewController: UIViewController, UITableViewDelegate, UITableVie
     /// - Parameter sender: the tapped object
     @IBAction func helpTapped(_ sender: Any) {
         // prepares and presents the pop up
-        let alertController = UIAlertController(title: "Messages Help", message: "Tap on user to view, send, and delete messages\nTo send message to a new user add them to your pod and they will appear", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Messages Help", message: "Tap on user to view, send, and delete messages\nTo send message to a new user add them to your pod and they will appear \nPull down page to refresh messages", preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title:"Got it!", style: .default, handler: nil))
-        self.present(alertController, animated: true)    }
+        self.present(alertController, animated: true)
+        
+    }
     
 }

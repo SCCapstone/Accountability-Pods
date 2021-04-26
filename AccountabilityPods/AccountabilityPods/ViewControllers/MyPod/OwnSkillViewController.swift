@@ -116,7 +116,7 @@ class OwnSkillViewController: UIViewController {
     ///
     /// - Parameter sender: the delete (trash) button
     @IBAction func onDelete(_ sender: Any) {
-        let alertController = UIAlertController(title: "Delete Post", message: "Would you like to delete your skill?", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Delete Skill", message: "Would you like to delete your skill?", preferredStyle: .alert)
         
         alertController.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
             print("Handle Ok logic here")

@@ -44,6 +44,8 @@ class AddSkillViewController: UIViewController, UITextViewDelegate, UITextFieldD
     
     /// Makes cosmetic changes to the name and description text fields
     func editBoxes() {
+        skillNameTextField.text = "Skill name ..."
+        skillDescriptionTextField.text = "Skill description ..."
         skillNameTextField.layer.cornerRadius = 15
         skillDescriptionTextField.layer.cornerRadius = 15
     }
@@ -85,26 +87,36 @@ class AddSkillViewController: UIViewController, UITextViewDelegate, UITextFieldD
     ///
     /// Paramter sender: the tapped object
     @IBAction func donePressed(_ sender: Any) {
-        // sends notification to OwnSkillViewController that the own skills table needs to be updated.
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "OnEditSkill"), object: nil)
-        // update the SKILLS collection in the database
-        _ = db.collection("users").document(userID).collection("SKILLS").addDocument(data: [
-                        "creatorRef" : userID,
-                        "skillName" : skillNameTextField.text ?? "N/A",
-                        "skillDescription" : skillDescriptionTextField.text ?? "N/A"
-                    ])
-        {err in
-                        if let err = err {
-                            print("The document was invalid for some reason? \(err)")
-                        }
-                        else{
-                            print("Document added successfully.")
-                            self.dismiss(animated:true, completion:nil)
-                        }
+        // check if text fields have appropriate values
+        if (skillNameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) == "" || skillNameTextField.text == "Skill name ..." || skillDescriptionTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) == "" || skillDescriptionTextField.text == "Skill description ...") {
+            // skill information has not been entered
+            let alertController = UIAlertController(title: "Need more info", message: "Skill name or skill description are missing. Please add this information", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title:"Got it!", style: .default, handler: nil))
+            self.present(alertController, animated: true)
+        } else {
+            // sends notification to OwnSkillViewController that the own skills table needs to be updated.
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "OnEditSkill"), object: nil)
+            // update the SKILLS collection in the database
+            _ = db.collection("users").document(userID).collection("SKILLS").addDocument(data: [
+                            "creatorRef" : userID,
+                            "skillName" : skillNameTextField.text ?? "N/A",
+                            "skillDescription" : skillDescriptionTextField.text ?? "N/A"
+                        ])
+            {err in
+                            if let err = err {
+                                print("The document was invalid for some reason? \(err)")
+                            }
+                            else{
+                                print("Document added successfully.")
+                                self.dismiss(animated:true, completion:nil)
+                            }
 
+            }
+            skillNameTextField.text = "Skill name ..."
+            skillDescriptionTextField.text = "Skill description ..."
+            
         }
-        skillNameTextField.text = "Skill name ..."
-        skillDescriptionTextField.text = "Skill description ..."
+        
     }
       
 

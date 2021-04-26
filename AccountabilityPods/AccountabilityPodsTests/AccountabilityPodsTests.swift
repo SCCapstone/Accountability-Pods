@@ -8,6 +8,7 @@
 
 import XCTest
 @testable import AccountabilityPods
+@testable import MessageKit
 
 class AccountabilityPodsTests: XCTestCase {
 
@@ -54,8 +55,6 @@ class SignUpViewTests: XCTestCase {
     func testSignUpFillersLoad(){
         XCTAssertEqual("First Name", sut.firstnameTextField!.placeholder!)
         XCTAssertEqual("Last Name", sut.lastnameTextField!.placeholder!)
-        XCTAssertEqual("Age", sut.ageTextField!.placeholder!)
-        XCTAssertEqual("Affiliation", sut.affiliationTextField!.placeholder!)
         XCTAssertEqual("Email", sut.emailTextField!.placeholder!)
         XCTAssertEqual("Password", sut.passwordTextField!.placeholder!)
     }
@@ -86,3 +85,155 @@ class SignUpViewTests: XCTestCase {
         
     }
 }
+
+class ChatViewControllerTests: XCTestCase {
+    
+    struct MockUser: SenderType {
+        var senderId: String
+        var displayName: String
+    }
+    
+    /*struct MockMessage: MessageType {
+
+        var messageId: String
+        var sender: SenderType {
+            return user
+        }
+        var sentDate: Date
+        var kind: MessageKind
+        var user: MockUser
+
+        private init(kind: MessageKind, user: MockUser, messageId: String) {
+            self.kind = kind
+            self.user = user
+            self.messageId = messageId
+            self.sentDate = Date()
+        }
+
+        init(text: String, user: MockUser, messageId: String) {
+            self.init(kind: .text(text), user: user, messageId: messageId)
+        }
+
+        init(attributedText: NSAttributedString, user: MockUser, messageId: String) {
+            self.init(kind: .attributedText(attributedText), user: user, messageId: messageId)
+        }
+    }*/
+    
+    class MockMessagesDataSource: MessagesDataSource {
+
+        var messages: [MessageType] = []
+        let senders: [MockUser] = [
+            MockUser(senderId: "sender_1", displayName: "Sender 1"),
+            MockUser(senderId: "sender_2", displayName: "Sender 2")
+        ]
+
+        var currentUser: MockUser {
+            return senders[0]
+        }
+
+        func currentSender() -> SenderType {
+            return currentUser
+        }
+
+        func numberOfSections(in messagesCollectionView: MessagesCollectionView) -> Int {
+            return messages.count
+        }
+
+        func messageForItem(at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> MessageType {
+            return messages[indexPath.section]
+        }
+
+    }
+    var sut: ChatViewController!
+    // swiftlint:disable weak_delegate
+    //private var layoutDelegate = MockLayoutDelegate()
+    // swiftlint:enable weak_delegate
+    // MARK: - Overridden Methods
+    override func setUp() {
+        super.setUp()
+
+        sut = ChatViewController()
+        //sut.messagesCollectionView.messagesLayoutDelegate = layoutDelegate
+       // sut.messagesCollectionView.messagesDisplayDelegate = layoutDelegate
+        _ = sut.view
+        sut.beginAppearanceTransition(true, animated: true)
+        sut.endAppearanceTransition()
+        sut.view.layoutIfNeeded()
+    }
+
+    override func tearDown() {
+        sut = nil
+
+        super.tearDown()
+    }
+    /*private func makeMessages(for senders: [MockUser]) -> [MessageType] {
+            return [MockMessage(text: "Text 1", user: senders[0], messageId: "test_id_1"),
+                    MockMessage(text: "Text 2", user: senders[1], messageId: "test_id_2")]
+        }*/
+
+    // MARK: - Test
+    func testNumberOfSectionWithoutData_isZero() {
+        let messagesDataSource = MockMessagesDataSource()
+        sut.messagesCollectionView.messagesDataSource = messagesDataSource
+
+        XCTAssertEqual(sut.messagesCollectionView.numberOfSections, 0)
+    }
+    /*func testNumberOfSection_isNumberOfMessages() {
+            let messagesDataSource = MockMessagesDataSource()
+            sut.messagesCollectionView.messagesDataSource = messagesDataSource
+            messagesDataSource.messages = makeMessages(for: messagesDataSource.senders)
+
+            sut.messagesCollectionView.reloadData()
+
+            let count = sut.messagesCollectionView.numberOfSections
+            let expectedCount = messagesDataSource.numberOfSections(in: sut.messagesCollectionView)
+
+            XCTAssertEqual(count, expectedCount)
+        }
+
+        func testNumberOfItemInSection_isOne() {
+            let messagesDataSource = MockMessagesDataSource()
+            sut.messagesCollectionView.messagesDataSource = messagesDataSource
+            messagesDataSource.messages = makeMessages(for: messagesDataSource.senders)
+
+            sut.messagesCollectionView.reloadData()
+
+            XCTAssertEqual(sut.messagesCollectionView.numberOfItems(inSection: 0), 1)
+            XCTAssertEqual(sut.messagesCollectionView.numberOfItems(inSection: 1), 1)
+        }
+
+        func testCellForItemWithTextData_returnsTextMessageCell() {
+            let messagesDataSource = MockMessagesDataSource()
+            sut.messagesCollectionView.messagesDataSource = messagesDataSource
+            messagesDataSource.messages.append(MockMessage(text: "Test",
+                                                           user: messagesDataSource.senders[0],
+                                                           messageId: "test_id"))
+
+            sut.messagesCollectionView.reloadData()
+
+            let cell = sut.messagesCollectionView.dataSource?.collectionView(sut.messagesCollectionView,
+                                                                             cellForItemAt: IndexPath(item: 0, section: 0))
+
+            XCTAssertNotNil(cell)
+            XCTAssertTrue(cell is TextMessageCell)
+        }
+
+        func testCellForItemWithAttributedTextData_returnsTextMessageCell() {
+            let messagesDataSource = MockMessagesDataSource()
+            sut.messagesCollectionView.messagesDataSource = messagesDataSource
+            let attributes = [NSAttributedString.Key.foregroundColor: UIColor.outgoingMessageLabel]
+            let attriutedString = NSAttributedString(string: "Test", attributes: attributes)
+            messagesDataSource.messages.append(MockMessage(attributedText: attriutedString,
+                                                           user: messagesDataSource.senders[0],
+                                                           messageId: "test_id"))
+
+            sut.messagesCollectionView.reloadData()
+
+            let cell = sut.messagesCollectionView.dataSource?.collectionView(sut.messagesCollectionView,
+                                                                             cellForItemAt: IndexPath(item: 0, section: 0))
+
+            XCTAssertNotNil(cell)
+            XCTAssertTrue(cell is TextMessageCell)
+        }*/
+}
+

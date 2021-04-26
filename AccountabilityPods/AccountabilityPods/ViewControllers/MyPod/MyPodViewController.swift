@@ -162,7 +162,7 @@ class MyPodViewController: UIViewController {
     /// - Parameter sender: the tapped object
     @IBAction func helpTapped(_ sender: Any) {
         // prepares and presents pop up
-        let alertController = UIAlertController(title: "My Profile Help", message: "View and edit your own posts, view and delete saved posts, view and organize contacts, add and remove skills\nTap settings in top right to change name and description or view tutorial for more detailed information", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "My Profile Help", message: "View and edit your own posts, view and delete saved posts, view and organize contacts, add and remove skills\nTap settings in top right to change name and description or view tutorial for more detailed information\nTap on + to add a post", preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title:"Got it!", style: .default, handler: nil))
         self.present(alertController, animated: true)
     }

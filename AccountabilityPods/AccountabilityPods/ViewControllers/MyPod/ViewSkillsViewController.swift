@@ -128,7 +128,18 @@ extension ViewSkillsViewController: UITableViewDataSource, UITableViewDelegate {
     func  tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 20
     }
-    
+    /// Sets the height of the space between  cells
+    ///
+    /// - Parameter:
+    ///   - tableView: the contact table
+    ///   - heightForHeaderInSection: the height of the space between cells
+    /// - Returns: the height (10) for the space between cells
+    func  tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        if section == skills.count - 1 {
+            return 20
+        }
+        return 0
+    }
     /// Shows and makes cosmetic changes to space between cells
     ///
     /// - Parameter:
@@ -136,6 +147,18 @@ extension ViewSkillsViewController: UITableViewDataSource, UITableViewDelegate {
     ///   - viewForHeaderInSection section: the index of the cell
     /// - Returns: the headerView with cosmetic changes
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView()
+        // changes background color of the header to be a clear space between cells
+        headerView.backgroundColor = UIColor.clear
+        return headerView
+    }
+    /// Shows and makes cosmetic changes to space between cells
+    ///
+    /// - Parameter:
+    ///   - tableView: the contact table
+    ///   - viewForHeaderInSection section: the index of the cell
+    /// - Returns: the headerView with cosmetic changes
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let headerView = UIView()
         // changes background color of the header to be a clear space between cells
         headerView.backgroundColor = UIColor.clear

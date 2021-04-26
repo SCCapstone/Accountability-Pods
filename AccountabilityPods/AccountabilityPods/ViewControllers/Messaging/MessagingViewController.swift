@@ -26,6 +26,10 @@ class MessagingViewController: UIViewController, UITableViewDelegate, UITableVie
     var contactsA = [Profile]()
     /// The username of the current user
     var userID  = Constants.User.sharedInstance.userID;
+    /// Whether refreshing is complete
+    var finishedRefreshing = true;
+    /// The refreshing feature
+    let refresh = UIRefreshControl()
     
     override func viewDidLoad() {
         // calls view did load when a contact is added or removed
@@ -38,6 +42,10 @@ class MessagingViewController: UIViewController, UITableViewDelegate, UITableVie
         // Assign UITableViewDelegate to the contacts table
         contactTable.delegate = self
         contactTable.dataSource =  self
+        // set up refreshing functionality
+        contactTable.refreshControl = refresh;
+        refresh.addTarget(self, action: #selector(self.reload(_:)), for: .valueChanged);
+        refresh.attributedTitle = NSAttributedString(string: "Fetching new messages")
     }
     
     // MARK: - Set up
@@ -94,22 +102,46 @@ class MessagingViewController: UIViewController, UITableViewDelegate, UITableVie
                         if user != self.userID && user.count > 0{
                             // check if user exists
                             let userRef = self.db.collection("users").document(user)
-                            userRef.getDocument { (document, err) in
-                                if let document = document, document.exists {
+                            userRef.getDocument { (existsdocument, err) in
+                                if let existsdocument = existsdocument, existsdocument.exists {
                                     // user exists
                                     // Check if user var is in contacts
                                     let contactRef = self.db.collection("users").document(self.userID).collection("CONTACTS").document(user)
-                                    contactRef.getDocument { (document, err) in
-                                        if let document = document, document.exists{
+                                    contactRef.getDocument { (userdocument, err) in
+                                        if let userdocument = userdocument, userdocument.exists{
                                             print("\(user) is already contact")
                                         } else {
                                             print("\(user) sent message but is not a contact")
-                                            // add user to array of contacts
-                                            let path = "users/" + user
-                                            let tempProfile = Profile()
-                                            self.contactsA.append(tempProfile)
-                                            tempProfile.readData(database: self.db, path: path, tableview: self.contactTable)
-                                            self.contactTable.reloadData()
+                                            // check if user has deleted messages
+                                            let userIndex = chatUsers.firstIndex(of: self.userID)
+                                            var showMsgFieldName = "showMsg"
+                                            if userIndex == 1 {
+                                                showMsgFieldName = "showMsg1"
+                                            }
+                                            //print("USER INDEX: \(userIndex ?? 2), field: \(showMsgFieldName)")
+                                            let threadPath = document.reference.path + "/thread"
+                                            // get all documents for thread
+                                            self.db.collection(threadPath).getDocuments { (messages, err) in
+                                                if let err = err {
+                                                    print("Error getting messages: \(err)")
+                                                } else {
+                                                    for message in messages!.documents {
+                                                        // if user is able to see a single document
+                                                        
+                                                        if message[showMsgFieldName] as? Int ?? 0 == 1 {
+                                                            print("not contact user has available message")
+                                                            let path = "users/" + user
+                                                            let tempProfile = Profile()
+                                                            self.contactsA.append(tempProfile)
+                                                            tempProfile.readData(database: self.db, path: path, tableview: self.contactTable)
+                                                            self.contactTable.reloadData()
+                                                            return
+                                                        }
+                                                    }
+                                                }
+                                                
+                                            }
+                                            
                                             
                                         }
                                     }                                
@@ -123,14 +155,31 @@ class MessagingViewController: UIViewController, UITableViewDelegate, UITableVie
                     }
                     
                 }
+                self.finishedRefreshing = true
             }
         }
+    }
+    /// Reloads the data when table is pulled down to refresh
+    @objc func reload(_ sender: Any) {
+        if(finishedRefreshing)
+        {
+            finishedRefreshing = false;
+            self.loadData();
+        }
+        refresh.endRefreshing();
     }
     /// Sets keyboard to hide when screen is tapped.
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
 
+    /// Returns number of sections for the table.
+    ///
+    /// - Parameter tableView: the contacts table
+    /// - Returns: the number of contacts in the array
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return self.contactsA.count
+    }
     // MARK: - Table functions
     
     /// Sets the number of rows in table determined by number of profiles in array.
@@ -138,10 +187,10 @@ class MessagingViewController: UIViewController, UITableViewDelegate, UITableVie
     /// - Parameters:
     ///   - tableView: the contacts table
     ///   - numberOfRowsInSection: the numnber of rows in the table
-    /// - Returns: the number of rows in the profile array
+    /// - Returns: 1
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //print("contacts count: \(contactsA.count)")
-        return contactsA.count
+        return 1
     }
     
     /// Creates the cell in the table with the info from the profile in the profile array.
@@ -154,10 +203,66 @@ class MessagingViewController: UIViewController, UITableViewDelegate, UITableVie
         // create cell using Helpers/ContactCell.swift class
         let cell = contactTable.dequeueReusableCell(withIdentifier: "contactName") as! ContactCell
         // get cell with given index
-        let contact = contactsA[indexPath.row]
-        // set the cell to have the information from the profile object
-        cell.setContact(profile: contact)
+        if indexPath.section < contactsA.count {
+            let contact = contactsA[indexPath.section]
+            // set the cell to have the information from the profile object
+            cell.setContact(profile: contact)
+            cell.layer.cornerRadius = 15
+        }
+        
         return cell
+    }
+    
+    /// Sets the height of the space between  cells
+    ///
+    /// - Parameter:
+    ///   - tableView: the contact table
+    ///   - heightForHeaderInSection: the height of the space between cells
+    /// - Returns: the height (20) for the space between cells
+    func  tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 0 {
+            return 20
+        }
+        return 10
+    }
+    
+    /// Sets the height of the space between  cells
+    ///
+    /// - Parameter:
+    ///   - tableView: the contact table
+    ///   - heightForHeaderInSection: the height of the space between cells
+    /// - Returns: the height (20) for the space between cells
+    func  tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        if section == contactsA.count - 1 {
+            return 20
+        }
+        return 10
+    }
+    
+    /// Shows and makes cosmetic changes to space between cells
+    ///
+    /// - Parameter:
+    ///   - tableView: the contact table
+    ///   - viewForHeaderInSection section: the index of the cell
+    /// - Returns: the headerView with cosmetic changes
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView()
+        // changes background color of the header to be a clear space between cells
+        headerView.backgroundColor = UIColor.clear
+        return headerView
+    }
+    
+    /// Shows and makes cosmetic changes to space between cells
+    ///
+    /// - Parameter:
+    ///   - tableView: the contact table
+    ///   - viewForHeaderInSection section: the index of the cell
+    /// - Returns: the headerView with cosmetic changes
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let headerView = UIView()
+        // changes background color of the header to be a clear space between cells
+        headerView.backgroundColor = UIColor.clear
+        return headerView
     }
     
     /// Transitions to chat for tap profile in table.
@@ -181,7 +286,7 @@ class MessagingViewController: UIViewController, UITableViewDelegate, UITableVie
         // sends tapped profile through segue to chat viewcontroller
         if segue.identifier == "ToChat" {
             let indexPath = self.contactTable.indexPathForSelectedRow
-            let profile = self.contactsA[(indexPath?.row)!]
+            let profile = self.contactsA[(indexPath?.section)!]
             if let dView = segue.destination as? ChatViewController {
                 dView.sendToProfile = profile
             }
@@ -197,45 +302,86 @@ class MessagingViewController: UIViewController, UITableViewDelegate, UITableVie
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         //delete your messages sent to a user
         if editingStyle == .delete {
-            //pull docs from both users
-            let userIDs = [userID, contactsA[indexPath.item].uid]
-                
-            let query = Constants.chatRefs.databaseChats.whereField("sender_id", in: userIDs)
-            query.getDocuments() { (querySnapshot, err) in
-                if let err = err {
-                    print("error getting documents: \(err)")
-                } else {
-                    print("\(querySnapshot!.documents)")
-                    for document in querySnapshot!.documents {
-                    let data = document.data()  as? [String: String]
-                    let id = data?["sender_id"]
-                    let rid = data?["receiver_id"]
-                    if id == self.userID && rid == self.contactsA[indexPath.item].uid {
-                        self.db.document(document.reference.path).delete() { err in if let err = err {
-                            print("Error ermoving document: \(err)")
-                        } else {
-                            print("Document successfully removed!")
-                            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "OutgoingMessagesDeleted"), object: nil)
+            //alert to confirm delete
+            let alertController = UIAlertController(title: "Delete Chat", message: "Would you like to clear your chat? If you're not contacts this user will be removed from messages completely.", preferredStyle: .alert)
+            
+            alertController.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
+                print("Handle Ok logic here")
+                    do {
+                        self.dismiss(animated:true, completion: {
+                                //reference Chat relationship for current user
+                                let query = Constants.chatRefs.databaseChats.whereField("users", arrayContains: self.userID)
+                                query.getDocuments() { (querySnapshot, err) in
+                                    if let err = err {
+                                        print("error getting documents: \(err)")
+                                    } else {
+                                        for doc in querySnapshot!.documents {
+                                            
+                                            let chat = Chat(dictionary: doc.data())
+                                            //find if this is the document for selected user
+                                            if(chat?.users.contains(self.contactsA[indexPath.section].uid ))! {
+                                                print("6574: \(doc.reference.path)")
+                                                let usersArray = doc["users"] as? Array ?? [""]
+                                                //which index the current user is in the documnet
+                                                let userIndex = usersArray.firstIndex(of: self.userID)
+                                                ///go through the thread of messages to change show message
+                                                doc.reference.collection("thread").getDocuments() { (querySnapshot, err) in
+                                                    if let err = err {
+                                                        print("Error getting documents: \(err)")
+                                                    }
+                                                    else {
+                                                        
+                                                        for document in querySnapshot!.documents {
+                                                            if userIndex == 0 {
+                                                                print("6575: \(document.reference.path)")
+                                                                document.reference.updateData(["showMsg": false])
+                                                                
+                                                            }
+                                                            else {
+                                                                print("6576: \(document.reference.path)")
+                                                                document.reference.updateData(["showMsg1": false])
+                                                            }
+                                                            
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            ///Remove the user from the table if they are not the current users contact
+                                let usersRef = self.db.collection("users").document(self.userID).collection("CONTACTS")
+                            usersRef.getDocuments() {(querySnapshot, err) in
+                                if let err = err {
+                                    print("DOCUMENTs DOES EXIST \(err)")
+                                } else {
+                                    //check if document of other user is in the contacts
+                                    let isContact = self.db.collection("users").document(self.userID).collection("CONTACTS").document(self.contactsA[indexPath.section].uid)
+                                    isContact.getDocument { (document, err) in
+                                        if let document = document, document.exists{
+                                            print("\(self.contactsA[indexPath.section].uid) is already contact")
+                                        } else {
+                                            //remove from the table view
+                                            self.contactsA.remove(at: indexPath.section)
+                                            tableView.deleteRows(at: [indexPath], with: .fade)
+                                            print("REMOVED from table view")
+                                        }
+                                    }
+                                }
                             }
-                        }
-                        }
-                    else if id == self.contactsA[indexPath.item].uid && rid == self.userID {
-                        self.db.document(document.reference.path).delete() { err in if let err = err {
-                            print("Error ermoving document: \(err)")
-                        } else {
-                            print("Document successfully removed!")
-                            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "IncomingMessagesDeleted"), object: nil)
-                            }
-                        }
+                    })
+                    //try Auth.auth().signOut()
+                    } catch {
+                    print(error)
                     }
-                    }
-                }
-            }
+                }))
+            alertController.addAction(UIAlertAction(title:"No", style: .default, handler: nil))
+            self.present(alertController, animated: true)
+            
         }
-                else if editingStyle == .insert {
-                // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
-            }
+
         }
+   
     
     // MARK: - Pop Ups
     
@@ -244,8 +390,10 @@ class MessagingViewController: UIViewController, UITableViewDelegate, UITableVie
     /// - Parameter sender: the tapped object
     @IBAction func helpTapped(_ sender: Any) {
         // prepares and presents the pop up
-        let alertController = UIAlertController(title: "Messages Help", message: "Tap on user to view, send, and delete messages\nTo send message to a new user add them to your pod and they will appear", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Messages Help", message: "Tap on user to view, send, and delete messages\nTo send message to a new user add them to your pod and they will appear \nPull down page to refresh messages", preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title:"Got it!", style: .default, handler: nil))
-        self.present(alertController, animated: true)    }
+        self.present(alertController, animated: true)
+        
+    }
     
 }

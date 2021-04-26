@@ -68,15 +68,6 @@ class ProfileResourceViewController: UIViewController {
             count += 1
         }
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
 extension ProfileResourceViewController: UITableViewDataSource, UITableViewDelegate {
@@ -98,8 +89,32 @@ extension ProfileResourceViewController: UITableViewDataSource, UITableViewDeleg
     func  tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 20
     }
+    /// Sets the height for footer, only present in last cell
+    ///
+    /// - Parameter:
+    ///   - tableView: the contact table
+    ///   - heightForHeaderInSection: the height of the space between cells
+    /// - Returns: the height (10) for the space between cells
+    func  tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        if section == resources.count - 1 {
+            return 20
+        }
+        return 0
+    }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView()
+        headerView.backgroundColor = UIColor.clear
+        return headerView
+    }
+    /// Shows and makes cosmetic changes to space between cells
+    ///
+    /// - Parameter:
+    ///   - tableView: the contact table
+    ///   - viewForHeaderInSection section: the index of the cell
+    /// - Returns: the headerView with cosmetic changes
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let headerView = UIView()
+        // changes background color of the header to be a clear space between cells
         headerView.backgroundColor = UIColor.clear
         return headerView
     }

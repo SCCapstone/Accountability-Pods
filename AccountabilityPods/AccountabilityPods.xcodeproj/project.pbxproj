@@ -192,10 +192,10 @@
 			children = (
 				685A332A2616B0BB00B0B54C /* PushNotificationManager.swift */,
 				685A332F2616B3A400B0B54C /* PushNotificationSender.swift */,
+				C3299C5E2571324800D2C3D7 /* Constants.swift */,
 				D4E7E26225E1895C00E3E386 /* ProfileCell.swift */,
 				AE77454625797C46000CB90C /* ResourceCell.swift */,
 				C3299C3C2570660E00D2C3D7 /* Utilities.swift */,
-				C3299C5E2571324800D2C3D7 /* Constants.swift */,
 				AE49710F257A467F008CCEEB /* SkillCell.swift */,
 				68CEA2F925E86651004F9F3A /* ContactCell.swift */,
 			);
@@ -811,13 +811,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = AccountabilityPods/AccountabilityPods.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 9G4LYUM2QK;
 				INFOPLIST_FILE = AccountabilityPods/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.5;
 				PRODUCT_BUNDLE_IDENTIFIER = cg.AccountabilityPods;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -832,13 +833,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = AccountabilityPods/AccountabilityPods.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 9G4LYUM2QK;
 				INFOPLIST_FILE = AccountabilityPods/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.5;
 				PRODUCT_BUNDLE_IDENTIFIER = cg.AccountabilityPods;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

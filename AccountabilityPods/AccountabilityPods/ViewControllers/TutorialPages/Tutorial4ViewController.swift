@@ -10,30 +10,26 @@ import UIKit
 
 class Tutorial4ViewController: UIViewController {
 
+    // MARK: - Set up
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        // page only works with light mode
         overrideUserInterfaceStyle = .light
-        // Do any additional setup after loading the view.
     }
     
+    /// Hides keyboard when user taps on other part of screen
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    // Closes Tutorial
+    ///
+    /// - Parameter sender: the done button
     @IBAction func doneTapped(_ sender: Any) {
         let nextViewController = storyboard?.instantiateViewController(identifier: "toHome") as? UITabBarController
         
         view.window?.rootViewController = nextViewController
         view.window?.makeKeyAndVisible()
     }
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
-    }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

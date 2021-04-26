@@ -35,7 +35,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         table.refreshControl = refresh;
 
         refresh.addTarget(self, action: #selector(self.reload(_:)), for: .valueChanged);
-        refresh.attributedTitle = NSAttributedString(string: "Fetching users")
+        refresh.attributedTitle = NSAttributedString(string: "Fetching new messages")
     }
     
     private func setupData() {
@@ -200,14 +200,6 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.view.endEditing(true)
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    
 
 }

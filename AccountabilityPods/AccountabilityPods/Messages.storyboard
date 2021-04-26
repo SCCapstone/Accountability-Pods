@@ -22,13 +22,17 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="47"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Messaging" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mrP-Mb-qNv">
-                                        <rect key="frame" x="156.5" y="10" width="101" height="27.5"/>
+                                        <rect key="frame" x="156.5" y="10" width="101" height="27"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="20"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qgo-IN-Mak" userLabel="Help">
-                                        <rect key="frame" x="5" y="11.5" width="25" height="24"/>
+                                        <rect key="frame" x="15" y="11.5" width="24" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="24" id="10d-0z-kg0"/>
+                                            <constraint firstAttribute="width" constant="24" id="g8P-ps-VXp"/>
+                                        </constraints>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal">
                                             <imageReference key="image" image="questionmark.circle" catalog="system" symbolScale="large"/>
@@ -44,8 +48,9 @@
                                     <constraint firstItem="mrP-Mb-qNv" firstAttribute="centerY" secondItem="uqL-m4-353" secondAttribute="centerY" id="2Ky-Cf-NxI"/>
                                     <constraint firstAttribute="height" constant="47" id="5Ue-gh-XBI"/>
                                     <constraint firstItem="Qgo-IN-Mak" firstAttribute="centerY" secondItem="uqL-m4-353" secondAttribute="centerY" id="8SN-Nw-yib"/>
-                                    <constraint firstItem="Qgo-IN-Mak" firstAttribute="leading" secondItem="WvT-0V-VnZ" secondAttribute="leading" constant="5" id="ELn-t6-XSy"/>
+                                    <constraint firstItem="Qgo-IN-Mak" firstAttribute="leading" secondItem="WvT-0V-VnZ" secondAttribute="leading" constant="15" id="ELn-t6-XSy"/>
                                     <constraint firstItem="mrP-Mb-qNv" firstAttribute="centerX" secondItem="uqL-m4-353" secondAttribute="centerX" id="jwH-ej-J75"/>
+                                    <constraint firstItem="mrP-Mb-qNv" firstAttribute="top" secondItem="Qgo-IN-Mak" secondAttribute="bottom" constant="-25.5" id="zOH-c7-lc8"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ySY-Zb-WHp">

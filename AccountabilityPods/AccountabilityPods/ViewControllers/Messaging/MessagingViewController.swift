@@ -207,7 +207,6 @@ class MessagingViewController: UIViewController, UITableViewDelegate, UITableVie
             let contact = contactsA[indexPath.section]
             // set the cell to have the information from the profile object
             cell.setContact(profile: contact)
-            cell.layer.cornerRadius = 15
         }
         
         return cell
@@ -302,6 +301,7 @@ class MessagingViewController: UIViewController, UITableViewDelegate, UITableVie
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         //delete your messages sent to a user
         if editingStyle == .delete {
+            
             //alert to confirm delete
             let alertController = UIAlertController(title: "Delete Chat", message: "Would you like to clear your chat? If you're not contacts this user will be removed from messages completely.", preferredStyle: .alert)
             

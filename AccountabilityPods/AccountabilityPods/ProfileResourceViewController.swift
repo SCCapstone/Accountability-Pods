@@ -5,30 +5,42 @@
 //  Created by MADRID, VASCO MADRID on 2/24/21.
 //  Copyright © 2021 CapstoneGroup. All rights reserved.
 //
+//  Description: Manages the table of another users post on their profile
 
 import UIKit
 import Firebase
 class ProfileResourceViewController: UIViewController {
-
+    // MARK: - Class Variable
+    
+    /// the resource table
     @IBOutlet weak var tableView: UITableView!
+    /// firestore database
     let db = Firestore.firestore()
+    /// array of resources to be displayed on the table
     var resources: [Resource] = []
+    /// the profile object for the user
     var profile = Profile()
     
+    // MARK: - Set up
+    
     override func viewDidLoad() {
-        
         super.viewDidLoad()
+        /// Page only shows light mode
         overrideUserInterfaceStyle = .light
+        /// Populates resources array with other
         self.generateArray()
+        /// sets up table functionality
         tableView.delegate = self
         tableView.dataSource = self
-        // Do any additional setup after loading the view.
     }
+    
+    /// hides keyboard when other part of screen is tapped
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
+    
+    /// Populates resources array with resource objects from database
     func generateArray(){
-        //print("HEREHERHERHERHERHE" + self.profile.uid)
         resources = []
         if profile.uid != "" {
             db.collection("users").document(profile.uid).collection("POSTEDRESOURCES").getDocuments() { (querySnapshot, err) in
@@ -47,6 +59,8 @@ class ProfileResourceViewController: UIViewController {
             }
         }
     }
+    
+    /// Does linear sort on resource array 
     func sortResources()
     {
         var count = 0

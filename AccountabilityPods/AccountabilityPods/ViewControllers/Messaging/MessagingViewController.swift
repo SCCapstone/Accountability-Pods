@@ -173,6 +173,13 @@ class MessagingViewController: UIViewController, UITableViewDelegate, UITableVie
         self.view.endEditing(true)
     }
 
+    /// Returns number of sections for the table.
+    ///
+    /// - Parameter tableView: the contacts table
+    /// - Returns: the number of contacts in the array
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return self.contactsA.count
+    }
     // MARK: - Table functions
     
     /// Sets the number of rows in table determined by number of profiles in array.
@@ -180,10 +187,10 @@ class MessagingViewController: UIViewController, UITableViewDelegate, UITableVie
     /// - Parameters:
     ///   - tableView: the contacts table
     ///   - numberOfRowsInSection: the numnber of rows in the table
-    /// - Returns: the number of rows in the profile array
+    /// - Returns: 1
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //print("contacts count: \(contactsA.count)")
-        return contactsA.count
+        return 1
     }
     
     /// Creates the cell in the table with the info from the profile in the profile array.
@@ -196,13 +203,60 @@ class MessagingViewController: UIViewController, UITableViewDelegate, UITableVie
         // create cell using Helpers/ContactCell.swift class
         let cell = contactTable.dequeueReusableCell(withIdentifier: "contactName") as! ContactCell
         // get cell with given index
-        if indexPath.row < contactsA.count {
-            let contact = contactsA[indexPath.row]
+        if indexPath.section < contactsA.count {
+            let contact = contactsA[indexPath.section]
             // set the cell to have the information from the profile object
             cell.setContact(profile: contact)
+            cell.layer.cornerRadius = 15
         }
         
         return cell
+    }
+    
+    /// Sets the height of the space between  cells
+    ///
+    /// - Parameter:
+    ///   - tableView: the contact table
+    ///   - heightForHeaderInSection: the height of the space between cells
+    /// - Returns: the height (20) for the space between cells
+    func  tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 10
+    }
+    
+    /// Sets the height of the space between  cells
+    ///
+    /// - Parameter:
+    ///   - tableView: the contact table
+    ///   - heightForHeaderInSection: the height of the space between cells
+    /// - Returns: the height (20) for the space between cells
+    func  tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 10
+    }
+    
+    /// Shows and makes cosmetic changes to space between cells
+    ///
+    /// - Parameter:
+    ///   - tableView: the contact table
+    ///   - viewForHeaderInSection section: the index of the cell
+    /// - Returns: the headerView with cosmetic changes
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView()
+        // changes background color of the header to be a clear space between cells
+        headerView.backgroundColor = UIColor.clear
+        return headerView
+    }
+    
+    /// Shows and makes cosmetic changes to space between cells
+    ///
+    /// - Parameter:
+    ///   - tableView: the contact table
+    ///   - viewForHeaderInSection section: the index of the cell
+    /// - Returns: the headerView with cosmetic changes
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let headerView = UIView()
+        // changes background color of the header to be a clear space between cells
+        headerView.backgroundColor = UIColor.clear
+        return headerView
     }
     
     /// Transitions to chat for tap profile in table.
@@ -226,7 +280,7 @@ class MessagingViewController: UIViewController, UITableViewDelegate, UITableVie
         // sends tapped profile through segue to chat viewcontroller
         if segue.identifier == "ToChat" {
             let indexPath = self.contactTable.indexPathForSelectedRow
-            let profile = self.contactsA[(indexPath?.row)!]
+            let profile = self.contactsA[(indexPath?.section)!]
             if let dView = segue.destination as? ChatViewController {
                 dView.sendToProfile = profile
             }
@@ -256,9 +310,11 @@ class MessagingViewController: UIViewController, UITableViewDelegate, UITableVie
                                         print("error getting documents: \(err)")
                                     } else {
                                         for doc in querySnapshot!.documents {
+                                            
                                             let chat = Chat(dictionary: doc.data())
                                             //find if this is the document for selected user
-                                            if(chat?.users.contains(self.contactsA[indexPath.item].uid ?? "Can't Find Chat Conversation"))! {
+                                            if(chat?.users.contains(self.contactsA[indexPath.section].uid ))! {
+                                                print("6574: \(doc.reference.path)")
                                                 let usersArray = doc["users"] as? Array ?? [""]
                                                 //which index the current user is in the documnet
                                                 let userIndex = usersArray.firstIndex(of: self.userID)
@@ -268,11 +324,15 @@ class MessagingViewController: UIViewController, UITableViewDelegate, UITableVie
                                                         print("Error getting documents: \(err)")
                                                     }
                                                     else {
+                                                        
                                                         for document in querySnapshot!.documents {
                                                             if userIndex == 0 {
+                                                                print("6575: \(document.reference.path)")
                                                                 document.reference.updateData(["showMsg": false])
+                                                                
                                                             }
                                                             else {
+                                                                print("6576: \(document.reference.path)")
                                                                 document.reference.updateData(["showMsg1": false])
                                                             }
                                                             
@@ -290,13 +350,13 @@ class MessagingViewController: UIViewController, UITableViewDelegate, UITableVie
                                     print("DOCUMENTs DOES EXIST \(err)")
                                 } else {
                                     //check if document of other user is in the contacts
-                                    let isContact = self.db.collection("users").document(self.userID).collection("CONTACTS").document(self.contactsA[indexPath.item].uid)
+                                    let isContact = self.db.collection("users").document(self.userID).collection("CONTACTS").document(self.contactsA[indexPath.section].uid)
                                     isContact.getDocument { (document, err) in
                                         if let document = document, document.exists{
-                                            print("\(self.contactsA[indexPath.item].uid) is already contact")
+                                            print("\(self.contactsA[indexPath.section].uid) is already contact")
                                         } else {
                                             //remove from the table view
-                                            self.contactsA.remove(at: indexPath.row)
+                                            self.contactsA.remove(at: indexPath.section)
                                             tableView.deleteRows(at: [indexPath], with: .fade)
                                             print("REMOVED from table view")
                                         }

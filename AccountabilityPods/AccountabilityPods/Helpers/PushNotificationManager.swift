@@ -14,6 +14,7 @@ import UserNotifications
 class PushNotificationManager: NSObject, MessagingDelegate, UNUserNotificationCenterDelegate {
     //var userN: String
     let userName: String
+    var window: UIWindow?
     
     init(userName: String) {
         self.userName =  userName
@@ -59,12 +60,74 @@ class PushNotificationManager: NSObject, MessagingDelegate, UNUserNotificationCe
     
     //in app messaging notifcation
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        completionHandler([.alert, .badge, .sound])
+        //let topMostViewController = UIApplication.shared.topMostViewController()
+        if self.window?.rootViewController?.topViewController is ChatViewController {
+            completionHandler([])
+        } else{
+            completionHandler([.alert, .badge, .sound])
+        }
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         //NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ContactsChanged"), object: nil)
+        let storyboard = UIStoryboard(name: "Messages", bundle: nil)
+        if let chatVC = storyboard.instantiateViewController(withIdentifier: "ChatViewController") as? ChatViewController, let navController = self.window?.rootViewController as? UINavigationController {
+            navController.pushViewController(chatVC, animated: true)
+        }
             print(response)
         }
     
 }
+
+extension UIViewController {
+    var topViewController: UIViewController? {
+        return self.topViewController(currentViewController: self)
+    }
+
+    private func topViewController(currentViewController: UIViewController) -> UIViewController {
+        if let tabBarController = currentViewController as? UITabBarController,
+            let selectedViewController = tabBarController.selectedViewController {
+            return self.topViewController(currentViewController: selectedViewController)
+        } else if let navigationController = currentViewController as? UINavigationController,
+            let visibleViewController = navigationController.visibleViewController {
+            return self.topViewController(currentViewController: visibleViewController)
+       } else if let presentedViewController = currentViewController.presentedViewController {
+            return self.topViewController(currentViewController: presentedViewController)
+       } else {
+            return currentViewController
+        }
+    }
+}
+/*extension UIViewController {
+    func topMostViewController() -> UIViewController {
+        if let navigation = self as? UINavigationController {
+            return navigation.visibleViewController!.topMostViewController()
+        }
+            
+        if let tab = self as? UITabBarController {
+            if let selectedTab = tab.selectedViewController {
+                return selectedTab.topMostViewController()
+            }
+            return tab.topMostViewController()
+        }
+        if self.presentedViewController == nil {
+            return self
+        }
+        if let navigation = self.presentedViewController as? UINavigationController {
+            return navigation.visibleViewController?.topMostViewController() ?? navigation
+        }
+        if let tab = self.presentedViewController as? UITabBarController {
+            if let selectedTab = tab.selectedViewController {
+                return selectedTab.topMostViewController()
+            }
+            return tab.topMostViewController()
+        }
+        return self.presentedViewController!.topMostViewController()
+    }
+}
+
+extension UIApplication {
+    func topMostViewController() -> UIViewController? {
+        return UIApplication.shared.windows.filter {$0.isKeyWindow }.first?.rootViewController?.topMostViewController()
+    }
+}*/

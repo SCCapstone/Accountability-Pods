@@ -302,7 +302,9 @@
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LGj-mD-FRQ" userLabel="passwordTextField">
                                         <rect key="frame" x="0.0" y="54" width="394" height="34"/>
-                                        <accessibility key="accessibilityConfiguration" identifier="passwordTextField"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="lpasswordTextField">
+                                            <bool key="isElement" value="YES"/>
+                                        </accessibility>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="34" id="ZfZ-mD-DAp"/>
                                         </constraints>
@@ -1456,6 +1458,7 @@
                                                 <constraint firstItem="to9-bR-TC2" firstAttribute="centerX" secondItem="LG7-nZ-iPf" secondAttribute="centerX" id="olo-tt-sEB"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <accessibility key="accessibilityConfiguration" identifier="resourceCell"/>
                                         <connections>
                                             <outlet property="resourceDesc" destination="MOc-QL-oN1" id="tIS-q9-PGA"/>
                                             <outlet property="resourceName" destination="to9-bR-TC2" id="kiK-jv-NBS"/>
@@ -2121,7 +2124,7 @@
         <segue reference="f8s-lp-j3i"/>
         <segue reference="leE-kP-HDT"/>
         <segue reference="g9z-kc-Y9I"/>
-        <segue reference="Jcs-tv-78Z"/>
+        <segue reference="4kW-um-cGD"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="bubble_full" width="56" height="35"/>

@@ -5,7 +5,6 @@
 //  Created by duncan evans on 2/12/21.
 //  Copyright © 2021 CapstoneGroup. All rights reserved.
 //
-
 import UIKit
 import Firebase
 
@@ -15,6 +14,7 @@ struct ResourceGroup: Hashable {
     let name: String
     var resources: [ResourceHashable]
 }
+// Unhashed version of the previous struct
 
 struct ResourceGroupUnhashed {
     let name: String
@@ -28,6 +28,8 @@ class ResourceViewCollectionVC: UIViewController {
         case main
     }
     let db = Firestore.firestore()
+        // The actual data used for the collection view cells
+
     var data: UICollectionViewDiffableDataSource<ViewSection, ListType>!
     
     // Define the various arrays stored here-- this is not optimal, but it is acceptable.
@@ -43,7 +45,8 @@ class ResourceViewCollectionVC: UIViewController {
     let alert = UIAlertController(title: "Create Group", message: "Enter your group name.\nEmpty groups will be deleted on refresh.", preferredStyle: .alert)
     
     
-    
+       // Shows the alert to create a group
+ 
     @IBAction func createGroup(_ sender: Any) {
         alert.textFields![0].text = ""
         self.present(alert, animated: true, completion: nil)
@@ -64,7 +67,8 @@ class ResourceViewCollectionVC: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(self.genArray), name: NSNotification.Name(rawValue: "SavedResourceChange"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.update), name: NSNotification.Name(rawValue: "ResourceAsyncFinished"), object: nil)
         
-        
+       // Alert allows the user to create groups via a popup
+
         alert.addTextField {
             (textField) in
             textField.text = ""
@@ -92,12 +96,13 @@ class ResourceViewCollectionVC: UIViewController {
         overrideUserInterfaceStyle = .light
         //Populate both the grouped and ungrouped resource arrays
         genArray()
-        
+        // Establishes the layout for the collection
         let layoutConfig = UICollectionLayoutListConfiguration(appearance: .insetGrouped);
         let listLayout = UICollectionViewCompositionalLayout.list(using: layoutConfig);
         
         collectionView.collectionViewLayout = listLayout
         
+        // Creates the cell template for resources
         let resourceCellReg = UICollectionView.CellRegistration<UICollectionViewListCell, ResourceHashable> {
             (cell, indexPath, resource) in
             
@@ -107,7 +112,7 @@ class ResourceViewCollectionVC: UIViewController {
             
             cell.contentConfiguration = contents
         }
-        
+        // Creates the cell template for groups
         let groupCellReg = UICollectionView.CellRegistration<UICollectionViewListCell, ResourceGroup> {
             (cell, indexPath, group) in
             var contents = cell.defaultContentConfiguration()
@@ -121,7 +126,7 @@ class ResourceViewCollectionVC: UIViewController {
         }
   
         
-        
+          // Establishes which cell should be used for the given data      
         data = UICollectionViewDiffableDataSource<ViewSection, ListType>(collectionView: collectionView) {
             (collectionView, indexPath, listType) -> UICollectionViewCell? in
             switch listType {
@@ -138,7 +143,8 @@ class ResourceViewCollectionVC: UIViewController {
         data.apply(snapshotMain,animatingDifferences: false)
         
         var snapshotSection = NSDiffableDataSourceSectionSnapshot<ListType>()
-        
+        // Not strictly necessary as this is only if cached information is present which doesn't happen in standard operation,
+        // however execution is fast enough normally that it is good to keep in case it is added.
         for group in groups {
             
             let groupItem = ListType.group(group)
@@ -160,7 +166,8 @@ class ResourceViewCollectionVC: UIViewController {
         self.collectionView.reloadData()
         
         
-       
+        // Assigns itself as the delegate for click and drag functions, enables drag controls
+
         collectionView.delegate = self;
         collectionView.dragDelegate = self;
         collectionView.dropDelegate = self;
@@ -171,7 +178,7 @@ class ResourceViewCollectionVC: UIViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
-    
+    // Refreshes the view if dragged up
     @objc func reload(_ sender: Any) {
         if(finishedRefreshing)
         {
@@ -181,6 +188,7 @@ class ResourceViewCollectionVC: UIViewController {
         refresh.endRefreshing();
     }
     
+    // Updates and shows the collectionview with the provided arrays
     @objc func update()
     {
         
@@ -353,7 +361,8 @@ class ResourceViewCollectionVC: UIViewController {
        
         
     }
-    
+    // Segues to the profile that is selected
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showResourceSegue"
         {
@@ -369,7 +378,7 @@ class ResourceViewCollectionVC: UIViewController {
             return
         }
     }
-    
+    // Used by the alert to create the group, 
     func addGroup() {
         if(self.inputString != "")
         {
@@ -394,9 +403,11 @@ class ResourceViewCollectionVC: UIViewController {
 extension ResourceViewCollectionVC: UICollectionViewDelegate {
     
     
-    
+        // This handles transitioning to profile if it is clicked
+
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
     {
+
         guard let selectedResource = data.itemIdentifier(for:indexPath) else {
             collectionView.deselectItem(at: indexPath, animated: true)
             return
@@ -421,7 +432,7 @@ extension ResourceViewCollectionVC: UICollectionViewDelegate {
     
     
 }
-
+// Handles the drag functionality
 @available(iOS 14.0, *)
 extension ResourceViewCollectionVC: UICollectionViewDragDelegate {
     func collectionView(_ collectionView: UICollectionView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
@@ -445,15 +456,18 @@ extension ResourceViewCollectionVC: UICollectionViewDragDelegate {
         return [draggedItem]
     }
 }
+// Handles dropping
 @available(iOS 14.0, *)
 extension ResourceViewCollectionVC: UICollectionViewDropDelegate {
-    
+      // Determines what will be done with the dragged item
+  
     func collectionView(_ collectionView: UICollectionView, dropSessionDidUpdate session: UIDropSession, withDestinationIndexPath destinationIndexPath: IndexPath?) -> UICollectionViewDropProposal {
         if collectionView.hasActiveDrag {
             return UICollectionViewDropProposal(operation: .move, intent: .unspecified)
         }
         return UICollectionViewDropProposal(operation: .forbidden)
     }
+    // Actually changes where the items are related to groups, refreshes the view
     func collectionView(_ collectionView: UICollectionView, performDropWith coordinator: UICollectionViewDropCoordinator) {
         var destinationPath: IndexPath
         
@@ -563,5 +577,3 @@ extension ResourceViewCollectionVC: UICollectionViewDropDelegate {
     
 }
 }
-
-

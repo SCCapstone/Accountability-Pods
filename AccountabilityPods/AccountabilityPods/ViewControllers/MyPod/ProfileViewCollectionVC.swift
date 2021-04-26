@@ -64,8 +64,10 @@ class ProfileViewCollectionVC: UIViewController {
             let textField = alert?.textFields![0]
             if(textField != nil && textField!.text != "" )
             {
+                self.inputString = ""
                 self.inputString = textField!.text as! String
                 print(self.inputString)
+                textField!.text = ""
                 self.addGroup()
             }
         }))
@@ -248,7 +250,7 @@ class ProfileViewCollectionVC: UIViewController {
     }
     // Shows the alert to create a group
     @IBAction func createGroup(_ sender: Any) {
-        
+        alert.textFields![0].text = ""
         self.present(alert, animated: true, completion: nil)
         
     }

@@ -1233,7 +1233,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WFo-5e-CjC">
-                                <rect key="frame" x="20" y="0.0" width="374" height="533"/>
+                                <rect key="frame" x="20" y="0.0" width="374" height="513"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -1285,7 +1285,7 @@
                         <color key="backgroundColor" red="0.25367057320000003" green="0.31102222200000001" blue="0.2352984548" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="WFo-5e-CjC" firstAttribute="top" secondItem="4b8-lC-gmc" secondAttribute="top" id="EdA-ze-tCz"/>
-                            <constraint firstItem="WFo-5e-CjC" firstAttribute="bottom" secondItem="LrB-ry-hXC" secondAttribute="bottom" constant="20" id="FNX-Iq-Rws"/>
+                            <constraint firstItem="WFo-5e-CjC" firstAttribute="bottom" secondItem="LrB-ry-hXC" secondAttribute="bottom" id="FNX-Iq-Rws"/>
                             <constraint firstItem="LrB-ry-hXC" firstAttribute="trailing" secondItem="WFo-5e-CjC" secondAttribute="trailing" constant="20" id="Mst-w9-2UI"/>
                             <constraint firstItem="WFo-5e-CjC" firstAttribute="leading" secondItem="LrB-ry-hXC" secondAttribute="leading" constant="20" id="NZa-1G-owc"/>
                         </constraints>

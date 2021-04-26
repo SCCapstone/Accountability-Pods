@@ -220,6 +220,9 @@ class MessagingViewController: UIViewController, UITableViewDelegate, UITableVie
     ///   - heightForHeaderInSection: the height of the space between cells
     /// - Returns: the height (20) for the space between cells
     func  tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 0 {
+            return 20
+        }
         return 10
     }
     
@@ -230,6 +233,9 @@ class MessagingViewController: UIViewController, UITableViewDelegate, UITableVie
     ///   - heightForHeaderInSection: the height of the space between cells
     /// - Returns: the height (20) for the space between cells
     func  tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        if section == contactsA.count - 1 {
+            return 20
+        }
         return 10
     }
     

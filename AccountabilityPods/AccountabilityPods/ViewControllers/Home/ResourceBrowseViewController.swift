@@ -174,14 +174,46 @@ extension ResourceBrowseViewController: UITableViewDataSource, UITableViewDelega
         return cell
         
     }
-    func  tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 20
-    }
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    /// Shows and makes cosmetic changes to space between cells
+    ///
+    /// - Parameter:
+    ///   - tableView: the contact table
+    ///   - viewForHeaderInSection section: the index of the cell
+    /// - Returns: the headerView with cosmetic changes
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let headerView = UIView()
+        // changes background color of the header to be a clear space between cells
         headerView.backgroundColor = UIColor.clear
         return headerView
     }
+    /// Sets the height of the space between  cells
+    ///
+    /// - Parameter:
+    ///   - tableView: the contact table
+    ///   - heightForHeaderInSection: the height of the space between cells
+    /// - Returns: the height (10) for the space between cells
+    func  tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        if section == resources.count - 1 {
+            return 20
+        }
+        return 0
+    }
+    func  tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 20
+    }
+    /// Shows and makes cosmetic changes to space between cells
+    ///
+    /// - Parameter:
+    ///   - tableView: the skills table
+    ///   - viewForHeaderInSection section: the index of the cell
+    /// - Returns: the headerView with cosmetic changes
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView()
+        // changes background color of the header to be a clear space between cells
+        headerView.backgroundColor = UIColor.clear
+        return headerView
+    }
+   
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.performSegue(withIdentifier: "showResourceSegue", sender: Any?.self)

@@ -36,6 +36,7 @@ class ProfileViewController: UIViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
+    // segues to either the resource or skill view
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if let vc = segue.destination as? ProfileResourceViewController
@@ -48,14 +49,14 @@ class ProfileViewController: UIViewController {
         }
         
     }
-    
+    // Sets the name of the profile
     func setName() {
         nameLabel.text = profile.firstName + " " + profile.lastName
         usernameLabel.text = "@" + profile.uid
         descriptionLabel.text = profile.description
         
     }
-    
+    // Enables the contact button if it is not the creator's profile. Additionally, switches between add and remove dependent on state
     func setContactButton(addOrRemove: String) {
         if profile.uid == userID {
             // if you are viewing your own profile you cannot add or remove as a contact
@@ -99,7 +100,7 @@ class ProfileViewController: UIViewController {
         }
         
     }
-    
+    // Used to add the contact to the user's saved contacts
     @IBAction func addContact(_ sender: Any) {
         db.collection("users").document(userID).collection("CONTACTS").document(profile.uid).setData(["userRef": profile.uid]) { err in
             if let err = err {
@@ -111,6 +112,7 @@ class ProfileViewController: UIViewController {
         }
         
     }
+    // Lets the user remove the contact
     @IBAction func removeContact(_ sender: Any) {
         db.collection("users").document(userID).collection("CONTACTS").document(profile.uid).delete() { err in
             if let err = err {
@@ -123,7 +125,8 @@ class ProfileViewController: UIViewController {
             
         }
     }
-    
+
+    // Used to display the containers for resources and skills
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         UIView.animate(withDuration: 0.1, animations: {
@@ -131,24 +134,14 @@ class ProfileViewController: UIViewController {
             self.skillsContainer.alpha = 0;
         })
     }
-    
+    // Don't refresh the contacts view unless contacts actually get changed
     override func viewDidDisappear(_ animated: Bool) {
         if(contactsChanged)
         {
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ContactsChanged"), object: nil)
         }
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
     
-    // TODO: Send profile object to view controller of container!
     
     @IBAction func segmentedControlPressed(_ sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 0 {

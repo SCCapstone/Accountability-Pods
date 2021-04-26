@@ -108,7 +108,7 @@ class OwnResourceVC: UIViewController {
         nameEdit.isUserInteractionEnabled = false
         desc.layer.backgroundColor = UIColor.white.cgColor
         // Update resource information in the database
-        db.document(resource.path).setData(["resourceName" : nameLabel.text, "resourceDesc" : desc.text]) {err in
+        db.document(resource.path).setData(["resourceName" : nameLabel.text ?? "", "resourceDesc" : desc.text ?? ""]) {err in
             if let err = err {
                 print(err)
             }
@@ -133,9 +133,6 @@ class OwnResourceVC: UIViewController {
                     // close the opened display because post has been deleted
                     self.dismiss(animated: true)
                 })
-                //try Auth.auth().signOut()
-                } catch {
-                    print(error)
                 }
             }))
         alertController.addAction(UIAlertAction(title:"No", style: .default, handler: nil))

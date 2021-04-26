@@ -80,7 +80,6 @@ extension Message: MessageType {
     
     ///Timestap to display messages in order
     var sentDate: Date {
-        let ref = Constants.chatRefs.databaseChats.document()
         let timeStamp = Date().timeIntervalSince1970
         let created = Date(timeIntervalSince1970: TimeInterval(TimeInterval(timeStamp)))
         return created //need to fix
@@ -253,7 +252,6 @@ class ChatViewController: MessagesViewController, InputBarAccessoryViewDelegate 
                                         if view as! Bool == true {
                                             let msg = Message(dictionary: message.data())
                                             self.messages.append(msg!)
-                                            print("Data: \(msg?.content ?? "No message found")")
                                         }
                                     }
                     else {
@@ -261,7 +259,6 @@ class ChatViewController: MessagesViewController, InputBarAccessoryViewDelegate 
                         if view as! Bool == true {
                             let msg = Message(dictionary: message.data())
                             self.messages.append(msg!)
-                            print("Data: \(msg?.content ?? "No message found")")
                         }
                     }
                 }

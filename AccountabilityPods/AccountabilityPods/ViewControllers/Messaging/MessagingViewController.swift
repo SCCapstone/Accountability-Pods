@@ -370,9 +370,6 @@ class MessagingViewController: UIViewController, UITableViewDelegate, UITableVie
                                 }
                             }
                     })
-                    //try Auth.auth().signOut()
-                    } catch {
-                    print(error)
                     }
                 }))
             alertController.addAction(UIAlertAction(title:"No", style: .default, handler: nil))

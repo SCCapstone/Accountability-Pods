@@ -55,9 +55,6 @@ class ViewController: UIViewController {
         }
         else
         {
-            print("Made it here:");
-            print(userID);
-            print(sessID);
             let userIDString = userID!
             let sessionIDString = sessID!
             tryLoginFromStorage(userID: userIDString, sessID: sessionIDString);

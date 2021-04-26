@@ -105,7 +105,7 @@ class OwnSkillViewController: UIViewController {
         // cosmetically change ui connectors to show editing is complete
         desc.layer.backgroundColor = UIColor.clear.cgColor
         // update the skill in the database
-        db.document(skill.path).setData(["skillName" : nameLabel.text, "skillDescription" : desc.text]) {err in
+        db.document(skill.path).setData(["skillName" : nameLabel.text ?? "", "skillDescription" : desc.text ?? ""]) {err in
             if let err = err {
                 print(err)
             }
@@ -131,9 +131,6 @@ class OwnSkillViewController: UIViewController {
                         // closes the viewing screen since skill has been deleted
                         self.dismiss(animated: true)
                 })
-                //try Auth.auth().signOut()
-                } catch {
-                    print(error)
                 }
             }))
         alertController.addAction(UIAlertAction(title:"No", style: .default, handler: nil))

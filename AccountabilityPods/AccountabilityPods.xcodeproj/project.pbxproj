@@ -811,13 +811,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = AccountabilityPods/AccountabilityPods.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 9G4LYUM2QK;
 				INFOPLIST_FILE = AccountabilityPods/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.5;
 				PRODUCT_BUNDLE_IDENTIFIER = cg.AccountabilityPods;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -832,13 +833,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = AccountabilityPods/AccountabilityPods.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 9G4LYUM2QK;
 				INFOPLIST_FILE = AccountabilityPods/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.5;
 				PRODUCT_BUNDLE_IDENTIFIER = cg.AccountabilityPods;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

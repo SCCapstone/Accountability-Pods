@@ -346,7 +346,7 @@ class ChatViewController: MessagesViewController, InputBarAccessoryViewDelegate 
                 //gets user's token
                 let token = document.get("fcmToken") as? String
                 //sends push notification to user's token of current message
-                sender.sendPushNotification(to: token ?? "No token found", title: self.senderName ?? "New Message", body: "Open to Read Message")
+                sender.sendPushNotification(to: token ?? "No token found", title: self.senderName ?? "New Message", body: "Open App and Go to Messages")
                 //reloads table view in MessagingViewController.swiftso if the receiver user does not have the sender as a contact
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ContactsChanged"), object: nil)
             }

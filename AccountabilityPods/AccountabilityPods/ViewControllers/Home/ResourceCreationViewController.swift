@@ -23,15 +23,8 @@ class ResourceCreationViewController: UIViewController {
         super.viewDidLoad()
         overrideUserInterfaceStyle = .light
         let users = db.collection("USERS");
+        resourceName.layer.borderWidth = 0
 
-        
-        
-        let userDoc = users.document(userID);
-        let userContacts = userDoc.collection("CONTACTS");
-        let userResources = userDoc.collection("POSTEDRESOURCES");
-        let userSavedResources = userDoc.collection("SAVEDRESOURCES");
-    
-        // Do any additional setup after loading the view.
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)

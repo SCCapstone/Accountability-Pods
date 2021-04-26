@@ -318,6 +318,10 @@ class ChatViewController: MessagesViewController, InputBarAccessoryViewDelegate 
     //MARK: - Input Bar Delegate
     
     ///implement InputBarAccessoryView delegate to call this function when the press send button action occurs
+    ///
+    /// - Parameters:
+    ///   - inputBar: import class properties of Input Bar Accessory View
+    ///   - didPressSendButtonWith text: action recognition of send button with text
     func inputBar(_ inputBar: InputBarAccessoryView, didPressSendButtonWith text: String) {
         //variable for message being sent
         let message = Message(id: UUID().uuidString, content: text, created: Int64(Date().timeIntervalSince1970), senderID: userID, senderName: self.senderName ?? "No Sender Name", showMsg: true, showMsg1: true)
@@ -357,8 +361,7 @@ class ChatViewController: MessagesViewController, InputBarAccessoryViewDelegate 
     
     ///Checking messages array for setting cell labels attributes
     
-    /// - Parameters:
-    ///   - indexPath: the current index path of the message in array
+    /// - Parameters indexPath: the current index path of the message in array
     /// - Returns: boolean if the previous message sender is the same as the current
     func isPreviousMessageSameSender(at indexPath: IndexPath) -> Bool {
             guard indexPath.section - 1 >= 0 else { return false }
@@ -366,8 +369,7 @@ class ChatViewController: MessagesViewController, InputBarAccessoryViewDelegate 
         }
     
     ///finds last message sent by the sender
-    /// - Parameters:
-    ///   - indexPath: the current index path of the message in array
+    /// - Parameters indexPath: the current index path of the message in array
     /// - Returns: boolean if the next message sender is the same as the current
    func isLastBySender(at indexPath: IndexPath) -> Bool {
         let lastSenderMsg :Bool = false
@@ -470,7 +472,7 @@ class ChatViewController: MessagesViewController, InputBarAccessoryViewDelegate 
 
 // MARK: - Extensions
 
-/// Override MessageCollectionViewCell to allow for delete actions
+/// Extension MessageCollectionViewCell to allow for delete actions
 extension MessageCollectionViewCell {
 
     ///sets action for delete on collection view for a selected cell to appear
@@ -487,73 +489,153 @@ extension MessageCollectionViewCell {
     }
 }
 
-
+/// Extension of Chat View Controller Message Display Delegate  for required delgate properties
 extension ChatViewController: MessagesDisplayDelegate {
   
-  func backgroundColor(for message: MessageType, at indexPath: IndexPath,
+    /// Performs the action to set the message bubble background colors for outgoing and incoming messages
+    ///
+    /// - Parameters:
+    ///   - message: the message of MessageType struct
+    ///   - indexPath: index path of selected method
+    ///   - messagesCollectionView: ChatViewController class type
+    /// - Returns: the color of the background of the message
+    func backgroundColor(for message: MessageType, at indexPath: IndexPath,
     in messagesCollectionView: MessagesCollectionView) -> UIColor {
-    
-    // 1
-    return isFromCurrentSender(message: message) ? .blue : .lightGray
-  }
+        return isFromCurrentSender(message: message) ? .blue : .lightGray
+    }
 
-  func shouldDisplayHeader(for message: MessageType, at indexPath: IndexPath,
+    /// Indicates that message collection messages should not have headers
+    ///
+    /// - Parameters:
+    ///   - message: the message of MessageType struct
+    ///   - indexPath: index path of selected method
+    ///   - messagesCollectionView: ChatViewController class type
+    /// - Returns: boolean of header case
+    func shouldDisplayHeader(for message: MessageType, at indexPath: IndexPath,
     in messagesCollectionView: MessagesCollectionView) -> Bool {
         return false
-  }
+    }
+    
+    /// Performs the action to show an avatar, in this case hide avatars
+    ///
+    /// - Parameters:
+    ///   - avatarView: AvatarView class for properties
+    ///   - message: the message of MessageType struct
+    ///   - indexPath: index path of selected method
+    ///   - messagesCollectionView: ChatViewController class type
     func configureAvatarView(_ avatarView: AvatarView, for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) {
         avatarView.isHidden = true
     }
     
-
-  func messageStyle(for message: MessageType, at indexPath: IndexPath,
-    in messagesCollectionView: MessagesCollectionView) -> MessageStyle {
-
-    let corner: MessageStyle.TailCorner = isFromCurrentSender(message: message) ? .bottomRight : .bottomLeft
-    return .bubbleTail(corner, .curved)
-  }
+    /// Styles the message bubble to have a tail
+    ///
+    /// - Parameters:
+    ///   - message: the message of MessageType struct
+    ///   - indexPath: index path of selected method
+    ///   - messagesCollectionView: ChatViewController class type
+    /// - Returns: Message Style to have a corner curved tail
+    func messageStyle(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> MessageStyle {
+        let corner: MessageStyle.TailCorner = isFromCurrentSender(message: message) ? .bottomRight : .bottomLeft
+        return .bubbleTail(corner, .curved)
+    }
 }
 
+/// Extension of Chat View Controller Message Layout Delegate  for required delgate properties
 extension ChatViewController: MessagesLayoutDelegate {
+    
+    /// Sets the layout and presentation of the message top labels
+    ///
+    /// - Parameters:
+    ///   - message: the message of MessageType struct
+    ///   - indexPath: index path of selected method
+    ///   - messagesCollectionView: ChatViewController class type
+    /// - Returns: The height for the top label under different conditions
     func messageTopLabelHeight(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
         return !isPreviousMessageSameSender(at: indexPath) ? 16 : 0
     }
   
+    /// Handles the size of the avatar to be displayed with the message
+    ///
+    /// - Parameters:
+    ///   - message: the message of MessageType struct
+    ///   - indexPath: index path of selected method
+    ///   - messagesCollectionView: ChatViewController class type
+    /// - Returns: default avatar size
     func avatarSize(for message: MessageType, at indexPath: IndexPath,
     in messagesCollectionView: MessagesCollectionView) -> CGSize {
 
         return .zero
     }
 
+    /// Sets the presentation of the messages' footer
+    ///
+    /// - Parameters:
+    ///   - message: the message of MessageType struct
+    ///   - indexPath: index path of selected method
+    ///   - messagesCollectionView: ChatViewController class type
+    /// - Returns: The height for the message footer
     func footerViewSize(for message: MessageType, at indexPath: IndexPath,
     in messagesCollectionView: MessagesCollectionView) -> CGSize {
 
         return CGSize(width: 0, height: 8)
     }
 
+    /// Handles the size for location to be displayed
+    ///
+    /// - Parameters:
+    ///   - message: the message of MessageType struct
+    ///   - indexPath: index path of selected method
+    ///   - messagesCollectionView: ChatViewController class type
+    /// - Returns: default height for location
     func heightForLocation(message: MessageType, at indexPath: IndexPath,
     with maxWidth: CGFloat, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
             return 0
     }
+    
+    /// Sets the layout and presentation of the bottom label for a message
+    ///
+    /// - Parameters:
+    ///   - message: the message of MessageType struct
+    ///   - indexPath: index path of selected method
+    ///   - messagesCollectionView: ChatViewController class type
+    /// - Returns: The height for the bottom label under different conditions
     func messageBottomLabelHeight(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
             return (!isLastBySender(at: indexPath) && isFromCurrentSender(message: message)) ? 16 : 0
         }
 }
 
+/// Extension of Chat View Controller Message Data Source  for required delgate properties
 extension ChatViewController: MessagesDataSource {
+    ///Returns the current sender Id and name
     func currentSender() -> SenderType {
         return Sender(id: userID, displayName: senderName ?? "Name not Found")
     }
     
+    /// Method to receive the number of messages
+    ///
+    /// - Parameters messagesCollectionView: class type ChatViewController
+    /// - Returns: total number of messages
     func numberOfSections(in messagesCollectionView: MessagesCollectionView) -> Int {
         return messages.count
     }
 
+    /// Function to get the Message Type of a message
+    ///
+    /// - Parameters:
+    ///   - indexPath: index path of selected method
+    ///   - messagesCollectionView: ChatViewController class type
+    /// - Returns: Message Type declared in struct Message at top of the code
     func messageForItem(at indexPath: IndexPath,
     in messagesCollectionView: MessagesCollectionView) -> MessageType {
         return messages[indexPath.section]
     }
 
+    /// Sets the top label to display a text attribute if it the message sender is different than the previous message
+    ///
+    /// - Parameters:
+    ///   - message: the message of MessageType struct
+    ///   - indexPath: index path of selected method
+    /// - Returns: a string of the sender's display name if condition fits
     func messageTopLabelAttributedText(for message: MessageType,
     at indexPath: IndexPath) -> NSAttributedString? {
 
@@ -566,6 +648,12 @@ extension ChatViewController: MessagesDataSource {
         return nil
     }
     
+    /// Sets the bottom label to display a text attribute if the message is the last message sent by the user
+    ///
+    /// - Parameters:
+    ///   - message: the message of MessageType struct
+    ///   - indexPath: index path of selected method
+    /// - Returns: the status delivered for the bottom label of a message if it meets the conditions
     func messageBottomLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
 
         if !isLastBySender(at: indexPath) && isFromCurrentSender(message: message) {

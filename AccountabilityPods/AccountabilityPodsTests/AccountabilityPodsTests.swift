@@ -86,41 +86,45 @@ class SignUpViewTests: XCTestCase {
     }
 }
 
+// MARK: - Chat View Controller Tsts
+
+/// All the sets relating to the Chat View Controller and MessageKit Implementation
+///
 class ChatViewControllerTests: XCTestCase {
     
+    ///mock user for MessageKit Sender Type
     struct MockUser: SenderType {
         var senderId: String
         var displayName: String
     }
     
-    /*struct MockMessage: MessageType {
+    ///Mock structure of Message for testing
+    struct MockMessage: MessageType {
 
         var messageId: String
-        var sender: SenderType {
-            return user
-        }
-        var sentDate: Date
-        var kind: MessageKind
-        var user: MockUser
-
+            var sender: SenderType {
+                return user
+            }
+            var sentDate: Date
+            var kind: MessageKind
+            var user: MockUser
+        //declare the message variables
         private init(kind: MessageKind, user: MockUser, messageId: String) {
             self.kind = kind
             self.user = user
             self.messageId = messageId
             self.sentDate = Date()
         }
-
+        //initialize message variables
         init(text: String, user: MockUser, messageId: String) {
             self.init(kind: .text(text), user: user, messageId: messageId)
         }
-
-        init(attributedText: NSAttributedString, user: MockUser, messageId: String) {
-            self.init(kind: .attributedText(attributedText), user: user, messageId: messageId)
-        }
-    }*/
+    }
     
+    ///mock extension for MessageDataSource properties
     class MockMessagesDataSource: MessagesDataSource {
 
+        //declare variables
         var messages: [MessageType] = []
         let senders: [MockUser] = [
             MockUser(senderId: "sender_1", displayName: "Sender 1"),
@@ -131,30 +135,44 @@ class ChatViewControllerTests: XCTestCase {
             return senders[0]
         }
 
+        ///SenderType for mock
         func currentSender() -> SenderType {
             return currentUser
         }
 
+        ///override sections function
         func numberOfSections(in messagesCollectionView: MessagesCollectionView) -> Int {
             return messages.count
         }
 
+        ///override function
         func messageForItem(at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> MessageType {
             return messages[indexPath.section]
         }
+        func messageTopLabelAttributedText(for message: MessageType,
+        at indexPath: IndexPath) -> NSAttributedString? {
+
+            let name = message.sender.displayName
+           
+            return NSAttributedString(string: name, attributes: [.font: UIFont.preferredFont(forTextStyle: .caption1),
+                           .foregroundColor: UIColor(white: 0.5, alpha: 1)])
+        }
+        func messageBottomLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
+                return NSAttributedString(string: "Delivered", attributes: [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .caption1)])
+            }
 
     }
+    
+    //class variables
     var sut: ChatViewController!
-    // swiftlint:disable weak_delegate
-    //private var layoutDelegate = MockLayoutDelegate()
-    // swiftlint:enable weak_delegate
+    var messages: [MessageType] = []
+    var senders: [MockUser] = []
+ 
     // MARK: - Overridden Methods
     override func setUp() {
         super.setUp()
-
+        //initialize variables
         sut = ChatViewController()
-        //sut.messagesCollectionView.messagesLayoutDelegate = layoutDelegate
-       // sut.messagesCollectionView.messagesDisplayDelegate = layoutDelegate
         _ = sut.view
         sut.beginAppearanceTransition(true, animated: true)
         sut.endAppearanceTransition()
@@ -166,22 +184,25 @@ class ChatViewControllerTests: XCTestCase {
 
         super.tearDown()
     }
-    /*private func makeMessages(for senders: [MockUser]) -> [MessageType] {
-            return [MockMessage(text: "Text 1", user: senders[0], messageId: "test_id_1"),
-                    MockMessage(text: "Text 2", user: senders[1], messageId: "test_id_2")]
-        }*/
+    ///make mock messages for testing
+    private func makeMessages() -> [MessageType] {
+            return [ Message(id: "test_id", content: "Test", created: 1, senderID: "sender_1", senderName: "Sender 1", showMsg: true, showMsg1: true),
+                     Message(id: "test_id2", content: "Test 2", created: 2, senderID: "sender_2", senderName: "Sender 2", showMsg: true, showMsg1: true)]
+        }
 
-    // MARK: - Test
-    func testNumberOfSectionWithoutData_isZero() {
-        let messagesDataSource = MockMessagesDataSource()
-        sut.messagesCollectionView.messagesDataSource = messagesDataSource
+    // MARK: - Chat Controller Tests
+    
+    ///Checks the number of sections without data is equal to zero
+    func testNumberOfEmptySection() {
 
         XCTAssertEqual(sut.messagesCollectionView.numberOfSections, 0)
     }
-    /*func testNumberOfSection_isNumberOfMessages() {
+    
+    ///check Sections match Messages Array
+    func testNumberOfSection_isNumberOfMessages() {
             let messagesDataSource = MockMessagesDataSource()
             sut.messagesCollectionView.messagesDataSource = messagesDataSource
-            messagesDataSource.messages = makeMessages(for: messagesDataSource.senders)
+            messages = makeMessages()
 
             sut.messagesCollectionView.reloadData()
 
@@ -189,12 +210,13 @@ class ChatViewControllerTests: XCTestCase {
             let expectedCount = messagesDataSource.numberOfSections(in: sut.messagesCollectionView)
 
             XCTAssertEqual(count, expectedCount)
-        }
+    }
 
-        func testNumberOfItemInSection_isOne() {
-            let messagesDataSource = MockMessagesDataSource()
+    ///Check Number of Items In Section Returns correct value of 1
+    func testNumberOfItemInSection() {
+        let messagesDataSource = MockMessagesDataSource()
             sut.messagesCollectionView.messagesDataSource = messagesDataSource
-            messagesDataSource.messages = makeMessages(for: messagesDataSource.senders)
+            messagesDataSource.messages = makeMessages()
 
             sut.messagesCollectionView.reloadData()
 
@@ -202,38 +224,31 @@ class ChatViewControllerTests: XCTestCase {
             XCTAssertEqual(sut.messagesCollectionView.numberOfItems(inSection: 1), 1)
         }
 
-        func testCellForItemWithTextData_returnsTextMessageCell() {
-            let messagesDataSource = MockMessagesDataSource()
-            sut.messagesCollectionView.messagesDataSource = messagesDataSource
-            messagesDataSource.messages.append(MockMessage(text: "Test",
-                                                           user: messagesDataSource.senders[0],
-                                                           messageId: "test_id"))
+    ///Test Message Collection View has subview of the needed Messages Collection View
+    func testSubviewsSetup() {
+            let controller = ChatViewController()
+            XCTAssertTrue(controller.view.subviews.contains(controller.messagesCollectionView))
+    }
+    
+    ///Test Set Up View is Correct
+    func testDelegateAndDataSourceSetup() {
+            let controller = ChatViewController()
+            controller.view.layoutIfNeeded()
+            XCTAssertTrue(controller.messagesCollectionView.delegate is MessagesViewController)
+            XCTAssertTrue(controller.messagesCollectionView.dataSource is MessagesViewController)
+        }
+    
+    ///Test TextMessage Data is the correct data
+    func testCellIsTextData() {
+        let msg = Message(id: "test_id", content: "Test", created: 1, senderID: "sender_1", senderName: "Sender 1", showMsg: true, showMsg1: true)
+            sut.messages.append(msg)
 
             sut.messagesCollectionView.reloadData()
 
-            let cell = sut.messagesCollectionView.dataSource?.collectionView(sut.messagesCollectionView,
-                                                                             cellForItemAt: IndexPath(item: 0, section: 0))
+            let cell = sut.messagesCollectionView.dataSource?.collectionView(sut.messagesCollectionView, cellForItemAt: IndexPath(item: 0, section: 0))
 
             XCTAssertNotNil(cell)
             XCTAssertTrue(cell is TextMessageCell)
         }
-
-        func testCellForItemWithAttributedTextData_returnsTextMessageCell() {
-            let messagesDataSource = MockMessagesDataSource()
-            sut.messagesCollectionView.messagesDataSource = messagesDataSource
-            let attributes = [NSAttributedString.Key.foregroundColor: UIColor.outgoingMessageLabel]
-            let attriutedString = NSAttributedString(string: "Test", attributes: attributes)
-            messagesDataSource.messages.append(MockMessage(attributedText: attriutedString,
-                                                           user: messagesDataSource.senders[0],
-                                                           messageId: "test_id"))
-
-            sut.messagesCollectionView.reloadData()
-
-            let cell = sut.messagesCollectionView.dataSource?.collectionView(sut.messagesCollectionView,
-                                                                             cellForItemAt: IndexPath(item: 0, section: 0))
-
-            XCTAssertNotNil(cell)
-            XCTAssertTrue(cell is TextMessageCell)
-        }*/
 }
 

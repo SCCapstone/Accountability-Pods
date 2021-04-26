@@ -65,6 +65,7 @@ class PushNotificationManager: NSObject, MessagingDelegate, UNUserNotificationCe
             completionHandler([])
         } else{
             completionHandler([.alert, .badge, .sound])
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ContactsChanged"), object: nil)
         }
     }
     

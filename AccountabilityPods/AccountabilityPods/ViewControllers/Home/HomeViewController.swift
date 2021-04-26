@@ -34,7 +34,17 @@ class HomeViewController: UIViewController {
         alertController.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
             print("Handle Ok logic here")
                 do {
-                
+                    // change ftm token to remove notifications
+                    let db = Firestore.firestore()
+                    db.collection("users").document(Constants.User.sharedInstance.userID).updateData([
+                                   "fcmToken": ""
+                    ]) { err in
+                        if let err = err {
+                            print("Error updating token on logout : \(err)")
+                        } else {
+                            print("FCM token updated on logout")
+                        }
+                    }
                     self.dismiss(animated:true, completion: {
                     UserDefaults.standard.setValue("", forKey: "userID")
                     UserDefaults.standard.setValue("", forKey: "sessID")
@@ -45,6 +55,8 @@ class HomeViewController: UIViewController {
                     // change view controller
                     self.view.window?.rootViewController = homeViewController
                     self.view.window?.makeKeyAndVisible()
+                        
+                    
                 })
                 //try Auth.auth().signOut()
                 } catch {

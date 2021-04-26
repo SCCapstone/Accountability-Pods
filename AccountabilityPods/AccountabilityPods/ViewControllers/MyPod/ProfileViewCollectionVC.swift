@@ -17,6 +17,7 @@ struct ProfileGroup: Hashable {
     var profiles: [ProfileHashable]
 }
 
+// Unhashed version of the previous struct
 struct ProfileGroupUnhashed {
     let name: String
     var profiles: [Profile]
@@ -29,6 +30,7 @@ class ProfileViewCollectionVC: UIViewController {
         case main
     }
     let db = Firestore.firestore()
+    // The actual data used for the collection view cells
     var data: UICollectionViewDiffableDataSource<ViewSection, ListType>!
     
     // Define the various arrays stored here-- this is not optimal, but it is acceptable.
@@ -52,13 +54,11 @@ class ProfileViewCollectionVC: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
     override func viewDidLoad() {
-        
+        // Alert allows the user to create groups via a popup
         alert.addTextField {
             (textField) in
             textField.text = ""
         }
-        
-        
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
             [weak alert] (_) in
             let textField = alert?.textFields![0]
@@ -70,6 +70,8 @@ class ProfileViewCollectionVC: UIViewController {
             }
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+
+
         // Immediately set up observer so if there is any saved profile change, i.e. a user likes or unlikes a post, or moves it to/from a group, the update function is called.
         NotificationCenter.default.addObserver(self, selector: #selector(self.genArray), name: NSNotification.Name(rawValue: "ContactsChanged"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.update), name: NSNotification.Name(rawValue: "ProfileAsyncFinished"), object: nil)
@@ -80,11 +82,12 @@ class ProfileViewCollectionVC: UIViewController {
         //Populate both the grouped and ungrouped profile arrays
         genArray()
         
+        // Establishes the layout for the collection
         let layoutConfig = UICollectionLayoutListConfiguration(appearance: .insetGrouped);
         let listLayout = UICollectionViewCompositionalLayout.list(using: layoutConfig);
-        
         collectionView.collectionViewLayout = listLayout
-        
+
+        // Creates the cell template for profiles
         let profileCellReg = UICollectionView.CellRegistration<UICollectionViewListCell, ProfileHashable> {
             (cell, indexPath, profile) in
             
@@ -94,7 +97,7 @@ class ProfileViewCollectionVC: UIViewController {
             
             cell.contentConfiguration = contents
         }
-        
+        // Creates the cell template for groups
         let groupCellReg = UICollectionView.CellRegistration<UICollectionViewListCell, ProfileGroup> {
             (cell, indexPath, group) in
             var contents = cell.defaultContentConfiguration()
@@ -106,10 +109,7 @@ class ProfileViewCollectionVC: UIViewController {
             cell.accessories = [.outlineDisclosure(options:groupDisclose)]
             
         }
-        
-        
-        
-        
+        // Establishes which cell should be used for the given data
         data = UICollectionViewDiffableDataSource<ViewSection, ListType>(collectionView: collectionView) {
             (collectionView, indexPath, listType) -> UICollectionViewCell? in
             switch listType {
@@ -127,6 +127,8 @@ class ProfileViewCollectionVC: UIViewController {
         
         var snapshotSection = NSDiffableDataSourceSectionSnapshot<ListType>()
         
+        // Not strictly necessary as this is only if cached information is present which doesn't happen in standard operation,
+        // however execution is fast enough normally that it is good to keep in case it is added.
         for group in groups {
             
             let groupItem = ListType.group(group)
@@ -143,12 +145,11 @@ class ProfileViewCollectionVC: UIViewController {
             //snapshotSection.expand([profileItem])
             
         }
-       // data.apply(snapshotProfiles, to: .main, animatingDifferences: false)
         data.apply(snapshotSection, to: .main, animatingDifferences: false)
         self.collectionView.reloadData()
         
         
-       
+       // Assigns itself as the delegate for click and drag functions, enables drag controls
         collectionView.delegate = self;
         collectionView.dragDelegate = self;
         collectionView.dropDelegate = self;
@@ -160,6 +161,7 @@ class ProfileViewCollectionVC: UIViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
+    // Updates and shows the collectionview with the provided arrays
     @objc func update()
     {
         
@@ -239,18 +241,18 @@ class ProfileViewCollectionVC: UIViewController {
         for profile in profiles {
             let profileItem = ListType.profile(profile)
             snapshotSection.append([profileItem])
-            //snapshotSection.expand([profileItem])
+           
             
         }
         data.apply(snapshotSection, to: .main, animatingDifferences: false)
     }
-    
+    // Shows the alert to create a group
     @IBAction func createGroup(_ sender: Any) {
         
         self.present(alert, animated: true, completion: nil)
         
     }
-    
+    // Used by the alert to create the group, 
     func addGroup() {
         
         if(self.inputString != "")
@@ -349,7 +351,7 @@ class ProfileViewCollectionVC: UIViewController {
        
         
     }
-    
+    // Segues to the profile that is selected
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showProfileSegue"
         {
@@ -383,7 +385,7 @@ class ProfileViewCollectionVC: UIViewController {
 extension ProfileViewCollectionVC: UICollectionViewDelegate {
     
     
-    
+    // This handles transitioning to profile if it is clicked
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
     {
         guard let selectedProfile = data.itemIdentifier(for:indexPath) else {
@@ -403,22 +405,19 @@ extension ProfileViewCollectionVC: UICollectionViewDelegate {
             break;
             
         }
-        
-        //return
+
     }
-    
-    
-    
+   
 }
 
 
-
+// Handles the drag functionality
 @available(iOS 14.0, *)
 extension ProfileViewCollectionVC: UICollectionViewDragDelegate {
     func collectionView(_ collectionView: UICollectionView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
         
         let selectedResource = data.itemIdentifier(for:indexPath)
-        
+        // Grabs the profile
         switch selectedResource {
         case .profile(let resource):
             self.selectedProfile = resource
@@ -427,7 +426,7 @@ extension ProfileViewCollectionVC: UICollectionViewDragDelegate {
             break;
             
         }
-        
+        // Stores the dragged item and returns it
         let item = self.selectedProfile
         let itemProvider = NSItemProvider(object: item.firstName as NSItemProviderWriting)
         let draggedItem = UIDragItem(itemProvider: itemProvider)
@@ -436,15 +435,17 @@ extension ProfileViewCollectionVC: UICollectionViewDragDelegate {
         return [draggedItem]
     }
 }
+// Handles dropping
 @available(iOS 14.0, *)
 extension ProfileViewCollectionVC: UICollectionViewDropDelegate {
-    
+    // Determines what will be done with the dragged item
     func collectionView(_ collectionView: UICollectionView, dropSessionDidUpdate session: UIDropSession, withDestinationIndexPath destinationIndexPath: IndexPath?) -> UICollectionViewDropProposal {
         if collectionView.hasActiveDrag {
             return UICollectionViewDropProposal(operation: .move, intent: .unspecified)
         }
         return UICollectionViewDropProposal(operation: .forbidden)
     }
+    // Actually changes where the items are related to groups, refreshes the view
     func collectionView(_ collectionView: UICollectionView, performDropWith coordinator: UICollectionViewDropCoordinator) {
         var destinationPath: IndexPath
         

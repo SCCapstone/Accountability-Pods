@@ -53,15 +53,24 @@ class Utilities {
    
 }
 
+// MARK: - Resource Classes
+
+/// Class for resource object used to populate table views
 class Resource {
+    /// display name of the resource
     public var name: String
+    /// description of the resource
     public var desc: String
+    /// time in database that resource was created
     public var timeStamp: Int64
+    /// path to the resource in the database
     public var path: String
     
+    /// resource object that is hashable for collection views
     public var hashableResource: ResourceHashable
     //var doc: DocumentSnapshot
     
+    /// Sets variables to default values
     init()
     {
         self.path = ""
@@ -70,6 +79,12 @@ class Resource {
         self.timeStamp = 0
         self.hashableResource = ResourceHashable(name:self.name,desc:self.desc,path:self.path)
     }
+    
+    /// Take paths and database and  set variables with data from the database with read data function
+    ///
+    /// - Parameters:
+    ///   - base: the database with the resource
+    ///   - path_: the given path to be assigned to the object
     init(base: Firestore, path_: String)
     {
         self.path = ""
@@ -81,6 +96,13 @@ class Resource {
         
         
     }
+    
+    /// Sets variables to given information
+    ///
+    /// - Parameters:
+    ///   - name: display name
+    ///   - desc: resouce description
+    ///   - path: path to resource
     init(name: String, desc: String, path: String)
     {
         self.path = path
@@ -90,6 +112,11 @@ class Resource {
         self.hashableResource = ResourceHashable(name:self.name,desc:self.desc,path:self.path)
     }
     
+    /// Sets variables from information in database
+    ///
+    /// - Parameters:
+    ///   - database: the database with the resource
+    ///   - path: the given path to be assigned to the object
     func readData(database: Firestore, path: String)
     {
         
@@ -121,6 +148,12 @@ class Resource {
        
     
     }
+    /// Sets variables from information in database and reloads the table view
+    ///
+    /// - Parameters:
+    ///   - database: the database with the resource
+    ///   - path: the given path to be assigned to the object
+    ///   - tableview: the table the resource is being added to
     func readData(database: Firestore, path: String, tableview: UITableView)
     {
         
@@ -152,6 +185,12 @@ class Resource {
             }
         }
     }
+    /// Sets variables from information in database and reloads the collection view
+    ///
+    /// - Parameters:
+    ///   - database: the database with the resource
+    ///   - path: the given path to be assigned to the object
+    ///   - collectionview: the collection the resource is being added to
     func readData(database: Firestore, path: String, collectionview: UICollectionView)
     {
         
@@ -182,6 +221,9 @@ class Resource {
             
         }
     }
+    /// Makes the resource object into a hashable resource object for collection view
+    ///
+    /// - Returns: a hashable resource
     func makeHashableStruct() -> ResourceHashable!
     {
         
@@ -193,7 +235,7 @@ class Resource {
 
 }
 
-// Hashable struct of a resource, primarily used for collections. Same will exist for contacts
+/// Hashable struct of a resource, primarily used for collections. Same will exist for contacts
 //Important note: If you have to use this, I recommend reconstructing a hash rather than making a copy unless you are careful. Having two+ of the same instance will more likely than not cause a crash due to not being able to resolve the hash to a unique object.
 struct ResourceHashable: Hashable {
     let uuid = UUID()
@@ -201,19 +243,29 @@ struct ResourceHashable: Hashable {
     let desc: String
     let path: String
 }
+
+// MARK: - Skill Class
 class Skill {
+    /// display name of skill
     public var name: String
+    /// display name of description
     public var desc: String
-    
+    /// the path to the skill in the database
     public var path: String
-    //var doc: DocumentSnapshot
     
+    /// Sets variables to default values
     init()
     {
         self.path = ""
         self.name = "No name"
         self.desc = "No desc"
     }
+    
+    /// Take paths and database and  set variables with data from the database with read data function
+    ///
+    /// - Parameters:
+    ///   - base: the database with the skill
+    ///   - path_: the given path to be assigned to the object
     init(base: Firestore, path_: String)
     {
         self.path = ""
@@ -223,6 +275,13 @@ class Skill {
         
         
     }
+    
+    /// Sets variables to given information
+    ///
+    /// - Parameters:
+    ///   - name: display name
+    ///   - desc: skill description
+    ///   - path: path to resource
     init(name: String, desc: String, path: String)
     {
         self.path = path
@@ -230,6 +289,11 @@ class Skill {
         self.desc = desc
     }
     
+    /// Sets variables from information in database
+    ///
+    /// - Parameters:
+    ///   - database: the database with the resource
+    ///   - path: the given path to be assigned to the object
     func readData(database: Firestore, path: String)
     {
         
@@ -242,22 +306,22 @@ class Skill {
             {
                 return
             }
-            
             let name_ = data!["skillName"] as! String
             let desc_ = data!["skillDescription"] as! String
             self.name = name_
             self.desc = desc_
-            
-            
         }
         
-       
-    
     }
+    
+    /// Sets variables from information in database and reloads the table view
+    ///
+    /// - Parameters:
+    ///   - database: the database with the resource
+    ///   - path: the given path to be assigned to the object
+    ///   - tableview: the table the resource is being added to
     func readData(database: Firestore, path: String, tableview: UITableView)
     {
-        
-        
         self.path = path
         database.document(path).addSnapshotListener {
             (querySnapshot, error) in
@@ -272,25 +336,31 @@ class Skill {
             self.name = name_
             self.desc = desc_
             tableview.reloadData()
-            
-            
         }
-}
+    }
 }
 
+// MARK: - Profile classes
+
+/// Class for profile object, a user that is not the current user,  used to populate table and collection views
 class Profile {
+    /// user's first name
     public var firstName: String
+    /// user's last name
     public var lastName: String
+    /// user's profile decription
     public var description: String
+    /// user's username
     public var uid: String
+    /// path to user in database
     public var path: String
     
     //Note: Profile originally had both uid and username.
     //      This has since been changed as there is no longer a reason for the alphanumeric userid to be stored. However, to prevent a large number of changes it made more sense to just condense the two into the uid variable.
-    
+    /// profile object that is hashable for collection views
     public var hashableProfile: ProfileHashable
     
-    
+    /// Sets variables to default values
     init() {
         self.path = ""
         self.firstName = "No name"
@@ -301,6 +371,11 @@ class Profile {
         
     }
     
+    /// Take paths and database and  set variables with data from the database with read data function
+    ///
+    /// - Parameters:
+    ///   - base: the database with the profile
+    ///   - path_: the given path to be assigned to the object
     init(base: Firestore, path_:String) {
         self.path = ""
         self.firstName = "No name"
@@ -311,6 +386,11 @@ class Profile {
         readData(database: base, path: path_)
     }
     
+    /// Sets variables from information in database
+    ///
+    /// - Parameters:
+    ///   - database: the database with the profile
+    ///   - path: the given path to be assigned to the object
     func readData(database: Firestore, path: String) {
         self.path = path
         
@@ -338,6 +418,12 @@ class Profile {
         }
     }
     
+    /// Sets variables from information in database and reloads the table view
+    ///
+    /// - Parameters:
+    ///   - database: the database with the profile
+    ///   - path: the given path to be assigned to the object
+    ///   - tableview: the table the profile  is being added to
     func readData(database: Firestore, path: String, tableview: UITableView) {
         self.path = path
         
@@ -366,6 +452,13 @@ class Profile {
             tableview.reloadData()
         }
     }
+    
+    /// Sets variables from information in database and reloads the collection view
+    ///
+    /// - Parameters:
+    ///   - database: the database with the profile
+    ///   - path: the given path to be assigned to the object
+    ///   - collectionview: the collection the profile is being added to
     func readData(database: Firestore, path: String, collectionview: UICollectionView) {
         self.path = path
         
@@ -397,14 +490,22 @@ class Profile {
             collectionview.reloadData()
         }
     }
+    /// Makes the profile object into a hashable profile object for collection view
+    ///
+    /// - Returns: a hashable profile
     func hash()
     {
         self.hashableProfile = ProfileHashable(first:self.firstName,last:self.lastName,desc: self.description,path:self.path,uid:self.uid)
     }
     
-    
+    /// Set variables for user who posted a resource from a given resource path
+    ///
+    /// - Parameters:
+    ///   - database: the firestore database
+    ///   - path: the path to the resource that the user posted
     func readFromResourcePath(database: Firestore, path: String)
     {
+        // get user path by cutting the resource path
         let directories = path.split(separator: "/")
         
         let pathTemp: String
@@ -413,6 +514,9 @@ class Profile {
         self.readData(database: database, path: pathTemp)
     }
     
+    /// Set unhashed profile to information from a hashed profile
+    ///
+    /// - Parameter hashProfile: a profile that has been made hashable
     func unHash(hashProfile: ProfileHashable)
     {
         self.firstName = hashProfile.firstName
@@ -422,6 +526,7 @@ class Profile {
     }
 }
 
+/// Hashable struct of a profile
 public struct ProfileHashable: Hashable {
     let firstName: String
     let lastName: String

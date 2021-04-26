@@ -72,7 +72,7 @@ class SignUpViewController: UIViewController {
         let cleanEmail = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         let cleanPassword = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         // check length of username
-        if cleanUsername.count ?? 0 > 30 {
+        if cleanUsername.count > 30 {
             return "username is too long"
         }
         // check if email and password are valid
@@ -100,7 +100,7 @@ class SignUpViewController: UIViewController {
     
     /// Transitions to tutorial page view controller when called.
     func transitionToHome() {
-        let homeViewController = storyboard?.instantiateViewController(identifier: "tutorial") as? UIViewController
+        let homeViewController = storyboard?.instantiateViewController(identifier: "tutorial")
         
         view.window?.rootViewController = homeViewController
         view.window?.makeKeyAndVisible()
@@ -179,7 +179,7 @@ class SignUpViewController: UIViewController {
                                     UserDefaults.standard.setValue(result!.user.uid, forKey: "userID")
                                     UserDefaults.standard.setValue(UUID().uuidString, forKey: "sessID")
                                     // set user notication token
-                                    usersRef.setData(["fcmToken": token], merge: true)
+                                    usersRef.setData(["fcmToken": token ?? ""], merge: true)
                                     print("reached Here")
                                     // add userID to userID collection
                                     db.collection("userids").document(result!.user.uid).setData(["username": username])

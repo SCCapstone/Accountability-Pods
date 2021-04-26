@@ -110,7 +110,7 @@ class ResourceBrowseViewController: UIViewController {
                             for doc in resourceSnaps!.documents {
                                 let path = doc.reference.path
                                // print("AEIOU")
-                                var newResource = Resource(base: self.db, path_:path)
+                                let newResource = Resource(base: self.db, path_:path)
                                 newResource.readData(database: self.db, path: path, tableview: self.tableView)
                                 
                                 print("Resource: \(newResource.name)")

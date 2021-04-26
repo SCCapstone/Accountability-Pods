@@ -295,14 +295,13 @@ class ResourceViewCollectionVC: UIViewController {
                     let path = doc.data()["docRef"] as! String
                     self.db.document(path).getDocument() { docs, error in
                         if let error = error {
-                            
+                            print("Error getting documents \(error)")
                         }
                         else{
                             if(docs != nil && docs!.exists)
                             {
                                 
                         
-                    //print("\n\n\n\n\n" + path + "\n\n\n\n\n")
                     let newResource = Resource(base: self.db, path_:path)
                     newResource.readData(database: self.db, path: path, collectionview: self.collectionView)
                                 

@@ -83,20 +83,18 @@ class LoginViewController: UIViewController {
         usersRef.getDocument {
             (document, error) in
             if let document = document, document.exists {
-                print("DOCUMENT FOUND \(document.data())")
                 // users notification token from current device
                 let newtoken = Messaging.messaging().fcmToken
                 // users notification token in database
                 let currToken = document.get("fcmToken") as? String
                 // checks if both tokens are the same
                 if(currToken == newtoken) {
-                    print("USER USES SAME TOKEN \(currToken ?? "new token")")
                     return
                 }
                 else {
                     // updates token in database if user is on a new device
                     print("USER is on different device replacing token to updated token")
-                    usersRef.setData(["fcmToken": newtoken], merge: true)
+                    usersRef.setData(["fcmToken": newtoken ?? ""], merge: true)
                 }
             }
         }

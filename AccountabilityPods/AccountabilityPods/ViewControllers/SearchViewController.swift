@@ -177,7 +177,6 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showProfileSegue" {
             let indexPath = self.table.indexPathForSelectedRow
-            print("index: \(indexPath)")
             if filtered {
                 let profile = self.filteredProfiles[(indexPath?.row)!]
                 if let dView = segue.destination as? ProfileViewController {

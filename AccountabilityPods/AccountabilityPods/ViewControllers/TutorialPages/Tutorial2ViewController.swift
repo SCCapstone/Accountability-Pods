@@ -29,7 +29,7 @@ class Tutorial2ViewController: UIViewController {
     ///
     /// - Parameter sender: the next button
     @IBAction func nextTapped(_ sender: Any) {
-        let nextViewController = storyboard?.instantiateViewController(identifier: "tutorial3") as? UIViewController
+        let nextViewController = storyboard?.instantiateViewController(identifier: "tutorial3")
         
         view.window?.rootViewController = nextViewController
         view.window?.makeKeyAndVisible()

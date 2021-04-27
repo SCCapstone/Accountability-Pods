@@ -4,8 +4,8 @@ layout: default
 
 [Home](/index.md) &nbsp;&nbsp;&nbsp;&nbsp; [About Us](./about-us.md)
 
-## Video Demo (placeholder)
-<iframe width="560" height="315" src="https://www.youtube.com/embed/Hui9mkxgpGc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+## Video Demo
+<iframe width="560" height="315" src="https://www.youtube.com/embed/7P28K8C5rN4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                
 # What is Power Pods?
 Power pods is an app implementation of a transformative justice community building tool to serve as an alternative to policing. The main function of the app is for users to digitally organize their support system as a tool to use during violent, harmful, and abusive situations whether they are a survivor, bystander, or the person that did the harm. 

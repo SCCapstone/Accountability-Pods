@@ -362,8 +362,9 @@ class MessagingViewController: UIViewController, UITableViewDelegate, UITableVie
                                             print("\(self.contactsA[indexPath.section].uid) is already contact")
                                         } else {
                                             //remove from the table view
-                                            self.contactsA.remove(at: indexPath.section)
-                                            tableView.deleteRows(at: [indexPath], with: .fade)
+                                            print("trying to remove")
+                                            self.contactsA.remove(at:indexPath.section)
+                                            self.reload((Any).self)
                                             print("REMOVED from table view")
                                         }
                                     }

@@ -21,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         FirebaseApp.configure()
         IQKeyboardManager.shared.enable = true
+        
         //push manager for notifications
         let userId = Auth.auth().currentUser?.uid ?? "current_user_id"
         let userRef = Firestore.firestore().collection("users").whereField("uid", isEqualTo: userId)

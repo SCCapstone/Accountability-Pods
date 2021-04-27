@@ -119,12 +119,14 @@ class ChatViewController: MessagesViewController, InputBarAccessoryViewDelegate 
     override func viewDidLoad() {
     
         super.viewDidLoad()
+
         // set page to only work with light mode
         overrideUserInterfaceStyle = .light
         
         // grabs receiver user information and sets variables to their values from profile
         user2Name = sendToProfile.firstName + " " + sendToProfile.lastName
         user2UID = sendToProfile.uid
+        
         // set title to display receiver name at top of the chat
         self.title = user2Name ?? "Chat"
         //set up the users display name
@@ -153,6 +155,7 @@ class ChatViewController: MessagesViewController, InputBarAccessoryViewDelegate 
         messagesCollectionView.messagesLayoutDelegate = self
         messagesCollectionView.messagesDisplayDelegate = self
         loadChat()
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "DisableVisibleNotif"), object: nil)
     }
     
     ///Creates header with the properties of how it should appear
@@ -312,6 +315,7 @@ class ChatViewController: MessagesViewController, InputBarAccessoryViewDelegate 
         })
     }
     
+ 
     //MARK: - Input Bar Delegate
     
     ///implement InputBarAccessoryView delegate to call this function when the press send button action occurs
@@ -335,7 +339,9 @@ class ChatViewController: MessagesViewController, InputBarAccessoryViewDelegate 
         messagesCollectionView.scrollToLastItem(animated: true)
     }
     
-    
+    override func viewDidDisappear(_ animated: Bool) {
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "EnableVisibleNotif"), object: nil)
+    }
     ///sends push notification to receiver user
     func sendPush() {
         let sender = PushNotificationSender()

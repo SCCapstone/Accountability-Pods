@@ -15,11 +15,21 @@ class PushNotificationManager: NSObject, MessagingDelegate, UNUserNotificationCe
     //var userN: String
     let userName: String
     var window: UIWindow?
-    
+    var notifsEnabled: Bool = true
     init(userName: String) {
         self.userName =  userName
         print("USERNAME NOTIFICATIONS \(self.userName)")
         super.init()
+        NotificationCenter.default.addObserver(self, selector: #selector(self.disable), name: NSNotification.Name(rawValue: "DisableVisibleNotif"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.enable), name: NSNotification.Name(rawValue: "EnableVisibleNotif"), object: nil)
+        
+    }
+    
+    @objc func disable() {
+        self.notifsEnabled = false
+    }
+    @objc func enable() {
+        self.notifsEnabled = true
     }
         
     func registerForPushNotifications() {
@@ -61,7 +71,7 @@ class PushNotificationManager: NSObject, MessagingDelegate, UNUserNotificationCe
     //in app messaging notifcation
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         //let topMostViewController = UIApplication.shared.topMostViewController()
-        if self.window?.rootViewController?.topViewController is ChatViewController {
+        if !self.notifsEnabled{
             completionHandler([])
         } else{
             completionHandler([.alert, .badge, .sound])

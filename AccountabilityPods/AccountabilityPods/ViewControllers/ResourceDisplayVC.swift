@@ -15,12 +15,16 @@ class ResourceDisplayVC: UIViewController {
     @IBOutlet weak var usernameButton: UIButton!
     @IBOutlet weak var nameField: UILabel!
     @IBOutlet weak var descField: UITextView!
+    @IBOutlet weak var imageField: UIImageView!
+    @IBOutlet weak var nonOrgDescField: UITextView!
     // Variables used for more efficient loading
     var docID: String? = nil
+    var id: String? = nil
     var needsLoad = false
     var resource: ResourceHashable = Resource.init().makeHashableStruct()
     var hasLiked: Bool = false
     var profile = Profile()
+    var fake = 2
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +32,41 @@ class ResourceDisplayVC: UIViewController {
         // Observer is to check if asynchronous operations on loading profile is complete
         NotificationCenter.default.addObserver(self, selector: #selector(self.onProfileComplete), name: NSNotification.Name(rawValue: "ProfileAsyncFinished"), object: nil)
 
+        let usersRef = db.collection("organizations")
+        let directories = resource.path.split(separator: "/")
+        usersRef.getDocuments() {(querySnapshot, err) in
+            if let err = err {
+                print("Error: \(err)")
+            }
+            else {
+        for document in querySnapshot!.documents {
+            if document.documentID == directories[1] {
+                self.fake = 1
+            }
+            else {
+                self.fake = 0
+            }
+            
+        
+        }
+    }
+            print(self.fake)
+            print(directories[1])
+            if(self.fake == 1) {
+            print("0a")
+            self.imageField.isHidden = false
+            self.descField.isHidden = false
+            self.nonOrgDescField.isHidden = true
+            self.setImgField()
+        } else {
+            print("1a")
+            self.imageField.isHidden = true
+            self.descField.isHidden = true
+            self.nonOrgDescField.isHidden = false
+        }
+    }
+
+        
         checkResourceStillValid()
         // Do any additional setup after loading the view.
     }
@@ -59,6 +98,7 @@ class ResourceDisplayVC: UIViewController {
                     print("test")
                     self.nameField.text = "Resource Not Found"
                     self.descField.text = "The resource you have checked no longer exists. Sorry about that!"
+                    self.nonOrgDescField.text = "The resource you have checked no longer exists. Sorry about that!"
                     self.likeButton.isHidden = true
                     self.usernameButton.isHidden = true
                     if(self.hasLiked)
@@ -74,9 +114,77 @@ class ResourceDisplayVC: UIViewController {
         }
     }
     }
+    
+    func setImgField() {
+        let directories = resource.path.split(separator: "/")
+        var imgUrl = ""
+        let usrName = "" + directories[1]
+        var orgDocID = ""
+        if(imageField.isHidden == false) {
+            print("0x")
+            let findDocID = db.collection("organizations").document(usrName).collection("POSTEDRESOURCES")
+            print("1x")
+            findDocID.getDocuments() {(QuerySnapshot, err) in
+                if let err = err {
+                    print("Error: \(err)")
+                }
+                else {
+                    for document in QuerySnapshot!.documents {
+                        print("2x")
+                        if (document.get("resourceName") as? String == self.nameField.text) {
+                            print("3x")
+                            orgDocID = (document.documentID as String)
+                        }
+                    }
+                    }
+                }
+            }
+        print("4x")
+        let usersRef = db.collection("organizations").document(usrName).collection("POSTEDRESOURCES")
+            usersRef.getDocuments() {(QuerySnapshot, err) in
+                if let err = err {
+                    print("Error: \(err)")
+                }
+                else {
+                    for document in QuerySnapshot!.documents {
+                        if(document.documentID == orgDocID) {
+                            imgUrl = document.get("imageLink") as! String
+                            print("\n\n\n\n" + imgUrl + "\n\n\n\n\n")
+                        }
+                    }
+        }
+                let urls = URL(string: imgUrl)!
+            let session = URLSession(configuration: .default)
+                let downloadPic = session.dataTask(with: urls) { Data,URLResponse,Error in
+                    if let e = Error {
+                        print("Error downloading picture: \(e)")
+                    } else {
+                        if let res = URLResponse as? HTTPURLResponse {
+                            print("Downloaded picture with response: \(res.statusCode)")
+                            if let imageData = Data {
+                                let imageDown = UIImage(data: imageData)
+                                print("work")
+                                DispatchQueue.main.async {
+                                    self.imageField.image = imageDown
+                                }
+                                print("works")
+                            } else {
+                                print("Couldn't get image: Image is nil")
+                            }
+                        } else {
+                            print("Couldn't get a response code")
+                        }
+                    }
+                }
+                
+                downloadPic.resume()
+        }
+    }
+    
     // Sets the textfields of the resource from the provided resource
     func setTextFields() {
         nameField.text = resource.name
+        nonOrgDescField.text = resource.desc
         descField.text = resource.desc
         let directories = resource.path.split(separator: "/")
         //print("" + directories[1])
@@ -91,7 +199,6 @@ class ResourceDisplayVC: UIViewController {
             self.likeButton.tintColor = .lightGray
             
         }
-        
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
@@ -177,9 +284,6 @@ class ResourceDisplayVC: UIViewController {
             
             self.likeButton.tintColor = .lightGray
         }
-        
-        
-        
         
     }
 

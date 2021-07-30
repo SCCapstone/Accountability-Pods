@@ -167,5 +167,10 @@ class MyPodViewController: UIViewController {
         self.present(alertController, animated: true)
     }
     
+    @IBAction func onAddTapped(_ sender: Any) {
+        performSegue(withIdentifier: "profIsOrg", sender: Any?.self)
+        }
+    
+    
 }
 

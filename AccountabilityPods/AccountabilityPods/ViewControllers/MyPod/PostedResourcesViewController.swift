@@ -91,7 +91,7 @@ class PostedResourcesViewController: UIViewController {
           }
     }
     
-    /// Linear sourt of resources in array based on the timeStamp
+    /// Linear sort of resources in array based on the timeStamp
     func sortResources()
     {
         var count = 0

@@ -11,6 +11,9 @@ import UIKit
 import Firebase
 class HomeViewController: UIViewController {
     
+    let db = Firestore.firestore()
+    var userID = Constants.User.sharedInstance.userID;
+    
     // MARK: - Set up
     
     override func viewDidLoad() {
@@ -71,6 +74,12 @@ class HomeViewController: UIViewController {
         alertController.addAction(UIAlertAction(title:"Got it!", style: .default, handler: nil))
         self.present(alertController, animated: true)
     }
+    
+    @IBAction func onAddTapped(_ sender: Any) {
+        performSegue(withIdentifier: "isOrg", sender: self)
+    }
+    
+    
 }
 
 

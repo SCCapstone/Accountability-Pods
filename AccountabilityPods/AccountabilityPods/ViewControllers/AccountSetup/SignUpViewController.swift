@@ -31,6 +31,8 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var errorLabel: UILabel!
     /// The make account private switch button
     @IBOutlet weak var accountIsPrivate: UISwitch!
+    /// The button to make an organization account
+    @IBOutlet weak var accountisOrg: UISwitch!
     /// The button to learn more about private accounts
     @IBOutlet weak var learnMore: UIButton!
     
@@ -48,6 +50,7 @@ class SignUpViewController: UIViewController {
     func setUpElements() {
         errorLabel.alpha = 0 // hide error label
         self.accountIsPrivate.isOn = false
+        self.accountisOrg.isOn = false
     }
     
     /// Sets keyboard to hide when screen is tapped
@@ -138,7 +141,9 @@ class SignUpViewController: UIViewController {
             let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let isPrivateAccount = accountIsPrivate.isOn
+            let isOrgAccount = accountisOrg.isOn
             var privateAccountVar = 0
+            var orgAccountVar = 0
             // get private account information to be entered into the database
             if(isPrivateAccount == true)  {
                 privateAccountVar=1
@@ -146,6 +151,14 @@ class SignUpViewController: UIViewController {
             else {
                 privateAccountVar=0
             }
+            // get org account information to be entered into the database
+            if(isOrgAccount == true)    {
+                orgAccountVar=1
+            }
+            else {
+                orgAccountVar=0
+            }
+            
             // check if username aleady exists before creating account
             let db = Firestore.firestore()
             let docRef = db.collection("users").document(username)
@@ -168,7 +181,7 @@ class SignUpViewController: UIViewController {
                             print(username)
                             let token = Messaging.messaging().fcmToken
                             let usersRef = Firestore.firestore().collection("users").document(username)
-                            db.collection("users").document(username).setData(["firstname": firstname, "lastname": lastname, "email": email, "username": username, "description": "","private": privateAccountVar]) { err in
+                            db.collection("users").document(username).setData(["firstname": firstname, "lastname": lastname, "email": email, "username": username, "description": "","private": privateAccountVar,"organization":orgAccountVar]) { err in
                                 if let err = err {
                                     print("Error adding document: \(err)")
                                 } else {

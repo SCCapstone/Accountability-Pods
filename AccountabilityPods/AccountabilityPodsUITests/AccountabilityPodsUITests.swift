@@ -311,4 +311,29 @@ class AccountabilityPodsUITests: XCTestCase {
         deleteSkillAlert.tap()
         
     }
+    
+    
+
+        func testOrgAccountOnHomePage() throws {
+            XCUIApplication().tables/*@START_MENU_TOKEN@*/.staticTexts["Thank the lord"]/*[[".cells.matching(identifier: \"resourceCell\").staticTexts[\"Thank the lord\"]",".staticTexts[\"Thank the lord\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        }
+    
+    func testAddPostButton() throws {
+        let app = XCUIApplication()
+        XCUIApplication().navigationBars["Power Pods"]/*@START_MENU_TOKEN@*/.buttons["addPostButton"]/*[[".buttons[\"Item\"]",".buttons[\"addPostButton\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        let addResourceTitleTextField = app.textFields["Add resource title..."]
+        addResourceTitleTextField.tap()
+        
+        let addImageLinkTextField = app.textFields["Add image link..."]
+        addImageLinkTextField.tap()
+        
+        let textView = app.children(matching: .window).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element(boundBy: 1).children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .textView).element
+        textView.tap()
+        
+        app.datePickers.collectionViews.buttons["Saturday, July 31"].otherElements.containing(.staticText, identifier:"31").element.tap()
+        app.children(matching: .window).element(boundBy: 0).children(matching: .other).element.tap()
+                
+        
+    }
+    
 }

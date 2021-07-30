@@ -77,6 +77,54 @@ class ResourceBrowseViewController: UIViewController {
         /// get the current users contacts
         let currUserRef = usersRef.document(Constants.User.sharedInstance.userID)
         let userContactRef = currUserRef.collection("CONTACTS")
+        usersRef.getDocuments() {
+            DocumentSnapshot, error in
+            if let error = error {
+                print("Error getting orgs. \(error)")
+            }
+            else {
+                for doc in DocumentSnapshot!.documents {
+                    if(doc.get("organization") as? Int == 1) {
+                        let orgRef = usersRef.document(doc.documentID)
+                        let orgResourceRef = orgRef.collection("POSTEDRESOURCES")
+                        orgResourceRef.getDocuments() {
+                            resourceSnap, error2 in
+                            if let error = error2 {
+                                print("Error getting orgs \(error)")
+                            }
+                            else
+                            {
+                                for doc in resourceSnap!.documents {
+                                    if(Firebase.Timestamp().seconds > doc.get("deletionDate") as! Int64) {
+                                        self.db.document(doc.reference.path).delete()
+                                        self.db.collection("organizations").document(doc.get("creatorRef") as! String).delete()
+                                    }
+                                    else {
+                                    let path = doc.reference.path
+                                    let newResource = Resource(base: self.db, path_:path)
+                                    newResource.readData(database: self.db, path: path, tableview: self.tableView)
+                                    
+                                    print("Resource: \(newResource.name)")
+                                    
+                                    self.resources.append(newResource)
+                                    for item in self.resources {
+                                        print(item)
+                                        print(item.name)
+                                        print(item.desc)
+                                        self.tableView.reloadData()
+                                    }
+                                    if(self.resources.count >= 10)
+                                    {
+                                        return
+                                    }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
         /// look through users contacts
         userContactRef.getDocuments() {
             docsSnap, error in

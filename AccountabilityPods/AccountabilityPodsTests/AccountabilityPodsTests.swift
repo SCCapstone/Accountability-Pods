@@ -86,6 +86,23 @@ class SignUpViewTests: XCTestCase {
     }
 }
 
+class orgPostTests: XCTestCase {
+    var sut: ResourceCreationViewController!
+    override func setUpWithError() throws {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        sut = storyboard.instantiateViewController(identifier: "ResourceCreationViewController") as? ResourceCreationViewController
+        //loads the correct view control since not intial
+        sut.loadViewIfNeeded()
+    }
+    
+    override func tearDownWithError() throws {
+        self.sut = nil
+    }
+    func testImgLinkIsValid() {
+        XCTAssertEqual("Add image link...", sut.imageLink!.placeholder)
+    }
+}
+
 // MARK: - Chat View Controller Tsts
 
 /// All the sets relating to the Chat View Controller and MessageKit Implementation
@@ -250,5 +267,7 @@ class ChatViewControllerTests: XCTestCase {
             XCTAssertNotNil(cell)
             XCTAssertTrue(cell is TextMessageCell)
         }
-}
+    
+    }
+
 
